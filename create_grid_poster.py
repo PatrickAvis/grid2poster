@@ -499,7 +499,7 @@ def render_poster(
 
     high_voltage_count = int((lines["voltage_kv"].fillna(0) >= 150).sum())
     total_count = len(lines)
-    subtitle = "OPENSTREETMAP POWER=LINE TRANSMISSION GRID"
+    subtitle = "ELECTRICAL TRANSMISSION GRID"
     metadata = f"{total_count:,} line segments"
     if high_voltage_count:
         metadata += f" · {high_voltage_count:,} ≥150 kV"

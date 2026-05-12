@@ -63,11 +63,11 @@ Generated posters are written to the `posters/` directory by default. Intermedia
 
 | Poster | Country | Theme |
 | --- | --- | --- |
-| [`india_grid_blackout_20260512_100511.png`](posters/india_grid_blackout_20260512_100511.png) | India | `blackout` |
-| [`india_grid_paper_grid_20260512_105701.png`](posters/india_grid_paper_grid_20260512_105701.png) | India | `paper_grid` |
-| [`kenya_grid_electric_midnight_20260512_091015.png`](posters/kenya_grid_electric_midnight_20260512_091015.png) | Kenya | `electric_midnight` |
-| [`kenya_grid_paper_grid_20260512_091554.png`](posters/kenya_grid_paper_grid_20260512_091554.png) | Kenya | `paper_grid` |
-| [`pakistan_grid_paper_grid_20260512_092409.png`](posters/pakistan_grid_paper_grid_20260512_092409.png) | Pakistan | `paper_grid` |
+| ![`india_grid_blackout_20260512_100511.png`](posters/india_grid_blackout_20260512_100511.png) | India | `blackout` |
+| ![`india_grid_paper_grid_20260512_105701.png`](posters/india_grid_paper_grid_20260512_105701.png) | India | `paper_grid` |
+| ![`kenya_grid_electric_midnight_20260512_091015.png`](posters/kenya_grid_electric_midnight_20260512_091015.png) | Kenya | `electric_midnight` |
+| ![`kenya_grid_paper_grid_20260512_091554.png`](posters/kenya_grid_paper_grid_20260512_091554.png) | Kenya | `paper_grid` |
+| ![`pakistan_grid_paper_grid_20260512_092409.png`](posters/pakistan_grid_paper_grid_20260512_092409.png) | Pakistan | `paper_grid` |
 
 ## Notes
 
