@@ -7,14 +7,14 @@
 
 <p align="center">
   <img src="./posters/india_grid_paper_grid_20260512_125057.png" alt="India transmission grid — paper_grid theme" width="380"/>
-  <img src="./posters/india_grid_blackout_20260512_100511.png" alt="India transmission grid — blackout theme" width="380"/>
+  <img src="./posters/africa_grid_paper_grid_20260512_144322.png" alt="Africa transmission grid — paper_grid theme" width="380"/>
 </p>
 
-<p align="center"><em> <code>paper_grid theme · EPSG:3857 Pseudo-Mercator projection</code> and <code>blackout theme · EPSG:8857 Equal Earth projection </code> </em></p>
+<p align="center"><em> <code>paper_grid theme · EPSG:3857 Pseudo-Mercator projection</code> and <code>paper_grid theme · EPSG:3857 Pseudo-Mercator projection </code> </em></p>
 
 ## Data
 
-GridToPoster uses OpenStreetMap features tagged as:
+Grid2Poster uses OpenStreetMap features tagged as:
 
 - `power=line`
 - `power=minor_line` when enabled
@@ -24,7 +24,7 @@ Feature completeness depends on OpenStreetMap coverage in the selected country o
 
 ### Contributing to the data
 
-Coverage in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work — it provides tutorials, country-level completeness statistics, and tasking tools for tracing power lines and substations from imagery.
+Coverage and quality in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work — it provides tutorials, country-level completeness/quality statistics and mapping tools for tracing power lines, generators and substations from imagery.
 
 ## Installation
 
@@ -77,14 +77,14 @@ Continent-scale runs hit the Overpass API hundreds of times and can take several
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `--country`, `-C` | — | Country or region name resolvable by Nominatim, or a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`). Required unless `--list-themes` is used. |
+| `--country` | — | Country or region name resolvable by Nominatim, or a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`). |
 | `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
-| `--theme`, `-t` | `electric_midnight` | Theme ID from the `themes/` directory. |
+| `--theme` | `electric_midnight` | Theme ID from the `themes/` directory. |
 | `--list-themes` | — | List available themes and exit. |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
 | `--include-cables` | off | Also fetch `power=cable` features. |
-| `--width`, `-W` | `12.0` | Poster width in inches. |
-| `--height`, `-H` | `16.0` | Poster height in inches. |
+| `--width` | `12.0` | Poster width in inches. |
+| `--height` | `16.0` | Poster height in inches. |
 | `--dpi` | `300` | Raster output DPI (applies to PNG output). |
 | `--tile-size-km` | `200` | Overpass query tile size in kilometers. Use smaller values for very large countries or busy servers. |
 | `--format`, `-f` | `png` | Output format: `png`, `svg`, or `pdf`. |
