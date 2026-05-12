@@ -53,6 +53,26 @@ List available themes:
 python create_grid_poster.py --list-themes
 ```
 
+## Options
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `--country`, `-C` | — | Country or region name resolvable by Nominatim. Required unless `--list-themes` is used. |
+| `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
+| `--theme`, `-t` | `electric_midnight` | Theme ID from the `themes/` directory. |
+| `--list-themes` | — | List available themes and exit. |
+| `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
+| `--include-cables` | off | Also fetch `power=cable` features. |
+| `--width`, `-W` | `12.0` | Poster width in inches. |
+| `--height`, `-H` | `16.0` | Poster height in inches. |
+| `--dpi` | `300` | Raster output DPI (applies to PNG output). |
+| `--tile-size-km` | `200` | Overpass query tile size in kilometers. Use smaller values for very large countries or busy servers. |
+| `--format`, `-f` | `png` | Output format: `png`, `svg`, or `pdf`. |
+| `--output`, `-o` | auto-generated in `posters/` | Output file path. |
+| `--crs` | `EPSG:3857` | Projection used for rendering. EPSG:3857 (Pseudo-Mercator) works well for country posters. |
+| `--hide-metadata` | off | Do not print segment counts on the poster. |
+| `--verbose-osmnx` | off | Print OSMnx request logs. |
+
 ## Output
 
 Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads.
