@@ -1,7 +1,16 @@
-# Grid2Poster
+<h1 align="center">Grid2Poster</h1>
 
-Generate print-ready posters of electrical grid infrastructure from OpenStreetMap data.
-The script first downloads country-level transmission lines, and then uses GeoPandas, OSMnx, and Matplotlib to render a static poster.
+<p align="center">
+  Generate print-ready posters of electrical grid infrastructure from OpenStreetMap data.<br/>
+  Transmission lines for a country or continent are downloaded and rendered with GeoPandas, OSMnx, and Matplotlib.
+</p>
+
+<p align="center">
+  <img src="./posters/india_grid_paper_grid_20260512_125057.png" alt="India transmission grid — paper_grid theme" width="380"/>
+  <img src="./posters/india_grid_blackout_20260512_100511.png" alt="India transmission grid — blackout theme" width="380"/>
+</p>
+
+<p align="center"><em>India · <code>paper_grid theme with EPSG:3857 Pseudo-Mercator projection</code> and <code>blackout theme with EPSG:8857 Equal Earth projection </code> themes</em></p>
 
 ## Data
 
@@ -52,11 +61,19 @@ List available themes:
 python create_grid_poster.py --list-themes
 ```
 
+Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`:
+
+```bash
+python create_grid_poster.py --country Africa --tile-size-km 500
+```
+
+Continent-scale runs hit the Overpass API hundreds of times and can take several hours. A larger `--tile-size-km` cuts the number of queries; pick a value that still stays under the Overpass per-query size limit.
+
 ## Options
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `--country`, `-C` | — | Country or region name resolvable by Nominatim. Required unless `--list-themes` is used. |
+| `--country`, `-C` | — | Country or region name resolvable by Nominatim, or a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`). Required unless `--list-themes` is used. |
 | `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
 | `--theme`, `-t` | `electric_midnight` | Theme ID from the `themes/` directory. |
 | `--list-themes` | — | List available themes and exit. |
@@ -81,7 +98,7 @@ Generated posters are written to the `posters/` directory by default. Intermedia
 | Poster | Country | Theme |
 | --- | --- | --- |
 | ![`india_grid_blackout_20260512_100511.png`](posters/india_grid_blackout_20260512_100511.png) | India | `blackout` |
-| ![`india_grid_paper_grid_20260512_105701.png`](posters/india_grid_paper_grid_20260512_105701.png) | India | `paper_grid` |
+| ![`india_grid_paper_grid_20260512_105701.png`](posters/india_grid_paper_grid_20260512_125057.png) | India | `paper_grid` |
 | ![`kenya_grid_electric_midnight_20260512_091015.png`](posters/kenya_grid_electric_midnight_20260512_091015.png) | Kenya | `electric_midnight` |
 | ![`kenya_grid_paper_grid_20260512_091554.png`](posters/kenya_grid_paper_grid_20260512_091554.png) | Kenya | `paper_grid` |
 | ![`pakistan_grid_paper_grid_20260512_092409.png`](posters/pakistan_grid_paper_grid_20260512_092409.png) | Pakistan | `paper_grid` |

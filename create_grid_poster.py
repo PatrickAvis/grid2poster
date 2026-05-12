@@ -46,6 +46,21 @@ POSTERS_DIR = Path("posters")
 THEMES_DIR = Path("themes")
 FILE_ENCODING = "utf-8"
 
+NATURAL_EARTH_URL = (
+    "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/"
+    "geojson/ne_50m_admin_0_countries.geojson"
+)
+NATURAL_EARTH_PATH = CACHE_DIR / "ne_50m_admin_0_countries.geojson"
+CONTINENT_NAMES = {
+    "africa",
+    "antarctica",
+    "asia",
+    "europe",
+    "north america",
+    "oceania",
+    "south america",
+}
+
 CACHE_DIR.mkdir(exist_ok=True)
 POSTERS_DIR.mkdir(exist_ok=True)
 THEMES_DIR.mkdir(exist_ok=True)
@@ -188,20 +203,42 @@ def load_theme(theme_id: str) -> Theme:
     return Theme.from_dict(json.loads(path.read_text(encoding=FILE_ENCODING)))
 
 
+def _load_natural_earth_countries() -> gpd.GeoDataFrame:
+    if not NATURAL_EARTH_PATH.exists():
+        import urllib.request
+
+        print(f"Downloading Natural Earth admin-0 dataset → {NATURAL_EARTH_PATH}")
+        urllib.request.urlretrieve(NATURAL_EARTH_URL, NATURAL_EARTH_PATH)
+    return gpd.read_file(NATURAL_EARTH_PATH)
+
+
+def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
+    countries = _load_natural_earth_countries()
+    match = countries["CONTINENT"].str.lower() == continent.lower()
+    subset = countries[match]
+    if subset.empty:
+        raise RuntimeError(f"No countries found for continent '{continent}' in Natural Earth")
+    merged = unary_union(subset.geometry)
+    return gpd.GeoDataFrame({"name": [continent]}, geometry=[merged], crs=countries.crs)
+
+
 def get_country_boundary(country: str) -> gpd.GeoDataFrame:
-    key = cache_key("boundary", country)
+    key = cache_key("boundary_v2", country)
     cached = cache_get(key)
     if cached is not None:
         print(f"Using cached boundary for {country}")
         return cached
 
-    print(f"Geocoding country boundary: {country}")
-    boundary = ox.geocode_to_gdf(country)
-    boundary = boundary[boundary.geometry.type.isin(["Polygon", "MultiPolygon"])]
-    if boundary.empty:
-        raise RuntimeError(f"Could not resolve a country boundary for '{country}'")
+    if country.lower() in CONTINENT_NAMES:
+        print(f"Building continent boundary from Natural Earth: {country}")
+        boundary = _continent_boundary(country)
+    else:
+        print(f"Geocoding country boundary: {country}")
+        boundary = ox.geocode_to_gdf(country)
+        boundary = boundary[boundary.geometry.type.isin(["Polygon", "MultiPolygon"])]
+        if boundary.empty:
+            raise RuntimeError(f"Could not resolve a country boundary for '{country}'")
 
-    boundary = boundary.set_crs("EPSG:3857", allow_override=True)
     cache_set(key, boundary)
     return boundary
 
