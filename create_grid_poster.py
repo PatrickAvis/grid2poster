@@ -201,7 +201,7 @@ def get_country_boundary(country: str) -> gpd.GeoDataFrame:
     if boundary.empty:
         raise RuntimeError(f"Could not resolve a country boundary for '{country}'")
 
-    boundary = boundary.set_crs("EPSG:4326", allow_override=True)
+    boundary = boundary.set_crs("EPSG:3857", allow_override=True)
     cache_set(key, boundary)
     return boundary
 
@@ -600,8 +600,8 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument("--output", "-o", type=Path, help="Output file path")
     parser.add_argument(
         "--crs",
-        default="EPSG:8857",
-        help="Projection used for rendering. EPSG:8857 Equal Earth works well for country posters.",
+        default="EPSG:3857",
+        help="Projection used for rendering. EPSG:3857 Pseudo-Mercator works well for country posters.",
     )
     parser.add_argument("--hide-metadata", action="store_true", help="Do not print segment counts on poster")
     parser.add_argument("--verbose-osmnx", action="store_true", help="Print OSMnx request logs")
