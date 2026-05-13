@@ -65,6 +65,14 @@ List available themes:
 python create_grid_poster.py --list-themes
 ```
 
+Use a local GeoJSON file as the boundary instead of geocoding (handy for custom regions or sub-national areas):
+
+```bash
+python create_grid_poster.py --country "Bavaria" --boundary-geojson ./regions/bavaria.geojson
+```
+
+All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename.
+
 Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`:
 
 ```bash
@@ -87,6 +95,7 @@ Without a path, the file is written to `posters/` next to the poster. The export
 | Option | Default | Description |
 | --- | --- | --- |
 | `--country` | — | Country or region name resolvable by Nominatim, or a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`). |
+| `--boundary-geojson` | — | Path to a local GeoJSON file with polygonal boundary features. Overrides the Nominatim/Natural Earth lookup. Useful for custom regions, sub-national areas, or offline workflows. |
 | `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
 | `--theme` | `electric_midnight` | Theme ID from the `themes/` directory. |
 | `--list-themes` | — | List available themes and exit. |
@@ -125,6 +134,10 @@ The map is intended for visualisation and print design. It should not be used as
 | ![`mexico_grid_forest_20260512_160112.png`](posters/mexico_grid_forest_20260512_160112.png) | Mexico | `forest` |
 | ![`italy_grid_autumn_20260512_162023.png`](posters/italy_grid_autumn_20260512_162023.png) | Italy | `autumn` |
 | ![`zambia_grid_sunset_20260512_162627.png`](posters/zambia_grid_sunset_20260512_162627.png) | Zambia | `sunset` |
+| ![`marocco_grid_autumn_20260512_165630.png`](posters/marocco_grid_autumn_20260512_165630.png) | Morocco | `autumn` |
+| ![`nigeria_grid_paper_grid_20260512_210551.png`](posters/nigeria_grid_paper_grid_20260512_210551.png) | Nigeria | `paper_grid` |
+| ![`nigeria_grid_neon_cyberpunk_20260512_223613.png`](posters/nigeria_grid_neon_cyberpunk_20260512_223613.png) | Nigeria | `neon_cyberpunk` |
+| ![`japan_grid_paper_grid_20260512_222909.png`](posters/japan_grid_paper_grid_20260512_222909.png) | Japan | `paper_grid` |
 
 
 ## Attribution

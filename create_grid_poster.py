@@ -222,6 +222,22 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
     return gpd.GeoDataFrame({"name": [continent]}, geometry=[merged], crs=countries.crs)
 
 
+def load_boundary_from_geojson(path: Path, name: str) -> gpd.GeoDataFrame:
+    gdf = gpd.read_file(path)
+    if gdf.empty:
+        raise RuntimeError(f"Boundary file '{path}' contains no features")
+    gdf = gdf[gdf.geometry.type.isin(["Polygon", "MultiPolygon"])]
+    if gdf.empty:
+        raise RuntimeError(f"Boundary file '{path}' contains no polygonal geometry")
+    if gdf.crs is None:
+        print(f"Boundary file '{path}' has no CRS — assuming EPSG:4326")
+        gdf = gdf.set_crs("EPSG:4326")
+    else:
+        gdf = gdf.to_crs("EPSG:4326")
+    merged = unary_union(gdf.geometry)
+    return gpd.GeoDataFrame({"name": [name]}, geometry=[merged], crs="EPSG:4326")
+
+
 def get_country_boundary(country: str) -> gpd.GeoDataFrame:
     key = cache_key("boundary_v2", country)
     cached = cache_get(key)
@@ -539,7 +555,7 @@ def render_poster(
     total_length_km = float(lines.geometry.length.sum()) / 1000.0
     high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= 150].geometry.length.sum()) / 1000.0
     subtitle = "ELECTRICAL TRANSMISSION GRID"
-    metadata = f"{total_length_km:,.0f} km of power lines"
+    metadata = f"{datetime.now().year} · {total_length_km:,.0f} km of power lines"
     if high_voltage_length_km:
         metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
 
@@ -591,7 +607,7 @@ def render_poster(
     ax.text(
         0.985,
         0.018,
-        "© OpenStreetMap contributors and MapYourGrid.org",
+        "© OpenStreetMap contributors, MapYourGrid, Open Energy Transition",
         transform=ax.transAxes,
         ha="right",
         va="bottom",
@@ -621,6 +637,12 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("--country", "-C", required=False, help="Country or region name resolvable by Nominatim")
+    parser.add_argument(
+        "--boundary-geojson",
+        type=Path,
+        help="Load the boundary polygon(s) from a local GeoJSON file instead of geocoding via Nominatim. "
+             "All polygonal features in the file are dissolved into a single boundary.",
+    )
     parser.add_argument("--display-country", help="Text to print on the poster")
     parser.add_argument("--theme", "-t", default="electric_midnight", help="Theme ID from themes/")
     parser.add_argument("--list-themes", action="store_true", help="List available themes and exit")
@@ -675,7 +697,11 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
     theme = load_theme(args.theme)
     display_country = args.display_country or args.country
 
-    boundary_wgs84 = get_country_boundary(args.country)
+    if args.boundary_geojson:
+        print(f"Loading boundary from {args.boundary_geojson}")
+        boundary_wgs84 = load_boundary_from_geojson(args.boundary_geojson, args.country)
+    else:
+        boundary_wgs84 = get_country_boundary(args.country)
     raw_lines = fetch_power_features(
         country=args.country,
         boundary=boundary_wgs84,
