@@ -101,6 +101,7 @@ Without a path, the file is written to `posters/` next to the poster. The export
 | `--list-themes` | — | List available themes and exit. |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
 | `--include-cables` | off | Also fetch `power=cable` features. |
+| `--include-outlying` | off | Keep overseas territories and other polygons far from the main landmass. By default the geocoded boundary is filtered to the mainland (and nearby islands), so posters for countries like the Netherlands or France do not include Aruba, Curaçao, French Guiana, etc. |
 | `--width` | `12.0` | Poster width in inches. |
 | `--height` | `16.0` | Poster height in inches. |
 | `--dpi` | `300` | Raster output DPI (applies to PNG output). |

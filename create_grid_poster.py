@@ -222,6 +222,34 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
     return gpd.GeoDataFrame({"name": [continent]}, geometry=[merged], crs=countries.crs)
 
 
+def keep_main_landmass(geometry: Any) -> Any:
+    """Drop disjoint polygons that are far from the main landmass.
+
+    Geocoded country boundaries include overseas territories — e.g. Aruba and
+    Curaçao for the Netherlands, French Guiana and Réunion for France. We keep
+    the largest polygon plus any polygon whose envelope intersects a 3×-inflated
+    bounding box of the largest one. This preserves close-by islands such as
+    Northern Ireland, Corsica, or Japan's main islands.
+    """
+    if not isinstance(geometry, MultiPolygon):
+        return geometry
+
+    polygons = list(geometry.geoms)
+    if len(polygons) <= 1:
+        return geometry
+
+    largest = max(polygons, key=lambda p: p.area)
+    minx, miny, maxx, maxy = largest.bounds
+    width = max(maxx - minx, 0.01)
+    height = max(maxy - miny, 0.01)
+    region = box(minx - width, miny - height, maxx + width, maxy + height)
+
+    kept = [p for p in polygons if region.intersects(p)]
+    if len(kept) == 1:
+        return kept[0]
+    return MultiPolygon(kept)
+
+
 def load_boundary_from_geojson(path: Path, name: str) -> gpd.GeoDataFrame:
     gdf = gpd.read_file(path)
     if gdf.empty:
@@ -238,8 +266,8 @@ def load_boundary_from_geojson(path: Path, name: str) -> gpd.GeoDataFrame:
     return gpd.GeoDataFrame({"name": [name]}, geometry=[merged], crs="EPSG:4326")
 
 
-def get_country_boundary(country: str) -> gpd.GeoDataFrame:
-    key = cache_key("boundary_v2", country)
+def get_country_boundary(country: str, mainland_only: bool = True) -> gpd.GeoDataFrame:
+    key = cache_key("boundary_v3", country, mainland_only)
     cached = cache_get(key)
     if cached is not None:
         print(f"Using cached boundary for {country}")
@@ -254,6 +282,19 @@ def get_country_boundary(country: str) -> gpd.GeoDataFrame:
         boundary = boundary[boundary.geometry.type.isin(["Polygon", "MultiPolygon"])]
         if boundary.empty:
             raise RuntimeError(f"Could not resolve a country boundary for '{country}'")
+        if mainland_only:
+            merged = unary_union(boundary.geometry)
+            filtered = keep_main_landmass(merged)
+            before = len(merged.geoms) if isinstance(merged, MultiPolygon) else 1
+            after = len(filtered.geoms) if isinstance(filtered, MultiPolygon) else 1
+            if after < before:
+                print(
+                    f"Mainland-only: dropped {before - after} outlying polygon(s); "
+                    "pass --include-outlying to keep them"
+                )
+            boundary = gpd.GeoDataFrame(
+                {"name": [country]}, geometry=[filtered], crs=boundary.crs
+            )
 
     cache_set(key, boundary)
     return boundary
@@ -648,6 +689,12 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument("--list-themes", action="store_true", help="List available themes and exit")
     parser.add_argument("--include-minor-lines", action="store_true", help="Also fetch power=minor_line")
     parser.add_argument("--include-cables", action="store_true", help="Also fetch power=cable")
+    parser.add_argument(
+        "--include-outlying",
+        action="store_true",
+        help="Keep overseas territories and other polygons far from the main landmass. "
+             "By default only the mainland (and nearby islands) is rendered.",
+    )
     parser.add_argument("--width", "-W", type=float, default=12.0, help="Poster width in inches")
     parser.add_argument("--height", "-H", type=float, default=16.0, help="Poster height in inches")
     parser.add_argument("--dpi", type=int, default=300, help="Raster output DPI")
@@ -701,7 +748,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         print(f"Loading boundary from {args.boundary_geojson}")
         boundary_wgs84 = load_boundary_from_geojson(args.boundary_geojson, args.country)
     else:
-        boundary_wgs84 = get_country_boundary(args.country)
+        boundary_wgs84 = get_country_boundary(args.country, mainland_only=not args.include_outlying)
     raw_lines = fetch_power_features(
         country=args.country,
         boundary=boundary_wgs84,
