@@ -386,8 +386,10 @@ def parse_voltage_to_kv(value: Any) -> float | None:
     return max(values) if values else None
 
 
-def style_for_voltage(kv: float | None, theme: Theme) -> tuple[str, float, float]:
+def style_for_voltage(kv: float | None, theme: Theme, power: str | None = None) -> tuple[str, float, float]:
     """Return color, linewidth, alpha for a line segment."""
+    if power == "minor_line":
+        return theme.line_low, 0.50, 0.75
     if kv is None:
         return theme.line_unknown, 0.25, 0.45
     if kv >= 500:
@@ -514,7 +516,7 @@ def render_poster(
     )
 
     for _, row in line_iterator:
-        color, linewidth, alpha = style_for_voltage(row.get("voltage_kv"), theme)
+        color, linewidth, alpha = style_for_voltage(row.get("voltage_kv"), theme, row.get("power"))
         gpd.GeoSeries([row.geometry], crs=lines.crs).plot(
             ax=ax,
             color=color,
@@ -534,12 +536,12 @@ def render_poster(
     font_sub = FontProperties(family="DejaVu Sans", weight="normal", size=15 * scale)
     font_meta = FontProperties(family="DejaVu Sans Mono", weight="normal", size=8.5 * scale)
 
-    high_voltage_count = int((lines["voltage_kv"].fillna(0) >= 150).sum())
-    total_count = len(lines)
+    total_length_km = float(lines.geometry.length.sum()) / 1000.0
+    high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= 150].geometry.length.sum()) / 1000.0
     subtitle = "ELECTRICAL TRANSMISSION GRID"
-    metadata = f"{total_count:,} line segments"
-    if high_voltage_count:
-        metadata += f" · {high_voltage_count:,} ≥150 kV"
+    metadata = f"{total_length_km:,.0f} km of power lines"
+    if high_voltage_length_km:
+        metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
 
     ax.text(
         0.5,
@@ -589,7 +591,7 @@ def render_poster(
     ax.text(
         0.985,
         0.018,
-        "© OpenStreetMap contributors. \n Visit MapYourGrid.org to find out how you can contribute to this data.",
+        "© OpenStreetMap contributors and MapYourGrid.org",
         transform=ax.transAxes,
         ha="right",
         va="bottom",

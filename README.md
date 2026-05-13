@@ -107,6 +107,12 @@ Without a path, the file is written to `posters/` next to the poster. The export
 
 Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads.
 
+## Notes
+
+The script uses the public Overpass API through OSMnx. Large requests may fail or be rate-limited. Use smaller `--tile-size-km` values for large countries or when the Overpass server is busy.
+
+The map is intended for visualisation and print design. It should not be used as an authoritative grid model.
+
 ## Gallery
 
 | Poster | Country | Theme |
@@ -120,11 +126,6 @@ Generated posters are written to the `posters/` directory by default. Intermedia
 | ![`italy_grid_autumn_20260512_162023.png`](posters/italy_grid_autumn_20260512_162023.png) | Italy | `autumn` |
 | ![`zambia_grid_sunset_20260512_162627.png`](posters/zambia_grid_sunset_20260512_162627.png) | Zambia | `sunset` |
 
-## Notes
-
-The script uses the public Overpass API through OSMnx. Large requests may fail or be rate-limited. Use smaller `--tile-size-km` values for large countries or when the Overpass server is busy.
-
-The map is intended for visualisation and print design. It should not be used as an authoritative grid model.
 
 ## Attribution
 
