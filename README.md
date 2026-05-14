@@ -132,7 +132,7 @@ The map is intended for visualisation and print design. It should not be used as
 | Poster | Country | Theme |
 | --- | --- | --- |
 | ![`china_grid_paper_grid_20260512_173256.png`](posters/china_grid_paper_grid_20260512_173256.png) | China | `paper_grid` |
-| ![`south_america_grid_japanese_ink_20260514_141831.png`](posters/south_america_grid_japanese_ink_20260514_141831.png) | South America | `neon_cyberpunk` |
+| ![`south_america_grid_japanese_ink_20260514_141831.png`](posters/south_america_grid_japanese_ink_20260514_141831.png) | South America | `japanese_ink` |
 | ![`india_grid_japanese_ink_20260512_134242.png`](posters/india_grid_japanese_ink_20260512_134242.png) | India | `japanese_ink` |
 | ![`pakistan_grid_electric_midnight_20260512_152527.png`](posters/pakistan_grid_electric_midnight_20260512_152527.png) | Pakistan | `electric_midnight` |
 | ![`vietnam_grid_midnight_blue_20260512_153543.png`](posters/vietnam_grid_midnight_blue_20260512_153543.png) | Vietnam | `midnight_blue` |
