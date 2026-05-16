@@ -74,13 +74,36 @@ python create_grid_poster.py --country "Bavaria" --boundary-geojson ./regions/ba
 
 All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename.
 
-Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`:
+Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`. The aggregate name `global` combines every inhabited continent (excludes Antarctica and Oceania) into a single boundary:
 
 ```bash
 python create_grid_poster.py --country Africa --tile-size-km 500
+python create_grid_poster.py --country global --tile-size-km 1000
 ```
 
 Continent-scale runs hit the Overpass API hundreds of times and can take several hours. A larger `--tile-size-km` cuts the number of queries; pick a value that still stays under the Overpass per-query size limit.
+
+### Predefined regions
+
+The `regions/` directory ships with multi-country boundaries that map to common power-system groupings. Pass any of them via `--boundary-geojson` and set `--country` to the title you want printed on the poster:
+
+```bash
+python create_grid_poster.py --country "ENTSO-E" --boundary-geojson ./regions/entsoe.geojson --tile-size-km 300
+```
+
+| File | Coverage |
+| --- | --- |
+| `regions/entsoe.geojson` | Approximate ENTSO-E synchronous footprint - 35 countries: Austria, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Montenegro, Netherlands, North Macedonia, Norway, Poland, Portugal, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, Ukraine, United Kingdom. |
+| `regions/iberia.geojson` | Spain and Portugal. |
+| `regions/latin_america.geojson` | Latin America and the Caribbean - 48 entries from Mexico south through Argentina and Chile, plus the Caribbean islands and overseas territories (e.g. Puerto Rico, French Guiana, Guadeloupe). |
+| `regions/mediterranean.geojson` | 22 countries bordering the Mediterranean: Albania, Algeria, Bosnia and Herzegovina, Croatia, Cyprus, Egypt, France, Greece, Israel, Italy, Lebanon, Libya, Malta, Monaco, Montenegro, Morocco, Palestine, Slovenia, Spain, Syria, Tunisia, Turkey. |
+| `regions/mena.geojson` | Middle East and North Africa - 18 countries: Algeria, Bahrain, Egypt, Iraq, Israel, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Palestine, Qatar, Saudi Arabia, Syria, Tunisia, United Arab Emirates, Yemen. |
+| `regions/southeast_asia.geojson` | Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand, Timor-Leste, Vietnam. |
+| `regions/uk_no_shetland.geojson` | United Kingdom with the Shetland Islands trimmed off for tighter framing. |
+| `regions/us_canada_mainland.geojson` | Continental United States and Canadian mainland south of 60°N — excludes Alaska, the Canadian Arctic, Hawaii and offshore islands. |
+| `regions/wapp.geojson` | West African Power Pool members - Benin, Burkina Faso, Côte d'Ivoire, Gambia, Ghana, Guinea, Guinea-Bissau, Liberia, Mali, Niger, Nigeria, Senegal, Sierra Leone, Togo. |
+
+For ad-hoc areas (a single state, a metro region, a custom polygon), supply your own GeoJSON via `--boundary-geojson`. All polygonal features in the file are dissolved into one boundary.
 
 Export the rendered transmission lines as GeoJSON (WGS84) alongside the poster, for reuse in GIS tools:
 
@@ -95,7 +118,7 @@ Without a path, the file is written to `posters/` next to the poster. The export
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `--country` | — | Country or region name resolvable by Nominatim, or a continent name (`Africa`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`). |
+| `--country` | — | Country or region name resolvable by Nominatim, a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`), or the aggregate `global` (all inhabited continents). When paired with `--boundary-geojson`, the value is used only as the poster title. |
 | `--boundary-geojson` | — | Path to a local GeoJSON file with polygonal boundary features. Overrides the Nominatim/Natural Earth lookup. Useful for custom regions, sub-national areas, or offline workflows. |
 | `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
 | `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
@@ -141,6 +164,7 @@ The map is intended for visualisation and print design. It should not be used as
 | ![`italy_grid_autumn_20260512_162023.png`](posters/italy_grid_autumn_20260512_162023.png) | Italy | `autumn` |
 | ![`zambia_grid_sunset_20260512_162627.png`](posters/zambia_grid_sunset_20260512_162627.png) | Zambia | `sunset` |
 | ![`marocco_grid_autumn_20260512_165630.png`](posters/marocco_grid_autumn_20260512_165630.png) | Morocco | `autumn` |
+| ![`latin_america_grid_emerald_20260516_215030.png`](posters/latin_america_grid_emerald_20260516_215030.png) | Latin America | `emerald` |
 
 
 
