@@ -592,6 +592,7 @@ def render_poster(
     dpi: int,
     include_metadata: bool,
     title_size: float | None = None,
+    include_minor_lines: bool = False,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -633,7 +634,7 @@ def render_poster(
 
     total_length_km = float(lines.geometry.length.sum()) / 1000.0
     high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= 150].geometry.length.sum()) / 1000.0
-    subtitle = "ELECTRICAL TRANSMISSION GRID"
+    subtitle = "ELECTRICAL GRID" if include_minor_lines else "ELECTRICAL TRANSMISSION GRID"
     metadata = f"{datetime.now().year} · {total_length_km:,.0f} km of power lines"
     if high_voltage_length_km:
         metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
@@ -876,6 +877,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         dpi=args.dpi,
         include_metadata=not args.hide_metadata,
         title_size=args.title_size,
+        include_minor_lines=args.include_minor_lines,
     )
     return 0
 
