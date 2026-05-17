@@ -74,7 +74,7 @@ python create_grid_poster.py --country "Bavaria" --boundary-geojson ./regions/ba
 
 All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename.
 
-Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`. The aggregate name `global` combines every inhabited continent (excludes Antarctica and the wider Pacific), pulls in New Zealand from Oceania, and clips the bounding box to Alaska's northernmost latitude (~71.4°N) and New Zealand's easternmost main-island longitude (~178.5°E) so the viewport isn't padded out by the empty Canadian Arctic, Greenland's interior, Svalbard, Siberian islands, or Russia's far-eastern Chukotka sliver:
+Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`. The aggregate name `global` combines every inhabited continent (excludes Antarctica and the wider Pacific), pulls in Australia, Papua New Guinea, and New Zealand from Oceania, and clips the bounding box to Alaska's northernmost latitude (~71.4°N) and New Zealand's easternmost main-island longitude (~178.5°E) so the viewport isn't padded out by the empty Canadian Arctic, Greenland's interior, Svalbard, Siberian islands, or Russia's far-eastern Chukotka sliver:
 
 ```bash
 python create_grid_poster.py --country Africa --tile-size-km 500
@@ -118,9 +118,11 @@ Without a path, the file is written to `posters/` next to the poster. The export
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `--country` | — | Country or region name resolvable by Nominatim, a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`), or the aggregate `global` (all inhabited continents plus New Zealand, clipped at Alaska's northernmost latitude and New Zealand's easternmost main-island longitude). When paired with `--boundary-geojson`, the value is used only as the poster title. |
+| `--country` | — | Country or region name resolvable by Nominatim, a continent name (`Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, `South America`), or the aggregate `global` (all inhabited continents plus Australia, Papua New Guinea, and New Zealand, clipped at Alaska's northernmost latitude and New Zealand's easternmost main-island longitude). When paired with `--boundary-geojson`, the value is used only as the poster title. |
 | `--boundary-geojson` | — | Path to a local GeoJSON file with polygonal boundary features. Overrides the Nominatim/Natural Earth lookup. Useful for custom regions, sub-national areas, or offline workflows. |
 | `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
+| `--subtitle` | `ELECTRICAL TRANSMISSION GRID` (or `ELECTRICAL GRID` with `--include-minor-lines`) | Override the subtitle printed under the country/region name. |
+| `--padding` | `0.10` | Fractional padding around the boundary bounds. Lower values zoom in (`0` = tight fit, `-0.05` = crop slightly into the bounds); higher values pull the view out. |
 | `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
 | `--list-themes` | — | List available themes and exit. |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |

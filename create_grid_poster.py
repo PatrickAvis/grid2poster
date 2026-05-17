@@ -78,9 +78,7 @@ CONTINENT_NAMES = {
 
 # Aggregate region names that combine multiple Natural Earth continents.
 CONTINENT_AGGREGATES: dict[str, frozenset[str]] = {
-    "global": frozenset(
-        {"africa", "asia", "europe", "north america", "oceania", "south america"}
-    ),
+    "global": frozenset({"africa", "asia", "europe", "north america", "south america"}),
 }
 
 CACHE_DIR.mkdir(exist_ok=True)
@@ -243,6 +241,12 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
     else:
         match = countries["CONTINENT"].str.lower() == key
 
+    if key == "global":
+        # Oceania is excluded from the aggregate above; pull in Australia, Papua
+        # New Guinea, and New Zealand explicitly so the poster covers them
+        # without dragging in the wider Pacific.
+        match = match | countries["ISO_A3"].isin(["AUS", "PNG", "NZL"])
+
     subset = countries[match]
     if subset.empty:
         raise RuntimeError(f"No countries found for continent '{continent}' in Natural Earth")
@@ -253,9 +257,8 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
         #   • north — Alaska's northernmost point (~71.4°N), to drop the empty
         #     Canadian Arctic, Greenland's interior, and Svalbard.
         #   • east — New Zealand's easternmost main-island longitude (~178.5°E),
-        #     to drop Russia's far-eastern Chukotka sliver and the Pacific
-        #     islands east of NZ (Fiji, Tonga, Samoa, French Polynesia, …) that
-        #     otherwise push the viewport out to the antimeridian.
+        #     to drop Russia's far-eastern Chukotka sliver that otherwise pushes
+        #     the viewport out to the antimeridian.
         us = countries[countries["ISO_A3"] == "USA"]
         nz = countries[countries["ISO_A3"] == "NZL"]
         if us.empty or nz.empty:
@@ -628,6 +631,8 @@ def render_poster(
     include_metadata: bool,
     title_size: float | None = None,
     include_minor_lines: bool = False,
+    subtitle: str | None = None,
+    padding: float = 0.10,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -656,7 +661,7 @@ def render_poster(
         )
 
     ax.set_aspect("equal", adjustable="box")
-    set_country_extent(ax, boundary, width, height, padding=0.10)
+    set_country_extent(ax, boundary, width, height, padding=padding)
 
     add_gradient_fade(ax, theme.fade, "bottom", zorder=10)
     add_gradient_fade(ax, theme.fade, "top", zorder=10)
@@ -669,7 +674,8 @@ def render_poster(
 
     total_length_km = float(lines.geometry.length.sum()) / 1000.0
     high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= 150].geometry.length.sum()) / 1000.0
-    subtitle = "ELECTRICAL GRID" if include_minor_lines else "ELECTRICAL TRANSMISSION GRID"
+    if subtitle is None:
+        subtitle = "ELECTRICAL GRID" if include_minor_lines else "ELECTRICAL TRANSMISSION GRID"
     metadata = f"{datetime.now().year} · {total_length_km:,.0f} km of power lines"
     if high_voltage_length_km:
         metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
@@ -761,6 +767,18 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
              "All polygonal features in the file are dissolved into a single boundary.",
     )
     parser.add_argument("--display-country", help="Text to print on the poster")
+    parser.add_argument(
+        "--subtitle",
+        help="Override the poster subtitle (default: 'ELECTRICAL TRANSMISSION GRID', "
+             "or 'ELECTRICAL GRID' with --include-minor-lines)",
+    )
+    parser.add_argument(
+        "--padding",
+        type=float,
+        default=0.10,
+        help="Fractional padding around the boundary bounds. Lower = more zoomed in "
+             "(e.g. 0 = tight fit, -0.05 = crop slightly into the bounds, 0.20 = looser).",
+    )
     parser.add_argument("--theme", "-t", default="paper_grid", help="Theme ID from themes/")
     parser.add_argument("--list-themes", action="store_true", help="List available themes and exit")
     parser.add_argument("--include-minor-lines", action="store_true", help="Also fetch power=minor_line")
@@ -924,6 +942,8 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         include_metadata=not args.hide_metadata,
         title_size=args.title_size,
         include_minor_lines=args.include_minor_lines,
+        subtitle=args.subtitle,
+        padding=args.padding,
     )
     return 0
 
