@@ -240,10 +240,35 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
         match = countries["CONTINENT"].str.lower().isin(aggregate)
     else:
         match = countries["CONTINENT"].str.lower() == key
+
+    if key == "global":
+        # New Zealand sits in Oceania, which we otherwise exclude from the global
+        # aggregate. Pull it in explicitly (without the rest of Oceania) so the
+        # poster includes Aotearoa but not the wider Pacific.
+        match = match | (countries["ISO_A3"] == "NZL")
+
     subset = countries[match]
     if subset.empty:
         raise RuntimeError(f"No countries found for continent '{continent}' in Natural Earth")
     merged = unary_union(subset.geometry)
+
+    if key == "global":
+        # Clip the global aggregate to a tight bounding box:
+        #   • north — Alaska's northernmost point (~71.4°N), to drop the empty
+        #     Canadian Arctic, Greenland's interior, and Svalbard.
+        #   • east — New Zealand's easternmost main-island longitude (~178.5°E),
+        #     to drop Russia's far-eastern Chukotka sliver that otherwise pushes
+        #     the viewport out to the antimeridian.
+        us = countries[countries["ISO_A3"] == "USA"]
+        nz = countries[countries["ISO_A3"] == "NZL"]
+        if us.empty or nz.empty:
+            raise RuntimeError(
+                "Natural Earth dataset is missing USA or NZL — cannot build global clip"
+            )
+        north_lat = float(us.total_bounds[3])
+        east_lon = float(nz.total_bounds[2])
+        merged = merged.intersection(box(-180, -90, east_lon, north_lat))
+
     return gpd.GeoDataFrame({"name": [continent]}, geometry=[merged], crs=countries.crs)
 
 
