@@ -52,20 +52,20 @@ Include distribution grids if available. Coverage various significatly across th
 
 ```bash
 python create_grid_poster.py --country Germany --include-minor-lines
+```
 
-List available themes:
+List available themes. Create a new theme JSON file in the 'themes' directory to find your own style.
 
 ```bash
 python create_grid_poster.py --list-themes
 ```
 
-Use a local GeoJSON file as the boundary instead of geocoding (handy for custom regions or sub-national areas):
+Use a local GeoJSON file as the boundary instead of geocoding (handy for custom regions or sub-national areas). All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename:
+
 
 ```bash
 python create_grid_poster.py --country "Middle East and North Africa" --boundary-geojson ./regions/mena.geojson  
 ```
-
-All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename.
 
 Render an entire continent. Continent boundaries come from the Natural Earth admin-0 dataset (downloaded and cached on first use) because Nominatim does not resolve continent names. Accepted values are `Africa`, `Antarctica`, `Asia`, `Europe`, `North America`, `Oceania`, and `South America`. The aggregate name `Global` combines every inhabited continent.
 
