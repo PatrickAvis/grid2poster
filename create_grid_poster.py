@@ -78,7 +78,9 @@ CONTINENT_NAMES = {
 
 # Aggregate region names that combine multiple Natural Earth continents.
 CONTINENT_AGGREGATES: dict[str, frozenset[str]] = {
-    "global": frozenset({"africa", "asia", "europe", "north america", "south america"}),
+    "global": frozenset(
+        {"africa", "asia", "europe", "north america", "oceania", "south america"}
+    ),
 }
 
 CACHE_DIR.mkdir(exist_ok=True)
@@ -241,12 +243,6 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
     else:
         match = countries["CONTINENT"].str.lower() == key
 
-    if key == "global":
-        # New Zealand sits in Oceania, which we otherwise exclude from the global
-        # aggregate. Pull it in explicitly (without the rest of Oceania) so the
-        # poster includes Aotearoa but not the wider Pacific.
-        match = match | (countries["ISO_A3"] == "NZL")
-
     subset = countries[match]
     if subset.empty:
         raise RuntimeError(f"No countries found for continent '{continent}' in Natural Earth")
@@ -257,8 +253,9 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
         #   • north — Alaska's northernmost point (~71.4°N), to drop the empty
         #     Canadian Arctic, Greenland's interior, and Svalbard.
         #   • east — New Zealand's easternmost main-island longitude (~178.5°E),
-        #     to drop Russia's far-eastern Chukotka sliver that otherwise pushes
-        #     the viewport out to the antimeridian.
+        #     to drop Russia's far-eastern Chukotka sliver and the Pacific
+        #     islands east of NZ (Fiji, Tonga, Samoa, French Polynesia, …) that
+        #     otherwise push the viewport out to the antimeridian.
         us = countries[countries["ISO_A3"] == "USA"]
         nz = countries[countries["ISO_A3"] == "NZL"]
         if us.empty or nz.empty:
