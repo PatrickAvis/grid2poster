@@ -2,7 +2,7 @@
 
 <p align="center">
   Generate print-ready posters of electrical grid infrastructure from OpenStreetMap data.
-  Browse the rendered posters in the <a href="https://open-energy-transition.github.io/grid2poster/">online gallery</a>
+  Browse the rendered posters in the <a href="https://open-energy-transition.github.io/grid2poster/">online gallery</a>.
   Transmission lines for a country or continent are downloaded and rendered with GeoPandas, OSMnx, and Matplotlib. The project is heavily inspired and reused styling from <a href="https://github.com/originalankur/maptoposter">maptoposter</a>.
 </p>
 
