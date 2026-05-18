@@ -526,10 +526,19 @@ def compute_line_styles(lines: gpd.GeoDataFrame, theme: Theme) -> dict[str, np.n
     alphas[mask] = 0.95
 
     if "power" in lines.columns:
-        minor = lines["power"].to_numpy() == "minor_line"
+        power = lines["power"].to_numpy()
+        minor = power == "minor_line"
         colors[minor] = theme.line_low
         linewidths[minor] = 0.50
         alphas[minor] = 0.75
+
+        # Cables (underground/submarine) are often HVDC interconnectors and
+        # frequently lack voltage tags — make them legible regardless.
+        cable = power == "cable"
+        no_voltage = cable & np.isnan(kv)
+        colors[no_voltage] = theme.line_mid
+        linewidths[cable] = np.maximum(linewidths[cable] * 1.6, 0.85)
+        alphas[cable] = np.maximum(alphas[cable], 0.9)
 
     return {"_color": colors, "_linewidth": linewidths, "_alpha": alphas}
 
