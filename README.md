@@ -86,6 +86,7 @@ Continent-scale runs hit the Overpass API hundreds of times and can take several
 | `--list-themes` | - | List available themes and exit. |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
 | `--include-cables` / `--no-include-cables` | on | Fetch `power=cable` features (underground/submarine). On by default; pass `--no-include-cables` to skip. |
+| `--cable-sea-buffer-km` | `200.0` | When `--include-cables` is on, inflate the boundary by this many kilometers over water so submarine cables between islands and to neighboring countries are queried from Overpass and survive coastline clipping. Set to `0` to disable. |
 | `--include-outlying` | off | Keep overseas territories and other polygons far from the main landmass. By default the geocoded boundary is filtered to the mainland (and nearby islands), so posters for countries like the Netherlands or France do not include Aruba, Curaçao, French Guiana, etc. |
 | `--paper-size` | - | Named preset, portrait orientation. Overrides `--width`/`--height`. Choices: `a5`, `a4`, `a3`, `a2`, `a1`, `a0`, `letter`, `legal`, `tabloid`. Combine with `--landscape` to flip. |
 | `--width` | `297.0` | Poster width in millimeters (default: A3 short side). |

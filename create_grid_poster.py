@@ -360,7 +360,12 @@ def power_tag_values(include_minor_lines: bool, include_cables: bool) -> list[st
     return values
 
 
-def make_query_tiles(boundary: gpd.GeoDataFrame, tile_size_km: float, render_crs: str) -> gpd.GeoDataFrame:
+def make_query_tiles(
+    boundary: gpd.GeoDataFrame,
+    tile_size_km: float,
+    render_crs: str,
+    sea_buffer_km: float = 0.0,
+) -> gpd.GeoDataFrame:
     """Split a large country boundary into smaller projected tiles for Overpass."""
     if tile_size_km <= 0:
         raise ValueError("tile_size_km must be greater than zero")
@@ -369,6 +374,13 @@ def make_query_tiles(boundary: gpd.GeoDataFrame, tile_size_km: float, render_crs
     country_geom = unary_union(boundary_projected.geometry)
     if not isinstance(country_geom, (Polygon, MultiPolygon)):
         raise RuntimeError("Boundary geometry is not polygonal")
+
+    if sea_buffer_km > 0:
+        # Inflate the land polygon by a sea margin so tiles cover water between
+        # islands and short stretches of coast. Without this, power=cable ways
+        # on the seabed (inter-island and cross-border interconnectors) are
+        # never fetched from Overpass.
+        country_geom = country_geom.buffer(sea_buffer_km * 1000)
 
     minx, miny, maxx, maxy = country_geom.bounds
     tile_size_m = tile_size_km * 1000
@@ -399,17 +411,23 @@ def fetch_power_features(
     include_cables: bool = False,
     tile_size_km: float = 200,
     render_crs: str = "EPSG:8857",
+    sea_buffer_km: float = 0.0,
     use_cache: bool = True,
 ) -> gpd.GeoDataFrame:
     values = power_tag_values(include_minor_lines, include_cables)
-    key = cache_key("power_features", country, values, tile_size_km, render_crs)
+    key = cache_key("power_features", country, values, tile_size_km, render_crs, sea_buffer_km)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
             print(f"Using cached power features for {country}")
             return cached
 
-    tiles = make_query_tiles(boundary, tile_size_km=tile_size_km, render_crs=render_crs)
+    tiles = make_query_tiles(
+        boundary,
+        tile_size_km=tile_size_km,
+        render_crs=render_crs,
+        sea_buffer_km=sea_buffer_km,
+    )
     print(f"Downloading OSM power features: power={values} across {len(tiles):,} tiles")
 
     frames: list[gpd.GeoDataFrame] = []
@@ -543,17 +561,46 @@ def compute_line_styles(lines: gpd.GeoDataFrame, theme: Theme) -> dict[str, np.n
     return {"_color": colors, "_linewidth": linewidths, "_alpha": alphas}
 
 
-def prepare_lines(lines: gpd.GeoDataFrame, boundary: gpd.GeoDataFrame, output_crs: str) -> gpd.GeoDataFrame:
+def prepare_lines(
+    lines: gpd.GeoDataFrame,
+    boundary: gpd.GeoDataFrame,
+    output_crs: str,
+    cable_sea_buffer_km: float = 0.0,
+) -> gpd.GeoDataFrame:
     boundary_projected = boundary.to_crs(output_crs)
     lines_projected = lines.to_crs(output_crs)
 
-    try:
-        clipped = gpd.clip(lines_projected, boundary_projected)
-    except Exception:
-        # Clipping may fail with invalid upstream geometries. A poster can still be
-        # rendered without clipping because the Overpass polygon query already
-        # constrained the result set.
-        clipped = lines_projected
+    if "power" in lines_projected.columns and cable_sea_buffer_km > 0:
+        is_cable = lines_projected["power"] == "cable"
+    else:
+        is_cable = pd.Series(False, index=lines_projected.index)
+
+    def _safe_clip(frame: gpd.GeoDataFrame, mask: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+        try:
+            return gpd.clip(frame, mask)
+        except Exception:
+            # Clipping may fail with invalid upstream geometries. A poster can
+            # still be rendered without clipping because the Overpass polygon
+            # query already constrained the result set.
+            return frame
+
+    parts: list[gpd.GeoDataFrame] = []
+    land_lines = lines_projected[~is_cable]
+    if not land_lines.empty:
+        parts.append(_safe_clip(land_lines, boundary_projected))
+    cable_lines = lines_projected[is_cable]
+    if not cable_lines.empty:
+        cable_mask = gpd.GeoDataFrame(
+            geometry=boundary_projected.geometry.buffer(cable_sea_buffer_km * 1000),
+            crs=output_crs,
+        )
+        parts.append(_safe_clip(cable_lines, cable_mask))
+
+    clipped = gpd.GeoDataFrame(
+        pd.concat(parts, ignore_index=True) if parts else lines_projected.iloc[0:0],
+        geometry="geometry",
+        crs=output_crs,
+    )
 
     clipped = clipped.explode(ignore_index=True)
     clipped = clipped[clipped.geometry.type.isin(["LineString", "MultiLineString"])]
@@ -798,6 +845,14 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         help="Fetch power=cable features (underground/submarine). Pass --no-include-cables to skip.",
     )
     parser.add_argument(
+        "--cable-sea-buffer-km",
+        type=float,
+        default=200.0,
+        help="When --include-cables is on, inflate the boundary by this many kilometers "
+             "over water so submarine cables between islands and to neighboring countries "
+             "are queried from Overpass and survive coastline clipping. Set to 0 to disable.",
+    )
+    parser.add_argument(
         "--include-outlying",
         action="store_true",
         help="Keep overseas territories and other polygons far from the main landmass. "
@@ -904,6 +959,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
             mainland_only=not args.include_outlying,
             use_cache=not args.no_cache,
         )
+    cable_buffer_km = args.cable_sea_buffer_km if args.include_cables else 0.0
     raw_lines = fetch_power_features(
         country=args.country,
         boundary=boundary_wgs84,
@@ -911,11 +967,14 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         include_cables=args.include_cables,
         tile_size_km=args.tile_size_km,
         render_crs=args.crs,
+        sea_buffer_km=cable_buffer_km,
         use_cache=not args.no_cache,
     )
 
     boundary_projected = boundary_wgs84.to_crs(args.crs)
-    lines_projected = prepare_lines(raw_lines, boundary_wgs84, args.crs)
+    lines_projected = prepare_lines(
+        raw_lines, boundary_wgs84, args.crs, cable_sea_buffer_km=cable_buffer_km
+    )
 
     if args.output:
         fmt = (args.output.suffix.lstrip(".") or args.format[0]).lower()
