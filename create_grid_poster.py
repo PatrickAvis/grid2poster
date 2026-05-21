@@ -19,6 +19,7 @@ import json
 import pickle
 import re
 import sys
+import time
 import unicodedata
 from dataclasses import dataclass
 from datetime import datetime
@@ -432,28 +433,88 @@ def fetch_power_features(
     print(f"Downloading OSM power features: power={values} across {len(tiles):,} tiles")
 
     frames: list[gpd.GeoDataFrame] = []
-    for tile_number, tile_geom in enumerate(tiles.geometry, start=1):
-        print(f"  Tile {tile_number:,}/{len(tiles):,}")
+    empty_tile = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+
+    def tile_cache_key(tile_geom: Any) -> str:
+        # Per-tile key so partial progress survives a crash or Overpass outage:
+        # geometry WKB folds in tile_size_km / render_crs / sea_buffer_km, since
+        # those parameters fully determine the tile polygon.
+        return cache_key("power_tile_v1", country, values, tile_geom.wkb_hex)
+
+    def process_tile(tile_number: int, tile_geom, total: int) -> bool:
+        """Fetch a tile's features and append to ``frames``. Returns True on success."""
         try:
             features = ox.features_from_polygon(tile_geom, tags={"power": values})
         except Exception as exc:
-            print(f"  Warning: skipping tile {tile_number:,} after Overpass error: {exc}")
-            continue
+            print(f"  Warning: tile {tile_number:,}/{total:,} failed: {exc}")
+            return False
 
         if features.empty:
-            continue
+            cache_set(tile_cache_key(tile_geom), empty_tile)
+            return True
 
         features = features.reset_index()
         line_features = features[features.geometry.type.isin(["LineString", "MultiLineString"])]
         if line_features.empty:
-            continue
+            cache_set(tile_cache_key(tile_geom), empty_tile)
+            return True
 
         keep_cols = [
             col
             for col in ["element", "element_type", "osmid", "id", "power", "voltage", "name", "operator", "geometry"]
             if col in line_features.columns
         ]
-        frames.append(gpd.GeoDataFrame(line_features[keep_cols], geometry="geometry", crs="EPSG:4326"))
+        tile_gdf = gpd.GeoDataFrame(line_features[keep_cols], geometry="geometry", crs="EPSG:4326")
+        cache_set(tile_cache_key(tile_geom), tile_gdf)
+        frames.append(tile_gdf)
+        return True
+
+    total_tiles = len(tiles)
+    uncached: list[tuple[int, Any]] = []
+    cached_hits = 0
+    for tile_number, tile_geom in enumerate(tiles.geometry, start=1):
+        if use_cache:
+            cached_tile = cache_get(tile_cache_key(tile_geom))
+            if cached_tile is not None:
+                if not cached_tile.empty:
+                    frames.append(cached_tile)
+                cached_hits += 1
+                continue
+        uncached.append((tile_number, tile_geom))
+
+    if cached_hits:
+        print(f"  Reused {cached_hits:,}/{total_tiles:,} tile(s) from per-tile cache")
+
+    pending: list[tuple[int, Any]] = []
+    for tile_number, tile_geom in uncached:
+        print(f"  Tile {tile_number:,}/{total_tiles:,}")
+        if not process_tile(tile_number, tile_geom, total_tiles):
+            pending.append((tile_number, tile_geom))
+
+    attempt = 1
+    while pending:
+        # Back off between retry rounds so a busy Overpass server gets breathing
+        # room; cap the wait so the loop stays responsive.
+        delay = min(60, 5 * attempt)
+        print(
+            f"Retrying {len(pending):,} failed tile(s) in {delay}s "
+            f"(attempt {attempt + 1})..."
+        )
+        time.sleep(delay)
+        next_pending: list[tuple[int, Any]] = []
+        for tile_number, tile_geom in pending:
+            print(f"  Retry tile {tile_number:,}/{total_tiles:,}")
+            if not process_tile(tile_number, tile_geom, total_tiles):
+                next_pending.append((tile_number, tile_geom))
+
+        if next_pending and len(next_pending) == len(pending):
+            print(
+                "  No tiles succeeded this round — Overpass may be returning "
+                "the same error for these tiles; will keep retrying."
+            )
+
+        pending = next_pending
+        attempt += 1
 
     if not frames:
         raise RuntimeError(
@@ -981,6 +1042,14 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     )
     parser.add_argument("--verbose-osmnx", action="store_true", help="Print OSMnx request logs")
     parser.add_argument(
+        "--overpass-endpoint",
+        help="Override the Overpass API endpoint. Use a mirror when the default "
+             "(overpass-api.de) is rate-limiting or refusing connections. "
+             "Examples: https://overpass.kumi.systems/api/interpreter, "
+             "https://overpass.private.coffee/api/interpreter, "
+             "https://overpass.osm.ch/api/interpreter.",
+    )
+    parser.add_argument(
         "--no-cache",
         action="store_true",
         help="Ignore cached boundaries and OSM power features on this run. "
@@ -1002,6 +1071,9 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
     ox.settings.use_cache = not args.no_cache
     ox.settings.log_console = bool(args.verbose_osmnx)
     ox.settings.requests_timeout = 180
+    if args.overpass_endpoint:
+        ox.settings.overpass_url = args.overpass_endpoint
+        print(f"Using Overpass endpoint: {args.overpass_endpoint}")
     # Keep OSMnx's own guard reasonably high: we explicitly tile the country
     # boundary below, so this setting is only a secondary safety net.
     ox.settings.max_query_area_size = max(ox.settings.max_query_area_size, (args.tile_size_km * 1000) ** 2 * 2)
