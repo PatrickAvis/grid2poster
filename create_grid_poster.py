@@ -558,25 +558,27 @@ def compute_line_styles(
         linewidths[minor] = 0.50
         alphas[minor] = 0.75
 
-        # Cables (underground/submarine) are often HVDC interconnectors and
-        # frequently lack voltage tags — make them legible regardless.
+        # Cables (underground/submarine) are visual context, not the headline —
+        # dampen them so overhead transmission stays the story of the poster.
         is_cable = power == "cable"
-        no_voltage = is_cable & np.isnan(kv)
-        colors[no_voltage] = theme.line_mid
-        linewidths[is_cable] = np.maximum(linewidths[is_cable] * 1.6, 0.85)
-        alphas[is_cable] = np.maximum(alphas[is_cable], 0.9)
+        linewidths[is_cable] = linewidths[is_cable] * 0.5
+        alphas[is_cable] = alphas[is_cable] * 0.5
 
     if fade_unknown:
         # Untagged-voltage lines are mostly noise at continent/global extent —
-        # fade them strongly so they recede without disappearing. Cables are
-        # exempt because HVDC interconnectors frequently lack a voltage tag.
-        unknown = np.isnan(kv) & ~is_cable
-        alphas[unknown] *= 0.35
+        # fade them, but not so far that they vanish.
+        unknown = np.isnan(kv)
+        alphas[unknown] *= 0.6
+        # Push tagged-voltage lines closer to opaque so the backbone reads
+        # crisply against the bg-colored halo drawn beneath each line.
+        tagged = ~np.isnan(kv) & ~is_cable
+        alphas[tagged] = np.minimum(alphas[tagged] + 0.08, 0.98)
 
     if linewidth_scale != 1.0:
-        # Keep the heaviest tier within a sensible real-world width on the
-        # paper; floor at 0.15 pt so hairlines stay visible.
-        linewidths = np.maximum(linewidths * linewidth_scale, 0.15)
+        # sqrt compresses the dynamic range so every tier stays visually
+        # distinct instead of all being floored to the same hairline; floor at
+        # 0.25 pt so the unknown-voltage tier remains legible.
+        linewidths = np.maximum(linewidths * np.sqrt(linewidth_scale), 0.25)
 
     return {"_color": colors, "_linewidth": linewidths, "_alpha": alphas}
 
@@ -729,7 +731,9 @@ def render_poster(
         target_ground_km = 8.0
         heaviest_lw_pt = 1.35
         linewidth_scale = min(1.0, target_ground_km / (heaviest_lw_pt * km_per_pt))
-        halo_extra_pt = 0.4
+        # Slim halo: enough to separate touching lines at crossings without
+        # surrounding every hairline with a wider bg-colored moat.
+        halo_extra_pt = 0.12
         print(
             f"Large-scale mode: km/pt ≈ {km_per_pt:.1f}, "
             f"linewidth scale = {linewidth_scale:.2f}, halo = {halo_extra_pt:.2f} pt"
@@ -904,8 +908,8 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument(
         "--include-cables",
         action=argparse.BooleanOptionalAction,
-        default=True,
-        help="Fetch power=cable features (underground/submarine). Pass --no-include-cables to skip.",
+        default=False,
+        help="Fetch power=cable features (underground/submarine). Off by default; pass --include-cables to enable.",
     )
     parser.add_argument(
         "--cable-sea-buffer-km",
