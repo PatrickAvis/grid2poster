@@ -843,7 +843,10 @@ def render_poster(
     add_gradient_fade(ax, theme.fade, "top", zorder=10)
 
     scale = min(width, height) / 12
-    title_pt = title_size if title_size is not None else 48 * scale
+    # Landscape posters have less vertical room, so the title at the same point
+    # size occupies a larger fraction of the poster height and looks oversized.
+    title_factor = 48 if height >= width else 36
+    title_pt = title_size if title_size is not None else title_factor * scale
     font_main = FontProperties(family="DejaVu Sans", weight="bold", size=title_pt)
     font_sub = FontProperties(family="DejaVu Sans", weight="normal", size=15 * scale)
     font_meta = FontProperties(family="DejaVu Sans Mono", weight="normal", size=8.5 * scale)
