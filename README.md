@@ -29,8 +29,9 @@ Coverage and quality in your country can be improved by mapping transmission inf
 
 ## Installation
 
+**The project lives in two branches: the main branch and the gh-pages branch. To create your own posters, clone the main branch with the --single-branch flag, as the gh-pages branch contains all the gallery plots and is therefore massive.**
 ```bash
-git clone --branch main --single-branch https://github.com/open-energy-transition/grid2poster 
+git clone --single-branch https://github.com/open-energy-transition/grid2poster 
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -73,6 +74,12 @@ python create_grid_poster.py --country Africa --tile-size-km 500
 
 Continent-scale runs hit the Overpass API hundreds of times and can take several hours. A larger `--tile-size-km` cuts the number of queries; pick a value that still stays under the Overpass per-query size limit.
 
+If the default Overpass endpoint (`overpass-api.de`) is rate-limiting or refusing connections, switch to a mirror with `--overpass-endpoint`:
+```bash
+python create_grid_poster.py --country Germany --overpass-endpoint https://overpass.kumi.systems/api/interpreter
+```
+Other public mirrors include `https://overpass.private.coffee/api/interpreter` and `https://overpass.osm.ch/api/interpreter`.
+
 
 ## Options
 
@@ -96,6 +103,7 @@ Continent-scale runs hit the Overpass API hundreds of times and can take several
 | `--dpi` | `300` | Raster output DPI (applies to PNG output). |
 | `--title-size` | auto | Title font size in points. Auto-scaled from poster size by default; set to override. |
 | `--tile-size-km` | `200` | Overpass query tile size in kilometers. Use smaller values for very large countries or busy servers. |
+| `--overpass-endpoint` | OSMnx default (`overpass-api.de`) | Override the Overpass API URL. Use a mirror (e.g. `https://overpass.kumi.systems/api/interpreter`) when the default is rate-limiting or unreachable. |
 | `--format` | `png svg` | Output format(s): any combination of `png`, `svg`, `pdf`. Multiple values are written in one run. |
 | `--output` | auto-generated in `posters/` | Output file path. When set, only a single file is written and its format is inferred from the extension. |
 | `--crs` | `EPSG:3857` | Projection used for rendering. EPSG:3857 (Pseudo-Mercator) works well for country posters. |
@@ -129,22 +137,30 @@ Generated posters are written to the `posters/` directory by default. Intermedia
 The `regions/` directory ships with multi-country boundaries that map to common power-system groupings. Pass any of them via `--boundary-geojson` and set `--country` to the title you want printed on the poster:
 
 ```bash
-python create_grid_poster.py --country "Continental Europe" --boundary-geojson ./regions/continental_europe.geojson --tile-size-km 300
+python create_grid_poster.py --country "Europe" --boundary-geojson ./regions/europe.geojson --tile-size-km 300
 ```
 
 | File | Coverage |
 | --- | --- |
-| `regions/continental_europe.geojson` | Continental Europe Synchronous Area - 31 countries: Albania, Austria, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Czech Republic, Estonia, France, Germany, Greece, Hungary, Italy, Kosovo, Latvia, Lithuania, Luxembourg, Moldova, Montenegro, Netherlands, North Macedonia, Poland, Portugal, Romania, Serbia, Slovakia, Slovenia, Spain, Switzerland, Turkey, Ukraine. Includes Moldova and Ukraine (synchronized with CE in March 2022) and the Baltic states (Estonia, Latvia, Lithuania, synchronized in February 2025); excludes the Nordic, GB, Ireland, and Cyprus synchronous areas. |
+| `regions/australia_mainland_tasmania.geojson` | Australia: mainland and Tasmania; outlying territories excluded. |
+| `regions/britain_and_ireland.geojson` | Great Britain (excl. Shetland) and the island of Ireland. |
+| `regions/canada_southern_provinces.geojson` | Canada south of 60°N; excludes Yukon, NWT, Nunavut. |
+| `regions/central_asia.geojson` | Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan. |
+| `regions/east_africa.geojson` | 11 East African countries from Eritrea/Djibouti south to Tanzania. |
+| `regions/europe.geojson` | 35 European countries including UK, Ireland, Nordics, Turkey, and Ukraine; excludes Russia and Belarus. |
 | `regions/iberia.geojson` | Spain and Portugal. |
-| `regions/latin_america.geojson` | Latin America and the Caribbean - 48 entries from Mexico south through Argentina and Chile, plus the Caribbean islands and overseas territories (e.g. Puerto Rico, French Guiana, Guadeloupe). |
-| `regions/mediterranean.geojson` | 22 countries bordering the Mediterranean: Albania, Algeria, Bosnia and Herzegovina, Croatia, Cyprus, Egypt, France, Greece, Israel, Italy, Lebanon, Libya, Malta, Monaco, Montenegro, Morocco, Palestine, Slovenia, Spain, Syria, Tunisia, Turkey. |
-| `regions/mena.geojson` | Middle East and North Africa - 18 countries: Algeria, Bahrain, Egypt, Iraq, Israel, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Palestine, Qatar, Saudi Arabia, Syria, Tunisia, United Arab Emirates, Yemen. |
-| `regions/southeast_asia.geojson` | Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand, Timor-Leste, Vietnam. |
-| `regions/australia_mainland_tasmania.geojson` | Australia limited to the mainland and Tasmania - excludes outlying territories (Heard, Macquarie, Norfolk, Lord Howe, Christmas, Cocos) so the framing stays tight. |
-| `regions/japan_main_islands.geojson` | Japan's four main islands - Honshu, Hokkaido, Kyushu, Shikoku - plus immediately adjacent small islands (Sado, Awaji, Oki, Shodoshima, Rishiri/Rebun, etc.). Excludes the Nansei Islands (Okinawa, Amami, Yakushima/Tanegashima), the Ogasawara/Bonin chain, and the Senkakus. |
-| `regions/uk_no_shetland.geojson` | United Kingdom with the Shetland Islands trimmed off for tighter framing. |
-| `regions/us_canada_mainland.geojson` | Continental United States and Canadian mainland south of 60°N - excludes Alaska, the Canadian Arctic, Hawaii and offshore islands. |
-| `regions/wapp.geojson` | West African Power Pool members - Benin, Burkina Faso, Côte d'Ivoire, Gambia, Ghana, Guinea, Guinea-Bissau, Liberia, Mali, Niger, Nigeria, Senegal, Sierra Leone, Togo. |
+| `regions/ireland_island.geojson` | Island of Ireland (Republic of Ireland + Northern Ireland). |
+| `regions/japan_main_islands.geojson` | Japan's four main islands plus adjacent small islands; excludes Okinawa, Ogasawara, Senkaku. |
+| `regions/latin_america.geojson` | 48 entries from Mexico through Argentina, including the Caribbean and overseas territories. |
+| `regions/mediterranean.geojson` | 22 countries bordering the Mediterranean. |
+| `regions/mena.geojson` | Middle East and North Africa — 18 countries. |
+| `regions/scandinavia.geojson` | Denmark, Finland, Norway, Sweden. |
+| `regions/south_africa_no_prince_edward.geojson` | South Africa mainland; excludes Prince Edward Islands. |
+| `regions/south_asia.geojson` | India, Pakistan, Bangladesh, Nepal, Bhutan, Sri Lanka. |
+| `regions/southeast_asia.geojson` | 11 Southeast Asian countries (Brunei through Vietnam). |
+| `regions/uk_no_shetland.geojson` | United Kingdom without the Shetland Islands. |
+| `regions/us_canada_mainland.geojson` | Continental US and Canadian mainland south of 60°N; excludes Alaska, Hawaii, Arctic islands. |
+| `regions/wapp.geojson` | West African Power Pool — 14 member countries. |
 
 For ad-hoc areas (a single state, a metro region, a custom polygon), supply your own GeoJSON via `--boundary-geojson`. All polygonal features in the file are dissolved into one boundary.
 
@@ -171,7 +187,8 @@ To add a poster:
 3. Rebuild the manifest and commit:
    ```bash
    python build_manifest.py
-   git add posters/ && git commit -m "Add Spain (paper_grid)"
+   git add posters/ 
+   git commit -m "Add Spain (paper_grid)"
    ```
 4. Open a pull request targeting `gh-pages` (not `main`).
 

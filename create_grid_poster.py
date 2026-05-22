@@ -446,6 +446,11 @@ def fetch_power_features(
         try:
             features = ox.features_from_polygon(tile_geom, tags={"power": values})
         except Exception as exc:
+            # OSMnx raises this when Overpass returned a valid response with zero
+            # matching features — not a server error, so cache as empty and move on.
+            if "No matching features" in str(exc):
+                cache_set(tile_cache_key(tile_geom), empty_tile)
+                return True
             print(f"  Warning: tile {tile_number:,}/{total:,} failed: {exc}")
             return False
 
