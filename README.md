@@ -25,11 +25,11 @@ Feature completeness depends on OpenStreetMap coverage in the selected country o
 
 ### Contributing to the data
 
-Coverage and quality in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work. It provides tutorials, country-level completeness/quality statistics and mapping tools for tracing power lines, generators and substations from imagery.
+Coverage and quality in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work. It provides tutorials, country-level completeness/quality statistics and mapping tools for tracing power lines, generators and substations from imagery. With [Open Infrastructure Map](https://openinframap.org/) you can browse all the electrical grid data data in OpenStreetMap.S 
 
 ## Installation
 
-**The project lives in two branches: the main branch and the gh-pages branch. To create your own posters, clone the main branch with the --single-branch flag, as the gh-pages branch contains all the gallery plots and is therefore massive.**
+The project lives in two branches: the main branch and the gh-pages branch. To create your own posters, clone the main branch with the --single-branch flag, as the gh-pages branch contains all the gallery plots and is therefore massive.
 ```bash
 git clone --single-branch https://github.com/open-energy-transition/grid2poster 
 python -m venv .venv
@@ -78,7 +78,7 @@ If the default Overpass endpoint (`overpass-api.de`) is rate-limiting or refusin
 ```bash
 python create_grid_poster.py --country Germany --overpass-endpoint https://overpass.kumi.systems/api/interpreter
 ```
-Other public mirrors include `https://overpass.private.coffee/api/interpreter` and `https://overpass.osm.ch/api/interpreter`.
+Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 
 
 ## Options
