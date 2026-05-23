@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "name": "salish_sea",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Salish Sea"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-125.5, 47.0],
+            [-125.5, 50.2],
+            [-121.5, 50.2],
+            [-121.5, 47.0],
+            [-125.5, 47.0]
+          ]
+        ]
+      }
+    }
+  ]
+}
