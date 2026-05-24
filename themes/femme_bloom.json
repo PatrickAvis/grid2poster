@@ -1,0 +1,14 @@
+{
+    "name": "Femme Bloom",
+    "description": "Bright feminine-coded poster theme with a soft blush background, deep plum text, rose boundaries, and colorful berry, lilac, coral, teal, and golden voltage classes.",
+    "bg": "#FFF4F8",
+    "text": "#3B153C",
+    "subtext": "#7A5A78",
+    "boundary": "#F1CAD8",
+    "line_unknown": "#BCA7B8",
+    "line_low": "#00A7A5",
+    "line_mid": "#8E5CF7",
+    "line_high": "#FF6B8A",
+    "line_extra": "#F2A900",
+    "fade": "#FFF4F8"
+}
