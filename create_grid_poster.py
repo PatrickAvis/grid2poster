@@ -778,13 +778,15 @@ def render_poster(
     subtitle: str | None = None,
     padding: float = 0.10,
     large_scale: bool = False,
+    hide_borders: bool = False,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
     ax.set_position((0, 0, 1, 1))
     ax.axis("off")
 
-    boundary.plot(ax=ax, facecolor="none", edgecolor=theme.boundary, linewidth=0.7, alpha=0.9, zorder=1)
+    if not hide_borders:
+        boundary.plot(ax=ax, facecolor="none", edgecolor=theme.boundary, linewidth=0.7, alpha=0.9, zorder=1)
 
     linewidth_scale = 1.0
     halo_extra_pt = 0.0
@@ -1040,6 +1042,7 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         help="Projection used for rendering. EPSG:3857 Pseudo-Mercator works well for country posters.",
     )
     parser.add_argument("--hide-metadata", action="store_true", help="Do not print segment counts on poster")
+    parser.add_argument("--hide-borders", action="store_true", help="Do not draw the region boundary outline")
     parser.add_argument(
         "--export-geojson",
         nargs="?",
@@ -1167,6 +1170,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         subtitle=args.subtitle,
         padding=args.padding,
         large_scale=args.large_scale,
+        hide_borders=args.hide_borders,
     )
     return 0
 
