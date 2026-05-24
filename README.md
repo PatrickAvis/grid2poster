@@ -54,6 +54,11 @@ Include distribution grids if available. Coverage various significatly across th
 python create_grid_poster.py --country Germany --include-minor-lines
 ```
 
+Use continuous color interpolation across voltage levels instead of discrete tiers:
+```bash
+python create_grid_poster.py --country Germany --color-by-voltage
+```
+
 List available themes. Create a new theme JSON file in the 'themes' directory to find your own style.
 ```bash
 python create_grid_poster.py --list-themes
@@ -107,6 +112,7 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--format` | `png svg` | Output format(s): any combination of `png`, `svg`, `pdf`. Multiple values are written in one run. |
 | `--output` | auto-generated in `posters/` | Output file path. When set, only a single file is written and its format is inferred from the extension. |
 | `--crs` | `EPSG:3857` | Projection used for rendering. EPSG:3857 (Pseudo-Mercator) works well for country posters. |
+| `--color-by-voltage` | off | Interpolate line colors continuously across the theme's voltage palette instead of using discrete tiers. Produces smooth color gradients that reveal voltage differences within each tier. |
 | `--hide-metadata` | off | Do not print segment counts on the poster. |
 | `--export-geojson` | off | Also save all transmission lines as a single GeoJSON in WGS84 (EPSG:4326). Pass a path to override the default location in `posters/`. |
 | `--verbose-osmnx` | off | Print OSMnx request logs. |
