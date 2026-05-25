@@ -94,10 +94,13 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--display-country` | value of `--country` | Text to print on the poster. Useful when the geocoder name differs from the desired title. |
 | `--subtitle` | `ELECTRICAL TRANSMISSION GRID` (or `ELECTRICAL GRID` with `--include-minor-lines`) | Override the subtitle printed under the country/region name. |
 | `--padding` | `0.10` | Fractional padding around the boundary bounds. Lower values zoom in (`0` = tight fit, `-0.05` = crop slightly into the bounds); higher values pull the view out. |
+| `--shift-x` | `0.0` | Shift the grid data horizontally on the poster, as a fraction of the data extent. Positive values shift right, negative shift left (e.g. `0.1` = shift 10% right). |
+| `--shift-y` | `0.0` | Shift the grid data vertically on the poster, as a fraction of the data extent. Positive values shift up, negative shift down (e.g. `0.1` = shift 10% up). |
+| `--large-scale` | off | Tune styling for continent/global posters: scale linewidths so the heaviest line stays roughly 8 km wide on the ground, halo each line against the background so dense crossings remain legible, and drop `power=minor_line` / strongly fade unknown-voltage clutter. |
 | `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
 | `--list-themes` | - | List available themes and exit. |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
-| `--include-cables` / `--no-include-cables` | on | Fetch `power=cable` features (underground/submarine). On by default; pass `--no-include-cables` to skip. |
+| `--include-cables` / `--no-include-cables` | off | Fetch `power=cable` features (underground/submarine). Off by default; pass `--include-cables` to enable. |
 | `--cable-sea-buffer-km` | `200.0` | When `--include-cables` is on, inflate the boundary by this many kilometers over water so submarine cables between islands and to neighboring countries are queried from Overpass and survive coastline clipping. Set to `0` to disable. |
 | `--include-outlying` | off | Keep overseas territories and other polygons far from the main landmass. By default the geocoded boundary is filtered to the mainland (and nearby islands), so posters for countries like the Netherlands or France do not include Aruba, Curaçao, French Guiana, etc. |
 | `--paper-size` | - | Named preset, portrait orientation. Overrides `--width`/`--height`. Choices: `a5`, `a4`, `a3`, `a2`, `a1`, `a0`, `letter`, `legal`, `tabloid`. Combine with `--landscape` to flip. |
@@ -112,8 +115,13 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--output` | auto-generated in `posters/` | Output file path. When set, only a single file is written and its format is inferred from the extension. |
 | `--crs` | `EPSG:3857` | Projection used for rendering. EPSG:3857 (Pseudo-Mercator) works well for country posters. |
 | `--color-by-voltage` | off | Interpolate line colors continuously across the theme's voltage palette instead of using discrete tiers. Produces smooth color gradients that reveal voltage differences within each tier. |
+| `--voltage-legend` | off | Show a small voltage-range legend on the poster (only effective with `--color-by-voltage`). |
 | `--hide-metadata` | off | Do not print segment counts on the poster. |
+| `--hide-borders` | off | Do not draw the region boundary outline. |
+| `--single-query` | off | Fetch all power features in a single Overpass query instead of tiling. Faster for small/medium regions but may time out on large countries or continents. |
+| `--tile-delay` | `0` | Seconds to wait between Overpass tile API requests. Useful to avoid rate-limiting on busy public endpoints. |
 | `--export-geojson` | off | Also save all transmission lines as a single GeoJSON in WGS84 (EPSG:4326). Pass a path to override the default location in `posters/`. |
+| `--no-cache` | off | Ignore cached boundaries and OSM power features on this run. Fresh results are still written to the cache for future runs. |
 | `--verbose-osmnx` | off | Print OSMnx request logs. |
 
 ## Output

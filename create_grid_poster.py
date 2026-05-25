@@ -872,7 +872,15 @@ def prepare_lines(
     return clipped.sort_values("sort_voltage")
 
 
-def set_country_extent(ax: plt.Axes, boundary: gpd.GeoDataFrame, width: float, height: float, padding: float) -> None:
+def set_country_extent(
+    ax: plt.Axes,
+    boundary: gpd.GeoDataFrame,
+    width: float,
+    height: float,
+    padding: float,
+    shift_x: float = 0.0,
+    shift_y: float = 0.0,
+) -> None:
     minx, miny, maxx, maxy = boundary.total_bounds
     xmid = (minx + maxx) / 2
     ymid = (miny + maxy) / 2
@@ -889,6 +897,9 @@ def set_country_extent(ax: plt.Axes, boundary: gpd.GeoDataFrame, width: float, h
         yspan = xspan / poster_aspect
     else:
         xspan = yspan * poster_aspect
+
+    xmid -= shift_x * xspan
+    ymid -= shift_y * yspan
 
     ax.set_xlim(xmid - xspan / 2, xmid + xspan / 2)
     ax.set_ylim(ymid - yspan / 2, ymid + yspan / 2)
@@ -948,6 +959,8 @@ def render_poster(
     include_minor_lines: bool = False,
     subtitle: str | None = None,
     padding: float = 0.10,
+    shift_x: float = 0.0,
+    shift_y: float = 0.0,
     large_scale: bool = False,
     hide_borders: bool = False,
     color_by_voltage: bool = False,
@@ -1018,7 +1031,7 @@ def render_poster(
         group.plot(**plot_kwargs)
 
     ax.set_aspect("equal", adjustable="box")
-    set_country_extent(ax, boundary, width, height, padding=padding)
+    set_country_extent(ax, boundary, width, height, padding=padding, shift_x=shift_x, shift_y=shift_y)
 
     add_gradient_fade(ax, theme.fade, "bottom", zorder=10)
     add_gradient_fade(ax, theme.fade, "top", zorder=10)
@@ -1184,6 +1197,22 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         default=0.10,
         help="Fractional padding around the boundary bounds. Lower = more zoomed in "
              "(e.g. 0 = tight fit, -0.05 = crop slightly into the bounds, 0.20 = looser).",
+    )
+    parser.add_argument(
+        "--shift-x",
+        type=float,
+        default=0.0,
+        help="Shift the grid data horizontally on the poster, as a fraction of the "
+             "data extent. Positive values shift right, negative shift left "
+             "(e.g. 0.1 = shift 10%% right).",
+    )
+    parser.add_argument(
+        "--shift-y",
+        type=float,
+        default=0.0,
+        help="Shift the grid data vertically on the poster, as a fraction of the "
+             "data extent. Positive values shift up, negative shift down "
+             "(e.g. 0.1 = shift 10%% up).",
     )
     parser.add_argument(
         "--large-scale",
@@ -1426,6 +1455,8 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         include_minor_lines=args.include_minor_lines,
         subtitle=args.subtitle,
         padding=args.padding,
+        shift_x=args.shift_x,
+        shift_y=args.shift_y,
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
         color_by_voltage=args.color_by_voltage,
