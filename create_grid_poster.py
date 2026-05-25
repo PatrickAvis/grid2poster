@@ -353,6 +353,136 @@ def get_country_boundary(country: str, mainland_only: bool = True, use_cache: bo
     return boundary
 
 
+def _polygon_to_overpass_poly(polygon: Polygon, precision: int = 6) -> str:
+    """Convert a Shapely Polygon exterior ring to Overpass poly: coordinate string."""
+    parts = []
+    for lon, lat in polygon.exterior.coords:
+        parts.append(f"{lat:.{precision}f} {lon:.{precision}f}")
+    return " ".join(parts)
+
+
+def _simplify_boundary_for_overpass(
+    geometry: Polygon | MultiPolygon,
+    max_coords: int = 2000,
+) -> list[Polygon]:
+    """Progressively simplify a boundary so the total coordinate count fits Overpass."""
+    if isinstance(geometry, Polygon):
+        polygons = [geometry]
+    else:
+        polygons = list(geometry.geoms)
+
+    for tolerance in (0.005, 0.01, 0.02, 0.05, 0.1):
+        total_coords = sum(len(p.exterior.coords) for p in polygons)
+        if total_coords <= max_coords:
+            break
+        simplified = []
+        for p in polygons:
+            s = p.simplify(tolerance, preserve_topology=True)
+            if not s.is_empty and isinstance(s, Polygon):
+                simplified.append(s)
+            elif not s.is_empty and isinstance(s, MultiPolygon):
+                simplified.extend(s.geoms)
+        polygons = simplified
+
+    return [p for p in polygons if not p.is_empty]
+
+
+def fetch_power_features_single(
+    country: str,
+    boundary: gpd.GeoDataFrame,
+    include_minor_lines: bool = False,
+    include_cables: bool = False,
+    sea_buffer_km: float = 0.0,
+    render_crs: str = "EPSG:3857",
+    use_cache: bool = True,
+    timeout: int = 300,
+) -> gpd.GeoDataFrame:
+    """Fetch all power features in one Overpass query using poly: filter."""
+    import requests as http_requests
+
+    values = power_tag_values(include_minor_lines, include_cables)
+    key = cache_key("power_single_v1", country, values, sea_buffer_km)
+    if use_cache:
+        cached = cache_get(key)
+        if cached is not None:
+            print(f"Using cached power features for {country}")
+            return cached
+
+    boundary_geom = unary_union(boundary.geometry)
+
+    if sea_buffer_km > 0:
+        boundary_proj = boundary.to_crs(render_crs)
+        buffered = unary_union(boundary_proj.geometry).buffer(sea_buffer_km * 1000)
+        boundary_geom = gpd.GeoDataFrame(
+            geometry=[buffered], crs=render_crs
+        ).to_crs("EPSG:4326").geometry.iloc[0]
+
+    polygons = _simplify_boundary_for_overpass(boundary_geom)
+    total_coords = sum(len(p.exterior.coords) for p in polygons)
+    print(
+        f"Single Overpass query: {len(polygons)} polygon(s), "
+        f"{total_coords:,} coordinate pairs"
+    )
+
+    power_regex = "^(" + "|".join(values) + ")$"
+    way_clauses = []
+    for poly in polygons:
+        ps = _polygon_to_overpass_poly(poly)
+        way_clauses.append(f'  way["power"~"{power_regex}"](poly:"{ps}");')
+
+    query = (
+        f"[out:json][timeout:{timeout}];\n"
+        "(\n"
+        + "\n".join(way_clauses) + "\n"
+        ");\n"
+        "out geom;\n"
+    )
+
+    overpass_url = ox.settings.overpass_url.rstrip("/")
+    if not overpass_url.endswith("/interpreter"):
+        overpass_url += "/interpreter"
+
+    print(f"Sending Overpass query ({len(query):,} bytes) to {overpass_url}")
+    response = http_requests.post(
+        overpass_url,
+        data={"data": query},
+        timeout=timeout + 30,
+        headers={"User-Agent": "GridToPoster/1.0"},
+    )
+    response.raise_for_status()
+    data = response.json()
+
+    elements = data.get("elements", [])
+    print(f"Received {len(elements):,} elements from Overpass")
+
+    rows = []
+    for elem in elements:
+        if elem.get("type") != "way":
+            continue
+        geom_coords = elem.get("geometry", [])
+        if len(geom_coords) < 2:
+            continue
+        coords = [(pt["lon"], pt["lat"]) for pt in geom_coords]
+        tags = elem.get("tags", {})
+        rows.append({
+            "power": tags.get("power"),
+            "voltage": tags.get("voltage"),
+            "name": tags.get("name"),
+            "operator": tags.get("operator"),
+            "geometry": LineString(coords),
+        })
+
+    if not rows:
+        raise RuntimeError(
+            f"No line geometries found for power={values} in {country}. "
+            "The region may be too large for a single query — try without --single-query."
+        )
+
+    result = gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
+    cache_set(key, result)
+    return result
+
+
 def power_tag_values(include_minor_lines: bool, include_cables: bool) -> list[str]:
     values = ["line"]
     if include_minor_lines:
@@ -415,6 +545,7 @@ def fetch_power_features(
     render_crs: str = "EPSG:8857",
     sea_buffer_km: float = 0.0,
     use_cache: bool = True,
+    tile_delay: float = 0,
 ) -> gpd.GeoDataFrame:
     values = power_tag_values(include_minor_lines, include_cables)
     key = cache_key("power_features", country, values, tile_size_km, render_crs, sea_buffer_km)
@@ -441,8 +572,15 @@ def fetch_power_features(
         # those parameters fully determine the tile polygon.
         return cache_key("power_tile_v1", country, values, tile_geom.wkb_hex)
 
+    rate_limit_delay = tile_delay
+
     def process_tile(tile_number: int, tile_geom, total: int) -> bool:
         """Fetch a tile's features and append to ``frames``. Returns True on success."""
+        nonlocal rate_limit_delay
+        if rate_limit_delay > 0:
+            label = "Tile delay" if rate_limit_delay <= tile_delay else "Rate-limit backoff"
+            print(f"  {label}: waiting {rate_limit_delay}s before next request")
+            time.sleep(rate_limit_delay)
         try:
             features = ox.features_from_polygon(tile_geom, tags={"power": values})
         except Exception as exc:
@@ -450,9 +588,14 @@ def fetch_power_features(
             # matching features — not a server error, so cache as empty and move on.
             if "No matching features" in str(exc):
                 cache_set(tile_cache_key(tile_geom), empty_tile)
+                rate_limit_delay = max(tile_delay, rate_limit_delay - 5)
                 return True
+            is_rate_limit = "111" in str(exc) or "rate" in str(exc).lower() or "too many" in str(exc).lower()
+            if is_rate_limit:
+                rate_limit_delay = min(120, rate_limit_delay + 10)
             print(f"  Warning: tile {tile_number:,}/{total:,} failed: {exc}")
             return False
+        rate_limit_delay = max(tile_delay, rate_limit_delay - 5)
 
         if features.empty:
             cache_set(tile_cache_key(tile_geom), empty_tile)
@@ -498,9 +641,7 @@ def fetch_power_features(
 
     attempt = 1
     while pending:
-        # Back off between retry rounds so a busy Overpass server gets breathing
-        # room; cap the wait so the loop stays responsive.
-        delay = min(60, 5 * attempt)
+        delay = min(300, max(rate_limit_delay, 10 * attempt))
         print(
             f"Retrying {len(pending):,} failed tile(s) in {delay}s "
             f"(attempt {attempt + 1})..."
@@ -1082,6 +1223,19 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         help="Also save all transmission lines as a single GeoJSON (WGS84). "
              "Optionally pass a path; otherwise written next to the poster.",
     )
+    parser.add_argument(
+        "--single-query",
+        action="store_true",
+        help="Fetch all power features in a single Overpass query instead of tiling. "
+             "Faster for small/medium regions but may time out on large countries or continents.",
+    )
+    parser.add_argument(
+        "--tile-delay",
+        type=float,
+        default=0,
+        help="Seconds to wait between Overpass tile API requests (default: 0). "
+             "Useful to avoid rate-limiting on busy public endpoints.",
+    )
     parser.add_argument("--verbose-osmnx", action="store_true", help="Print OSMnx request logs")
     parser.add_argument(
         "--overpass-endpoint",
@@ -1141,16 +1295,28 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
             use_cache=not args.no_cache,
         )
     cable_buffer_km = args.cable_sea_buffer_km if args.include_cables else 0.0
-    raw_lines = fetch_power_features(
-        country=args.country,
-        boundary=boundary_wgs84,
-        include_minor_lines=args.include_minor_lines,
-        include_cables=args.include_cables,
-        tile_size_km=args.tile_size_km,
-        render_crs=args.crs,
-        sea_buffer_km=cable_buffer_km,
-        use_cache=not args.no_cache,
-    )
+    if args.single_query:
+        raw_lines = fetch_power_features_single(
+            country=args.country,
+            boundary=boundary_wgs84,
+            include_minor_lines=args.include_minor_lines,
+            include_cables=args.include_cables,
+            sea_buffer_km=cable_buffer_km,
+            render_crs=args.crs,
+            use_cache=not args.no_cache,
+        )
+    else:
+        raw_lines = fetch_power_features(
+            country=args.country,
+            boundary=boundary_wgs84,
+            include_minor_lines=args.include_minor_lines,
+            include_cables=args.include_cables,
+            tile_size_km=args.tile_size_km,
+            render_crs=args.crs,
+            sea_buffer_km=cable_buffer_km,
+            use_cache=not args.no_cache,
+            tile_delay=args.tile_delay,
+        )
 
     boundary_projected = boundary_wgs84.to_crs(args.crs)
     lines_projected = prepare_lines(

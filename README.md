@@ -43,6 +43,10 @@ By default every run writes both a PNG and an SVG:
 ```bash
 python create_grid_poster.py --country Portugal
 ```
+Depending on the size of the country and whether distribution grids are excluded, loading the data via a single query (--single-query) is much faster. For large countries with lots of distribution grids, the data should be loaded in multiple tiles:
+```bash
+python create_grid_poster.py --country Pakistan --single-query
+```
 
 For large countries, reduce the Overpass query tile size:
 ```bash
@@ -159,14 +163,14 @@ python create_grid_poster.py --country "Europe" --boundary-geojson ./regions/eur
 | `regions/japan_main_islands.geojson` | Japan's four main islands plus adjacent small islands; excludes Okinawa, Ogasawara, Senkaku. |
 | `regions/latin_america.geojson` | 48 entries from Mexico through Argentina, including the Caribbean and overseas territories. |
 | `regions/mediterranean.geojson` | 22 countries bordering the Mediterranean. |
-| `regions/mena.geojson` | Middle East and North Africa — 18 countries. |
+| `regions/mena.geojson` | Middle East and North Africa - 18 countries. |
 | `regions/scandinavia.geojson` | Denmark, Finland, Norway, Sweden. |
 | `regions/south_africa_no_prince_edward.geojson` | South Africa mainland; excludes Prince Edward Islands. |
 | `regions/south_asia.geojson` | India, Pakistan, Bangladesh, Nepal, Bhutan, Sri Lanka. |
 | `regions/southeast_asia.geojson` | 11 Southeast Asian countries (Brunei through Vietnam). |
 | `regions/uk_no_shetland.geojson` | United Kingdom without the Shetland Islands. |
 | `regions/us_canada_mainland.geojson` | Continental US and Canadian mainland south of 60°N; excludes Alaska, Hawaii, Arctic islands. |
-| `regions/wapp.geojson` | West African Power Pool — 14 member countries. |
+| `regions/wapp.geojson` | West African Power Pool - 14 member countries. |
 
 For ad-hoc areas (a single state, a metro region, a custom polygon), supply your own GeoJSON via `--boundary-geojson`. All polygonal features in the file are dissolved into one boundary.
 
