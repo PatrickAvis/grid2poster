@@ -39,18 +39,13 @@ pip install -r requirements.txt
 
 ## Usage
 
-By default every run writes both a PNG and an SVG:
+To create a poster for a country, state or province, use the --country option to resolve the boundaries via [Nominatim](https://nominatim.org/). Setting a large '--tile-size' in kilometres and '--tile-delay' in seconds reduces the timeout of the Overpass server. By default, every run creates both a PNG and an SVG file.
 ```bash
-python create_grid_poster.py --country Portugal
+python create_grid_poster.py --country Brazil --tile-delay 30 --tile-size 500
 ```
 Depending on the size of the country and whether distribution grids are excluded, loading the data via a single query (--single-query) is much faster. For large countries with lots of distribution grids, the data should be loaded in multiple tiles:
 ```bash
 python create_grid_poster.py --country Pakistan --single-query
-```
-
-For large countries, reduce the Overpass query tile size:
-```bash
-python create_grid_poster.py --country Vietnam --tile-size-km 150
 ```
 
 Include distribution grids if available. Coverage various significatly across the globe:

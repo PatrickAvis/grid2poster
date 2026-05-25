@@ -750,7 +750,6 @@ def compute_line_styles(
     alphas = np.full(n, 0.55)
 
     if color_by_voltage:
-        anchors_kv = np.array([60.0, 150.0, 300.0, 500.0])
         anchors_rgb = np.array([
             mcolors.to_rgb(theme.line_low),
             mcolors.to_rgb(theme.line_mid),
@@ -758,6 +757,14 @@ def compute_line_styles(
             mcolors.to_rgb(theme.line_extra),
         ])
         known = ~np.isnan(kv) & (kv >= 60)
+        known_kv = kv[known]
+        if len(known_kv) > 0:
+            kv_min, kv_max = float(known_kv.min()), float(known_kv.max())
+            if kv_min == kv_max:
+                kv_max = kv_min + 1.0
+            anchors_kv = np.linspace(kv_min, kv_max, len(anchors_rgb))
+        else:
+            anchors_kv = np.array([60.0, 150.0, 300.0, 500.0])
         for i in np.where(known)[0]:
             colors[i] = _interpolate_color(kv[i], anchors_kv, anchors_rgb)
         linewidths[known] = np.interp(kv[known], anchors_kv, [0.48, 0.72, 1.05, 1.35])
@@ -944,6 +951,7 @@ def render_poster(
     large_scale: bool = False,
     hide_borders: bool = False,
     color_by_voltage: bool = False,
+    voltage_legend: bool = False,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -1090,6 +1098,52 @@ def render_poster(
         zorder=20,
     )
 
+    if voltage_legend and color_by_voltage:
+        kv = styled["voltage_kv"].astype("float64").to_numpy()
+        known_kv = kv[~np.isnan(kv) & (kv >= 60)]
+        if len(known_kv) > 0:
+            kv_min, kv_max = float(known_kv.min()), float(known_kv.max())
+            if kv_min == kv_max:
+                kv_max = kv_min + 1.0
+            n_swatches = 4
+            anchor_vals = np.linspace(kv_min, kv_max, n_swatches)
+            anchor_rgb = np.array([
+                mcolors.to_rgb(theme.line_low),
+                mcolors.to_rgb(theme.line_mid),
+                mcolors.to_rgb(theme.line_high),
+                mcolors.to_rgb(theme.line_extra),
+            ])
+            swatch_len = 0.030
+            x_left = 0.020
+            y_base = 0.025
+            y_step = 0.018
+            for idx, val in enumerate(anchor_vals):
+                y = y_base + idx * y_step
+                swatch_color = _interpolate_color(val, anchor_vals, anchor_rgb)
+                ax.plot(
+                    [x_left, x_left + swatch_len],
+                    [y, y],
+                    transform=ax.transAxes,
+                    color=swatch_color,
+                    linewidth=2.0 * scale,
+                    alpha=0.85,
+                    zorder=20,
+                    solid_capstyle="round",
+                )
+                label = f"{val:,.0f} kV"
+                ax.text(
+                    x_left + swatch_len + 0.008,
+                    y,
+                    label,
+                    transform=ax.transAxes,
+                    ha="left",
+                    va="center",
+                    color=theme.subtext,
+                    alpha=0.70,
+                    fontproperties=font_meta,
+                    zorder=20,
+                )
+
     for output_file, fmt in outputs:
         save_kwargs: dict[str, Any] = {
             "format": fmt,
@@ -1214,6 +1268,11 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         action="store_true",
         help="Interpolate line colors continuously across the theme's voltage palette "
              "instead of using discrete tiers.",
+    )
+    parser.add_argument(
+        "--voltage-legend",
+        action="store_true",
+        help="Show a small voltage-range legend on the poster (only effective with --color-by-voltage).",
     )
     parser.add_argument(
         "--export-geojson",
@@ -1370,6 +1429,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
         color_by_voltage=args.color_by_voltage,
+        voltage_legend=args.voltage_legend,
     )
     return 0
 
