@@ -3,7 +3,7 @@
 <p align="center">
   Generate print-ready posters of electrical grid infrastructure from OpenStreetMap data.
   Browse the rendered posters in the <a href="https://open-energy-transition.github.io/grid2poster/">online gallery</a>.
-  Transmission lines for a country or continent are downloaded and rendered with GeoPandas, OSMnx, and Matplotlib. The project is heavily inspired and reused styling from <a href="https://github.com/originalankur/maptoposter">maptoposter</a>.
+  Transmission lines for a country or continent are downloaded and rendered with GeoPandas, OSMnx, and Matplotlib. Grid2Poster is heavily inspired by <a href="https://github.com/originalankur/maptoposter">maptoposter</a> and reuses some of its styling.
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@ Feature completeness depends on OpenStreetMap coverage in the selected country o
 
 ### Contributing to the data
 
-Coverage and quality in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work. It provides tutorials, country-level completeness/quality statistics and mapping tools for tracing power lines, generators and substations from imagery. With [Open Infrastructure Map](https://openinframap.org/) you can browse all the electrical grid data data in OpenStreetMap.S 
+Coverage and quality in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work. It provides tutorials, country-level completeness/quality statistics and mapping tools for tracing power lines, generators and substations from imagery. With [Open Infrastructure Map](https://openinframap.org/) you can browse all the electrical grid data in OpenStreetMap.
 
 ## Installation
 
@@ -48,7 +48,7 @@ Depending on the size of the country and whether distribution grids are excluded
 python create_grid_poster.py --country Pakistan --single-query
 ```
 
-Include distribution grids if available. Coverage various significatly across the globe:
+Include distribution grids if available. Grid coverage varies significantly across the globe and is mainly only available in Europe and North America.
 ```bash
 python create_grid_poster.py --country Germany --include-minor-lines
 ```
