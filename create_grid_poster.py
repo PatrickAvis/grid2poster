@@ -723,21 +723,12 @@ def parse_voltage_to_kv(value: Any) -> float | None:
     return max(values) if values else None
 
 
-def _interpolate_color(kv_val: float, anchors_kv: np.ndarray, anchors_rgb: np.ndarray) -> str:
-    """Interpolate an RGB hex color for a voltage value between anchor points."""
-    r = np.interp(kv_val, anchors_kv, anchors_rgb[:, 0])
-    g = np.interp(kv_val, anchors_kv, anchors_rgb[:, 1])
-    b = np.interp(kv_val, anchors_kv, anchors_rgb[:, 2])
-    return mcolors.to_hex((r, g, b))
-
-
 def compute_line_styles(
     lines: gpd.GeoDataFrame,
     theme: Theme,
     *,
     linewidth_scale: float = 1.0,
     fade_unknown: bool = False,
-    color_by_voltage: bool = False,
 ) -> dict[str, np.ndarray]:
     """Vectorized per-row (color, linewidth, alpha) for the whole frame.
 
@@ -750,43 +741,22 @@ def compute_line_styles(
     linewidths = np.full(n, 0.30)
     alphas = np.full(n, 0.55)
 
-    if color_by_voltage:
-        anchors_rgb = np.array([
-            mcolors.to_rgb(theme.line_low),
-            mcolors.to_rgb(theme.line_mid),
-            mcolors.to_rgb(theme.line_high),
-            mcolors.to_rgb(theme.line_extra),
-        ])
-        known = ~np.isnan(kv) & (kv >= 60)
-        known_kv = kv[known]
-        if len(known_kv) > 0:
-            kv_min, kv_max = float(known_kv.min()), float(known_kv.max())
-            if kv_min == kv_max:
-                kv_max = kv_min + 1.0
-            anchors_kv = np.linspace(kv_min, kv_max, len(anchors_rgb))
-        else:
-            anchors_kv = np.array([60.0, 150.0, 300.0, 500.0])
-        for i in np.where(known)[0]:
-            colors[i] = _interpolate_color(kv[i], anchors_kv, anchors_rgb)
-        linewidths[known] = np.interp(kv[known], anchors_kv, [0.48, 0.72, 1.05, 1.35])
-        alphas[known] = np.interp(kv[known], anchors_kv, [0.75, 0.86, 0.92, 0.95])
-    else:
-        mask = kv >= 60
-        colors[mask] = theme.line_low
-        linewidths[mask] = 0.48
-        alphas[mask] = 0.75
-        mask = kv >= 150
-        colors[mask] = theme.line_mid
-        linewidths[mask] = 0.72
-        alphas[mask] = 0.86
-        mask = kv >= 300
-        colors[mask] = theme.line_high
-        linewidths[mask] = 1.05
-        alphas[mask] = 0.92
-        mask = kv >= 500
-        colors[mask] = theme.line_extra
-        linewidths[mask] = 1.35
-        alphas[mask] = 0.95
+    mask = kv >= 60
+    colors[mask] = theme.line_low
+    linewidths[mask] = 0.48
+    alphas[mask] = 0.75
+    mask = kv >= 150
+    colors[mask] = theme.line_mid
+    linewidths[mask] = 0.72
+    alphas[mask] = 0.86
+    mask = kv >= 300
+    colors[mask] = theme.line_high
+    linewidths[mask] = 1.05
+    alphas[mask] = 0.92
+    mask = kv >= 500
+    colors[mask] = theme.line_extra
+    linewidths[mask] = 1.35
+    alphas[mask] = 0.95
 
     is_cable = np.zeros(n, dtype=bool)
     if "power" in lines.columns:
@@ -964,7 +934,6 @@ def render_poster(
     shift_y: float = 0.0,
     large_scale: bool = False,
     hide_borders: bool = False,
-    color_by_voltage: bool = False,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -998,7 +967,6 @@ def render_poster(
         theme,
         linewidth_scale=linewidth_scale,
         fade_unknown=large_scale,
-        color_by_voltage=color_by_voltage,
     ))
     grouped = styled.groupby(["_color", "_linewidth", "_alpha"], sort=False)
     group_iter = tqdm(
@@ -1287,12 +1255,6 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument("--hide-metadata", action="store_true", help="Do not print segment counts on poster")
     parser.add_argument("--hide-borders", action="store_true", help="Do not draw the region boundary outline")
     parser.add_argument(
-        "--color-by-voltage",
-        action="store_true",
-        help="Interpolate line colors continuously across the theme's voltage palette "
-             "instead of using discrete tiers.",
-    )
-    parser.add_argument(
         "--export-geojson",
         nargs="?",
         const="",
@@ -1414,8 +1376,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
             return 2
         outputs = [(args.output, fmt)]
     else:
-        theme_tag = args.theme + ("_vinterp" if args.color_by_voltage else "")
-        outputs = [(output_path(args.country, theme_tag, f), f) for f in args.format]
+        outputs = [(output_path(args.country, args.theme, f), f) for f in args.format]
 
     if args.export_geojson is not None:
         if args.export_geojson:
@@ -1448,7 +1409,6 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         shift_y=args.shift_y,
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
-        color_by_voltage=args.color_by_voltage,
     )
     return 0
 
