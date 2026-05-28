@@ -964,7 +964,7 @@ def render_poster(
     large_scale: bool = False,
     hide_borders: bool = False,
     color_by_voltage: bool = False,
-    voltage_legend: bool = False,
+    voltage_breakdown: bool = False,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -1111,51 +1111,54 @@ def render_poster(
         zorder=20,
     )
 
-    if voltage_legend and color_by_voltage:
-        kv = styled["voltage_kv"].astype("float64").to_numpy()
-        known_kv = kv[~np.isnan(kv) & (kv >= 60)]
-        if len(known_kv) > 0:
-            kv_min, kv_max = float(known_kv.min()), float(known_kv.max())
-            if kv_min == kv_max:
-                kv_max = kv_min + 1.0
-            n_swatches = 4
-            anchor_vals = np.linspace(kv_min, kv_max, n_swatches)
-            anchor_rgb = np.array([
-                mcolors.to_rgb(theme.line_low),
-                mcolors.to_rgb(theme.line_mid),
-                mcolors.to_rgb(theme.line_high),
-                mcolors.to_rgb(theme.line_extra),
-            ])
-            swatch_len = 0.030
-            x_left = 0.020
-            y_base = 0.025
-            y_step = 0.018
-            for idx, val in enumerate(anchor_vals):
-                y = y_base + idx * y_step
-                swatch_color = _interpolate_color(val, anchor_vals, anchor_rgb)
-                ax.plot(
-                    [x_left, x_left + swatch_len],
-                    [y, y],
-                    transform=ax.transAxes,
-                    color=swatch_color,
-                    linewidth=2.0 * scale,
-                    alpha=0.85,
-                    zorder=20,
-                    solid_capstyle="round",
-                )
-                label = f"{val:,.0f} kV"
-                ax.text(
-                    x_left + swatch_len + 0.008,
-                    y,
-                    label,
-                    transform=ax.transAxes,
-                    ha="left",
-                    va="center",
-                    color=theme.subtext,
-                    alpha=0.70,
-                    fontproperties=font_meta,
-                    zorder=20,
-                )
+    if voltage_breakdown:
+        kv = lines["voltage_kv"].astype("float64")
+        seg_km = lines.geometry.length / 1000.0
+        tiers = [
+            (60.0, 150.0, theme.line_low, "60–150 kV"),
+            (150.0, 300.0, theme.line_mid, "150–300 kV"),
+            (300.0, 500.0, theme.line_high, "300–500 kV"),
+            (500.0, None, theme.line_extra, "≥500 kV"),
+        ]
+        rows = []
+        for low_kv, high_kv, color, label in tiers:
+            mask = kv >= low_kv
+            if high_kv is not None:
+                mask &= kv < high_kv
+            tier_km = float(seg_km[mask].sum())
+            if tier_km > 0:
+                rows.append((label, color, tier_km))
+
+        # Bottom-left, ascending so the highest-voltage tier sits on top.
+        x_label = 0.020
+        x_length = 0.095
+        y_base = 0.024
+        y_step = 0.020
+        for idx, (label, color, tier_km) in enumerate(rows):
+            y = y_base + idx * y_step
+            ax.text(
+                x_label,
+                y,
+                label,
+                transform=ax.transAxes,
+                ha="left",
+                va="center",
+                color=color,
+                fontproperties=font_meta,
+                zorder=20,
+            )
+            ax.text(
+                x_length,
+                y,
+                f"{tier_km:,.0f} km",
+                transform=ax.transAxes,
+                ha="left",
+                va="center",
+                color=theme.subtext,
+                alpha=0.85,
+                fontproperties=font_meta,
+                zorder=20,
+            )
 
     for output_file, fmt in outputs:
         save_kwargs: dict[str, Any] = {
@@ -1299,9 +1302,10 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
              "instead of using discrete tiers.",
     )
     parser.add_argument(
-        "--voltage-legend",
+        "--voltage-breakdown",
         action="store_true",
-        help="Show a small voltage-range legend on the poster (only effective with --color-by-voltage).",
+        help="List total line length per voltage tier on the poster, with each tier's "
+             "range label drawn in that tier's line color.",
     )
     parser.add_argument(
         "--export-geojson",
@@ -1460,7 +1464,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
         color_by_voltage=args.color_by_voltage,
-        voltage_legend=args.voltage_legend,
+        voltage_breakdown=args.voltage_breakdown,
     )
     return 0
 
