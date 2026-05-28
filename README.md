@@ -115,7 +115,7 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--output` | auto-generated in `posters/` | Output file path. When set, only a single file is written and its format is inferred from the extension. |
 | `--crs` | `EPSG:3857` | Projection used for rendering. EPSG:3857 (Pseudo-Mercator) works well for country posters. |
 | `--color-by-voltage` | off | Interpolate line colors continuously across the theme's voltage palette instead of using discrete tiers. Produces smooth color gradients that reveal voltage differences within each tier. |
-| `--voltage-breakdown` | off | List total line length per voltage tier on the poster, with each tier's range label drawn in that tier's line color. |
+| `--voltage-breakdown` | off | Replace the metadata line under the title with a per-voltage-tier breakdown (year + total line length per tier), each tier's range label drawn in that tier's line color. |
 | `--hide-metadata` | off | Do not print segment counts on the poster. |
 | `--hide-borders` | off | Do not draw the region boundary outline. |
 | `--single-query` | off | Fetch all power features in a single Overpass query instead of tiling. Faster for small/medium regions but may time out on large countries or continents. |

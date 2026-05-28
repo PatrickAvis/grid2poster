@@ -40,6 +40,7 @@ import numpy as np
 import osmnx as ox
 from matplotlib import patheffects
 from matplotlib.font_manager import FontProperties
+from matplotlib.offsetbox import AnchoredOffsetbox, HPacker, TextArea
 from shapely.geometry import LineString, MultiLineString, Polygon, MultiPolygon, box
 from shapely.ops import unary_union
 
@@ -1045,13 +1046,32 @@ def render_poster(
     font_sub = FontProperties(family="DejaVu Sans", weight="normal", size=15 * scale)
     font_meta = FontProperties(family="DejaVu Sans Mono", weight="normal", size=8.5 * scale)
 
+    year = datetime.now().year
     total_length_km = float(lines.geometry.length.sum()) / 1000.0
     high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= 150].geometry.length.sum()) / 1000.0
     if subtitle is None:
         subtitle = "ELECTRICAL GRID" if include_minor_lines else "ELECTRICAL TRANSMISSION GRID"
-    metadata = f"{datetime.now().year} · {total_length_km:,.0f} km of power lines"
+    metadata = f"{year} · {total_length_km:,.0f} km of power lines"
     if high_voltage_length_km:
         metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
+
+    breakdown_rows: list[tuple[str, str, float]] = []
+    if voltage_breakdown:
+        kv = lines["voltage_kv"].astype("float64")
+        seg_km = lines.geometry.length / 1000.0
+        tiers = [
+            (60.0, 150.0, theme.line_low, "60–150 kV"),
+            (150.0, 300.0, theme.line_mid, "150–300 kV"),
+            (300.0, 500.0, theme.line_high, "300–500 kV"),
+            (500.0, None, theme.line_extra, "≥500 kV"),
+        ]
+        for low_kv, high_kv, color, label in tiers:
+            mask = kv >= low_kv
+            if high_kv is not None:
+                mask &= kv < high_kv
+            tier_km = float(seg_km[mask].sum())
+            if tier_km > 0:
+                breakdown_rows.append((label, color, tier_km))
 
     ax.text(
         0.5,
@@ -1075,7 +1095,29 @@ def render_poster(
         fontproperties=font_sub,
         zorder=20,
     )
-    if include_metadata:
+    if include_metadata and voltage_breakdown and breakdown_rows:
+        def _seg(text: str, color: str, alpha: float) -> TextArea:
+            return TextArea(text, textprops=dict(fontproperties=font_meta, color=color, alpha=alpha))
+
+        children = [_seg(str(year), theme.subtext, 0.85)]
+        for label, color, tier_km in breakdown_rows:
+            children.append(_seg("·", theme.subtext, 0.85))
+            children.append(_seg(label, color, 0.95))
+            children.append(_seg(f"{tier_km:,.0f} km", theme.subtext, 0.85))
+
+        packed = HPacker(children=children, align="center", sep=4.0 * scale, pad=0)
+        anchored = AnchoredOffsetbox(
+            loc="center",
+            child=packed,
+            bbox_to_anchor=(0.5, 0.064),
+            bbox_transform=ax.transAxes,
+            frameon=False,
+            pad=0,
+            borderpad=0,
+        )
+        anchored.set_zorder(20)
+        ax.add_artist(anchored)
+    elif include_metadata:
         ax.text(
             0.5,
             0.064,
@@ -1110,55 +1152,6 @@ def render_poster(
         fontproperties=font_meta,
         zorder=20,
     )
-
-    if voltage_breakdown:
-        kv = lines["voltage_kv"].astype("float64")
-        seg_km = lines.geometry.length / 1000.0
-        tiers = [
-            (60.0, 150.0, theme.line_low, "60–150 kV"),
-            (150.0, 300.0, theme.line_mid, "150–300 kV"),
-            (300.0, 500.0, theme.line_high, "300–500 kV"),
-            (500.0, None, theme.line_extra, "≥500 kV"),
-        ]
-        rows = []
-        for low_kv, high_kv, color, label in tiers:
-            mask = kv >= low_kv
-            if high_kv is not None:
-                mask &= kv < high_kv
-            tier_km = float(seg_km[mask].sum())
-            if tier_km > 0:
-                rows.append((label, color, tier_km))
-
-        # Bottom-left, ascending so the highest-voltage tier sits on top.
-        x_label = 0.020
-        x_length = 0.095
-        y_base = 0.024
-        y_step = 0.020
-        for idx, (label, color, tier_km) in enumerate(rows):
-            y = y_base + idx * y_step
-            ax.text(
-                x_label,
-                y,
-                label,
-                transform=ax.transAxes,
-                ha="left",
-                va="center",
-                color=color,
-                fontproperties=font_meta,
-                zorder=20,
-            )
-            ax.text(
-                x_length,
-                y,
-                f"{tier_km:,.0f} km",
-                transform=ax.transAxes,
-                ha="left",
-                va="center",
-                color=theme.subtext,
-                alpha=0.85,
-                fontproperties=font_meta,
-                zorder=20,
-            )
 
     for output_file, fmt in outputs:
         save_kwargs: dict[str, Any] = {
