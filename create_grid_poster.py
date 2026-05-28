@@ -965,7 +965,6 @@ def render_poster(
     large_scale: bool = False,
     hide_borders: bool = False,
     color_by_voltage: bool = False,
-    voltage_breakdown: bool = False,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -1056,22 +1055,21 @@ def render_poster(
         metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
 
     breakdown_rows: list[tuple[str, str, float]] = []
-    if voltage_breakdown:
-        kv = lines["voltage_kv"].astype("float64")
-        seg_km = lines.geometry.length / 1000.0
-        tiers = [
-            (60.0, 150.0, theme.line_low, "60–150 kV"),
-            (150.0, 300.0, theme.line_mid, "150–300 kV"),
-            (300.0, 500.0, theme.line_high, "300–500 kV"),
-            (500.0, None, theme.line_extra, "≥500 kV"),
-        ]
-        for low_kv, high_kv, color, label in tiers:
-            mask = kv >= low_kv
-            if high_kv is not None:
-                mask &= kv < high_kv
-            tier_km = float(seg_km[mask].sum())
-            if tier_km > 0:
-                breakdown_rows.append((label, color, tier_km))
+    kv = lines["voltage_kv"].astype("float64")
+    seg_km = lines.geometry.length / 1000.0
+    tiers = [
+        (60.0, 150.0, theme.line_low, "60–150 kV"),
+        (150.0, 300.0, theme.line_mid, "150–300 kV"),
+        (300.0, 500.0, theme.line_high, "300–500 kV"),
+        (500.0, None, theme.line_extra, "≥500 kV"),
+    ]
+    for low_kv, high_kv, color, label in tiers:
+        mask = kv >= low_kv
+        if high_kv is not None:
+            mask &= kv < high_kv
+        tier_km = float(seg_km[mask].sum())
+        if tier_km > 0:
+            breakdown_rows.append((label, color, tier_km))
 
     ax.text(
         0.5,
@@ -1095,7 +1093,7 @@ def render_poster(
         fontproperties=font_sub,
         zorder=20,
     )
-    if include_metadata and voltage_breakdown and breakdown_rows:
+    if include_metadata and breakdown_rows:
         def _seg(text: str, color: str, alpha: float) -> TextArea:
             return TextArea(text, textprops=dict(fontproperties=font_meta, color=color, alpha=alpha))
 
@@ -1295,12 +1293,6 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
              "instead of using discrete tiers.",
     )
     parser.add_argument(
-        "--voltage-breakdown",
-        action="store_true",
-        help="List total line length per voltage tier on the poster, with each tier's "
-             "range label drawn in that tier's line color.",
-    )
-    parser.add_argument(
         "--export-geojson",
         nargs="?",
         const="",
@@ -1457,7 +1449,6 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
         color_by_voltage=args.color_by_voltage,
-        voltage_breakdown=args.voltage_breakdown,
     )
     return 0
 
