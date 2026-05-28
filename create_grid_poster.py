@@ -29,8 +29,24 @@ from typing import Any, Iterable
 try:
     from tqdm.auto import tqdm
 except ImportError:  # pragma: no cover - optional progress-bar dependency
-    def tqdm(iterable, *args, **kwargs):
-        return iterable
+    class tqdm:  # no-op stand-in supporting both iteration and manual updates
+        def __init__(self, iterable=None, *args, **kwargs):
+            self._iterable = iterable
+
+        def __iter__(self):
+            return iter(self._iterable or [])
+
+        def update(self, n=1):
+            pass
+
+        def set_description(self, *args, **kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
 
 import geopandas as gpd
 import pandas as pd
@@ -797,50 +813,67 @@ def prepare_lines(
     output_crs: str,
     cable_sea_buffer_km: float = 0.0,
 ) -> gpd.GeoDataFrame:
-    boundary_projected = boundary.to_crs(output_crs)
-    lines_projected = lines.to_crs(output_crs)
+    # These vectorized geometry ops (reprojection, clipping, exploding) are the
+    # heaviest part of data prep before plotting and can take a while on dense
+    # frames, so step a progress bar through each stage.
+    with tqdm(total=5, desc="Preparing lines", unit="step", leave=True) as bar:
+        bar.set_description("Reprojecting")
+        boundary_projected = boundary.to_crs(output_crs)
+        lines_projected = lines.to_crs(output_crs)
+        bar.update()
 
-    if "power" in lines_projected.columns and cable_sea_buffer_km > 0:
-        is_cable = lines_projected["power"] == "cable"
-    else:
-        is_cable = pd.Series(False, index=lines_projected.index)
+        if "power" in lines_projected.columns and cable_sea_buffer_km > 0:
+            is_cable = lines_projected["power"] == "cable"
+        else:
+            is_cable = pd.Series(False, index=lines_projected.index)
 
-    def _safe_clip(frame: gpd.GeoDataFrame, mask: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-        try:
-            return gpd.clip(frame, mask)
-        except Exception:
-            # Clipping may fail with invalid upstream geometries. A poster can
-            # still be rendered without clipping because the Overpass polygon
-            # query already constrained the result set.
-            return frame
+        def _safe_clip(frame: gpd.GeoDataFrame, mask: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+            try:
+                return gpd.clip(frame, mask)
+            except Exception:
+                # Clipping may fail with invalid upstream geometries. A poster can
+                # still be rendered without clipping because the Overpass polygon
+                # query already constrained the result set.
+                return frame
 
-    parts: list[gpd.GeoDataFrame] = []
-    land_lines = lines_projected[~is_cable]
-    if not land_lines.empty:
-        parts.append(_safe_clip(land_lines, boundary_projected))
-    cable_lines = lines_projected[is_cable]
-    if not cable_lines.empty:
-        cable_mask = gpd.GeoDataFrame(
-            geometry=boundary_projected.geometry.buffer(cable_sea_buffer_km * 1000),
+        bar.set_description("Clipping")
+        parts: list[gpd.GeoDataFrame] = []
+        land_lines = lines_projected[~is_cable]
+        if not land_lines.empty:
+            parts.append(_safe_clip(land_lines, boundary_projected))
+        cable_lines = lines_projected[is_cable]
+        if not cable_lines.empty:
+            cable_mask = gpd.GeoDataFrame(
+                geometry=boundary_projected.geometry.buffer(cable_sea_buffer_km * 1000),
+                crs=output_crs,
+            )
+            parts.append(_safe_clip(cable_lines, cable_mask))
+        bar.update()
+
+        clipped = gpd.GeoDataFrame(
+            pd.concat(parts, ignore_index=True) if parts else lines_projected.iloc[0:0],
+            geometry="geometry",
             crs=output_crs,
         )
-        parts.append(_safe_clip(cable_lines, cable_mask))
 
-    clipped = gpd.GeoDataFrame(
-        pd.concat(parts, ignore_index=True) if parts else lines_projected.iloc[0:0],
-        geometry="geometry",
-        crs=output_crs,
-    )
+        bar.set_description("Exploding")
+        clipped = clipped.explode(ignore_index=True)
+        clipped = clipped[clipped.geometry.type.isin(["LineString", "MultiLineString"])]
+        clipped = clipped[~clipped.geometry.is_empty]
+        if clipped.empty:
+            raise RuntimeError("Power-line geometries became empty after projection/clipping")
+        bar.update()
 
-    clipped = clipped.explode(ignore_index=True)
-    clipped = clipped[clipped.geometry.type.isin(["LineString", "MultiLineString"])]
-    clipped = clipped[~clipped.geometry.is_empty]
-    if clipped.empty:
-        raise RuntimeError("Power-line geometries became empty after projection/clipping")
+        bar.set_description("Parsing voltages")
+        clipped["voltage_kv"] = clipped.get("voltage", None).apply(parse_voltage_to_kv)
+        clipped["sort_voltage"] = clipped["voltage_kv"].fillna(0)
+        bar.update()
 
-    clipped["voltage_kv"] = clipped.get("voltage", None).apply(parse_voltage_to_kv)
-    clipped["sort_voltage"] = clipped["voltage_kv"].fillna(0)
-    return clipped.sort_values("sort_voltage")
+        bar.set_description("Sorting")
+        result = clipped.sort_values("sort_voltage")
+        bar.update()
+
+    return result
 
 
 def set_country_extent(
