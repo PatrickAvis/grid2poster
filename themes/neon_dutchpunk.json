@@ -12,5 +12,6 @@
   "line_extra": "#FF00FF",
   "fade": "#0D0D1A",
   "cable_color": "#00C8C8",
-  "cable_lw_scale": 1.4
+  "cable_lw_scale": 1.6,
+  "lw_mid": 1.6
 }
