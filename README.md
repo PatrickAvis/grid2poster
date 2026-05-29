@@ -11,7 +11,7 @@
   <img src="./posters/africa_grid_paper_grid_20260512_144322.png" alt="Africa transmission grid - paper_grid theme" width="380"/>
 </p>
 
-<p align="center"> Grid2Poster supports countries, states, provinces and continents, as well as predefined regions.</p>
+<p align="center"> Grid2Poster supports countries, states, provinces and continents, as well as predefined regions. Browse more stunnding poster in the <a href="https://open-energy-transition.github.io/grid2poster/">grid2poster gallery</p>.
 
 ## Data
 
@@ -60,6 +60,10 @@ List available themes. Create a new theme JSON file in the 'themes' directory to
 python create_grid_poster.py --list-themes
 ```
 
+A theme JSON defines colors per voltage tier (`line_unknown`, `line_low`, `line_mid`, `line_high`, `line_extra`). It may optionally also set the line thickness (in points) per tier with `lw_unknown`, `lw_low`, `lw_mid`, `lw_high`, `lw_extra`, and `lw_minor`. Any width key you omit falls back to the built-in default for that tier.
+
+Cables (`--include-cables`, underground/submarine) inherit their voltage-tier color and a dampened width by default. A theme may override this with `cable_color` (a hex color used for all cables instead of the tier color) and `cable_lw_scale` (the multiplier applied to the tier line width; defaults to `0.5`). Omit them to keep the current behavior.
+
 Use a local GeoJSON file as the boundary instead of geocoding (handy for custom regions or sub-national areas). All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename. `--landscape` will render in landscape (horizontal) orientation.
 ```bash
 python create_grid_poster.py --country "Middle East and North Africa" --boundary-geojson ./regions/mena.geojson --landscape --theme neon_cyberpunk 
@@ -96,6 +100,7 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--large-scale` | off | Tune styling for continent/global posters: scale linewidths so the heaviest line stays roughly 8 km wide on the ground, halo each line against the background so dense crossings remain legible, and drop `power=minor_line` / strongly fade unknown-voltage clutter. |
 | `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
 | `--list-themes` | - | List available themes and exit. |
+| `--voltage-tiers` | `60,150,300,500` | Lower kV bounds for the four voltage tiers (low, mid, high, extra), comma-separated. Controls how lines are colored/weighted and the legend labels — tune to the grid being mapped (e.g. `60,220,400,765`). |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
 | `--include-cables` / `--no-include-cables` | off | Fetch `power=cable` features (underground/submarine). Off by default; pass `--include-cables` to enable. |
 | `--cable-sea-buffer-km` | `200.0` | When `--include-cables` is on, inflate the boundary by this many kilometers over water so submarine cables between islands and to neighboring countries are queried from Overpass and survive coastline clipping. Set to `0` to disable. |

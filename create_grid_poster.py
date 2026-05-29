@@ -164,9 +164,24 @@ class Theme:
     line_high: str
     line_extra: str
     fade: str
+    # Optional per-voltage-tier line thickness (points). When a theme omits a
+    # key, the matching default below is used — so existing themes keep their
+    # current look without changes.
+    lw_unknown: float = 0.30
+    lw_low: float = 0.48
+    lw_mid: float = 0.72
+    lw_high: float = 1.05
+    lw_extra: float = 1.35
+    lw_minor: float = 0.50
+    # Optional cable (underground/submarine) styling. cable_color overrides the
+    # per-voltage-tier color for cables; when None they keep their tier color.
+    # cable_lw_scale multiplies the tier line width — 0.5 reproduces the prior
+    # hardcoded dampening, so themes that omit these keys are unchanged.
+    cable_color: str | None = None
+    cable_lw_scale: float = 0.5
 
     @classmethod
-    def from_dict(cls, raw: dict[str, str]) -> "Theme":
+    def from_dict(cls, raw: dict[str, Any]) -> "Theme":
         required = {
             "name",
             "description",
@@ -184,7 +199,15 @@ class Theme:
         missing = sorted(required.difference(raw))
         if missing:
             raise ValueError(f"Theme is missing keys: {', '.join(missing)}")
-        return cls(**{key: raw[key] for key in required})
+        kwargs: dict[str, Any] = {key: raw[key] for key in required}
+        # Per-tier line widths and cable width scale are optional; fall back to
+        # the dataclass defaults.
+        for key in ("lw_unknown", "lw_low", "lw_mid", "lw_high", "lw_extra", "lw_minor", "cable_lw_scale"):
+            if key in raw:
+                kwargs[key] = float(raw[key])
+        if "cable_color" in raw:
+            kwargs["cable_color"] = raw["cable_color"]
+        return cls(**kwargs)
 
 
 def slugify(value: str) -> str:
@@ -739,39 +762,51 @@ def parse_voltage_to_kv(value: Any) -> float | None:
     return max(values) if values else None
 
 
+# Lower kV bound of each voltage tier (low, mid, high, extra). A line is placed
+# in the highest tier whose bound it meets; below the first bound it is treated
+# as unknown/sub-transmission. Overridable per-run via --voltage-tiers.
+DEFAULT_VOLTAGE_TIERS: tuple[float, float, float, float] = (60.0, 150.0, 300.0, 500.0)
+
+# Half (thin) space placed between a number and its unit, e.g. "380 kV".
+# Rendered via matplotlib mathtext, where "\," is a thin space.
+THIN_SPACE = r"$\,$"
+
+
 def compute_line_styles(
     lines: gpd.GeoDataFrame,
     theme: Theme,
     *,
     linewidth_scale: float = 1.0,
     fade_unknown: bool = False,
+    voltage_tiers: tuple[float, float, float, float] = DEFAULT_VOLTAGE_TIERS,
 ) -> dict[str, np.ndarray]:
     """Vectorized per-row (color, linewidth, alpha) for the whole frame.
 
     Lets render_poster batch segments into one matplotlib call per style group
     instead of one call per segment.
     """
+    low_kv, mid_kv, high_kv, extra_kv = voltage_tiers
     kv = lines["voltage_kv"].astype("float64").to_numpy()
     n = len(lines)
     colors = np.full(n, theme.line_unknown, dtype=object)
-    linewidths = np.full(n, 0.30)
+    linewidths = np.full(n, theme.lw_unknown)
     alphas = np.full(n, 0.55)
 
-    mask = kv >= 60
+    mask = kv >= low_kv
     colors[mask] = theme.line_low
-    linewidths[mask] = 0.48
+    linewidths[mask] = theme.lw_low
     alphas[mask] = 0.75
-    mask = kv >= 150
+    mask = kv >= mid_kv
     colors[mask] = theme.line_mid
-    linewidths[mask] = 0.72
+    linewidths[mask] = theme.lw_mid
     alphas[mask] = 0.86
-    mask = kv >= 300
+    mask = kv >= high_kv
     colors[mask] = theme.line_high
-    linewidths[mask] = 1.05
+    linewidths[mask] = theme.lw_high
     alphas[mask] = 0.92
-    mask = kv >= 500
+    mask = kv >= extra_kv
     colors[mask] = theme.line_extra
-    linewidths[mask] = 1.35
+    linewidths[mask] = theme.lw_extra
     alphas[mask] = 0.95
 
     is_cable = np.zeros(n, dtype=bool)
@@ -779,13 +814,16 @@ def compute_line_styles(
         power = lines["power"].to_numpy()
         minor = power == "minor_line"
         colors[minor] = theme.line_low
-        linewidths[minor] = 0.50
+        linewidths[minor] = theme.lw_minor
         alphas[minor] = 0.75
 
         # Cables (underground/submarine) are visual context, not the headline —
         # dampen them so overhead transmission stays the story of the poster.
+        # Themes may recolor them and tune the width dampening.
         is_cable = power == "cable"
-        linewidths[is_cable] = linewidths[is_cable] * 0.5
+        if theme.cable_color is not None:
+            colors[is_cable] = theme.cable_color
+        linewidths[is_cable] = linewidths[is_cable] * theme.cable_lw_scale
         alphas[is_cable] = alphas[is_cable] * 0.5
 
     if fade_unknown:
@@ -967,6 +1005,7 @@ def render_poster(
     shift_y: float = 0.0,
     large_scale: bool = False,
     hide_borders: bool = False,
+    voltage_tiers: tuple[float, float, float, float] = DEFAULT_VOLTAGE_TIERS,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -985,7 +1024,7 @@ def render_poster(
         y_span_km = max((maxy - miny), 1.0) / 1000.0
         km_per_pt = max(x_span_km / (width * 72.0), y_span_km / (height * 72.0))
         target_ground_km = 8.0
-        heaviest_lw_pt = 1.35
+        heaviest_lw_pt = theme.lw_extra
         linewidth_scale = min(1.0, target_ground_km / (heaviest_lw_pt * km_per_pt))
         # Slim halo: enough to separate touching lines at crossings without
         # surrounding every hairline with a wider bg-colored moat.
@@ -1000,6 +1039,7 @@ def render_poster(
         theme,
         linewidth_scale=linewidth_scale,
         fade_unknown=large_scale,
+        voltage_tiers=voltage_tiers,
     ))
     grouped = styled.groupby(["_color", "_linewidth", "_alpha"], sort=False)
     group_iter = tqdm(
@@ -1047,22 +1087,23 @@ def render_poster(
     font_meta = FontProperties(family="DejaVu Sans Mono", weight="normal", size=8.5 * scale)
 
     year = datetime.now().year
+    low_kv, mid_kv, high_kv, extra_kv = voltage_tiers
     total_length_km = float(lines.geometry.length.sum()) / 1000.0
-    high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= 150].geometry.length.sum()) / 1000.0
+    high_voltage_length_km = float(lines.loc[lines["voltage_kv"].fillna(0) >= mid_kv].geometry.length.sum()) / 1000.0
     if subtitle is None:
         subtitle = "ELECTRICAL GRID" if include_minor_lines else "ELECTRICAL TRANSMISSION GRID"
-    metadata = f"{year} · {total_length_km:,.0f} km of power lines"
+    metadata = f"{year} · {total_length_km:,.0f}{THIN_SPACE}km of power lines"
     if high_voltage_length_km:
-        metadata += f" · {high_voltage_length_km:,.0f} km ≥150 kV"
+        metadata += f" · {high_voltage_length_km:,.0f}{THIN_SPACE}km ≥{mid_kv:g}{THIN_SPACE}kV"
 
     breakdown_rows: list[tuple[str, str, float]] = []
     kv = lines["voltage_kv"].astype("float64")
     seg_km = lines.geometry.length / 1000.0
     tiers = [
-        (60.0, 150.0, theme.line_low, "60–150 kV"),
-        (150.0, 300.0, theme.line_mid, "150–300 kV"),
-        (300.0, 500.0, theme.line_high, "300–500 kV"),
-        (500.0, None, theme.line_extra, "≥500 kV"),
+        (low_kv, mid_kv, theme.line_low, f"{low_kv:g}–{mid_kv:g}{THIN_SPACE}kV"),
+        (mid_kv, high_kv, theme.line_mid, f"{mid_kv:g}–{high_kv:g}{THIN_SPACE}kV"),
+        (high_kv, extra_kv, theme.line_high, f"{high_kv:g}–{extra_kv:g}{THIN_SPACE}kV"),
+        (extra_kv, None, theme.line_extra, f"≥{extra_kv:g}{THIN_SPACE}kV"),
     ]
     for low_kv, high_kv, color, label in tiers:
         mask = kv >= low_kv
@@ -1102,7 +1143,7 @@ def render_poster(
         for label, color, tier_km in breakdown_rows:
             children.append(_seg("·", theme.subtext, 0.85))
             children.append(_seg(label, color, 0.95))
-            children.append(_seg(f"{tier_km:,.0f} km", theme.subtext, 0.85))
+            children.append(_seg(f"{tier_km:,.0f}{THIN_SPACE}km", theme.subtext, 0.85))
 
         packed = HPacker(children=children, align="center", sep=4.0 * scale, pad=0)
         anchored = AnchoredOffsetbox(
@@ -1219,6 +1260,15 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     )
     parser.add_argument("--theme", "-t", default="paper_grid", help="Theme ID from themes/")
     parser.add_argument("--list-themes", action="store_true", help="List available themes and exit")
+    parser.add_argument(
+        "--voltage-tiers",
+        type=parse_voltage_tiers,
+        default=DEFAULT_VOLTAGE_TIERS,
+        metavar="LOW,MID,HIGH,EXTRA",
+        help="Lower kV bounds for the four voltage tiers, comma-separated "
+             "(default: 60,150,300,500). Sets how lines are colored/weighted and "
+             "the legend labels; tune to the grid being mapped.",
+    )
     parser.add_argument("--include-minor-lines", action="store_true", help="Also fetch power=minor_line")
     parser.add_argument(
         "--include-cables",
@@ -1324,6 +1374,26 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
              "Fresh results are still written to the cache for future runs.",
     )
     return parser.parse_args(list(argv))
+
+
+def parse_voltage_tiers(value: str) -> tuple[float, float, float, float]:
+    """Parse a 'low,mid,high,extra' kV string into a strictly-increasing tuple."""
+    parts = [p.strip() for p in value.split(",") if p.strip()]
+    if len(parts) != 4:
+        raise argparse.ArgumentTypeError(
+            "expected four comma-separated kV values, e.g. 60,150,300,500"
+        )
+    try:
+        tiers = tuple(float(p) for p in parts)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"voltage tiers must be numbers: {value!r}")
+    if tiers[0] <= 0:
+        raise argparse.ArgumentTypeError("voltage tiers must be positive")
+    if any(a >= b for a, b in zip(tiers, tiers[1:])):
+        raise argparse.ArgumentTypeError(
+            f"voltage tiers must strictly increase: {value!r}"
+        )
+    return tiers  # type: ignore[return-value]
 
 
 def main(argv: Iterable[str] = sys.argv[1:]) -> int:
@@ -1442,6 +1512,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         shift_y=args.shift_y,
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
+        voltage_tiers=args.voltage_tiers,
     )
     return 0
 
