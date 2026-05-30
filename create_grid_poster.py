@@ -952,7 +952,22 @@ def set_country_extent(
     ax.set_ylim(ymid - yspan / 2, ymid + yspan / 2)
 
 
-def add_gradient_fade(ax: plt.Axes, color: str, where: str, zorder: int = 10) -> None:
+def add_gradient_fade(
+    ax: plt.Axes,
+    color: str,
+    where: str,
+    zorder: int = 10,
+    height: float = 0.28,
+    max_alpha: float = 1.0,
+) -> None:
+    # ``height`` is the fraction of the poster height the fade band covers
+    # (0 disables it); ``max_alpha`` is the opacity at the poster edge (1 =
+    # fully opaque). Both are clamped so out-of-range CLI values stay sane.
+    height = float(min(max(height, 0.0), 1.0))
+    max_alpha = float(min(max(max_alpha, 0.0), 1.0))
+    if height <= 0.0 or max_alpha <= 0.0:
+        return
+
     vals = np.linspace(0, 1, 256).reshape(-1, 1)
     gradient = np.hstack((vals, vals))
     rgb = mcolors.to_rgb(color)
@@ -960,11 +975,11 @@ def add_gradient_fade(ax: plt.Axes, color: str, where: str, zorder: int = 10) ->
     rgba[:, :3] = rgb
 
     if where == "bottom":
-        rgba[:, 3] = np.linspace(1, 0, 256)
-        y0, y1 = 0.00, 0.28
+        rgba[:, 3] = np.linspace(max_alpha, 0, 256)
+        y0, y1 = 0.0, height
     elif where == "top":
-        rgba[:, 3] = np.linspace(0, 1, 256)
-        y0, y1 = 0.72, 1.00
+        rgba[:, 3] = np.linspace(0, max_alpha, 256)
+        y0, y1 = 1.0 - height, 1.0
     else:
         raise ValueError("where must be 'top' or 'bottom'")
 
@@ -1089,6 +1104,10 @@ def render_poster(
     logo_size_mm: float = 20.0,
     logo_margin_mm: float = 12.0,
     logo_alpha: float = 1.0,
+    fade_top_height: float = 0.28,
+    fade_top_alpha: float = 1.0,
+    fade_bottom_height: float = 0.28,
+    fade_bottom_alpha: float = 1.0,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -1162,8 +1181,8 @@ def render_poster(
     ax.set_aspect("equal", adjustable="box")
     set_country_extent(ax, boundary, width, height, padding=padding, shift_x=shift_x, shift_y=shift_y)
 
-    add_gradient_fade(ax, theme.fade, "bottom", zorder=10)
-    add_gradient_fade(ax, theme.fade, "top", zorder=10)
+    add_gradient_fade(ax, theme.fade, "bottom", zorder=10, height=fade_bottom_height, max_alpha=fade_bottom_alpha)
+    add_gradient_fade(ax, theme.fade, "top", zorder=10, height=fade_top_height, max_alpha=fade_top_alpha)
 
     scale = min(width, height) / 12
     # Landscape posters have less vertical room, so the title at the same point
@@ -1429,6 +1448,34 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument("--hide-metadata", action="store_true", help="Do not print segment counts on poster")
     parser.add_argument("--hide-borders", action="store_true", help="Do not draw the region boundary outline")
     parser.add_argument(
+        "--fade-top-height",
+        type=float,
+        default=0.28,
+        help="Fraction of the poster height covered by the top fade-to-background "
+             "gradient (default: 0.28). Lower = shorter fade; 0 disables it.",
+    )
+    parser.add_argument(
+        "--fade-top-alpha",
+        type=float,
+        default=1.0,
+        help="Opacity of the top fade at the poster edge, 0 (none) to 1 (fully "
+             "opaque, default). Lower = lighter fade.",
+    )
+    parser.add_argument(
+        "--fade-bottom-height",
+        type=float,
+        default=0.28,
+        help="Fraction of the poster height covered by the bottom fade gradient "
+             "(default: 0.28). Lower = shorter fade; 0 disables it.",
+    )
+    parser.add_argument(
+        "--fade-bottom-alpha",
+        type=float,
+        default=1.0,
+        help="Opacity of the bottom fade at the poster edge, 0 (none) to 1 (fully "
+             "opaque, default). Lower = lighter fade.",
+    )
+    parser.add_argument(
         "--logo",
         type=Path,
         default=None,
@@ -1639,6 +1686,10 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         logo_size_mm=args.logo_size,
         logo_margin_mm=args.logo_margin,
         logo_alpha=args.logo_alpha,
+        fade_top_height=args.fade_top_height,
+        fade_top_alpha=args.fade_top_alpha,
+        fade_bottom_height=args.fade_bottom_height,
+        fade_bottom_alpha=args.fade_bottom_alpha,
     )
     return 0
 

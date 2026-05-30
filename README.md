@@ -175,21 +175,31 @@ python create_grid_poster.py --country "Europe" --boundary-geojson ./regions/eur
 | `regions/britain_and_ireland.geojson` | Great Britain (excl. Shetland) and the island of Ireland. |
 | `regions/canada_southern_provinces.geojson` | Canada south of 60°N; excludes Yukon, NWT, Nunavut. |
 | `regions/central_asia.geojson` | Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan. |
+| `regions/continental_europe.geojson` | Continental Europe Synchronous Area (ENTSO-E Regional Group) approximation — ~26 countries from Albania to Ukraine. Approximate country-boundary geometry, not a TSO/control-area dataset. |
 | `regions/east_africa.geojson` | 11 East African countries from Eritrea/Djibouti south to Tanzania. |
+| `regions/eastern_interconnection.geojson` | Eastern Interconnection (approximate mask): central Canada to the Atlantic coast excluding Quebec, south to Florida, west to the Rockies. Hand-generalized, not an exact grid boundary. |
 | `regions/europe.geojson` | 35 European countries including UK, Ireland, Nordics, Turkey, and Ukraine; excludes Russia and Belarus. |
+| `regions/great_lakes.geojson` | Great Lakes region straddling the US Midwest and Ontario. |
 | `regions/iberia.geojson` | Spain and Portugal. |
 | `regions/ireland_island.geojson` | Island of Ireland (Republic of Ireland + Northern Ireland). |
 | `regions/japan_main_islands.geojson` | Japan's four main islands plus adjacent small islands; excludes Okinawa, Ogasawara, Senkaku. |
+| `regions/java_bali.geojson` | Indonesian islands of Java and Bali. |
 | `regions/latin_america.geojson` | 48 entries from Mexico through Argentina, including the Caribbean and overseas territories. |
+| `regions/malay_peninsula.geojson` | Malay Peninsula: Peninsular Malaysia, Singapore, and southern Thailand. |
 | `regions/mediterranean.geojson` | 22 countries bordering the Mediterranean. |
 | `regions/mena.geojson` | Middle East and North Africa - 18 countries. |
+| `regions/quebec_south.geojson` | Southern Quebec, Canada. |
+| `regions/salish_sea.geojson` | Salish Sea region: southwestern British Columbia and northwestern Washington. |
 | `regions/scandinavia.geojson` | Denmark, Finland, Norway, Sweden. |
 | `regions/south_africa_no_prince_edward.geojson` | South Africa mainland; excludes Prince Edward Islands. |
 | `regions/south_asia.geojson` | India, Pakistan, Bangladesh, Nepal, Bhutan, Sri Lanka. |
 | `regions/southeast_asia.geojson` | 11 Southeast Asian countries (Brunei through Vietnam). |
+| `regions/southern_african_power_pool.geojson` | Southern African Power Pool - 12 member countries (Angola, Botswana, DRC, Eswatini, Lesotho, Malawi, Mozambique, Namibia, South Africa, Tanzania, Zambia, Zimbabwe). |
 | `regions/uk_no_shetland.geojson` | United Kingdom without the Shetland Islands. |
 | `regions/us_canada_mainland.geojson` | Continental US and Canadian mainland south of 60°N; excludes Alaska, Hawaii, Arctic islands. |
+| `regions/us_mainland.geojson` | Contiguous United States (CONUS); excludes Alaska and Hawaii. |
 | `regions/wapp.geojson` | West African Power Pool - 14 member countries. |
+| `regions/wecc.geojson` | Western Electricity Coordinating Council / Western Interconnection footprint across western North America. |
 
 For ad-hoc areas (a single state, a metro region, a custom polygon), supply your own GeoJSON via `--boundary-geojson`. All polygonal features in the file are dissolved into one boundary.
 
