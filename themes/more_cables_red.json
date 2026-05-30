@@ -1,0 +1,14 @@
+{
+  "name": "OET Style for more Cables!",
+  "description": "Clean open-energy styling with renewable greens, grid blues, and high-voltage amber.",
+  "bg": "#F7FAF8",
+  "text": "#10231F",
+  "subtext": "#5D6F68",
+  "boundary": "#D8E3DE",
+  "line_unknown": "#B8C7C1",
+  "line_low": "#7BC67E",
+  "line_mid": "#2C9AB7",
+  "line_high": "#F2B544",
+  "line_extra": "#E85D2A",
+  "fade": "#F7FAF8"
+}
