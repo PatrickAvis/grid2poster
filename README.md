@@ -66,6 +66,12 @@ List available themes. Create a new theme JSON file in the 'themes' directory to
 python create_grid_poster.py --list-themes
 ```
 
+Once a region's data has been loaded, re-rendering it with another theme is much faster: the boundaries and OSM power features are served from the cache instead of being downloaded again. This makes it cheap to experiment with different styles for the same country.
+```bash
+python create_grid_poster.py --country Brazil --theme neon_cyberpunk
+python create_grid_poster.py --country Brazil --theme paper_grid     # reuses the cached data
+```
+
 A theme JSON defines colors per voltage tier (`line_unknown`, `line_low`, `line_mid`, `line_high`, `line_extra`). It may optionally also set the line thickness (in points) per tier with `lw_unknown`, `lw_low`, `lw_mid`, `lw_high`, `lw_extra`, and `lw_minor`. Any width key you omit falls back to the built-in default for that tier.
 
 Cables (`--include-cables`, underground/submarine) inherit their voltage-tier color and a dampened width by default. A theme may override this with `cable_color` (a hex color used for all cables instead of the tier color) and `cable_lw_scale` (the multiplier applied to the tier line width; defaults to `0.5`). Omit them to keep the current behavior.
@@ -136,7 +142,7 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 
 ## Output
 
-Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads.
+Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads. Because of this cache, the first render of a region is the slow one — every subsequent run for that region (for example with a different theme) skips the downloads and is much faster.
 
 
 ## Gallery
