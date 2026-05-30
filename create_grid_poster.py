@@ -771,6 +771,11 @@ DEFAULT_VOLTAGE_TIERS: tuple[float, float, float, float] = (60.0, 150.0, 300.0, 
 # Rendered via matplotlib mathtext, where "\," is a thin space.
 THIN_SPACE = r"$\,$"
 
+# Z-order for the title, subtitle, metadata and credit overlays. Sits well above
+# the data lines (zorder ~2–8) and the gradient fades (10) so the text always
+# renders on top of the grid.
+TEXT_ZORDER = 100
+
 
 def compute_line_styles(
     lines: gpd.GeoDataFrame,
@@ -1050,7 +1055,12 @@ def render_poster(
         leave=True,
     )
     for (color, linewidth, alpha), group in group_iter:
-        zorder = 2 + group["sort_voltage"].max() / 1000.0
+        # Higher-voltage groups draw on top of lower ones so the backbone reads
+        # clearly. Cap the contribution well below the gradient-fade band (10)
+        # and the title/overlay band (TEXT_ZORDER) so a mis-tagged voltage value
+        # (e.g. an OSM tag in volts that slips through as a huge kV) can never
+        # push a line group on top of the title text.
+        zorder = 2 + min(group["sort_voltage"].max() / 1000.0, 6.0)
         plot_kwargs: dict[str, Any] = dict(
             ax=ax,
             color=color,
@@ -1122,7 +1132,7 @@ def render_poster(
         va="center",
         color=theme.text,
         fontproperties=font_main,
-        zorder=20,
+        zorder=TEXT_ZORDER,
     )
     ax.text(
         0.5,
@@ -1133,7 +1143,7 @@ def render_poster(
         va="center",
         color=theme.subtext,
         fontproperties=font_sub,
-        zorder=20,
+        zorder=TEXT_ZORDER,
     )
     if include_metadata and breakdown_rows:
         def _seg(text: str, color: str, alpha: float) -> TextArea:
@@ -1155,7 +1165,7 @@ def render_poster(
             pad=0,
             borderpad=0,
         )
-        anchored.set_zorder(20)
+        anchored.set_zorder(TEXT_ZORDER)
         ax.add_artist(anchored)
     elif include_metadata:
         ax.text(
@@ -1168,7 +1178,7 @@ def render_poster(
             color=theme.subtext,
             alpha=0.85,
             fontproperties=font_meta,
-            zorder=20,
+            zorder=TEXT_ZORDER,
         )
 
     ax.plot(
@@ -1178,7 +1188,7 @@ def render_poster(
         color=theme.text,
         linewidth=0.8 * scale,
         alpha=0.85,
-        zorder=20,
+        zorder=TEXT_ZORDER,
     )
     ax.text(
         0.985,
@@ -1190,7 +1200,7 @@ def render_poster(
         color=theme.subtext,
         alpha=0.65,
         fontproperties=font_meta,
-        zorder=20,
+        zorder=TEXT_ZORDER,
     )
 
     for output_file, fmt in outputs:
