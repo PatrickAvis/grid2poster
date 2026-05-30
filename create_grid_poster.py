@@ -991,6 +991,80 @@ def output_path(country: str, theme_id: str, fmt: str) -> Path:
     return POSTERS_DIR / f"{slugify(country)}_grid_{theme_id}_{timestamp}.{fmt}"
 
 
+def load_logo_image(path: Path, render_px: int = 1024) -> np.ndarray:
+    """Load a PNG or SVG logo as an RGBA float array in [0, 1].
+
+    SVGs are rasterized with cairosvg at ``render_px`` width (aspect preserved)
+    so they stay crisp when downscaled; PNG/JPEG files are read as-is.
+    """
+    suffix = path.suffix.lower()
+    if suffix == ".svg":
+        try:
+            import cairosvg
+        except ImportError as exc:  # pragma: no cover - optional dependency
+            raise SystemExit(
+                "Rendering an SVG logo requires the 'cairosvg' package. "
+                "Install it with 'pip install cairosvg', or pass a PNG logo instead."
+            ) from exc
+        import io
+
+        png_bytes = cairosvg.svg2png(url=str(path), output_width=render_px)
+        arr = plt.imread(io.BytesIO(png_bytes), format="png")
+    elif suffix in {".png", ".jpg", ".jpeg"}:
+        arr = plt.imread(path)
+    else:
+        raise SystemExit(f"Unsupported logo format '{suffix}'. Use an SVG or PNG file.")
+
+    arr = np.asarray(arr, dtype=float)
+    if arr.max() > 1.0:  # 8-bit images come back in [0, 255]
+        arr = arr / 255.0
+    # Normalize everything to RGBA so an alpha multiplier applies uniformly.
+    if arr.ndim == 2:  # grayscale
+        arr = np.dstack([arr, arr, arr, np.ones_like(arr)])
+    elif arr.shape[2] == 3:  # RGB without alpha
+        arr = np.dstack([arr, np.ones(arr.shape[:2])])
+    return arr
+
+
+def add_logo(
+    fig: plt.Figure,
+    image: np.ndarray,
+    width: float,
+    height: float,
+    size_mm: float,
+    margin_mm: float,
+    alpha: float = 1.0,
+) -> None:
+    """Place ``image`` in the lower-left corner of the figure.
+
+    ``width``/``height`` are the figure size in inches. ``size_mm`` is the logo
+    width in millimeters (its height scales to preserve the aspect ratio) and
+    ``margin_mm`` is the gap to the bottom and left edges. A dedicated inset axes
+    in figure-fraction coordinates keeps the physical size exact across paper
+    sizes and output formats.
+    """
+    img_h, img_w = image.shape[:2]
+    size_in = size_mm / MM_PER_INCH
+    margin_in = margin_mm / MM_PER_INCH
+
+    w_frac = size_in / width
+    h_frac = (size_in * img_h / img_w) / height
+    left_frac = margin_in / width
+    bottom_frac = margin_in / height
+
+    inset = fig.add_axes((left_frac, bottom_frac, w_frac, h_frac))
+    inset.axis("off")
+    inset.set_zorder(TEXT_ZORDER + 1)
+
+    rgba = image
+    if alpha < 1.0:
+        rgba = image.copy()
+        rgba[..., 3] = rgba[..., 3] * alpha
+    # The axes box already matches the image aspect ratio, so aspect="auto"
+    # fills it without distortion.
+    inset.imshow(rgba, aspect="auto", interpolation="antialiased", zorder=TEXT_ZORDER + 1)
+
+
 def render_poster(
     country: str,
     display_country: str,
@@ -1011,6 +1085,10 @@ def render_poster(
     large_scale: bool = False,
     hide_borders: bool = False,
     voltage_tiers: tuple[float, float, float, float] = DEFAULT_VOLTAGE_TIERS,
+    logo_image: np.ndarray | None = None,
+    logo_size_mm: float = 20.0,
+    logo_margin_mm: float = 12.0,
+    logo_alpha: float = 1.0,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -1203,6 +1281,9 @@ def render_poster(
         zorder=TEXT_ZORDER,
     )
 
+    if logo_image is not None:
+        add_logo(fig, logo_image, width, height, logo_size_mm, logo_margin_mm, logo_alpha)
+
     for output_file, fmt in outputs:
         save_kwargs: dict[str, Any] = {
             "format": fmt,
@@ -1348,6 +1429,30 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument("--hide-metadata", action="store_true", help="Do not print segment counts on poster")
     parser.add_argument("--hide-borders", action="store_true", help="Do not draw the region boundary outline")
     parser.add_argument(
+        "--logo",
+        type=Path,
+        default=None,
+        help="Path to an SVG or PNG logo to place in the lower-left corner.",
+    )
+    parser.add_argument(
+        "--logo-size",
+        type=float,
+        default=20.0,
+        help="Logo width in millimeters (height scales to preserve the aspect ratio).",
+    )
+    parser.add_argument(
+        "--logo-margin",
+        type=float,
+        default=12.0,
+        help="Margin in millimeters between the logo and the lower-left poster edges.",
+    )
+    parser.add_argument(
+        "--logo-alpha",
+        type=float,
+        default=1.0,
+        help="Logo opacity from 0 (transparent) to 1 (fully opaque).",
+    )
+    parser.add_argument(
         "--export-geojson",
         nargs="?",
         const="",
@@ -1428,6 +1533,13 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
 
     theme = load_theme(args.theme)
     display_country = args.display_country or args.country
+
+    logo_image = None
+    if args.logo is not None:
+        if not args.logo.exists():
+            print(f"Error: logo file not found: {args.logo}", file=sys.stderr)
+            return 2
+        logo_image = load_logo_image(args.logo)
 
     if args.paper_size:
         width_mm, height_mm = PAPER_SIZES[args.paper_size]
@@ -1523,6 +1635,10 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         large_scale=args.large_scale,
         hide_borders=args.hide_borders,
         voltage_tiers=args.voltage_tiers,
+        logo_image=logo_image,
+        logo_size_mm=args.logo_size,
+        logo_margin_mm=args.logo_margin,
+        logo_alpha=args.logo_alpha,
     )
     return 0
 

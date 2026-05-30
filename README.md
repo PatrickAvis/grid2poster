@@ -118,6 +118,10 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--crs` | `EPSG:3857` | Projection used for rendering. EPSG:3857 (Pseudo-Mercator) works well for country posters. |
 | `--hide-metadata` | off | Do not print segment counts on the poster. |
 | `--hide-borders` | off | Do not draw the region boundary outline. |
+| `--logo` | - | Path to an SVG or PNG logo to place in the lower-left corner. SVGs are rasterized with [`cairosvg`](https://pypi.org/project/CairoSVG/) (install it for SVG support); PNGs are used as-is. |
+| `--logo-size` | `20.0` | Logo width in millimeters. Its height scales to preserve the aspect ratio. |
+| `--logo-margin` | `12.0` | Margin in millimeters between the logo and the lower-left poster edges. |
+| `--logo-alpha` | `1.0` | Logo opacity, from `0` (transparent) to `1` (fully opaque). |
 | `--single-query` | off | Fetch all power features in a single Overpass query instead of tiling. Faster for small/medium regions but may time out on large countries or continents. |
 | `--tile-delay` | `0` | Seconds to wait between Overpass tile API requests. Useful to avoid rate-limiting on busy public endpoints. |
 | `--export-geojson` | off | Also save all transmission lines as a single GeoJSON in WGS84 (EPSG:4326). Pass a path to override the default location in `posters/`. |
