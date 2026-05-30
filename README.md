@@ -11,7 +11,7 @@
   <img src="./posters/africa_grid_paper_grid_20260512_144322.png" alt="Africa transmission grid - paper_grid theme" width="380"/>
 </p>
 
-<p align="center"> Grid2Poster supports countries, states, provinces and continents, as well as predefined regions. Browse more stunnding poster in the <a href="https://open-energy-transition.github.io/grid2poster/">grid2poster gallery</p>.
+<p align="center"> Grid2Poster supports countries, states, provinces and continents, as well as predefined regions. Browse more stunnding poster in the <a href="https://open-energy-transition.github.io/grid2poster/">grid2poster gallery</a>.
 
 ## Data
 
@@ -26,6 +26,12 @@ Feature completeness depends on OpenStreetMap coverage in the selected country o
 ### Contributing to the data
 
 Coverage and quality in your country can be improved by mapping transmission infrastructure directly in OpenStreetMap. [MapYourGrid](https://mapyourgrid.org) is a community initiative that coordinates this work. It provides tutorials, country-level completeness/quality statistics and mapping tools for tracing power lines, generators and substations from imagery. With [Open Infrastructure Map](https://openinframap.org/) you can browse all the electrical grid data in OpenStreetMap.
+
+### Get inspired by the Gallery
+
+Preprinted posters in various styles and A3 are available for most regions of the world in our <a href="https://open-energy-transition.github.io/grid2poster/">grid2poster gallery</a>:
+
+[![Gallery](gallery_readme_banner.png)](https://open-energy-transition.github.io/grid2poster/)
 
 ## Installation
 
