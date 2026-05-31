@@ -133,7 +133,6 @@ What each flag contributes:
 | `--padding` | `0.10` | Fractional padding around the boundary bounds. Lower values zoom in (`0` = tight fit, `-0.05` = crop slightly into the bounds); higher values pull the view out. |
 | `--shift-x` | `0.0` | Shift the grid data horizontally on the poster, as a fraction of the data extent. Positive values shift right, negative shift left (e.g. `0.1` = shift 10% right). |
 | `--shift-y` | `0.0` | Shift the grid data vertically on the poster, as a fraction of the data extent. Positive values shift up, negative shift down (e.g. `0.1` = shift 10% up). |
-| `--large-scale` | off | Tune styling for continent/global posters: scale linewidths so the heaviest line stays roughly 8 km wide on the ground, halo each line against the background so dense crossings remain legible, and drop `power=minor_line` / strongly fade unknown-voltage clutter. |
 | `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
 | `--list-themes` | - | List available themes and exit. |
 | `--voltage-tiers` | `60,150,300,500` | Lower kV bounds for the four voltage tiers (low, mid, high, extra), comma-separated. Controls how lines are colored/weighted and the legend labels - tune to the grid being mapped (e.g. `60,220,400,765`). |
