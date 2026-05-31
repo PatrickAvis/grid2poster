@@ -97,6 +97,30 @@ python create_grid_poster.py --country Germany --overpass-endpoint https://overp
 ```
 Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 
+### A complex example
+
+Most options can be combined in a single run. The command below renders the continental European grid in the `monochrome_density` theme, pulling in distribution (`--include-minor-lines`) and underground/submarine (`--include-cables`) infrastructure, and tuning the framing and download behaviour:
+
+```bash
+python3 create_grid_poster.py --country "Europe" --boundary-geojson ./regions/europe.geojson \
+  --tile-size-km 800 --include-cables --include-minor-lines --theme monochrome_density \
+  --tile-delay 30 --landscape --shift-y 0.18 --padding -0.35 --no-cache --cable-sea-buffer-km 500
+```
+
+What each flag contributes:
+
+- `--boundary-geojson ./regions/europe.geojson` - use the predefined 37-unit Europe boundary instead of geocoding.
+- `--tile-size-km 800` with `--tile-delay 30` - fewer, larger Overpass tiles spaced 30 s apart to stay under per-query limits without tripping rate limits.
+- `--include-minor-lines` / `--include-cables` - add `power=minor_line` and `power=cable` features on top of the transmission lines.
+- `--cable-sea-buffer-km 500` - inflate the boundary 500 km over water so long submarine cables survive coastline clipping.
+- `--theme monochrome_density` / `--landscape` - black-on-cream density styling in horizontal orientation.
+- `--shift-y 0.18` and `--padding -0.35` - push the grid up by 18 % and crop tightly into the bounds for a full-bleed composition.
+- `--no-cache` - ignore any cached data on this run and fetch fresh (results are still written back to the cache).
+
+<p align="center">
+  <img src="./posters/europe_grid_monochrome_density_20260531_020937_compressed.png" alt="Europe transmission grid - monochrome_density theme" width="760"/>
+</p>
+
 
 ## Options
 
@@ -112,7 +136,7 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 | `--large-scale` | off | Tune styling for continent/global posters: scale linewidths so the heaviest line stays roughly 8 km wide on the ground, halo each line against the background so dense crossings remain legible, and drop `power=minor_line` / strongly fade unknown-voltage clutter. |
 | `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
 | `--list-themes` | - | List available themes and exit. |
-| `--voltage-tiers` | `60,150,300,500` | Lower kV bounds for the four voltage tiers (low, mid, high, extra), comma-separated. Controls how lines are colored/weighted and the legend labels — tune to the grid being mapped (e.g. `60,220,400,765`). |
+| `--voltage-tiers` | `60,150,300,500` | Lower kV bounds for the four voltage tiers (low, mid, high, extra), comma-separated. Controls how lines are colored/weighted and the legend labels - tune to the grid being mapped (e.g. `60,220,400,765`). |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
 | `--include-cables` / `--no-include-cables` | off | Fetch `power=cable` features (underground/submarine). Off by default; pass `--include-cables` to enable. |
 | `--cable-sea-buffer-km` | `200.0` | When `--include-cables` is on, inflate the boundary by this many kilometers over water so submarine cables between islands and to neighboring countries are queried from Overpass and survive coastline clipping. Set to `0` to disable. |
@@ -142,7 +166,7 @@ Other public mirrors include `https://overpass.private.coffee/api/interpreter`.
 
 ## Output
 
-Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads. Because of this cache, the first render of a region is the slow one — every subsequent run for that region (for example with a different theme) skips the downloads and is much faster.
+Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads. Because of this cache, the first render of a region is the slow one - every subsequent run for that region (for example with a different theme) skips the downloads and is much faster.
 
 
 ## Gallery
@@ -175,10 +199,10 @@ python create_grid_poster.py --country "Europe" --boundary-geojson ./regions/eur
 | `regions/britain_and_ireland.geojson` | Great Britain (excl. Shetland) and the island of Ireland. |
 | `regions/canada_southern_provinces.geojson` | Canada south of 60°N; excludes Yukon, NWT, Nunavut. |
 | `regions/central_asia.geojson` | Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan. |
-| `regions/continental_europe.geojson` | Continental Europe Synchronous Area (ENTSO-E Regional Group) approximation — ~26 countries from Albania to Ukraine. Approximate country-boundary geometry, not a TSO/control-area dataset. |
+| `regions/continental_europe.geojson` | Continental Europe Synchronous Area (ENTSO-E Regional Group) approximation - ~26 countries from Albania to Ukraine. Approximate country-boundary geometry, not a TSO/control-area dataset. |
 | `regions/east_africa.geojson` | 11 East African countries from Eritrea/Djibouti south to Tanzania. |
 | `regions/eastern_interconnection.geojson` | Eastern Interconnection (approximate mask): central Canada to the Atlantic coast excluding Quebec, south to Florida, west to the Rockies. Hand-generalized, not an exact grid boundary. |
-| `regions/europe.geojson` | 35 European countries including UK, Ireland, Nordics, Turkey, and Ukraine; excludes Russia and Belarus. |
+| `regions/europe.geojson` | 37 European units including UK, Ireland, Nordics, Turkey, Ukraine, Belarus, and the Crimea peninsula; excludes Russia. Crimea geometry comes from the Natural Earth Russia feature but is included here per Ukraine. |
 | `regions/great_lakes.geojson` | Great Lakes region straddling the US Midwest and Ontario. |
 | `regions/iberia.geojson` | Spain and Portugal. |
 | `regions/ireland_island.geojson` | Island of Ireland (Republic of Ireland + Northern Ireland). |
