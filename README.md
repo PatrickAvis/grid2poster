@@ -147,7 +147,7 @@ What each flag contributes:
 | `--landscape` | off | Render in landscape (horizontal) orientation. Swaps width and height if width < height. |
 | `--dpi` | `300` | Raster output DPI (applies to PNG output). |
 | `--title-size` | auto | Title font size in points. Auto-scaled from poster size by default; set to override. |
-| `--tile-size-km` | `200` | Overpass query tile size in kilometers. Use smaller values for very large countries or busy servers. |
+| `--tile-size-km` | `400` | Overpass query tile size in kilometers. Use smaller values for very large countries or busy servers. |
 | `--overpass-endpoint` | OSMnx default (`overpass-api.de`) | Override the Overpass API URL. Use a mirror (e.g. `https://overpass.kumi.systems/api/interpreter`) when the default is rate-limiting or unreachable. |
 | `--format` | `png svg` | Output format(s): any combination of `png`, `svg`, `pdf`. Multiple values are written in one run. |
 | `--output` | auto-generated in `posters/` | Output file path. When set, only a single file is written and its format is inferred from the extension. |
@@ -159,7 +159,7 @@ What each flag contributes:
 | `--logo-margin` | `12.0` | Margin in millimeters between the logo and the lower-left poster edges. |
 | `--logo-alpha` | `1.0` | Logo opacity, from `0` (transparent) to `1` (fully opaque). |
 | `--single-query` | off | Fetch all power features in a single Overpass query instead of tiling. Faster for small/medium regions but may time out on large countries or continents. |
-| `--tile-delay` | `0` | Seconds to wait between Overpass tile API requests. Useful to avoid rate-limiting on busy public endpoints. |
+| `--tile-delay` | `30` | Seconds to wait between Overpass tile API requests. Useful to avoid rate-limiting on busy public endpoints. |
 | `--export-geojson` | off | Also save all transmission lines as a single GeoJSON in WGS84 (EPSG:4326). Pass a path to override the default location in `posters/`. |
 | `--no-cache` | off | Ignore cached boundaries and OSM power features on this run. Fresh results are still written to the cache for future runs. |
 | `--verbose-osmnx` | off | Print OSMnx request logs. |

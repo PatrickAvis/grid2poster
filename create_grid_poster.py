@@ -298,6 +298,9 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
         # Clip the global aggregate to a tight bounding box:
         #   • north - Alaska's northernmost point (~71.4°N), to drop the empty
         #     Canadian Arctic, Greenland's interior, and Svalbard.
+        #   • west - the Alaska mainland's western edge (~168.1°W), to drop the
+        #     Aleutian chain and the empty Bering Sea that otherwise stretch out
+        #     to the antimeridian.
         #   • east - New Zealand's easternmost main-island longitude (~178.5°E),
         #     to drop Russia's far-eastern Chukotka sliver that otherwise pushes
         #     the viewport out to the antimeridian.
@@ -307,9 +310,15 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
             raise RuntimeError(
                 "Natural Earth dataset is missing USA or NZL - cannot build global clip"
             )
-        north_lat = float(us.total_bounds[3])
+        # The Alaska mainland is the USA polygon reaching the northernmost
+        # latitude; it anchors both the north and west bounds of the clip.
+        us_geom = unary_union(us.geometry)
+        us_polys = list(us_geom.geoms) if isinstance(us_geom, MultiPolygon) else [us_geom]
+        alaska = max(us_polys, key=lambda poly: poly.bounds[3])
+        west_lon = float(alaska.bounds[0])
+        north_lat = float(alaska.bounds[3])
         east_lon = float(nz.total_bounds[2])
-        merged = merged.intersection(box(-180, -90, east_lon, north_lat))
+        merged = merged.intersection(box(west_lon, -90, east_lon, north_lat))
 
     return gpd.GeoDataFrame({"name": [continent]}, geometry=[merged], crs=countries.crs)
 
@@ -1423,7 +1432,7 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument(
         "--tile-size-km",
         type=float,
-        default=200,
+        default=400,
         help="Overpass query tile size in kilometers. Use smaller values for very large countries or busy servers.",
     )
     parser.add_argument(
@@ -1516,8 +1525,8 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
     parser.add_argument(
         "--tile-delay",
         type=float,
-        default=0,
-        help="Seconds to wait between Overpass tile API requests (default: 0). "
+        default=30,
+        help="Seconds to wait between Overpass tile API requests (default: 30). "
              "Useful to avoid rate-limiting on busy public endpoints.",
     )
     parser.add_argument("--verbose-osmnx", action="store_true", help="Print OSMnx request logs")
