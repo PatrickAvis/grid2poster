@@ -91,6 +91,21 @@ python create_grid_poster.py --country Africa --tile-size-km 500
 
 Continent-scale runs hit the Overpass API hundreds of times and can take several hours. A larger `--tile-size-km` cuts the number of queries; pick a value that still stays under the Overpass per-query size limit.
 
+### Global posters and atlas themes
+
+`--country Global` renders the whole inhabited world as the union of the continents, clipped to a tight bounding box so it fills the page. It is the longest job in the tool (many hundreds of Overpass queries, several hours), so use a large `--tile-size-km`, a generous `--tile-delay`, and high `--voltage-tiers` so HV/EHV lines stand out at world scale. The `themes/` directory ships three palettes tuned for this scale: `global_grid_atlas` (dark atlas), `global_grid_atlas_neon` (neon), and `global_paper_grid_atlas` (warm paper).
+
+```bash
+python create_grid_poster.py --country Global \
+  --display-country "The Global Electrical Transmission Grid" --subtitle "Electrify Everything" \
+  --theme global_grid_atlas_neon --landscape --paper-size a0 \
+  --tile-size-km 1000 --tile-delay 30 --voltage-tiers 110,220,400,765 --padding -0.1
+```
+
+<p align="center">
+  <img src="./posters/global_grid_global_grid_atlas_neon_20260531_234025.png" alt="Global transmission grid - global_grid_atlas_neon theme" width="760"/>
+</p>
+
 If the default Overpass endpoint (`overpass-api.de`) is rate-limiting or refusing connections, switch to a mirror with `--overpass-endpoint`:
 ```bash
 python create_grid_poster.py --country Germany --overpass-endpoint https://overpass.kumi.systems/api/interpreter
