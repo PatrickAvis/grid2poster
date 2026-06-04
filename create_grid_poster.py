@@ -14,6 +14,7 @@ and renders a print-ready poster.
 from __future__ import annotations
 
 import argparse
+import colorsys
 import hashlib
 import json
 import pickle
@@ -179,6 +180,20 @@ class Theme:
     # hardcoded dampening, so themes that omit these keys are unchanged.
     cable_color: str | None = None
     cable_lw_scale: float = 0.5
+    # Optional power-plant marker colors, one per plant:source bucket. When a
+    # theme omits a key, derive_plant_colors() synthesizes a palette-matched
+    # color, so themes work without any plant keys. plant_edge overrides the
+    # marker outline color (defaults to the background for a separating halo).
+    plant_solar: str | None = None
+    plant_wind: str | None = None
+    plant_hydro: str | None = None
+    plant_nuclear: str | None = None
+    plant_coal: str | None = None
+    plant_gas: str | None = None
+    plant_oil: str | None = None
+    plant_biomass: str | None = None
+    plant_other: str | None = None
+    plant_edge: str | None = None
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "Theme":
@@ -207,6 +222,22 @@ class Theme:
                 kwargs[key] = float(raw[key])
         if "cable_color" in raw:
             kwargs["cable_color"] = raw["cable_color"]
+        # Optional per-bucket plant marker colors; omitted keys fall back to the
+        # derived palette in derive_plant_colors().
+        for key in (
+            "plant_solar",
+            "plant_wind",
+            "plant_hydro",
+            "plant_nuclear",
+            "plant_coal",
+            "plant_gas",
+            "plant_oil",
+            "plant_biomass",
+            "plant_other",
+            "plant_edge",
+        ):
+            if key in raw:
+                kwargs[key] = raw[key]
         return cls(**kwargs)
 
 
@@ -730,6 +761,160 @@ def fetch_power_features(
     return combined
 
 
+def fetch_power_plants(
+    country: str,
+    boundary: gpd.GeoDataFrame,
+    tile_size_km: float = 200,
+    render_crs: str = "EPSG:8857",
+    use_cache: bool = True,
+    tile_delay: float = 0,
+) -> gpd.GeoDataFrame:
+    """Fetch power=plant features inside the boundary, tiled like the lines.
+
+    Plants are nodes or areas, so point and polygon geometries are kept. An
+    empty result is returned (not raised) when a region has no mapped plants —
+    the overlay simply stays empty.
+    """
+    # Distinct cache namespaces ("power_plants_v1"/"power_plant_tile_v1") keep
+    # plant tiles from ever colliding with the line tile cache.
+    key = cache_key("power_plants_v1", country, tile_size_km, render_crs)
+    if use_cache:
+        cached = cache_get(key)
+        if cached is not None:
+            print(f"Using cached power plants for {country}")
+            return cached
+
+    tiles = make_query_tiles(boundary, tile_size_km=tile_size_km, render_crs=render_crs)
+    print(f"Downloading OSM power plants: power=plant across {len(tiles):,} tiles")
+
+    frames: list[gpd.GeoDataFrame] = []
+    empty_tile = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+
+    def tile_cache_key(tile_geom: Any) -> str:
+        return cache_key("power_plant_tile_v1", country, tile_geom.wkb_hex)
+
+    rate_limit_delay = tile_delay
+
+    def process_tile(tile_number: int, tile_geom, total: int) -> bool:
+        """Fetch a tile's plants and append to ``frames``. Returns True on success."""
+        nonlocal rate_limit_delay
+        if rate_limit_delay > 0:
+            label = "Tile delay" if rate_limit_delay <= tile_delay else "Rate-limit backoff"
+            print(f"  {label}: waiting {rate_limit_delay}s before next request")
+            time.sleep(rate_limit_delay)
+        try:
+            features = ox.features_from_polygon(tile_geom, tags={"power": "plant"})
+        except Exception as exc:
+            if "No matching features" in str(exc):
+                cache_set(tile_cache_key(tile_geom), empty_tile)
+                rate_limit_delay = max(tile_delay, rate_limit_delay - 5)
+                return True
+            is_rate_limit = "111" in str(exc) or "rate" in str(exc).lower() or "too many" in str(exc).lower()
+            if is_rate_limit:
+                rate_limit_delay = min(120, rate_limit_delay + 10)
+            print(f"  Warning: tile {tile_number:,}/{total:,} failed: {exc}")
+            return False
+        rate_limit_delay = max(tile_delay, rate_limit_delay - 5)
+
+        if features.empty:
+            cache_set(tile_cache_key(tile_geom), empty_tile)
+            return True
+
+        features = features.reset_index()
+        plant_features = features[features.geometry.type.isin(["Point", "Polygon", "MultiPolygon"])]
+        if plant_features.empty:
+            cache_set(tile_cache_key(tile_geom), empty_tile)
+            return True
+
+        keep_cols = [
+            col
+            for col in [
+                "element",
+                "element_type",
+                "osmid",
+                "id",
+                "power",
+                "plant:source",
+                "plant:output:electricity",
+                "name",
+                "operator",
+                "geometry",
+            ]
+            if col in plant_features.columns
+        ]
+        tile_gdf = gpd.GeoDataFrame(plant_features[keep_cols], geometry="geometry", crs="EPSG:4326")
+        cache_set(tile_cache_key(tile_geom), tile_gdf)
+        frames.append(tile_gdf)
+        return True
+
+    total_tiles = len(tiles)
+    uncached: list[tuple[int, Any]] = []
+    cached_hits = 0
+    for tile_number, tile_geom in enumerate(tiles.geometry, start=1):
+        if use_cache:
+            cached_tile = cache_get(tile_cache_key(tile_geom))
+            if cached_tile is not None:
+                if not cached_tile.empty:
+                    frames.append(cached_tile)
+                cached_hits += 1
+                continue
+        uncached.append((tile_number, tile_geom))
+
+    if cached_hits:
+        print(f"  Reused {cached_hits:,}/{total_tiles:,} tile(s) from per-tile cache")
+
+    pending: list[tuple[int, Any]] = []
+    for tile_number, tile_geom in uncached:
+        print(f"  Tile {tile_number:,}/{total_tiles:,}")
+        if not process_tile(tile_number, tile_geom, total_tiles):
+            pending.append((tile_number, tile_geom))
+
+    attempt = 1
+    while pending:
+        delay = min(300, max(rate_limit_delay, 10 * attempt))
+        print(
+            f"Retrying {len(pending):,} failed tile(s) in {delay}s "
+            f"(attempt {attempt + 1})..."
+        )
+        time.sleep(delay)
+        next_pending: list[tuple[int, Any]] = []
+        for tile_number, tile_geom in pending:
+            print(f"  Retry tile {tile_number:,}/{total_tiles:,}")
+            if not process_tile(tile_number, tile_geom, total_tiles):
+                next_pending.append((tile_number, tile_geom))
+
+        if next_pending and len(next_pending) == len(pending):
+            print(
+                "  No tiles succeeded this round — Overpass may be returning "
+                "the same error for these tiles; will keep retrying."
+            )
+
+        pending = next_pending
+        attempt += 1
+
+    if not frames:
+        # Unlike lines, a region without mapped plants is a valid poster.
+        combined = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+        cache_set(key, combined)
+        return combined
+
+    combined = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), geometry="geometry", crs="EPSG:4326")
+    id_cols = [col for col in ["element", "element_type", "osmid", "id"] if col in combined.columns]
+    if id_cols:
+        combined = combined.drop_duplicates(subset=id_cols)
+    else:
+        combined = combined.drop_duplicates(subset=["geometry"])
+
+    keep_cols = [
+        col
+        for col in ["power", "plant:source", "plant:output:electricity", "name", "operator", "geometry"]
+        if col in combined.columns
+    ]
+    combined = combined[keep_cols]
+    cache_set(key, combined)
+    return combined
+
+
 def parse_voltage_to_kv(value: Any) -> float | None:
     """Parse OSM voltage tags into kV, using pragmatic cleanup for poster styling."""
     if value is None:
@@ -769,6 +954,172 @@ def parse_voltage_to_kv(value: Any) -> float | None:
         values.append(number)
 
     return max(values) if values else None
+
+
+def parse_capacity_to_mw(value: Any) -> float:
+    """Parse OSM plant:output:electricity tags into MW, NaN when unparseable.
+
+    Multiple values (lists or ``"500 MW;200 MW"``) are summed because a plant
+    tagged with several unit outputs produces their total — unlike voltage,
+    where the max is the line's rating.
+    """
+    if value is None:
+        return float("nan")
+    if isinstance(value, float) and np.isnan(value):
+        return float("nan")
+    if isinstance(value, (list, tuple, set)):
+        parsed = [parse_capacity_to_mw(item) for item in value]
+        parsed = [item for item in parsed if not np.isnan(item)]
+        return float(sum(parsed)) if parsed else float("nan")
+
+    # ";" is OSM's multi-value separator; "," is kept for European decimals
+    # ("1,5 MW") and converted to "." per token below.
+    text = str(value).lower().replace(" ", "")
+    tokens = text.split(";")
+    values: list[float] = []
+    for token in tokens:
+        if not token:
+            continue
+        multiplier = 1.0
+        if token.endswith("gw"):
+            multiplier = 1000.0
+            token = token[:-2]
+        elif token.endswith("mw"):
+            token = token[:-2]
+        elif token.endswith("kw"):
+            multiplier = 0.001
+            token = token[:-2]
+        elif token.endswith("w"):
+            multiplier = 1e-6
+            token = token[:-1]
+
+        token = token.replace(",", ".")
+        match = re.search(r"\d+(?:\.\d+)?", token)
+        if not match:
+            # Tags like "yes" carry no numeric output; skip them.
+            continue
+        values.append(float(match.group(0)) * multiplier)
+
+    return float(sum(values)) if values else float("nan")
+
+
+# Plant:source values are bucketed into these categories for marker coloring;
+# the order also fixes the plant legend row ordering.
+PLANT_SOURCE_BUCKETS: tuple[str, ...] = (
+    "solar",
+    "wind",
+    "hydro",
+    "nuclear",
+    "coal",
+    "gas",
+    "oil",
+    "biomass",
+    "other",
+)
+
+# Substring → bucket, checked in order so e.g. "biogas" matches biomass before
+# the bare "gas" keyword. Rare sources fold into the nearest bucket (tidal →
+# hydro, waste → biomass); the rest (geothermal, battery, ...) become "other".
+_PLANT_SOURCE_KEYWORDS: tuple[tuple[str, str], ...] = (
+    ("photovoltaic", "solar"),
+    ("solar", "solar"),
+    ("pv", "solar"),
+    ("wind", "wind"),
+    ("hydro", "hydro"),
+    ("tidal", "hydro"),
+    ("wave", "hydro"),
+    ("water", "hydro"),
+    ("nuclear", "nuclear"),
+    ("lignite", "coal"),
+    ("coal", "coal"),
+    ("biomass", "biomass"),
+    ("biogas", "biomass"),
+    ("biofuel", "biomass"),
+    ("wood", "biomass"),
+    ("waste", "biomass"),
+    ("gas", "gas"),
+    ("diesel", "oil"),
+    ("petroleum", "oil"),
+    ("oil", "oil"),
+)
+
+
+def bucket_plant_source(source: Any) -> str:
+    """Map an OSM plant:source tag onto one of PLANT_SOURCE_BUCKETS."""
+    if source is None:
+        return "other"
+    if isinstance(source, float) and np.isnan(source):
+        return "other"
+    if isinstance(source, (list, tuple, set)):
+        for item in source:
+            bucket = bucket_plant_source(item)
+            if bucket != "other":
+                return bucket
+        return "other"
+
+    text = str(source).lower()
+    # Multi-source plants ("gas;oil") are colored by their first recognizable
+    # source — usually the dominant one by tagging convention.
+    for token in re.split(r"[;,/|]+", text):
+        token = token.strip()
+        if not token:
+            continue
+        for keyword, bucket in _PLANT_SOURCE_KEYWORDS:
+            if keyword in token:
+                return bucket
+    return "other"
+
+
+# Semantic hue anchors per bucket (hue degrees, saturation multiplier,
+# lightness multiplier). Hues stay fixed across themes so plant types remain
+# recognizable poster-to-poster; the multipliers keep coal dark and dull, solar
+# bright, and "other" near-neutral regardless of the theme's vividness.
+_PLANT_HUE_TABLE: dict[str, tuple[float, float, float]] = {
+    "solar": (48.0, 1.10, 1.12),
+    "wind": (190.0, 1.00, 1.05),
+    "hydro": (215.0, 1.00, 1.00),
+    "nuclear": (290.0, 0.95, 1.00),
+    "coal": (30.0, 0.25, 0.72),
+    "gas": (32.0, 1.05, 0.95),
+    "oil": (12.0, 0.95, 0.85),
+    "biomass": (130.0, 0.90, 0.95),
+    "other": (0.0, 0.08, 0.90),
+}
+
+
+def derive_plant_colors(theme: Theme) -> dict[str, str]:
+    """Per-bucket marker colors adapted to the theme's palette.
+
+    Hue anchors are fixed (see _PLANT_HUE_TABLE) so a nuclear plant is always
+    violet-ish; saturation and lightness are pulled toward the theme's line
+    colors and pushed against the background so markers stay readable on both
+    dark and light themes. Explicit ``plant_<bucket>`` theme keys win.
+    """
+    line_hls = [
+        colorsys.rgb_to_hls(*mcolors.to_rgb(color))
+        for color in (theme.line_unknown, theme.line_low, theme.line_mid, theme.line_high, theme.line_extra)
+    ]
+    mean_l = float(np.mean([hls[1] for hls in line_hls]))
+    mean_s = float(np.mean([hls[2] for hls in line_hls]))
+    bg_l = colorsys.rgb_to_hls(*mcolors.to_rgb(theme.bg))[1]
+
+    # Contrast against the background, but blend toward the theme's own line
+    # lightness so muted themes get muted markers rather than neon outliers.
+    target_l = 0.64 if bg_l < 0.5 else 0.42
+    base_l = 0.6 * target_l + 0.4 * mean_l
+    base_s = float(np.clip(0.5 * mean_s + 0.35, 0.3, 0.95))
+
+    colors: dict[str, str] = {}
+    for bucket in PLANT_SOURCE_BUCKETS:
+        override = getattr(theme, f"plant_{bucket}")
+        if override is not None:
+            colors[bucket] = override
+            continue
+        hue, s_mult, l_mult = _PLANT_HUE_TABLE[bucket]
+        s = float(np.clip(base_s * s_mult, 0.0, 1.0))
+        l = float(np.clip(base_l * l_mult, 0.08, 0.92))
+        colors[bucket] = mcolors.to_hex(colorsys.hls_to_rgb(hue / 360.0, l, s))
+    return colors
 
 
 # Lower kV bound of each voltage tier (low, mid, high, extra). A line is placed
@@ -838,6 +1189,39 @@ def compute_line_styles(
         alphas[is_cable] = alphas[is_cable] * 0.5
 
     return {"_color": colors, "_linewidth": linewidths, "_alpha": alphas}
+
+
+# Plant marker sizing (matplotlib scatter ``s``, pt²). Areas scale with sqrt of
+# capacity so perceived size tracks output; a ~2 GW plant hits the max size.
+PLANT_CAP_REF_MW = 2000.0
+PLANT_MARKER_MIN_PT2 = 12.0
+PLANT_MARKER_MAX_PT2 = 320.0
+PLANT_MARKER_FALLBACK_PT2 = 18.0
+
+
+def compute_plant_styles(
+    plants: gpd.GeoDataFrame,
+    theme: Theme,
+    *,
+    marker_scale: float = 1.0,
+    color_map: dict[str, str] | None = None,
+) -> dict[str, np.ndarray]:
+    """Vectorized per-plant (color, marker size) for the whole frame."""
+    if color_map is None:
+        color_map = derive_plant_colors(theme)
+
+    buckets = plants["source_bucket"].to_numpy()
+    colors = np.array([color_map[bucket] for bucket in buckets], dtype=object)
+
+    capacity = plants["capacity_mw"].to_numpy(dtype="float64")
+    frac = np.sqrt(np.clip(capacity, 0.0, PLANT_CAP_REF_MW) / PLANT_CAP_REF_MW)
+    sizes = PLANT_MARKER_MIN_PT2 + frac * (PLANT_MARKER_MAX_PT2 - PLANT_MARKER_MIN_PT2)
+    # Plants with unparseable capacity get a small fixed dot — present but
+    # never mistaken for a sized marker.
+    sizes = np.where(np.isnan(capacity), PLANT_MARKER_FALLBACK_PT2, sizes)
+    sizes = sizes * marker_scale
+
+    return {"_pcolor": colors, "_psize": sizes}
 
 
 def prepare_lines(
@@ -920,6 +1304,41 @@ def prepare_lines(
         bar.update()
 
     return result
+
+
+def prepare_plants(
+    plants: gpd.GeoDataFrame,
+    boundary: gpd.GeoDataFrame,
+    output_crs: str,
+    min_capacity_mw: float = 0.0,
+) -> gpd.GeoDataFrame:
+    """Project plants, reduce them to marker points, clip, and parse tags."""
+    if plants.empty:
+        return plants
+
+    plants_projected = plants.to_crs(output_crs).copy()
+    boundary_projected = boundary.to_crs(output_crs)
+
+    # Plants are mapped as nodes or areas; representative_point() collapses
+    # both to a marker location guaranteed inside the plant footprint.
+    plants_projected["geometry"] = plants_projected.geometry.representative_point()
+
+    mask_geom = unary_union(boundary_projected.geometry)
+    shapely.prepare(mask_geom)
+    inside = shapely.contains(mask_geom, plants_projected.geometry.values)
+    plants_projected = plants_projected[inside]
+
+    capacity_raw = plants_projected.get("plant:output:electricity", pd.Series(index=plants_projected.index, dtype=object))
+    plants_projected["capacity_mw"] = capacity_raw.apply(parse_capacity_to_mw)
+    source_raw = plants_projected.get("plant:source", pd.Series(index=plants_projected.index, dtype=object))
+    plants_projected["source_bucket"] = source_raw.apply(bucket_plant_source)
+
+    if min_capacity_mw > 0:
+        # An explicit threshold is a de-clutter request, so unknown-capacity
+        # plants are dropped too rather than slipping through as fallback dots.
+        plants_projected = plants_projected[plants_projected["capacity_mw"] >= min_capacity_mw]
+
+    return plants_projected
 
 
 def set_country_extent(
@@ -1110,6 +1529,8 @@ def render_poster(
     fade_top_alpha: float = 1.0,
     fade_bottom_height: float = 0.28,
     fade_bottom_alpha: float = 1.0,
+    plants: gpd.GeoDataFrame | None = None,
+    plant_marker_scale: float = 1.0,
 ) -> None:
     fig, ax = plt.subplots(figsize=(width, height), facecolor=theme.bg)
     ax.set_facecolor(theme.bg)
@@ -1146,6 +1567,29 @@ def render_poster(
             alpha=alpha,
             zorder=zorder,
         )
+
+    plant_color_map: dict[str, str] = {}
+    if plants is not None and not plants.empty:
+        plant_color_map = derive_plant_colors(theme)
+        plant_styles = compute_plant_styles(
+            plants, theme, marker_scale=plant_marker_scale, color_map=plant_color_map
+        )
+        styled_plants = plants.assign(**plant_styles)
+        edge_color = theme.plant_edge if theme.plant_edge is not None else theme.bg
+        # One scatter per source bucket, mirroring the grouped line plotting.
+        # zorder 9 sits above every line group (capped at 8) but under the
+        # gradient fades (10) so markers dim toward the poster edges.
+        for bucket, group in styled_plants.groupby("source_bucket", sort=False):
+            ax.scatter(
+                group.geometry.x,
+                group.geometry.y,
+                s=group["_psize"].to_numpy(dtype="float64"),
+                c=plant_color_map[bucket],
+                edgecolors=edge_color,
+                linewidths=0.4,
+                alpha=0.85,
+                zorder=9,
+            )
 
     ax.set_aspect("equal", adjustable="box")
     set_country_extent(ax, boundary, width, height, padding=padding, shift_x=shift_x, shift_y=shift_y)
@@ -1189,6 +1633,17 @@ def render_poster(
         if tier_km > 0:
             breakdown_rows.append((label, color, tier_km))
 
+    # Per-source plant capacity breakdown for the second metadata row. Unknown
+    # capacities count as 0 GW but the bucket still appears, since its plants
+    # are visible on the map.
+    plant_rows: list[tuple[str, str, float]] = []
+    if plants is not None and not plants.empty:
+        bucket_gw = plants.groupby("source_bucket")["capacity_mw"].sum(min_count=0) / 1000.0
+        for bucket in PLANT_SOURCE_BUCKETS:
+            if bucket in bucket_gw.index:
+                gw = float(np.nan_to_num(bucket_gw[bucket]))
+                plant_rows.append((bucket.upper(), plant_color_map[bucket], gw))
+
     ax.text(
         0.5,
         0.130,
@@ -1211,21 +1666,15 @@ def render_poster(
         fontproperties=font_sub,
         zorder=TEXT_ZORDER,
     )
-    if include_metadata and breakdown_rows:
-        def _seg(text: str, color: str, alpha: float) -> TextArea:
-            return TextArea(text, textprops=dict(fontproperties=font_meta, color=color, alpha=alpha))
+    def _seg(text: str, color: str, alpha: float) -> TextArea:
+        return TextArea(text, textprops=dict(fontproperties=font_meta, color=color, alpha=alpha))
 
-        children = [_seg(str(year), theme.subtext, 0.85)]
-        for label, color, tier_km in breakdown_rows:
-            children.append(_seg("·", theme.subtext, 0.85))
-            children.append(_seg(label, color, 0.95))
-            children.append(_seg(f"{tier_km:,.0f}{THIN_SPACE}km", theme.subtext, 0.85))
-
+    def _add_metadata_row(children: list[TextArea], y: float) -> None:
         packed = HPacker(children=children, align="center", sep=4.0 * scale, pad=0)
         anchored = AnchoredOffsetbox(
             loc="center",
             child=packed,
-            bbox_to_anchor=(0.5, 0.064),
+            bbox_to_anchor=(0.5, y),
             bbox_transform=ax.transAxes,
             frameon=False,
             pad=0,
@@ -1233,6 +1682,14 @@ def render_poster(
         )
         anchored.set_zorder(TEXT_ZORDER)
         ax.add_artist(anchored)
+
+    if include_metadata and breakdown_rows:
+        children = [_seg(str(year), theme.subtext, 0.85)]
+        for label, color, tier_km in breakdown_rows:
+            children.append(_seg("·", theme.subtext, 0.85))
+            children.append(_seg(label, color, 0.95))
+            children.append(_seg(f"{tier_km:,.0f}{THIN_SPACE}km", theme.subtext, 0.85))
+        _add_metadata_row(children, 0.064)
     elif include_metadata:
         ax.text(
             0.5,
@@ -1246,6 +1703,17 @@ def render_poster(
             fontproperties=font_meta,
             zorder=TEXT_ZORDER,
         )
+
+    if include_metadata and plant_rows:
+        # Second breakdown row: installed capacity per plant source, placed
+        # between the voltage row (0.064) and the credit line (0.018).
+        children = []
+        for index, (label, color, gw) in enumerate(plant_rows):
+            if index:
+                children.append(_seg("·", theme.subtext, 0.85))
+            children.append(_seg(label, color, 0.95))
+            children.append(_seg(f"{gw:,.1f}{THIN_SPACE}GW", theme.subtext, 0.85))
+        _add_metadata_row(children, 0.040)
 
     ax.plot(
         [0.39, 0.61],
@@ -1354,6 +1822,27 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         help="When --include-cables is on, inflate the boundary by this many kilometers "
              "over water so submarine cables between islands and to neighboring countries "
              "are queried from Overpass and survive coastline clipping. Set to 0 to disable.",
+    )
+    parser.add_argument(
+        "--show-plants",
+        action="store_true",
+        help="Fetch power=plant features and overlay them as markers sized by "
+             "capacity (plant:output:electricity) and colored by source (plant:source).",
+    )
+    parser.add_argument(
+        "--min-plant-capacity",
+        type=float,
+        default=0.0,
+        metavar="MW",
+        help="Only draw plants with at least this electrical output in MW. Plants "
+             "with unknown capacity are dropped when set. Default 0 (show all).",
+    )
+    parser.add_argument(
+        "--plant-marker-scale",
+        type=float,
+        default=1.0,
+        help="Multiplier for plant marker sizes (default 1.0). Increase for sparse "
+             "grids, decrease to reduce clutter.",
     )
     parser.add_argument(
         "--include-outlying",
@@ -1595,6 +2084,21 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         raw_lines, boundary_wgs84, args.crs, cable_sea_buffer_km=cable_buffer_km
     )
 
+    plants_projected = None
+    if args.show_plants:
+        raw_plants = fetch_power_plants(
+            country=args.country,
+            boundary=boundary_wgs84,
+            tile_size_km=args.tile_size_km,
+            render_crs=args.crs,
+            use_cache=not args.no_cache,
+            tile_delay=args.tile_delay,
+        )
+        plants_projected = prepare_plants(
+            raw_plants, boundary_wgs84, args.crs, min_capacity_mw=args.min_plant_capacity
+        )
+        print(f"Plants after preparation: {len(plants_projected):,}")
+
     if args.output:
         fmt = (args.output.suffix.lstrip(".") or args.format[0]).lower()
         if fmt not in {"png", "svg", "pdf"}:
@@ -1643,6 +2147,8 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         fade_top_alpha=args.fade_top_alpha,
         fade_bottom_height=args.fade_bottom_height,
         fade_bottom_alpha=args.fade_bottom_alpha,
+        plants=plants_projected,
+        plant_marker_scale=args.plant_marker_scale,
     )
     return 0
 

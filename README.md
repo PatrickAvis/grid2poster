@@ -20,6 +20,7 @@ Grid2Poster uses OpenStreetMap features tagged as:
 - `power=line`
 - `power=minor_line` when enabled
 - `power=cable` when enabled
+- `power=plant` when enabled
 
 Feature completeness depends on OpenStreetMap coverage in the selected country or region.
 
@@ -75,6 +76,11 @@ python create_grid_poster.py --country Brazil --theme paper_grid     # reuses th
 A theme JSON defines colors per voltage tier (`line_unknown`, `line_low`, `line_mid`, `line_high`, `line_extra`). It may optionally also set the line thickness (in points) per tier with `lw_unknown`, `lw_low`, `lw_mid`, `lw_high`, `lw_extra`, and `lw_minor`. Any width key you omit falls back to the built-in default for that tier.
 
 Cables (`--include-cables`, underground/submarine) inherit their voltage-tier color and a dampened width by default. A theme may override this with `cable_color` (a hex color used for all cables instead of the tier color) and `cable_lw_scale` (the multiplier applied to the tier line width; defaults to `0.5`). Omit them to keep the current behavior.
+
+Power plants (`--show-plants`) are drawn as markers sized by installed capacity (`plant:output:electricity`, square-root area scaling) and colored by generation source (`plant:source`), bucketed into solar, wind, hydro, nuclear, coal, gas, oil, biomass and other. Marker colors are derived automatically from each theme's palette so they fit the poster style; a theme may pin any bucket explicitly with `plant_solar`, `plant_wind`, `plant_hydro`, `plant_nuclear`, `plant_coal`, `plant_gas`, `plant_oil`, `plant_biomass`, `plant_other`, and override the marker outline with `plant_edge`. A second metadata row lists the installed GW per source. Use `--min-plant-capacity` to hide small plants and `--plant-marker-scale` to tune marker sizes.
+```bash
+python create_grid_poster.py --country Austria --show-plants --min-plant-capacity 10
+```
 
 Use a local GeoJSON file as the boundary instead of geocoding (handy for custom regions or sub-national areas). All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename. `--landscape` will render in landscape (horizontal) orientation.
 ```bash
@@ -154,6 +160,9 @@ What each flag contributes:
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
 | `--include-cables` / `--no-include-cables` | off | Fetch `power=cable` features (underground/submarine). Off by default; pass `--include-cables` to enable. |
 | `--cable-sea-buffer-km` | `200.0` | When `--include-cables` is on, inflate the boundary by this many kilometers over water so submarine cables between islands and to neighboring countries are queried from Overpass and survive coastline clipping. Set to `0` to disable. |
+| `--show-plants` | off | Fetch `power=plant` features and overlay them as markers sized by capacity (`plant:output:electricity`) and colored by source (`plant:source`). |
+| `--min-plant-capacity` | `0.0` | Only draw plants with at least this electrical output in MW. Plants with unknown capacity are dropped when set. |
+| `--plant-marker-scale` | `1.0` | Multiplier for plant marker sizes. Increase for sparse grids, decrease to reduce clutter. |
 | `--include-outlying` | off | Keep overseas territories and other polygons far from the main landmass. By default the geocoded boundary is filtered to the mainland (and nearby islands), so posters for countries like the Netherlands or France do not include Aruba, Curaçao, French Guiana, etc. |
 | `--paper-size` | - | Named preset, portrait orientation. Overrides `--width`/`--height`. Choices: `a5`, `a4`, `a3`, `a2`, `a1`, `a0`, `letter`, `legal`, `tabloid`. Combine with `--landscape` to flip. |
 | `--width` | `297.0` | Poster width in millimeters (default: A3 short side). |
