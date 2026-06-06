@@ -3,6 +3,7 @@ export function buildLayerPanel(regionConfig, onToggle) {
   container.replaceChildren();
 
   for (const layerId of regionConfig.layerIds) {
+    if (layerId === "turbines") continue;
     const layer = regionConfig.layers[layerId];
     const label = document.createElement("label");
     const checkbox = document.createElement("input");

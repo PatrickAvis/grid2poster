@@ -7,6 +7,26 @@ const POPUP_KEY_LABELS = {
   bmu_type: "BMU type",
 };
 
+function esriWorldImageryPreview(lat, lon) {
+  const delta = 0.003;
+  const bbox = [
+    lon - delta,
+    lat - delta,
+    lon + delta,
+    lat + delta,
+  ].join(",");
+  const src = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export"
+    + `?bbox=${encodeURIComponent(bbox)}`
+    + "&bboxSR=4326&imageSR=4326"
+    + "&size=260,160"
+    + "&format=jpg"
+    + "&f=image";
+  return `<figure class="satellite-preview">
+    <img src="${src}" alt="Esri World Imagery preview" loading="lazy" />
+    <figcaption>Satellite imagery &copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community</figcaption>
+  </figure>`;
+}
+
 export function plantPropsForPopup(props, bmuLookup = null) {
   const mw = plantCapacityMw(props);
   const bmu = bmuLookup ? bmuLookup(props) : {};
@@ -44,14 +64,21 @@ export function popupRows(props, preferredKeys) {
     if (key === "geometry" || key.startsWith("bbox")) continue;
     rows.push([key, value]);
   }
-  if (!rows.length) return "<em>No properties</em>";
-  return `<table class="popup-table">${rows
+  const lat = Number(props.latitude);
+  const lon = Number(props.longitude);
+  const hasCoords = Number.isFinite(lat) && Number.isFinite(lon);
+  const imageryPreview = hasCoords ? esriWorldImageryPreview(lat, lon) : "";
+  const satelliteLink = hasCoords
+    ? `<p class="popup-actions"><a href="https://www.google.com/maps/@?api=1&map_action=map&center=${encodeURIComponent(`${lat},${lon}`)}&zoom=18&basemap=satellite" target="_blank" rel="noopener noreferrer">Open Google satellite view</a></p>`
+    : "";
+  if (!rows.length) return `${imageryPreview}<em>No properties</em>${satelliteLink}`;
+  return `${imageryPreview}<table class="popup-table">${rows
     .slice(0, 12)
     .map(([key, value]) => {
       const label = POPUP_KEY_LABELS[key] || key;
       return `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`;
     })
-    .join("")}</table>`;
+    .join("")}</table>${satelliteLink}`;
 }
 
 export function attachLazyPopup(layer, props, preferredKeys) {

@@ -42,6 +42,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   const lineBucketGroups = {};
   const lineBucketVisibility = {};
   let lineWidthScale = 1;
+  let turbinesRequested = false;
   const plantBucketGroups = {};
   const plantBucketVisibility = {};
 
@@ -295,6 +296,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   }
 
   function syncTurbineCheckboxes(enabled) {
+    turbinesRequested = enabled;
     const main = document.getElementById("toggle-turbines");
     const sub = document.getElementById("toggle-wind-turbines");
     if (main) main.checked = enabled;
@@ -304,7 +306,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   function plantLegendOptions(setStatus) {
     return {
       turbineMinZoom: config.turbineMinZoom,
-      turbinesEnabled: document.getElementById("toggle-turbines")?.checked ?? false,
+      turbinesEnabled: turbinesRequested,
       onTurbinesToggle: (enabled) => setLayerEnabled("turbines", enabled, setStatus),
     };
   }
@@ -314,8 +316,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   }
 
   function syncTurbineLayerOnMap() {
-    const checkbox = document.getElementById("toggle-turbines");
-    if (!checkbox?.checked || !layerCache.turbines?.loaded) return;
+    if (!turbinesRequested || !layerCache.turbines?.loaded) return;
     if (turbineZoomOk()) {
       if (!map.hasLayer(layerGroups.turbines)) map.addLayer(layerGroups.turbines);
     } else if (map.hasLayer(layerGroups.turbines)) {
@@ -475,6 +476,9 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   async function setLayerEnabled(layerKey, enabled, setStatus) {
     const checkbox = document.getElementById(`toggle-${layerKey}`);
     try {
+      if (layerKey === "turbines") {
+        turbinesRequested = enabled;
+      }
       if (enabled) {
         await loadLayer(layerKey, setStatus);
         if (layerKey === "turbines") {
