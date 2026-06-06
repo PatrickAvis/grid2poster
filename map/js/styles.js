@@ -26,20 +26,23 @@ const DNO_FILL_COLORS = [
   "#039be5",
 ];
 
-const GSP_FILL_COLORS = [
-  "#00897b",
-  "#7cb342",
-  "#00acc1",
-  "#039be5",
-  "#5e35b1",
-  "#8e24aa",
-  "#d81b60",
-  "#e53935",
-  "#fb8c00",
-  "#fdd835",
-  "#6d4c41",
-  "#546e7a",
-];
+const DNO_ZONE_COLORS = {
+  // Chosen against the DNO adjacency graph to keep neighbouring areas distinct.
+  10: "#009e73", // UKPN East England
+  11: "#d55e00", // NGED East Midlands
+  12: "#56b4e9", // UKPN London
+  13: "#ee6677", // SPEN North Wales, Merseyside and Cheshire
+  14: "#0066cc", // NGED West Midlands
+  15: "#332288", // NPG North East England
+  16: "#f0e442", // Electricity North West
+  17: "#117733", // SSEN North Scotland
+  18: "#cc79a7", // SPEN South and Central Scotland
+  19: "#aa4499", // UKPN South East England
+  20: "#ddcc77", // SSEN Southern England
+  21: "#88ccee", // NGED South Wales
+  22: "#882255", // NGED South West England
+  23: "#44aa99", // NPG Yorkshire
+};
 
 function isInterconnectorCable(props) {
   if (props.power !== "cable") return false;
@@ -197,22 +200,54 @@ function stableColorIndex(value, count) {
 }
 
 function dnoFillColor(props) {
+  if (props.zone_id != null && DNO_ZONE_COLORS[props.zone_id]) {
+    return DNO_ZONE_COLORS[props.zone_id];
+  }
   const key = props.zone_id ?? props.name ?? props.operator ?? "";
   return DNO_FILL_COLORS[stableColorIndex(key, DNO_FILL_COLORS.length)];
 }
 
+function mixHex(color, target, amount) {
+  const source = color.replace("#", "");
+  const dest = target.replace("#", "");
+  const sourceRgb = [0, 2, 4].map((idx) => parseInt(source.slice(idx, idx + 2), 16));
+  const destRgb = [0, 2, 4].map((idx) => parseInt(dest.slice(idx, idx + 2), 16));
+  const mixed = sourceRgb.map((channel, idx) => Math.round(channel + (destRgb[idx] - channel) * amount));
+  return `#${mixed.map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+}
+
 function gspFillColor(props) {
+  if (props.dno_zone_id || props.dno_name || props.dno_operator) {
+    const base = dnoFillColor({
+      zone_id: props.dno_zone_id,
+      name: props.dno_name,
+      operator: props.dno_operator,
+    });
+    const key = props.gsp_id ?? props.gsp_name ?? "";
+    const variants = [
+      ["#ffffff", 0.16],
+      ["#ffffff", 0.3],
+      ["#ffffff", 0.44],
+      ["#ffffff", 0.58],
+      ["#000000", 0.08],
+      ["#000000", 0.16],
+      ["#000000", 0.24],
+      ["#000000", 0.32],
+    ];
+    const [target, amount] = variants[stableColorIndex(key, variants.length)];
+    return mixHex(base, target, amount);
+  }
   const key = props.gsp_id ?? props.gsp_name ?? props.name ?? "";
-  return GSP_FILL_COLORS[stableColorIndex(key, GSP_FILL_COLORS.length)];
+  return DNO_FILL_COLORS[stableColorIndex(key, DNO_FILL_COLORS.length)];
 }
 
 export function zoneStyle(kind, selected = false, props = {}) {
   const color = kind === "dno" ? dnoFillColor(props) : gspFillColor(props);
   return {
-    color: selected ? "#ff6f00" : color,
-    weight: selected ? 3 : 1.5,
-    opacity: 0.9,
+    color: selected ? "#ff6f00" : "#37474f",
+    weight: selected ? 3 : (kind === "dno" ? 1.4 : 1),
+    opacity: selected ? 0.95 : 0.7,
     fillColor: color,
-    fillOpacity: selected ? 0.38 : 0.22,
+    fillOpacity: selected ? 0.44 : (kind === "gsp" ? 0.34 : 0.26),
   };
 }

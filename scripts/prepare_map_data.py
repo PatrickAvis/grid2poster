@@ -75,7 +75,19 @@ WEB_TURBINE_COLS = [
     "longitude",
 ]
 
-ZONE_KEEP_COLS = ["name", "operator", "gsp_id", "gsp_name", "dno", "zone_id", "zone_name", "id"]
+ZONE_KEEP_COLS = [
+    "name",
+    "operator",
+    "gsp_id",
+    "gsp_name",
+    "dno",
+    "zone_id",
+    "zone_name",
+    "id",
+    "dno_zone_id",
+    "dno_name",
+    "dno_operator",
+]
 
 LEGACY_POSTERS = REPO_ROOT / "posters"
 
@@ -194,6 +206,34 @@ def build_zones_web(source: Path, output: Path) -> gpd.GeoDataFrame:
     return frame
 
 
+def assign_gsp_parent_dno(gsp: gpd.GeoDataFrame, dno: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Annotate each GSP region with the DNO area it overlaps most."""
+    if gsp.empty or dno.empty:
+        return gsp
+
+    gsp_projected = gsp.to_crs("EPSG:27700")
+    dno_projected = dno.to_crs("EPSG:27700")
+    assignments = []
+
+    for _, gsp_row in gsp_projected.iterrows():
+        best_area = 0.0
+        best_dno = None
+        for _, dno_row in dno_projected.iterrows():
+            if not gsp_row.geometry.intersects(dno_row.geometry):
+                continue
+            area = gsp_row.geometry.intersection(dno_row.geometry).area
+            if area > best_area:
+                best_area = area
+                best_dno = dno_row
+        assignments.append(best_dno)
+
+    result = gsp.copy()
+    result["dno_zone_id"] = [row.get("zone_id") if row is not None else None for row in assignments]
+    result["dno_name"] = [row.get("name") if row is not None else None for row in assignments]
+    result["dno_operator"] = [row.get("operator") if row is not None else None for row in assignments]
+    return result
+
+
 def default_output(region_id: str, layer: str) -> Path:
     catalog_path = catalog_layer_path(region_id, layer)
     if catalog_path is not None:
@@ -286,20 +326,25 @@ def main() -> int:
             print(f"Skipping turbines: {args.turbines_source} not found")
 
     if not args.skip_zones:
+        dno_frame = None
+        gsp_frame = None
         if args.dno_source is None:
             args.dno_source = zone_raw_path(args.region, "dno")
         if args.gsp_source is None:
             args.gsp_source = zone_raw_path(args.region, "gsp")
         if "dno" in layers:
             if args.dno_source.exists():
-                build_zones_web(args.dno_source, args.dno_output)
+                dno_frame = build_zones_web(args.dno_source, args.dno_output)
             else:
                 print(f"Skipping DNO zones: {args.dno_source} not found")
         if "gsp" in layers:
             if args.gsp_source.exists():
-                build_zones_web(args.gsp_source, args.gsp_output)
+                gsp_frame = build_zones_web(args.gsp_source, args.gsp_output)
             else:
                 print(f"Skipping GSP zones: {args.gsp_source} not found")
+        if args.region == "uk" and dno_frame is not None and gsp_frame is not None:
+            gsp_frame = assign_gsp_parent_dno(gsp_frame, dno_frame)
+            write_geojson(gsp_frame, args.gsp_output)
 
     if args.emit_pmtiles:
         import subprocess
