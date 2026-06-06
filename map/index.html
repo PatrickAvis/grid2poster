@@ -42,6 +42,42 @@
       font-size: 0.85rem;
       padding: 4px 6px;
     }
+    .map-search {
+      margin-bottom: 10px;
+    }
+    .map-search input {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 5px 6px;
+    }
+    .search-results {
+      display: grid;
+      gap: 4px;
+      margin-top: 5px;
+      max-height: 180px;
+      overflow: auto;
+    }
+    .search-result {
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #fff;
+      padding: 5px 6px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.78rem;
+    }
+    .search-result:hover {
+      background: #f5f5f5;
+    }
+    .search-result-title {
+      font-weight: 600;
+      color: #333;
+    }
+    .search-result-meta {
+      color: #666;
+      font-size: 0.72rem;
+      margin-top: 1px;
+    }
     .layer-list { display: grid; gap: 6px; margin-bottom: 10px; }
     .layer-list label {
       display: flex;
@@ -177,6 +213,10 @@
     <h1 id="map-title">Power Map</h1>
     <p>Regions and layers are defined in <code>data/catalog.json</code>. Use <code>?region=uk</code> in the URL to deep-link.</p>
     <select id="region-select" class="region-select" aria-label="Region"></select>
+    <div class="map-search">
+      <input id="map-search" type="search" placeholder="Search loaded plants, substations, zones…" autocomplete="off" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
     <div id="layer-list" class="layer-list"></div>
     <div id="status" class="status">Loading…</div>
     <div id="zone-filter-status" hidden></div>

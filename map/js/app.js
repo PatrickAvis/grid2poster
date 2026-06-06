@@ -7,7 +7,7 @@ import {
 } from "./catalog.js";
 import { createLayerManager } from "./layers.js";
 import { createZoneFilter } from "./zones.js";
-import { buildLayerPanel, buildRegionSelector, fitRegionBounds, setMapTitle } from "./ui.js";
+import { buildLayerPanel, buildRegionSelector, buildSearchPanel, fitRegionBounds, setMapTitle } from "./ui.js";
 import { boundsFromGeoJson, pointInPolygonGeometry } from "./utils.js";
 
 const statusEl = document.getElementById("status");
@@ -61,6 +61,10 @@ async function initRegion(regionId) {
   buildLayerPanel(regionConfig, (layerId, enabled) => {
     layerManager.setLayerEnabled(layerId, enabled, setStatus);
   });
+  buildSearchPanel(
+    (query) => layerManager.searchFeatures(query),
+    (result) => layerManager.focusSearchResult(result),
+  );
 
   fitRegionBounds(map, regionConfig.bounds);
 

@@ -6,7 +6,7 @@ import {
   setLineLegendVisible,
   setPlantLegendVisible,
 } from "./legends.js";
-import { attachLazyPopup, plantPropsForPopup, turbinePropsForPopup } from "./popups.js";
+import { attachLazyPopup, plantPropsForPopup, popupRows, turbinePropsForPopup } from "./popups.js";
 import { loadLayerData, createLayerFromData } from "./sources/index.js";
 import {
   lineStyle,
@@ -45,6 +45,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   let turbinesRequested = false;
   const plantBucketGroups = {};
   const plantBucketVisibility = {};
+  let searchHighlight = null;
 
   function scaledLineStyle(props) {
     const style = lineStyle(props);
@@ -473,6 +474,110 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     setStatus(`Loaded ${parts.join(", ")}.`);
   }
 
+  function resultTitle(layerKey, props) {
+    return props.name
+      || props.gsp_name
+      || props.gsp_id
+      || props.operator
+      || props.osm_id
+      || layerKey;
+  }
+
+  function resultSubtitle(layerKey, props) {
+    const label = LAYER_CONFIG[layerKey]?.label || layerKey;
+    const details = [
+      props.operator,
+      props.bmu_id,
+      props.ngc_bmu_id,
+      props.gsp_id,
+      props.dno_operator,
+    ].filter(Boolean);
+    return details.length ? `${label} · ${details.join(" · ")}` : label;
+  }
+
+  function searchableText(layerKey, props) {
+    const keys = [
+      "name",
+      "operator",
+      "osm_id",
+      "bmu_id",
+      "ngc_bmu_id",
+      "gsp_id",
+      "gsp_name",
+      "dno_name",
+      "dno_operator",
+      "substation",
+      "ref",
+    ];
+    return [
+      LAYER_CONFIG[layerKey]?.label,
+      ...keys.map((key) => props[key]),
+    ].filter(Boolean).join(" ").toLowerCase();
+  }
+
+  function searchFeatures(query) {
+    const needle = query.trim().toLowerCase();
+    if (needle.length < 2) return [];
+    const results = [];
+    for (const layerKey of layerIds) {
+      const cache = layerCache[layerKey];
+      if (!cache?.data?.features?.length) continue;
+      for (const feature of cache.data.features) {
+        const rawProps = feature.properties || {};
+        const props = layerKey === "plants" && LAYER_CONFIG[layerKey]?.popupPropsFn
+          ? LAYER_CONFIG[layerKey].popupPropsFn(rawProps)
+          : rawProps;
+        if (!searchableText(layerKey, props).includes(needle)) continue;
+        results.push({
+          layerKey,
+          feature,
+          props,
+          title: resultTitle(layerKey, props),
+          subtitle: resultSubtitle(layerKey, props),
+        });
+        if (results.length >= 20) return results;
+      }
+    }
+    return results;
+  }
+
+  function focusSearchResult(result) {
+    if (searchHighlight) {
+      map.removeLayer(searchHighlight);
+      searchHighlight = null;
+    }
+    const layerConfig = LAYER_CONFIG[result.layerKey] || {};
+    const latlon = getLatLon(result.props, result.feature);
+    const popupHtml = popupRows(result.props, layerConfig.popupKeys || []);
+
+    if (latlon) {
+      map.setView(latlon, Math.max(map.getZoom(), 14));
+      searchHighlight = L.circleMarker(latlon, {
+        radius: 9,
+        color: "#ff6f00",
+        weight: 3,
+        fillColor: "#ffffff",
+        fillOpacity: 0.4,
+      }).addTo(map);
+      searchHighlight.bindPopup(popupHtml).openPopup();
+      return;
+    }
+
+    const layer = L.geoJSON(result.feature);
+    const bounds = layer.getBounds();
+    if (bounds?.isValid()) {
+      map.fitBounds(bounds.pad(0.1));
+      searchHighlight = L.geoJSON(result.feature, {
+        style: {
+          color: "#ff6f00",
+          weight: 4,
+          fillOpacity: 0.12,
+        },
+      }).addTo(map);
+      searchHighlight.bindPopup(popupHtml).openPopup();
+    }
+  }
+
   async function setLayerEnabled(layerKey, enabled, setStatus) {
     const checkbox = document.getElementById(`toggle-${layerKey}`);
     try {
@@ -527,6 +632,8 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     setLayerEnabled,
     syncTurbineLayerOnMap,
     updateStatusMessage,
+    searchFeatures,
+    focusSearchResult,
     rebuildFilterableLayers,
     restoreFilterableLayers,
     destroy,

@@ -63,6 +63,50 @@ export function buildRegionSelector(catalog, currentRegionId, onChange) {
   });
 }
 
+export function buildSearchPanel(onSearch, onSelect) {
+  const input = document.getElementById("map-search");
+  const resultsEl = document.getElementById("search-results");
+  if (!input || !resultsEl) return;
+
+  function renderResults(results) {
+    resultsEl.replaceChildren();
+    if (!results.length) {
+      resultsEl.hidden = true;
+      return;
+    }
+    for (const result of results) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "search-result";
+
+      const title = document.createElement("div");
+      title.className = "search-result-title";
+      title.textContent = result.title;
+
+      const meta = document.createElement("div");
+      meta.className = "search-result-meta";
+      meta.textContent = result.subtitle;
+
+      button.append(title, meta);
+      button.addEventListener("click", () => {
+        resultsEl.hidden = true;
+        onSelect(result);
+      });
+      resultsEl.appendChild(button);
+    }
+    resultsEl.hidden = false;
+  }
+
+  input.oninput = () => {
+    const query = input.value.trim();
+    if (query.length < 2) {
+      renderResults([]);
+      return;
+    }
+    renderResults(onSearch(query));
+  };
+}
+
 export function setMapTitle(title) {
   const heading = document.getElementById("map-title");
   if (heading) {
