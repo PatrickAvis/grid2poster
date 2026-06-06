@@ -92,6 +92,32 @@ python scripts/prepare_map_data.py --region fr --skip-lines --skip-substations -
 
 Full France export (lines/turbines) can take hours — use tiled export without `--single-query` for production.
 
+## UK fast layers (PMTiles)
+
+The UK map uses PMTiles for the heavy visual layers so the browser does not fetch
+large raw GeoJSON files:
+
+- `data/map/uk/lines.pmtiles` from `uk_powerlines_transmission.geojson`
+- `data/map/uk/turbines.pmtiles` from `uk_wind_turbines_web.geojson`
+
+Build the source web GeoJSON first, then build tiles:
+
+```powershell
+python scripts/prepare_map_data.py --region uk
+python scripts/build_tiles.py --region uk
+```
+
+Requires [tippecanoe](https://github.com/felt/tippecanoe) and the
+[pmtiles](https://github.com/protomaps/go-pmtiles) CLI on `PATH`.
+On Windows, the simplest local route is usually WSL for Tippecanoe, with the
+repo mounted from Windows or cloned inside the WSL filesystem.
+
+`*.pmtiles` files are generated deploy artifacts and are ignored by git. They
+should be copied to the static host alongside the smaller GeoJSON layers.
+The browser-side PMTiles renderer is vendored at
+`map/vendor/protomaps-leaflet.js` so the map does not depend on a runtime module
+import from a CDN.
+
 ## Europe continent (PMTiles)
 
 Continent-wide lines and turbines use PMTiles (phase 2). After preparing merged GeoJSON under `data/map/europe/`:

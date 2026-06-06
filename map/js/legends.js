@@ -7,7 +7,12 @@ import {
   PLANT_COLORS,
 } from "./constants.js";
 
-export function buildLineLegend(lineBucketGroups, lineBucketVisibility, setLineBucketVisible) {
+export function buildLineLegend(
+  lineBucketGroups,
+  lineBucketVisibility,
+  setLineBucketVisible,
+  options = {},
+) {
   const legendEl = document.getElementById("line-legend");
   const listEl = document.getElementById("line-legend-list");
   listEl.replaceChildren();
@@ -33,6 +38,28 @@ export function buildLineLegend(lineBucketGroups, lineBucketVisibility, setLineB
 
     label.append(checkbox, swatch, text);
     listEl.appendChild(label);
+  }
+
+  if (buckets.length && options.onWidthScaleChange) {
+    const widthLabel = document.createElement("label");
+    widthLabel.className = "legend-control";
+
+    const text = document.createElement("span");
+    text.textContent = "Line thickness x";
+
+    const input = document.createElement("input");
+    input.type = "number";
+    input.min = "0.5";
+    input.max = "4";
+    input.step = "0.25";
+    input.value = String(options.widthScale ?? 1);
+    input.title = "Transmission line width multiplier";
+    input.addEventListener("change", (event) => {
+      options.onWidthScaleChange(Number(event.target.value));
+    });
+
+    widthLabel.append(text, input);
+    listEl.appendChild(widthLabel);
   }
 
   legendEl.hidden = buckets.length === 0;

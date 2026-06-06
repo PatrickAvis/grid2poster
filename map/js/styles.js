@@ -9,7 +9,60 @@ import {
 } from "./constants.js";
 import { parseCapacityToMw, parseVoltageKv } from "./utils.js";
 
+const DNO_FILL_COLORS = [
+  "#8e24aa",
+  "#3949ab",
+  "#1e88e5",
+  "#00897b",
+  "#43a047",
+  "#c0ca33",
+  "#fdd835",
+  "#fb8c00",
+  "#f4511e",
+  "#6d4c41",
+  "#546e7a",
+  "#d81b60",
+  "#5e35b1",
+  "#039be5",
+];
+
+const GSP_FILL_COLORS = [
+  "#00897b",
+  "#7cb342",
+  "#00acc1",
+  "#039be5",
+  "#5e35b1",
+  "#8e24aa",
+  "#d81b60",
+  "#e53935",
+  "#fb8c00",
+  "#fdd835",
+  "#6d4c41",
+  "#546e7a",
+];
+
+function isInterconnectorCable(props) {
+  if (props.power !== "cable") return false;
+  const location = String(props.location || "").toLowerCase();
+  const frequency = String(props.frequency || "").trim().toLowerCase();
+  const text = [
+    props.name,
+    props.operator,
+    props.location,
+  ].filter(Boolean).join(" ").toLowerCase();
+  return (
+    location === "underwater"
+    || frequency === "0"
+    || text.includes("interconnector")
+    || text.includes("interconnect")
+    || text.includes("hvdc")
+    || text.includes("subsea")
+    || text.includes("submarine")
+  );
+}
+
 export function lineTypeBucket(props) {
+  if (isInterconnectorCable(props)) return "interconnector";
   if (props.power === "cable") return "cable";
   const kv = parseVoltageKv(props);
   if (kv == null) return "lv";
@@ -22,6 +75,9 @@ export function lineTypeBucket(props) {
 export function lineStyle(props) {
   const bucket = lineTypeBucket(props);
   const color = LINE_TYPE_COLORS[bucket];
+  if (bucket === "interconnector") {
+    return { color, weight: 2.5, opacity: 0.9, dashArray: "2 4" };
+  }
   if (bucket === "cable") {
     return { color, weight: 2, opacity: 0.85, dashArray: "6 4" };
   }
@@ -131,13 +187,32 @@ export function turbineMarkerStyle() {
   };
 }
 
-export function zoneStyle(kind, selected = false) {
-  const color = kind === "dno" ? "#7e57c2" : "#26a69a";
+function stableColorIndex(value, count) {
+  const text = String(value || "");
+  let hash = 0;
+  for (let idx = 0; idx < text.length; idx += 1) {
+    hash = (hash * 31 + text.charCodeAt(idx)) >>> 0;
+  }
+  return hash % count;
+}
+
+function dnoFillColor(props) {
+  const key = props.zone_id ?? props.name ?? props.operator ?? "";
+  return DNO_FILL_COLORS[stableColorIndex(key, DNO_FILL_COLORS.length)];
+}
+
+function gspFillColor(props) {
+  const key = props.gsp_id ?? props.gsp_name ?? props.name ?? "";
+  return GSP_FILL_COLORS[stableColorIndex(key, GSP_FILL_COLORS.length)];
+}
+
+export function zoneStyle(kind, selected = false, props = {}) {
+  const color = kind === "dno" ? dnoFillColor(props) : gspFillColor(props);
   return {
     color: selected ? "#ff6f00" : color,
     weight: selected ? 3 : 1.5,
     opacity: 0.9,
     fillColor: color,
-    fillOpacity: selected ? 0.25 : 0.08,
+    fillOpacity: selected ? 0.38 : 0.22,
   };
 }

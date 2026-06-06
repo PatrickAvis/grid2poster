@@ -106,6 +106,23 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
+    .legend-control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #444;
+    }
+    .legend-control select,
+    .legend-control input {
+      font-size: 0.78rem;
+      padding: 2px 4px;
+    }
+    .legend-control input {
+      width: 64px;
+    }
     .plant-legend-subitem {
       margin-left: 20px;
       font-size: 0.75rem;
@@ -157,6 +174,7 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""
   ></script>
+  <script src="vendor/protomaps-leaflet.js"></script>
   <script type="module" src="js/app.js"></script>
 </body>
 </html>

@@ -15,8 +15,8 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from region_catalog import catalog_data_path, get_region, list_region_ids
 
-LINE_PROPS = "power,voltage,voltage_kv,name,operator,circuits,cables"
-TURBINE_PROPS = "name,capacity_mw,operator,manufacturer,model,generator:output:electricity"
+LINE_PROPS = "power,voltage,voltage_kv,name,operator,circuits,cables,frequency,location"
+TURBINE_PROPS = "name,capacity_mw,height_m,rotor_diameter_m,operator,manufacturer,model,generator:output:electricity"
 
 
 def find_tool(name: str) -> str | None:
@@ -35,7 +35,7 @@ def geojson_to_pmtiles(
 ) -> None:
     tippecanoe = find_tool("tippecanoe")
     if not tippecanoe:
-        raise RuntimeError("tippecanoe not found on PATH — install from https://github.com/felt/tippecanoe")
+        raise RuntimeError("tippecanoe not found on PATH - install from https://github.com/felt/tippecanoe")
 
     output.parent.mkdir(parents=True, exist_ok=True)
     mbtiles = output.with_suffix(".mbtiles")
@@ -112,9 +112,10 @@ def main() -> int:
         print(f"No PMTiles layers configured for region {args.region!r}")
         return 0
 
+    built = 0
     for layer_id, layer in targets:
         geojson_rel = layer.get("geojsonSource") or layer["path"].replace(".pmtiles", ".geojson")
-        if layer["path"].endswith(".pmtiles"):
+        if not layer.get("geojsonSource") and layer["path"].endswith(".pmtiles"):
             stem = Path(layer["path"]).stem
             if stem in {"lines", "lines_transmission"}:
                 geojson_rel = layer["path"].replace("lines.pmtiles", "lines_transmission.geojson")
@@ -127,6 +128,7 @@ def main() -> int:
             continue
 
         output = catalog_data_path(layer["path"])
+        print(f"Building {layer_id}: {source} -> {output}")
         attrs = LINE_PROPS if layer_id == "lines" else TURBINE_PROPS
         source_layer = layer.get("sourceLayer", layer_id)
         try:
@@ -144,7 +146,11 @@ def main() -> int:
         except RuntimeError as exc:
             print(exc, file=sys.stderr)
             return 1
+        built += 1
 
+    if built == 0:
+        print(f"No PMTiles built for region {args.region!r}; check source GeoJSON files.")
+        return 1
     return 0
 
 

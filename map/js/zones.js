@@ -23,7 +23,7 @@ export function createZoneFilter(layerManager, state) {
 
   function clearSelection() {
     if (selectedLayer) {
-      selectedLayer.setStyle(zoneStyle(selectedLayer._zoneKind, false));
+      selectedLayer.setStyle(zoneStyle(selectedLayer._zoneKind, false, selectedLayer._zoneProps));
       selectedLayer = null;
     }
     state.geometry = null;
@@ -35,13 +35,14 @@ export function createZoneFilter(layerManager, state) {
 
   function selectZone(feature, layer, kind) {
     if (selectedLayer && selectedLayer !== layer) {
-      selectedLayer.setStyle(zoneStyle(selectedLayer._zoneKind, false));
+      selectedLayer.setStyle(zoneStyle(selectedLayer._zoneKind, false, selectedLayer._zoneProps));
     }
     selectedLayer = layer;
     selectedLayer._zoneKind = kind;
+    selectedLayer._zoneProps = feature.properties || {};
     state.geometry = feature.geometry;
     state.label = zoneLabel(feature.properties || {}, kind);
-    layer.setStyle(zoneStyle(kind, true));
+    layer.setStyle(zoneStyle(kind, true, feature.properties || {}));
     updateFilterStatus();
     layerManager.rebuildFilterableLayers(state.geometry);
     layerManager.updateStatusMessage(setStatusFromDom);
@@ -49,9 +50,11 @@ export function createZoneFilter(layerManager, state) {
 
   function createZoneLayer(data, kind) {
     return L.geoJSON(data, {
-      style: () => zoneStyle(kind, false),
+      style: (feature) => zoneStyle(kind, false, feature?.properties || {}),
       onEachFeature: (feature, layer) => {
         const props = feature.properties || {};
+        layer._zoneKind = kind;
+        layer._zoneProps = props;
         attachLazyPopup(layer, props, kind === "dno"
           ? ["name", "operator"]
           : ["gsp_id", "gsp_name", "name"]);

@@ -9,7 +9,7 @@ The map is a static site: `map/` (HTML/JS) plus `data/catalog.json` and `data/ma
 ```
 /var/www/power-map/
   map/              # index.html, js/, config.json
-  data/map/uk/      # *_web.geojson
+  data/map/uk/      # small GeoJSON + generated *.pmtiles
   data/zones/       # optional raw NESO files
 ```
 
@@ -48,12 +48,13 @@ Enable **brotli** or **gzip** for `.geojson` — compressed payloads are often 5
 | `data/raw/` | **No** — multi-GB OSM exports (prepare `data/map/` locally first) |
 | `cache/` | **No** |
 
-Sync app code via git; sync large data with rsync or object storage:
+Sync app code via git; sync generated data with rsync or object storage:
 
 ```bash
 rsync -avz map/ user@server:/var/www/power-map/map/
 rsync -avz data/catalog.json user@server:/var/www/power-map/data/
 rsync -avz data/map/ user@server:/var/www/power-map/data/map/
+rsync -avz data/reference/uk_plant_bmu_map.json user@server:/var/www/power-map/data/reference/
 rsync -avz data/zones/ user@server:/var/www/power-map/data/zones/
 ```
 
@@ -62,6 +63,7 @@ After refreshing OSM data locally:
 ```bash
 python scripts/export_uk.py --all
 python scripts/prepare_map_data.py --region uk
+python scripts/build_tiles.py --region uk
 ```
 
 ## CORS
@@ -79,11 +81,12 @@ python scripts/export_region.py --region uk --all
 python scripts/prepare_map_data.py --region uk
 ```
 
-## PMTiles (Europe continent)
+## PMTiles (UK and Europe)
 
 Build tiles locally with tippecanoe + pmtiles CLI:
 
 ```bash
+python scripts/build_tiles.py --region uk
 python scripts/build_tiles.py --region europe
 ```
 
@@ -93,7 +96,7 @@ Ensure `Content-Type: application/octet-stream` (or `application/vnd.pmtiles`) a
 
 ## Turbines at scale
 
-`uk_wind_turbines_web.geojson` (~250 MB) is gated to zoom 9+ but still stresses mobile browsers. For continent-wide views, use PMTiles (`data/catalog.json` → `europe` region). Alternatives:
+`uk_wind_turbines_web.geojson` (~250 MB) is only a tile-build source. The deployed map should serve `turbines.pmtiles` instead so users stream only the tiles they need. Alternatives:
 
 - **FlatGeobuf** for range-request access
 - **PostGIS + pg_tileserv / Martin** for server-side vector tiles

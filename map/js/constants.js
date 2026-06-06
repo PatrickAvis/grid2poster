@@ -28,17 +28,19 @@ export const LINE_TYPE_COLORS = {
   mv: "#f57c00",
   lv: "#1976d2",
   cable: "#00838f",
+  interconnector: "#5d4037",
 };
 
 export const LINE_TYPE_LABELS = {
-  ehv: "Extra-high voltage",
-  hv: "High voltage",
-  mv: "Medium voltage",
-  lv: "Low / unknown",
-  cable: "Cables / interconnectors",
+  ehv: "Extra-high voltage (500 kV+)",
+  hv: "High voltage (300-499 kV, incl. 400 kV)",
+  mv: "Medium voltage (150-299 kV, incl. 275 kV)",
+  lv: "Low / unknown (<150 kV)",
+  cable: "Cables",
+  interconnector: "Interconnectors / subsea cables",
 };
 
-export const LINE_TYPE_ORDER = ["ehv", "hv", "mv", "lv", "cable"];
+export const LINE_TYPE_ORDER = ["ehv", "hv", "mv", "lv", "cable", "interconnector"];
 
 export const PLANT_BUCKET_ORDER = [
   "nuclear",

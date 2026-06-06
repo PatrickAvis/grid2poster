@@ -11,9 +11,11 @@
       "plantBmuMap": "reference/uk_plant_bmu_map.json",
       "layers": {
         "lines": {
-          "type": "geojson",
-          "path": "map/uk/uk_powerlines_transmission.geojson",
-          "label": "Transmission lines"
+          "type": "pmtiles",
+          "path": "map/uk/lines.pmtiles",
+          "geojsonSource": "map/uk/uk_powerlines_transmission.geojson",
+          "label": "Transmission lines",
+          "sourceLayer": "lines"
         },
         "plants": {
           "type": "geojson",
@@ -22,10 +24,12 @@
           "defaultOn": true
         },
         "turbines": {
-          "type": "geojson",
-          "path": "map/uk/uk_wind_turbines_web.geojson",
+          "type": "pmtiles",
+          "path": "map/uk/turbines.pmtiles",
+          "geojsonSource": "map/uk/uk_wind_turbines_web.geojson",
           "label": "Individual wind turbines",
-          "minZoom": 9
+          "minZoom": 12,
+          "sourceLayer": "turbines"
         },
         "substations": {
           "type": "geojson",

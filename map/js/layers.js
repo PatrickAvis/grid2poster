@@ -41,8 +41,17 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
 
   const lineBucketGroups = {};
   const lineBucketVisibility = {};
+  let lineWidthScale = 1;
   const plantBucketGroups = {};
   const plantBucketVisibility = {};
+
+  function scaledLineStyle(props) {
+    const style = lineStyle(props);
+    return {
+      ...style,
+      weight: style.weight ? style.weight * lineWidthScale : style.weight,
+    };
+  }
 
   function addGeometryAndMarkers(bucketGroup, features, layerConfig, filterGeometry = null) {
     const polygonFeatures = features.filter((feature) => isPolygonGeometry(feature.geometry));
@@ -99,7 +108,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       const bucketGroup = L.geoJSON(
         { type: "FeatureCollection", features: byBucket.get(bucket) },
         {
-          style: (feature) => lineStyle(feature.properties || {}),
+          style: (feature) => scaledLineStyle(feature.properties || {}),
           onEachFeature: (feature, layer) => {
             attachLazyPopup(layer, feature.properties || {}, layerConfig.popupKeys);
           },
@@ -191,11 +200,22 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
 
   const geoJsonHelpers = {
     buildGeoJsonLayer,
-    lineStyle,
+    lineStyle: scaledLineStyle,
+    lineWidthScale: () => lineWidthScale,
     turbineMarkerStyle,
+    lineBucketGroups,
+    lineBucketVisibility,
   };
 
+  function lineLegendOptions() {
+    return {
+      widthScale: lineWidthScale,
+      onWidthScaleChange: setLineWidthScale,
+    };
+  }
+
   function syncLineBucketLayers() {
+    if (LAYER_CONFIG.lines?.type === "pmtiles") return;
     const parent = layerCache.lines?.geoLayer;
     if (!parent || !document.getElementById("toggle-lines")?.checked) return;
     for (const [bucket, group] of Object.entries(lineBucketGroups)) {
@@ -208,7 +228,54 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   function setLineBucketVisible(bucket, visible) {
     if (!lineBucketGroups[bucket]) return;
     lineBucketVisibility[bucket] = visible;
+    if (LAYER_CONFIG.lines?.type === "pmtiles") {
+      rebuildPmtilesLineLayer();
+      return;
+    }
     syncLineBucketLayers();
+  }
+
+  async function setLineWidthScale(scale) {
+    if (!Number.isFinite(scale) || scale <= 0) return;
+    lineWidthScale = Math.max(0.5, Math.min(4, scale));
+    if (!layerCache.lines?.loaded) return;
+    if (LAYER_CONFIG.lines?.type === "pmtiles") {
+      await rebuildPmtilesLineLayer();
+      return;
+    }
+    const cache = layerCache.lines;
+    layerGroups.lines.clearLayers();
+    const geoLayer = createLineLayer(cache.data, LAYER_CONFIG.lines);
+    layerGroups.lines.addLayer(geoLayer);
+    cache.geoLayer = geoLayer;
+    buildLineLegend(lineBucketGroups, lineBucketVisibility, setLineBucketVisible, lineLegendOptions());
+    if (document.getElementById("toggle-lines")?.checked) {
+      map.addLayer(layerGroups.lines);
+      syncLineBucketLayers();
+      setLineLegendVisible(true, lineBucketGroups);
+    }
+  }
+
+  async function rebuildPmtilesLineLayer() {
+    const cache = layerCache.lines;
+    const layerConfig = LAYER_CONFIG.lines;
+    if (!cache?.loaded || layerConfig?.type !== "pmtiles") return;
+    try {
+      layerGroups.lines.clearLayers();
+      const geoLayer = await createLayerFromData(
+        "lines",
+        { type: "pmtiles", url: layerConfig.url, config: layerConfig },
+        layerConfig,
+        geoJsonHelpers,
+      );
+      layerGroups.lines.addLayer(geoLayer);
+      cache.geoLayer = geoLayer;
+      if (document.getElementById("toggle-lines")?.checked) {
+        map.addLayer(layerGroups.lines);
+      }
+    } catch (error) {
+      console.error("Failed to rebuild PMTiles line layer", error);
+    }
   }
 
   function syncPlantBucketLayers() {
@@ -365,7 +432,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       cache.loaded = true;
       cache.loading = null;
       if (layerKey === "lines") {
-        buildLineLegend(lineBucketGroups, lineBucketVisibility, setLineBucketVisible);
+        buildLineLegend(lineBucketGroups, lineBucketVisibility, setLineBucketVisible, lineLegendOptions());
         setLineLegendVisible(document.getElementById("toggle-lines")?.checked, lineBucketGroups);
       }
       if (layerKey === "plants") {
@@ -383,9 +450,17 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     if (layerCache.plants?.loaded) parts.push(`${layerCache.plants.count.toLocaleString()} plants`);
     if (layerCache.turbines?.loaded) {
       const zoomNote = turbineZoomOk() ? "" : ` (zoom ${config.turbineMinZoom}+ to show)`;
-      parts.push(`${layerCache.turbines.count.toLocaleString()} wind turbines${zoomNote}`);
+      const turbineCount = LAYER_CONFIG.turbines?.type === "pmtiles"
+        ? "tiled wind turbines"
+        : `${layerCache.turbines.count.toLocaleString()} wind turbines`;
+      parts.push(`${turbineCount}${zoomNote}`);
     }
-    if (layerCache.lines?.loaded) parts.push(`${layerCache.lines.count.toLocaleString()} transmission lines`);
+    if (layerCache.lines?.loaded) {
+      const lineCount = LAYER_CONFIG.lines?.type === "pmtiles"
+        ? "tiled transmission lines"
+        : `${layerCache.lines.count.toLocaleString()} transmission lines`;
+      parts.push(lineCount);
+    }
     if (layerCache.substations?.loaded) parts.push(`${layerCache.substations.count.toLocaleString()} substations`);
     if (layerCache.dno?.loaded) parts.push(`${layerCache.dno.count.toLocaleString()} DNO areas`);
     if (layerCache.gsp?.loaded) parts.push(`${layerCache.gsp.count.toLocaleString()} GSP regions`);
