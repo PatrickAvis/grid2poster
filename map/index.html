@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power Map</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; font-family: system-ui, sans-serif; }
+    #map { width: 100%; height: 100%; }
+    .panel {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      padding: 12px 14px;
+      max-width: 320px;
+    }
+    .panel h1 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .panel p {
+      margin: 0 0 10px;
+      font-size: 0.8rem;
+      color: #444;
+      line-height: 1.35;
+    }
+    .region-select {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+      padding: 4px 6px;
+    }
+    .layer-list { display: grid; gap: 6px; margin-bottom: 10px; }
+    .layer-list label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .status {
+      font-size: 0.78rem;
+      color: #555;
+      min-height: 1.2em;
+    }
+    .status.error { color: #b00020; }
+    #zone-filter-status {
+      font-size: 0.78rem;
+      color: #1565c0;
+      margin-top: 6px;
+    }
+    .clear-filter {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    .popup-table {
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      max-width: 260px;
+    }
+    .popup-table th {
+      text-align: left;
+      vertical-align: top;
+      padding: 2px 8px 2px 0;
+      color: #555;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .popup-table td {
+      padding: 2px 0;
+      word-break: break-word;
+    }
+    .plant-legend {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #e0e0e0;
+    }
+    .legend-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .plant-legend-list {
+      display: grid;
+      gap: 5px;
+    }
+    .plant-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .plant-legend-subitem {
+      margin-left: 20px;
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .plant-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #263238;
+      flex-shrink: 0;
+    }
+    .line-swatch {
+      width: 12px;
+      height: 3px;
+      flex-shrink: 0;
+    }
+    .attribution {
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: #777;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="panel">
+    <h1 id="map-title">Power Map</h1>
+    <p>Regions and layers are defined in <code>data/catalog.json</code>. Use <code>?region=uk</code> in the URL to deep-link.</p>
+    <select id="region-select" class="region-select" aria-label="Region"></select>
+    <div id="layer-list" class="layer-list"></div>
+    <div id="status" class="status">Loading…</div>
+    <div id="zone-filter-status" hidden></div>
+    <button type="button" id="clear-zone-filter" class="clear-filter">Clear zone filter</button>
+    <div id="line-legend" class="plant-legend" hidden>
+      <div class="legend-title">Transmission lines</div>
+      <div id="line-legend-list" class="plant-legend-list"></div>
+    </div>
+    <div id="plant-legend" class="plant-legend" hidden>
+      <div class="legend-title">Generation type</div>
+      <div id="plant-legend-list" class="plant-legend-list"></div>
+    </div>
+    <p class="attribution">Zone boundaries &copy; <a href="https://www.neso.energy/data-portal">NESO</a> (UK). Infrastructure &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</p>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

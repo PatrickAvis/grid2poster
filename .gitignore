@@ -217,3 +217,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Full OSM exports (multi-GB); sync separately for deploy
+data/raw/
+data/zones/*.raw.geojson
+
+# UK wind turbines (~250 MB); build locally with scripts/prepare_map_data.py
+data/map/uk/uk_wind_turbines_web.geojson
+
+# Poster renders (legacy CLI output) — not deployed with the interactive map.
+# Gallery images already in git remain tracked; new local PNG/SVG/PDF stay ignored.
+posters/

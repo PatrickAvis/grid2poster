@@ -1,4 +1,26 @@
-<h1 align="center">Grid2Poster</h1>
+<h1 align="center">UK Power Map</h1>
+
+<p align="center">
+  Interactive Leaflet map of Great Britain transmission, generation, substations, wind turbines, and NESO zone boundaries — built on OpenStreetMap exports from this repo.
+  Legacy print-ready posters are still available under <a href="poster/README.md">poster/</a>.
+</p>
+
+## UK interactive map (primary)
+
+```powershell
+python scripts/export_region.py --region uk --all
+python scripts/fetch_neso_zones.py
+python scripts/sync_uk_plants.py
+python scripts/propose_plant_bmu_map.py --fetch
+python scripts/prepare_map_data.py --region uk --skip-plants
+python -m http.server 8000
+```
+
+Open [http://localhost:8000/map/](http://localhost:8000/map/) (or `?region=fr` after exporting another country). Regions and layers are defined in [`data/catalog.json`](data/catalog.json). See [`map/README.md`](map/README.md) and [`map/DEPLOY.md`](map/DEPLOY.md).
+
+UK plant popups show BMU ids from a separate mapping table ([procedure below](#uk-plant-bmu-mapping)); OSM plant geometry lives in `data/map/uk/uk_plants_web.geojson`.
+
+## Legacy posters
 
 <p align="center">
   Generate print-ready posters of electrical grid infrastructure from OpenStreetMap data.
@@ -15,14 +37,7 @@
 
 ## Data
 
-Grid2Poster uses OpenStreetMap features tagged as:
-
-- `power=line`
-- `power=minor_line` when enabled
-- `power=cable` when enabled
-- `power=plant` when enabled
-
-Feature completeness depends on OpenStreetMap coverage in the selected country or region.
+Grid2Poster combines region boundaries with OpenStreetMap (OSM) power infrastructure. Coverage and tag quality vary by country; see [Data sources](#data-sources) for where each layer comes from, what it contains, and how exports are produced.
 
 ### Contributing to the data
 
@@ -62,7 +77,7 @@ Include distribution grids if available. Grid coverage varies significantly acro
 python create_grid_poster.py --country Germany --include-minor-lines
 ```
 
-List available themes. Create a new theme JSON file in the 'themes' directory to find your own style.
+List available themes. Create a new theme JSON file in `poster/themes/` to find your own style.
 ```bash
 python create_grid_poster.py --list-themes
 ```
@@ -82,6 +97,25 @@ Power plants (`--show-plants`) are drawn as markers sized by installed capacity 
 python create_grid_poster.py --country Austria --show-plants --min-plant-capacity 10
 ```
 
+Export transmission lines, plants, substations, and individual wind turbines as WGS84 GeoJSON for use in web maps or other GIS tools, and as CSV for database loading. Exports preserve all downloaded OSM tag columns for each feature, with complex tag values serialized as strings; CSV files include representative `latitude` and `longitude` columns plus the full geometry in `geometry_wkt`. Wind turbine exports also add parsed `capacity_mw`, `height_m`, and `rotor_diameter_m` columns when the underlying OSM tags are present. The example below renders PNG and PDF posters while exporting the UK grid, plants, substations, and turbines:
+```bash
+python create_grid_poster.py --country "United Kingdom" \
+  --include-minor-lines --include-cables --cable-sea-buffer-km 600 \
+  --format png pdf \
+  --export-geojson ./data/raw/uk/powerlines.geojson \
+  --export-csv ./data/raw/uk/powerlines.csv \
+  --export-plants-geojson ./data/raw/uk/plants.geojson \
+  --export-plants-csv ./data/raw/uk/plants.csv \
+  --export-substations-geojson ./data/raw/uk/substations.geojson \
+  --export-substations-csv ./data/raw/uk/substations.csv \
+  --export-turbines-geojson ./data/raw/uk/wind_turbines.geojson \
+  --export-turbines-csv ./data/raw/uk/wind_turbines.csv
+```
+
+For map-only ingest without rendering a poster, use `python scripts/export_uk.py --all` instead.
+
+CSV coordinate columns are ordered as `latitude`, then `longitude`. For line and polygon features these values are representative points for the feature; the complete geometry remains available in `geometry_wkt`. GeoJSON and WKT geometries use the standard coordinate order internally (`longitude`, then `latitude`).
+
 Use a local GeoJSON file as the boundary instead of geocoding (handy for custom regions or sub-national areas). All polygonal features in the file are dissolved into a single boundary. The `--country` value is still used for the poster title and output filename. `--landscape` will render in landscape (horizontal) orientation.
 ```bash
 python create_grid_poster.py --country "Middle East and North Africa" --boundary-geojson ./regions/mena.geojson --landscape --theme neon_cyberpunk 
@@ -99,7 +133,7 @@ Continent-scale runs hit the Overpass API hundreds of times and can take several
 
 ### Global posters and atlas themes
 
-`--country Global` renders the whole inhabited world as the union of the continents, clipped to a tight bounding box so it fills the page. It is the longest job in the tool (many hundreds of Overpass queries, several hours), so use a large `--tile-size-km`, a generous `--tile-delay`, and high `--voltage-tiers` so HV/EHV lines stand out at world scale. The `themes/` directory ships three palettes tuned for this scale: `global_grid_atlas` (dark atlas), `global_grid_atlas_neon` (neon), and `global_paper_grid_atlas` (warm paper).
+`--country Global` renders the whole inhabited world as the union of the continents, clipped to a tight bounding box so it fills the page. It is the longest job in the tool (many hundreds of Overpass queries, several hours), so use a large `--tile-size-km`, a generous `--tile-delay`, and high `--voltage-tiers` so HV/EHV lines stand out at world scale. The `poster/themes/` directory ships three palettes tuned for this scale: `global_grid_atlas` (dark atlas), `global_grid_atlas_neon` (neon), and `global_paper_grid_atlas` (warm paper).
 
 ```bash
 python create_grid_poster.py --country Global \
@@ -143,6 +177,35 @@ What each flag contributes:
 </p>
 
 
+## Base Code Updates
+
+This fork includes additional export-focused functionality on top of the original poster workflow:
+
+- `power=substation` support has been added via a tiled OpenStreetMap fetcher, so substations can be exported alongside lines and plants.
+- Power plant export is available separately from poster rendering with `--export-plants-geojson` and `--export-plants-csv`.
+- Transmission lines, power plants, substations, and individual wind turbines can all be exported as GeoJSON and CSV in the same run.
+- Wind turbine export queries OSM `power=generator` features tagged as wind via `generator:source=wind` or `generator:method=wind_turbine`, preserving all downloaded OSM tag columns.
+- GeoJSON exports are written in WGS84 (`EPSG:4326`) and preserve all downloaded OSM tag columns where available.
+- CSV exports preserve the same OSM tag columns, add representative `latitude` and `longitude` columns in that order, and keep the full feature geometry in `geometry_wkt`.
+- Complex OSM tag values, such as lists or dictionaries returned by OSMnx, are serialized as strings so exports are database-friendly.
+- Cache keys for line, plant, and substation downloads were bumped so full-tag exports do not reuse older trimmed cache entries.
+
+Use this command to generate UK PNG/PDF posters plus all data exports:
+
+```bash
+python create_grid_poster.py --country "United Kingdom" \
+  --include-minor-lines --include-cables --cable-sea-buffer-km 600 \
+  --format png pdf \
+  --export-geojson ./data/raw/uk/powerlines.geojson \
+  --export-csv ./data/raw/uk/powerlines.csv \
+  --export-plants-geojson ./data/raw/uk/plants.geojson \
+  --export-plants-csv ./data/raw/uk/plants.csv \
+  --export-substations-geojson ./data/raw/uk/substations.geojson \
+  --export-substations-csv ./data/raw/uk/substations.csv \
+  --export-turbines-geojson ./data/raw/uk/wind_turbines.geojson \
+  --export-turbines-csv ./data/raw/uk/wind_turbines.csv
+```
+
 ## Options
 
 | Option | Default | Description |
@@ -154,7 +217,7 @@ What each flag contributes:
 | `--padding` | `0.10` | Fractional padding around the boundary bounds. Lower values zoom in (`0` = tight fit, `-0.05` = crop slightly into the bounds); higher values pull the view out. |
 | `--shift-x` | `0.0` | Shift the grid data horizontally on the poster, as a fraction of the data extent. Positive values shift right, negative shift left (e.g. `0.1` = shift 10% right). |
 | `--shift-y` | `0.0` | Shift the grid data vertically on the poster, as a fraction of the data extent. Positive values shift up, negative shift down (e.g. `0.1` = shift 10% up). |
-| `--theme` | `paper_grid` | Theme ID from the `themes/` directory. |
+| `--theme` | `paper_grid` | Theme ID from `poster/themes/`. |
 | `--list-themes` | - | List available themes and exit. |
 | `--voltage-tiers` | `60,150,300,500` | Lower kV bounds for the four voltage tiers (low, mid, high, extra), comma-separated. Controls how lines are colored/weighted and the legend labels - tune to the grid being mapped (e.g. `60,220,400,765`). |
 | `--include-minor-lines` | off | Also fetch `power=minor_line` features. |
@@ -183,13 +246,20 @@ What each flag contributes:
 | `--logo-alpha` | `1.0` | Logo opacity, from `0` (transparent) to `1` (fully opaque). |
 | `--single-query` | off | Fetch all power features in a single Overpass query instead of tiling. Faster for small/medium regions but may time out on large countries or continents. |
 | `--tile-delay` | `30` | Seconds to wait between Overpass tile API requests. Useful to avoid rate-limiting on busy public endpoints. |
-| `--export-geojson` | off | Also save all transmission lines as a single GeoJSON in WGS84 (EPSG:4326). Pass a path to override the default location in `posters/`. |
+| `--export-geojson` | off | Also save all transmission lines as a single GeoJSON in WGS84 (EPSG:4326), preserving downloaded OSM tag columns. Pass a path to override the default location in `posters/`. |
+| `--export-csv` | off | Also save all transmission lines as CSV with representative WGS84 `latitude`/`longitude` columns and full geometry in `geometry_wkt`, preserving downloaded OSM tag columns. Pass a path to override the default location in `posters/`. |
+| `--export-plants-geojson` | off | Also save OSM `power=plant` features as a GeoJSON in WGS84 (EPSG:4326), preserving downloaded OSM tag columns. Pass a path to override the default location in `posters/`. |
+| `--export-plants-csv` | off | Also save OSM `power=plant` features as CSV with representative WGS84 `latitude`/`longitude` columns and full geometry in `geometry_wkt`, preserving downloaded OSM tag columns. Pass a path to override the default location in `posters/`. |
+| `--export-substations-geojson` | off | Also save OSM `power=substation` features as a GeoJSON in WGS84 (EPSG:4326), preserving downloaded OSM tag columns. Pass a path to override the default location in `posters/`. |
+| `--export-substations-csv` | off | Also save OSM `power=substation` features as CSV with representative WGS84 `latitude`/`longitude` columns and full geometry in `geometry_wkt`, preserving downloaded OSM tag columns. Pass a path to override the default location in `posters/`. |
+| `--export-turbines-geojson` | off | Also save OSM wind turbines (`power=generator` with wind tags) as a GeoJSON in WGS84 (EPSG:4326), preserving all downloaded OSM tag columns plus parsed `capacity_mw`, `height_m`, and `rotor_diameter_m` when available. Pass a path to override the default location in `posters/`. |
+| `--export-turbines-csv` | off | Also save OSM wind turbines as CSV with representative WGS84 `latitude`/`longitude` columns and full geometry in `geometry_wkt`, preserving downloaded OSM tag columns plus parsed numeric columns when available. Pass a path to override the default location in `posters/`. |
 | `--no-cache` | off | Ignore cached boundaries and OSM power features on this run. Fresh results are still written to the cache for future runs. |
 | `--verbose-osmnx` | off | Print OSMnx request logs. |
 
 ## Output
 
-Generated posters are written to the `posters/` directory by default. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads. Because of this cache, the first render of a region is the slow one - every subsequent run for that region (for example with a different theme) skips the downloads and is much faster.
+Generated posters are written to the `posters/` directory by default. Optional GeoJSON and CSV exports are also written there unless you pass explicit output paths. Intermediate OSM responses and processed geometries are cached in `cache/` to avoid repeated downloads. Because of this cache, the first render of a region is the slow one - every subsequent run for that region (for example with a different theme or export format) skips the downloads and is much faster when the same fetch options are used.
 
 
 ## Gallery
@@ -278,7 +348,151 @@ To add a poster:
    ```
 4. Open a pull request targeting `gh-pages` (not `main`).
 
+## Data sources
+
+### Region boundaries
+
+These define the area queried from Overpass and drawn on posters. All boundary outputs use WGS84 (`EPSG:4326`).
+
+| Source | Used when | What you get | Notes |
+| --- | --- | --- | --- |
+| [Nominatim](https://nominatim.org/) | Default `--country` lookup | Administrative polygons for countries, states, and provinces | Downloaded via OSMnx and cached in `cache/`. Mainland-only filtering drops distant overseas territories unless `--include-outlying` is set. |
+| [Natural Earth](https://www.naturalearthdata.com/) admin-0 | `--country` is a continent name or `Global` | Continent-scale polygons | Cached on first use. Nominatim does not resolve continent names. |
+| Local GeoJSON in `regions/` | `--boundary-geojson ./regions/....geojson` | Custom or multi-country masks | All polygon features in the file are dissolved into one boundary. See [Predefined regions](#predefined-regions). `--country` still controls the poster title. |
+| User-supplied GeoJSON | `--boundary-geojson path/to/file.geojson` | Any custom clipping polygon | Same dissolve behaviour as bundled `regions/` files. |
+
+### Grid infrastructure (OpenStreetMap)
+
+Downloaded from the [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) through OSMnx, tiled for large areas, and cached per tile in `cache/`. GeoJSON and CSV exports preserve **all OSM tag columns** returned for each feature.
+
+| OSM tag query | CLI / behaviour | Geometry | Typical use | Export flags |
+| --- | --- | --- | --- | --- |
+| `power=line` | Always fetched | LineString / MultiLineString | Transmission corridors | `--export-geojson`, `--export-csv` |
+| `power=minor_line` | `--include-minor-lines` | Lines | Distribution and lower-voltage lines | Included in line exports when enabled |
+| `power=cable` | `--include-cables` (+ optional `--cable-sea-buffer-km`) | Lines | Underground and submarine cables, including interconnectors | Included in line exports when enabled |
+| `power=plant` | `--show-plants` and/or plant export flags | Point, Polygon, MultiPolygon | Power stations and wind/solar farms (`plant:source`, `plant:output:electricity`, etc.) | `--export-plants-geojson`, `--export-plants-csv` |
+| `power=substation` | Substation export flags | Point, Polygon, MultiPolygon | Transmission and distribution substations (`substation=transmission` / `distribution`, `voltage`, `operator`) | `--export-substations-geojson`, `--export-substations-csv` |
+| `power=generator` + `generator:source=wind` | Turbine export flags | Point (mostly) | Individual wind turbines | `--export-turbines-geojson`, `--export-turbines-csv` |
+| `power=generator` + `generator:method=wind_turbine` | Same turbine export | Point (mostly) | Catches turbines tagged by method rather than source; merged and deduplicated with the query above | Same as wind turbines |
+
+**Great Britain tagging context:** see the [OSM Power networks/Great Britain](https://wiki.openstreetmap.org/wiki/Power_networks/Great_Britain) wiki page. Transmission substations are typically `substation=transmission`; grid supply points (GSPs) are substations, not separate polygon layers in OSM.
+
+**Licence:** OpenStreetMap data is © OpenStreetMap contributors, available under the [ODbL](https://www.openstreetmap.org/copyright).
+
+### UK full exports (`data/raw/uk/`)
+
+Use `python scripts/export_uk.py --all` to write full exports (gitignored under `data/raw/uk/`). The `posters/` directory is for rendered PNG/SVG/PDF images only.
+
+| File | Source | Contents |
+| --- | --- | --- |
+| `powerlines.geojson` / `.csv` | OSM lines, minor lines, cables | Full UK grid export with all OSM tags; CSV adds `latitude`, `longitude`, `geometry_wkt` |
+| `plants.geojson` / `.csv` | OSM `power=plant` | Generation sites with footprints and capacity tags |
+| `substations.geojson` / `.csv` | OSM `power=substation` | Substation footprints and attributes |
+| `wind_turbines.geojson` / `.csv` | OSM `power=generator` (wind) | ~600k individual turbine points in GB; exports add parsed `capacity_mw`, `height_m`, `rotor_diameter_m` when tags exist |
+
+CSV columns are ordered `latitude`, then `longitude`, then all tag columns, then `geometry_wkt`.
+
+### Map web layers (`scripts/prepare_map_data.py`)
+
+The [interactive map](map/) does not load multi-gigabyte full exports directly. Regions are listed in [`data/catalog.json`](data/catalog.json). Run `python scripts/prepare_map_data.py --region {id}` after `python scripts/export_region.py --region {id}` to build smaller files under `data/map/{id}/`:
+
+| File | Derived from | What changes |
+| --- | --- | --- |
+| `uk_powerlines_transmission.geojson` | `powerlines.geojson` | Drops `power=minor_line`; keeps transmission and cables |
+| `uk_plants_web.geojson` | `plants.geojson` | OSM ground truth: geometry and plant tags (`osm_id`, `capacity_mw`, `source_bucket`, …). BMU fields are **not** stored here — see [UK plant BMU mapping](#uk-plant-bmu-mapping). |
+| `uk_substations_web.geojson` | `substations.geojson` | Trims columns; keeps full geometry; adds `latitude`, `longitude` |
+| `uk_wind_turbines_web.geojson` | `wind_turbines.csv` | Point-only layer with trimmed turbine tags (~250 MB; lazy-loaded at zoom 9+) |
+| `uk_dno_areas_web.geojson` | NESO DNO boundaries | WGS84 polygons; click to filter plants/turbines |
+| `uk_gsp_areas_web.geojson` | NESO GSP boundaries | WGS84 polygons; click to filter plants/turbines |
+
+**Basemap:** the map uses standard [OpenStreetMap raster tiles](https://www.openstreetmap.org/copyright) via Leaflet.
+
+### UK plant BMU mapping
+
+UK balancing-mechanism unit (BMU) ids are kept **separate** from OSM plant geometry. The map joins them at popup time.
+
+| File | Role |
+| --- | --- |
+| `data/map/uk/uk_plants_web.geojson` | **OSM ground truth** — edit plant names, geometry, capacity, etc. |
+| `data/reference/uk_plant_bmu_map.csv` | **Your join table** — one row per plant↔BMU link (`osm_id` primary key) |
+| `data/reference/uk_bmunits.json` | Elexon BMU registry (~3k units; auto-fetched) |
+| `data/reference/uk_plant_bmu_map.json` | Generated from the CSV; loaded by the map |
+
+**Mapping table columns:** `osm_id`, `plant_name`, `bmu_id` (Elexon, e.g. `E_ABERDARE`), `ngc_bmu_id` (e.g. `ABERU-1`), `bmu_type` (e.g. `E`), `source` (`auto` / `manual` / `migrated`), `notes`.
+
+Multi-unit stations need **one row per BMU**. Existing CSV rows are never overwritten — scripts only append new auto matches.
+
+#### Routine update
+
+After refreshing OSM exports or editing plant data:
+
+```powershell
+# 1. Merge raw OSM into the editable plants GeoJSON (fills blank fields only)
+python scripts/sync_uk_plants.py
+
+# 2. Refresh Elexon registry, propose new auto links, export JSON for the map
+python scripts/propose_plant_bmu_map.py --fetch
+```
+
+`prepare_map_data.py --region uk` runs the same OSM plant merge as `sync_uk_plants.py` (other UK layers unchanged). You can skip plants when you have already synced:
+
+```powershell
+python scripts/prepare_map_data.py --region uk --skip-plants
+```
+
+#### Manual BMU corrections
+
+1. Open `data/reference/uk_plant_bmu_map.csv`.
+2. Add or edit rows (set `source` to `manual`). Use `osm_id` from the plant GeoJSON when possible (e.g. `way/1353839293`); `plant_name` is used as a fallback join.
+3. Regenerate the map file:
+
+```powershell
+python scripts/propose_plant_bmu_map.py
+```
+
+#### Find plants still without BMU links
+
+```powershell
+python scripts/propose_plant_bmu_map.py --list-unmatched data/reference/uk_plants_missing_bmu.csv
+```
+
+Review the CSV and add manual rows for plants you care about. Many OSM plants are not registered BMUs, so gaps are expected.
+
+#### Deploy
+
+Sync `data/reference/uk_plant_bmu_map.json` with the map (see [`map/DEPLOY.md`](map/DEPLOY.md)).
+
+**Licence:** BMU standing data is published by [Elexon](https://www.elexon.co.uk/) via the [Insights API](https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all).
+
+### NESO zone boundaries (`scripts/fetch_neso_zones.py`)
+
+DNO and GSP polygons are not in OSM. Fetch them from the NESO data portal:
+
+```powershell
+python scripts/fetch_neso_zones.py
+```
+
+| Source | Output | Map layer |
+| --- | --- | --- |
+| [NESO — GB DNO licence areas](https://www.neso.energy/data-portal/gis-boundaries-gb-dno-license-areas) | `data/zones/uk_dno_areas.geojson` | Toggle **DNO licence areas**; click to filter |
+| [NESO — GB GSP boundaries](https://www.neso.energy/data-portal/gis-boundaries-gb-grid-supply-points) | `data/zones/uk_gsp_areas.geojson` | Toggle **GSP regions**; click to filter |
+
+### Derived and parsed fields
+
+Some columns are computed during export or web preparation, not copied verbatim from a single OSM tag:
+
+| Field | Added where | Source logic |
+| --- | --- | --- |
+| `latitude`, `longitude` | CSV exports; web plant/substation/turbine files | Representative point of each geometry (turbine web file uses CSV coordinates) |
+| `geometry_wkt` | CSV exports | Full WGS84 geometry as WKT |
+| `capacity_mw` | Plant web export; turbine export | Parsed from `plant:output:electricity` or `generator:output:electricity` |
+| `source_bucket` | Plant web export; map legend | Buckets `plant:source` into solar, wind, hydro, nuclear, coal, gas, oil, biomass, other |
+| `height_m`, `rotor_diameter_m` | Turbine export | Parsed from OSM `height` and `rotor:diameter` tags when present |
+| `voltage_kv` | Line preparation (poster rendering) | Parsed from raw `voltage` tag for styling tiers |
+
 ## Attribution
 
-Map data © OpenStreetMap contributors.
+- Map data © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL).
+- Country boundaries via [Nominatim](https://nominatim.org/) / OSM; continent boundaries via [Natural Earth](https://www.naturalearthdata.com/).
+- DNO/GSP zone boundaries, if used separately, should follow [NESO](https://www.neso.energy/data-portal) or the relevant DNO open-data licence.
 

@@ -1,0 +1,111 @@
+{
+  "defaultRegion": "uk",
+  "boundariesSource": "regions",
+  "regions": {
+    "uk": {
+      "title": "United Kingdom",
+      "parent": "europe",
+      "country": "United Kingdom",
+      "bounds": [[49.5, -11.0], [61.0, 2.5]],
+      "boundary": "regions/uk_no_shetland.geojson",
+      "plantBmuMap": "reference/uk_plant_bmu_map.json",
+      "layers": {
+        "lines": {
+          "type": "geojson",
+          "path": "map/uk/uk_powerlines_transmission.geojson",
+          "label": "Transmission lines"
+        },
+        "plants": {
+          "type": "geojson",
+          "path": "map/uk/uk_plants_web.geojson",
+          "label": "Power plants",
+          "defaultOn": true
+        },
+        "turbines": {
+          "type": "geojson",
+          "path": "map/uk/uk_wind_turbines_web.geojson",
+          "label": "Individual wind turbines",
+          "minZoom": 9
+        },
+        "substations": {
+          "type": "geojson",
+          "path": "map/uk/uk_substations_web.geojson",
+          "label": "Substations"
+        },
+        "dno": {
+          "type": "geojson",
+          "path": "map/uk/uk_dno_areas_web.geojson",
+          "label": "DNO licence areas",
+          "zone": true,
+          "zoneKind": "dno"
+        },
+        "gsp": {
+          "type": "geojson",
+          "path": "map/uk/uk_gsp_areas_web.geojson",
+          "label": "GSP regions",
+          "zone": true,
+          "zoneKind": "gsp"
+        }
+      }
+    },
+    "fr": {
+      "title": "France",
+      "parent": "europe",
+      "country": "France",
+      "bounds": [[41.0, -5.5], [51.5, 10.0]],
+      "layers": {
+        "lines": {
+          "type": "geojson",
+          "path": "map/fr/lines_transmission.geojson",
+          "label": "Transmission lines"
+        },
+        "plants": {
+          "type": "geojson",
+          "path": "map/fr/plants_web.geojson",
+          "label": "Power plants",
+          "defaultOn": true
+        },
+        "turbines": {
+          "type": "geojson",
+          "path": "map/fr/turbines_web.geojson",
+          "label": "Individual wind turbines",
+          "minZoom": 9
+        },
+        "substations": {
+          "type": "geojson",
+          "path": "map/fr/substations_web.geojson",
+          "label": "Substations"
+        }
+      }
+    },
+    "europe": {
+      "title": "Europe",
+      "bounds": [[34.0, -25.0], [72.0, 45.0]],
+      "boundary": "regions/europe.geojson",
+      "children": ["uk", "fr", "de"],
+      "layers": {
+        "lines": {
+          "type": "pmtiles",
+          "path": "map/europe/lines.pmtiles",
+          "geojsonSource": "map/europe/lines_transmission.geojson",
+          "label": "Transmission lines",
+          "sourceLayer": "lines"
+        },
+        "plants": {
+          "type": "geojson",
+          "path": "map/europe/plants_web.geojson",
+          "label": "Power plants",
+          "defaultOn": true
+        },
+        "turbines": {
+          "type": "pmtiles",
+          "path": "map/europe/turbines.pmtiles",
+          "geojsonSource": "map/europe/turbines_web.geojson",
+          "label": "Individual wind turbines",
+          "minZoom": 9,
+          "sourceLayer": "turbines"
+        }
+      }
+    }
+  }
+}

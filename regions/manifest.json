@@ -1,0 +1,122 @@
+{
+  "description": "Predefined multi-country boundaries for posters and OSM export. Each entry maps to regions/{id}.geojson.",
+  "regions": {
+    "australia_mainland_tasmania": {
+      "title": "Australia (mainland and Tasmania)",
+      "description": "Mainland and Tasmania; outlying territories excluded."
+    },
+    "britain_and_ireland": {
+      "title": "Britain and Ireland",
+      "description": "Great Britain (excl. Shetland) and the island of Ireland."
+    },
+    "canada_southern_provinces": {
+      "title": "Canada (southern provinces)",
+      "description": "Canada south of 60°N; excludes Yukon, NWT, Nunavut."
+    },
+    "central_asia": {
+      "title": "Central Asia",
+      "description": "Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan."
+    },
+    "continental_europe": {
+      "title": "Continental Europe",
+      "description": "Continental Europe Synchronous Area (ENTSO-E Regional Group) approximation."
+    },
+    "east_africa": {
+      "title": "East Africa",
+      "description": "11 East African countries from Eritrea/Djibouti south to Tanzania."
+    },
+    "eastern_interconnection": {
+      "title": "Eastern Interconnection",
+      "description": "Eastern Interconnection approximate mask: central Canada to the Atlantic coast excluding Quebec."
+    },
+    "europe": {
+      "title": "Europe",
+      "description": "37 European units including UK, Ireland, Nordics, Turkey, Ukraine, Belarus, and Crimea; excludes Russia."
+    },
+    "great_lakes": {
+      "title": "Great Lakes",
+      "description": "Great Lakes region straddling the US Midwest and Ontario."
+    },
+    "iberia": {
+      "title": "Iberia",
+      "description": "Spain and Portugal."
+    },
+    "ireland_island": {
+      "title": "Ireland",
+      "description": "Island of Ireland (Republic of Ireland + Northern Ireland)."
+    },
+    "japan_main_islands": {
+      "title": "Japan (main islands)",
+      "description": "Four main islands plus adjacent small islands; excludes Okinawa, Ogasawara, Senkaku."
+    },
+    "java_bali": {
+      "title": "Java and Bali",
+      "description": "Indonesian islands of Java and Bali."
+    },
+    "latin_america": {
+      "title": "Latin America",
+      "description": "48 entries from Mexico through Argentina, including the Caribbean and overseas territories."
+    },
+    "malay_peninsula": {
+      "title": "Malay Peninsula",
+      "description": "Peninsular Malaysia, Singapore, and southern Thailand."
+    },
+    "mediterranean": {
+      "title": "Mediterranean",
+      "description": "22 countries bordering the Mediterranean."
+    },
+    "mena": {
+      "title": "Middle East and North Africa",
+      "description": "18 countries in MENA."
+    },
+    "quebec_south": {
+      "title": "Southern Quebec",
+      "description": "Southern Quebec, Canada."
+    },
+    "salish_sea": {
+      "title": "Salish Sea",
+      "description": "Southwestern British Columbia and northwestern Washington."
+    },
+    "scandinavia": {
+      "title": "Scandinavia",
+      "description": "Denmark, Finland, Norway, Sweden."
+    },
+    "south_africa_no_prince_edward": {
+      "title": "South Africa",
+      "description": "South Africa mainland; excludes Prince Edward Islands."
+    },
+    "south_asia": {
+      "title": "South Asia",
+      "description": "India, Pakistan, Bangladesh, Nepal, Bhutan, Sri Lanka."
+    },
+    "southeast_asia": {
+      "title": "Southeast Asia",
+      "description": "11 Southeast Asian countries (Brunei through Vietnam)."
+    },
+    "southern_african_power_pool": {
+      "title": "Southern African Power Pool",
+      "description": "12 SAPP member countries."
+    },
+    "uk_no_shetland": {
+      "title": "United Kingdom",
+      "description": "United Kingdom without the Shetland Islands.",
+      "catalogId": "uk"
+    },
+    "us_canada_mainland": {
+      "title": "US and Canada (mainland)",
+      "description": "Continental US and Canadian mainland south of 60°N; excludes Alaska, Hawaii, Arctic islands."
+    },
+    "us_mainland": {
+      "title": "United States (contiguous)",
+      "description": "Contiguous United States (CONUS); excludes Alaska and Hawaii."
+    },
+    "wapp": {
+      "title": "West African Power Pool",
+      "description": "14 WAPP member countries."
+    },
+    "wecc": {
+      "title": "WECC / Western Interconnection",
+      "description": "Western Electricity Coordinating Council footprint across western North America."
+    }
+  }
+}

@@ -1,0 +1,2 @@
+osm_id,plant_name,bmu_id,ngc_bmu_id,bmu_type,source,notes
+# Deprecated — use uk_plant_bmu_map.csv instead.

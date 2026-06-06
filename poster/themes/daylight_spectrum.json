@@ -1,0 +1,14 @@
+{
+    "name": "Daylight Spectrum",
+    "description": "Bright off-white poster theme with saturated teal, blue, orange, and magenta voltage classes for a clean colorful grid print.",
+    "bg": "#FFF9E8",
+    "text": "#14213D",
+    "subtext": "#5F6673",
+    "boundary": "#E7DEC5",
+    "line_unknown": "#B8B3A3",
+    "line_low": "#00A6A6",
+    "line_mid": "#2F6BFF",
+    "line_high": "#FF7A00",
+    "line_extra": "#D7263D",
+    "fade": "#FFF9E8"
+}

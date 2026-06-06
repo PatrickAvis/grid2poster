@@ -1,0 +1,20 @@
+{
+    "name": "Old Cartographer Ink",
+    "description": "Aged parchment, sepia ink, and muted survey-map colors for a hand-drawn old-map feel.",
+    "bg": "#F1E6CF",
+    "text": "#2B2118",
+    "subtext": "#76634D",
+    "boundary": "#CBB894",
+    "line_unknown": "#BBA986",
+    "line_low": "#687A58",
+    "line_mid": "#3F6570",
+    "line_high": "#9A5135",
+    "line_extra": "#4A261C",
+    "fade": "#F1E6CF",
+    "substation_fill": "#E7D8B9",
+    "substation_outline": "#6D573D",
+    "substation_marker": "#3B2D20",
+    "plant_fill": "#D9C59D",
+    "plant_outline": "#8D4A31",
+    "plant_marker": "#8D4A31"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Prismatic Current",
+  "description": "Rich jewel-tone theme with a dark indigo base, vivid voltage classes, and warm high-voltage highlights.",
+  "bg": "#120A2A",
+  "text": "#FFF7ED",
+  "subtext": "#F0ABFC",
+  "boundary": "#3B245F",
+  "line_unknown": "#5B4B7A",
+  "line_low": "#2DD4BF",
+  "line_mid": "#60A5FA",
+  "line_high": "#FB923C",
+  "line_extra": "#FDE047",
+  "fade": "#120A2A"
+}

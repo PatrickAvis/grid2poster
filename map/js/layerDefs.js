@@ -1,0 +1,73 @@
+import {
+  lineStyle,
+  plantMarkerStyle,
+  plantPolygonStyle,
+  substationMarkerStyle,
+  substationPolygonStyle,
+  turbineMarkerStyle,
+} from "./styles.js";
+import { plantPropsForPopup, turbinePropsForPopup } from "./popups.js";
+
+export const LAYER_BEHAVIOR = {
+  lines: {
+    label: "transmission lines",
+    popupKeys: ["name", "power", "voltage", "voltage_kv", "operator", "circuits", "cables"],
+    kind: "lines",
+  },
+  plants: {
+    label: "plants",
+    polygonStyleFn: plantPolygonStyle,
+    markerStyleFn: plantMarkerStyle,
+    popupPropsFn: plantPropsForPopup,
+    popupKeys: ["name", "bmu_id", "ngc_bmu_id", "bmu_type", "capacity_mw", "latitude", "longitude", "plant:source", "source_bucket", "plant:output:electricity", "operator"],
+    combinedLayer: true,
+    filterable: true,
+    kind: "plants",
+  },
+  turbines: {
+    label: "wind turbines",
+    styleFn: turbineMarkerStyle,
+    popupPropsFn: turbinePropsForPopup,
+    popupKeys: ["name", "capacity_mw", "height_m", "rotor_diameter_m", "latitude", "longitude", "operator", "manufacturer", "model", "generator:output:electricity"],
+    pointLayer: true,
+    filterable: true,
+    kind: "points",
+  },
+  substations: {
+    label: "substations",
+    polygonStyleFn: substationPolygonStyle,
+    markerStyleFn: substationMarkerStyle,
+    popupKeys: ["name", "power", "substation", "voltage", "latitude", "longitude", "operator", "ref"],
+    combinedLayer: true,
+    kind: "combined",
+  },
+  dno: {
+    label: "DNO licence areas",
+    zoneLayer: "dno",
+    kind: "zone",
+  },
+  gsp: {
+    label: "GSP regions",
+    zoneLayer: "gsp",
+    kind: "zone",
+  },
+};
+
+export function buildLayerConfig(regionConfig) {
+  const bmuLookup = regionConfig.bmuLookup || null;
+  const result = {};
+  for (const [layerId, catalogLayer] of Object.entries(regionConfig.layers)) {
+    const behavior = LAYER_BEHAVIOR[layerId] || { kind: "generic", label: catalogLayer.label || layerId };
+    const layerConfig = {
+      ...behavior,
+      ...catalogLayer,
+      label: catalogLayer.label || behavior.label || layerId,
+      minZoom: catalogLayer.minZoom,
+    };
+    if (layerId === "plants" && bmuLookup) {
+      layerConfig.popupPropsFn = (props) => plantPropsForPopup(props, bmuLookup);
+    }
+    result[layerId] = layerConfig;
+  }
+  return result;
+}

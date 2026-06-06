@@ -1,0 +1,14 @@
+{
+  "name": "Arc Flash",
+  "description": "Light technical poster theme with sharp electric cyan, cobalt, hot orange, and magenta voltage classes for high-energy contrast on paper.",
+  "bg": "#FFFDF4",
+  "text": "#080A12",
+  "subtext": "#394150",
+  "boundary": "#D7DDE8",
+  "line_unknown": "#8B8F99",
+  "line_low": "#007C89",
+  "line_mid": "#0055FF",
+  "line_high": "#FF4D00",
+  "line_extra": "#D000FF",
+  "fade": "#FFFDF4"
+}

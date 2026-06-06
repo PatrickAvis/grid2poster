@@ -32,11 +32,41 @@ except ImportError:  # pragma: no cover - optional progress-bar dependency
         def __exit__(self, *exc):
             return False
 
-CACHE_DIR = Path("cache")
-POSTERS_DIR = Path("posters")
-THEMES_DIR = Path("themes")
+REPO_ROOT = Path(__file__).resolve().parent
+CACHE_DIR = REPO_ROOT / "cache"
+POSTERS_DIR = REPO_ROOT / "posters"
+THEMES_DIR = REPO_ROOT / "poster" / "themes"
+DATA_RAW_DIR = REPO_ROOT / "data" / "raw"
+DATA_MAP_DIR = REPO_ROOT / "data" / "map"
+DATA_ZONES_DIR = REPO_ROOT / "data" / "zones"
 FILE_ENCODING = "utf-8"
 MM_PER_INCH = 25.4
+
+
+def raw_dir(region_id: str) -> Path:
+    path = DATA_RAW_DIR / region_id
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def map_dir(region_id: str) -> Path:
+    path = DATA_MAP_DIR / region_id
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def zones_dir(region_id: str) -> Path:
+    path = DATA_ZONES_DIR / region_id
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def uk_raw_dir() -> Path:
+    return raw_dir("uk")
+
+
+def uk_map_dir() -> Path:
+    return map_dir("uk")
 
 PAPER_SIZES: dict[str, tuple[float, float]] = {
     # ISO 216 A-series (portrait, width × height in mm)
@@ -57,9 +87,10 @@ PAPER_SIZES: dict[str, tuple[float, float]] = {
 # as unknown/sub-transmission. Overridable per-run via --voltage-tiers.
 DEFAULT_VOLTAGE_TIERS: tuple[float, float, float, float] = (60.0, 150.0, 300.0, 500.0)
 
-CACHE_DIR.mkdir(exist_ok=True)
-POSTERS_DIR.mkdir(exist_ok=True)
-THEMES_DIR.mkdir(exist_ok=True)
+for _dir in (CACHE_DIR, POSTERS_DIR, THEMES_DIR, DATA_RAW_DIR, DATA_MAP_DIR, DATA_ZONES_DIR):
+    _dir.mkdir(parents=True, exist_ok=True)
+uk_raw_dir().mkdir(parents=True, exist_ok=True)
+uk_map_dir().mkdir(parents=True, exist_ok=True)
 
 
 def slugify(value: str) -> str:

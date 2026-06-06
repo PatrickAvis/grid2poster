@@ -1,0 +1,455 @@
+import { LINE_TYPE_ORDER } from "./constants.js";
+import { buildLayerConfig } from "./layerDefs.js";
+import {
+  buildLineLegend,
+  buildPlantLegend,
+  setLineLegendVisible,
+  setPlantLegendVisible,
+} from "./legends.js";
+import { attachLazyPopup, plantPropsForPopup, turbinePropsForPopup } from "./popups.js";
+import { loadLayerData, createLayerFromData } from "./sources/index.js";
+import {
+  lineStyle,
+  lineTypeBucket,
+  plantMarkerStyle,
+  plantPolygonStyle,
+  plantSourceBucket,
+  substationMarkerStyle,
+  substationPolygonStyle,
+  turbineMarkerStyle,
+} from "./styles.js";
+import { getLatLon, isPolygonGeometry } from "./utils.js";
+
+export function createLayerManager(map, regionConfig, zoneFilter) {
+  const config = {
+    ...regionConfig,
+    turbineMinZoom: regionConfig.turbineMinZoom ?? 9,
+    bmuLookup: regionConfig.bmuLookup ?? null,
+  };
+  const LAYER_CONFIG = buildLayerConfig(config);
+  const layerIds = config.layerIds || Object.keys(LAYER_CONFIG);
+
+  const layerGroups = {};
+  const layerCache = {};
+  for (const id of layerIds) {
+    layerGroups[id] = L.layerGroup();
+    layerCache[id] = { loaded: false, loading: null, geoLayer: null, data: null, count: 0 };
+  }
+  if (layerGroups.plants) {
+    layerGroups.plants.addTo(map);
+  }
+
+  const lineBucketGroups = {};
+  const lineBucketVisibility = {};
+  const plantBucketGroups = {};
+  const plantBucketVisibility = {};
+
+  function addGeometryAndMarkers(bucketGroup, features, layerConfig, filterGeometry = null) {
+    const polygonFeatures = features.filter((feature) => isPolygonGeometry(feature.geometry));
+    if (polygonFeatures.length) {
+      const polygonLayer = L.geoJSON(
+        { type: "FeatureCollection", features: polygonFeatures },
+        {
+          style: (feature) => layerConfig.polygonStyleFn(feature.properties || {}),
+          onEachFeature: (feature, layer) => {
+            const props = feature.properties || {};
+            const popupProps = layerConfig.popupPropsFn ? layerConfig.popupPropsFn(props) : props;
+            attachLazyPopup(layer, popupProps, layerConfig.popupKeys);
+          },
+        },
+      );
+      bucketGroup.addLayer(polygonLayer);
+    }
+
+    for (const feature of features) {
+      const props = feature.properties || {};
+      if (filterGeometry && layerConfig.filterable) {
+        const latlon = getLatLon(props, feature);
+        if (!latlon || !zoneFilter.pointInside(latlon[0], latlon[1], filterGeometry)) continue;
+      }
+      const latlon = getLatLon(props, feature);
+      if (!latlon) continue;
+      const marker = L.circleMarker(latlon, layerConfig.markerStyleFn(props));
+      const popupProps = layerConfig.popupPropsFn ? layerConfig.popupPropsFn(props) : props;
+      attachLazyPopup(marker, popupProps, layerConfig.popupKeys);
+      bucketGroup.addLayer(marker);
+    }
+  }
+
+  function createGeometryAndMarkerLayer(data, layerConfig, filterGeometry = null) {
+    const container = L.featureGroup();
+    addGeometryAndMarkers(container, data.features || [], layerConfig, filterGeometry);
+    return container;
+  }
+
+  function createLineLayer(data, layerConfig) {
+    const byBucket = new Map();
+    for (const feature of data.features || []) {
+      const bucket = lineTypeBucket(feature.properties || {});
+      if (!byBucket.has(bucket)) byBucket.set(bucket, []);
+      byBucket.get(bucket).push(feature);
+    }
+
+    const container = L.layerGroup();
+    for (const bucket of Object.keys(lineBucketGroups)) {
+      delete lineBucketGroups[bucket];
+    }
+
+    for (const bucket of LINE_TYPE_ORDER.filter((key) => byBucket.has(key))) {
+      const bucketGroup = L.geoJSON(
+        { type: "FeatureCollection", features: byBucket.get(bucket) },
+        {
+          style: (feature) => lineStyle(feature.properties || {}),
+          onEachFeature: (feature, layer) => {
+            attachLazyPopup(layer, feature.properties || {}, layerConfig.popupKeys);
+          },
+        },
+      );
+      lineBucketGroups[bucket] = bucketGroup;
+      lineBucketVisibility[bucket] = lineBucketVisibility[bucket] ?? true;
+      if (lineBucketVisibility[bucket]) {
+        container.addLayer(bucketGroup);
+      }
+    }
+
+    return container;
+  }
+
+  function createPlantLayer(data, layerConfig, filterGeometry = null) {
+    const byBucket = new Map();
+    for (const feature of data.features || []) {
+      const props = feature.properties || {};
+      if (filterGeometry && layerConfig.filterable) {
+        const latlon = getLatLon(props, feature);
+        if (!latlon || !zoneFilter.pointInside(latlon[0], latlon[1], filterGeometry)) continue;
+      }
+      const bucket = plantSourceBucket(props);
+      if (!byBucket.has(bucket)) byBucket.set(bucket, []);
+      byBucket.get(bucket).push(feature);
+    }
+
+    const container = L.layerGroup();
+    for (const bucket of Object.keys(plantBucketGroups)) {
+      delete plantBucketGroups[bucket];
+    }
+
+    const orderedBuckets = [
+      ...["nuclear", "gas", "coal", "wind", "solar", "hydro", "biomass", "oil", "other"].filter((b) => byBucket.has(b)),
+      ...[...byBucket.keys()].filter((bucket) => !["nuclear", "gas", "coal", "wind", "solar", "hydro", "biomass", "oil", "other"].includes(bucket)).sort(),
+    ];
+
+    for (const bucket of orderedBuckets) {
+      const bucketGroup = L.featureGroup();
+      addGeometryAndMarkers(bucketGroup, byBucket.get(bucket), layerConfig, filterGeometry);
+      plantBucketGroups[bucket] = bucketGroup;
+      plantBucketVisibility[bucket] = plantBucketVisibility[bucket] ?? true;
+      if (plantBucketVisibility[bucket]) {
+        container.addLayer(bucketGroup);
+      }
+    }
+
+    return container;
+  }
+
+  function buildGeoJsonLayer(layerKey, data, layerConfig) {
+    if (layerKey === "lines") {
+      return createLineLayer(data, layerConfig);
+    }
+    if (layerKey === "plants") {
+      return createPlantLayer(data, layerConfig, zoneFilter.geometry);
+    }
+    if (layerConfig.combinedLayer) {
+      return createGeometryAndMarkerLayer(data, layerConfig, zoneFilter.geometry);
+    }
+    if (layerConfig.zoneLayer) {
+      return zoneFilter.createZoneLayer(data, layerConfig.zoneLayer);
+    }
+    const features = zoneFilter.geometry && layerConfig.filterable
+      ? (data.features || []).filter((feature) => {
+        const props = feature.properties || {};
+        const latlon = getLatLon(props, feature);
+        return latlon && zoneFilter.pointInside(latlon[0], latlon[1], zoneFilter.geometry);
+      })
+      : (data.features || []);
+    return L.geoJSON(
+      { type: "FeatureCollection", features },
+      {
+        style: layerConfig.styleFn
+          ? (feature) => layerConfig.styleFn(feature.properties || {})
+          : undefined,
+        pointToLayer: layerConfig.pointLayer
+          ? (feature, latlng) => L.circleMarker(latlng, layerConfig.styleFn(feature.properties || {}))
+          : undefined,
+        onEachFeature: (feature, layer) => {
+          const props = feature.properties || {};
+          const popupProps = layerConfig.popupPropsFn ? layerConfig.popupPropsFn(props) : props;
+          attachLazyPopup(layer, popupProps, layerConfig.popupKeys);
+        },
+      },
+    );
+  }
+
+  const geoJsonHelpers = {
+    buildGeoJsonLayer,
+    lineStyle,
+    turbineMarkerStyle,
+  };
+
+  function syncLineBucketLayers() {
+    const parent = layerCache.lines?.geoLayer;
+    if (!parent || !document.getElementById("toggle-lines")?.checked) return;
+    for (const [bucket, group] of Object.entries(lineBucketGroups)) {
+      const visible = lineBucketVisibility[bucket] !== false;
+      if (visible && !parent.hasLayer(group)) parent.addLayer(group);
+      if (!visible && parent.hasLayer(group)) parent.removeLayer(group);
+    }
+  }
+
+  function setLineBucketVisible(bucket, visible) {
+    if (!lineBucketGroups[bucket]) return;
+    lineBucketVisibility[bucket] = visible;
+    syncLineBucketLayers();
+  }
+
+  function syncPlantBucketLayers() {
+    const parent = layerCache.plants?.geoLayer;
+    if (!parent || !document.getElementById("toggle-plants")?.checked) return;
+    for (const [bucket, group] of Object.entries(plantBucketGroups)) {
+      const visible = plantBucketVisibility[bucket] !== false;
+      if (visible && !parent.hasLayer(group)) parent.addLayer(group);
+      if (!visible && parent.hasLayer(group)) parent.removeLayer(group);
+    }
+  }
+
+  function setPlantBucketVisible(bucket, visible) {
+    if (!plantBucketGroups[bucket]) return;
+    plantBucketVisibility[bucket] = visible;
+    syncPlantBucketLayers();
+  }
+
+  function syncTurbineCheckboxes(enabled) {
+    const main = document.getElementById("toggle-turbines");
+    const sub = document.getElementById("toggle-wind-turbines");
+    if (main) main.checked = enabled;
+    if (sub) sub.checked = enabled;
+  }
+
+  function plantLegendOptions(setStatus) {
+    return {
+      turbineMinZoom: config.turbineMinZoom,
+      turbinesEnabled: document.getElementById("toggle-turbines")?.checked ?? false,
+      onTurbinesToggle: (enabled) => setLayerEnabled("turbines", enabled, setStatus),
+    };
+  }
+
+  function turbineZoomOk() {
+    return map.getZoom() >= config.turbineMinZoom;
+  }
+
+  function syncTurbineLayerOnMap() {
+    const checkbox = document.getElementById("toggle-turbines");
+    if (!checkbox?.checked || !layerCache.turbines?.loaded) return;
+    if (turbineZoomOk()) {
+      if (!map.hasLayer(layerGroups.turbines)) map.addLayer(layerGroups.turbines);
+    } else if (map.hasLayer(layerGroups.turbines)) {
+      map.removeLayer(layerGroups.turbines);
+    }
+  }
+
+  function setStatusFromRebuild(message, isError = false) {
+    const statusEl = document.getElementById("status");
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.toggle("error", isError);
+  }
+
+  function rebuildFilterableLayers(filterGeometry) {
+    for (const key of ["plants", "turbines"]) {
+      if (!layerIds.includes(key)) continue;
+      const cache = layerCache[key];
+      if (!cache.loaded || !cache.data) continue;
+      const layerConfig = LAYER_CONFIG[key];
+      layerGroups[key].clearLayers();
+      const geoLayer = key === "plants"
+        ? createPlantLayer(cache.data, layerConfig, filterGeometry)
+        : L.geoJSON(
+          {
+            type: "FeatureCollection",
+            features: (cache.data.features || []).filter((feature) => {
+              const props = feature.properties || {};
+              const latlon = getLatLon(props, feature);
+              return latlon && zoneFilter.pointInside(latlon[0], latlon[1], filterGeometry);
+            }),
+          },
+          {
+            pointToLayer: (feature, latlng) => L.circleMarker(latlng, layerConfig.styleFn(feature.properties || {})),
+            onEachFeature: (feature, layer) => {
+              const props = feature.properties || {};
+              const popupProps = layerConfig.popupPropsFn ? layerConfig.popupPropsFn(props) : props;
+              attachLazyPopup(layer, popupProps, layerConfig.popupKeys);
+            },
+          },
+        );
+      layerGroups[key].addLayer(geoLayer);
+      cache.geoLayer = geoLayer;
+      if (key === "plants") {
+        buildPlantLegend(plantBucketGroups, plantBucketVisibility, setPlantBucketVisible, plantLegendOptions(setStatusFromRebuild));
+        syncPlantBucketLayers();
+      }
+      if (document.getElementById(`toggle-${key}`)?.checked) {
+        if (key === "turbines") syncTurbineLayerOnMap();
+        else map.addLayer(layerGroups[key]);
+      }
+    }
+  }
+
+  function restoreFilterableLayers() {
+    for (const key of ["plants", "turbines"]) {
+      if (!layerIds.includes(key)) continue;
+      const cache = layerCache[key];
+      if (!cache.loaded || !cache.data) continue;
+      const layerConfig = LAYER_CONFIG[key];
+      layerGroups[key].clearLayers();
+      const geoLayer = key === "plants"
+        ? createPlantLayer(cache.data, layerConfig)
+        : L.geoJSON(cache.data, {
+          pointToLayer: (feature, latlng) => L.circleMarker(latlng, layerConfig.styleFn(feature.properties || {})),
+          onEachFeature: (feature, layer) => {
+            const props = feature.properties || {};
+            const popupProps = layerConfig.popupPropsFn ? layerConfig.popupPropsFn(props) : props;
+            attachLazyPopup(layer, popupProps, layerConfig.popupKeys);
+          },
+        });
+      layerGroups[key].addLayer(geoLayer);
+      cache.geoLayer = geoLayer;
+      if (key === "plants") {
+        buildPlantLegend(plantBucketGroups, plantBucketVisibility, setPlantBucketVisible, plantLegendOptions(setStatusFromRebuild));
+        syncPlantBucketLayers();
+      }
+      if (document.getElementById(`toggle-${key}`)?.checked) {
+        if (key === "turbines") syncTurbineLayerOnMap();
+        else map.addLayer(layerGroups[key]);
+      }
+    }
+  }
+
+  async function loadLayer(layerKey, setStatus) {
+    const cache = layerCache[layerKey];
+    if (!cache) return null;
+    if (cache.loaded) return cache.geoLayer;
+    if (cache.loading) return cache.loading;
+
+    const layerConfig = LAYER_CONFIG[layerKey];
+    cache.loading = (async () => {
+      setStatus(`Loading ${layerConfig.label}…`);
+      const payload = await loadLayerData(layerConfig);
+      const geoLayer = await createLayerFromData(layerKey, payload, layerConfig, geoJsonHelpers);
+      layerGroups[layerKey].addLayer(geoLayer);
+      if (document.getElementById(`toggle-${layerKey}`)?.checked) {
+        if (layerKey === "turbines") {
+          syncTurbineLayerOnMap();
+        } else if (!layerConfig.zoneLayer) {
+          map.addLayer(layerGroups[layerKey]);
+        } else {
+          map.addLayer(layerGroups[layerKey]);
+        }
+      }
+      cache.geoLayer = geoLayer;
+      if (payload.type === "geojson") {
+        cache.data = payload.data;
+        cache.count = payload.data.features?.length ?? geoLayer.getLayers?.().length ?? 0;
+      } else {
+        cache.data = null;
+        cache.count = 0;
+      }
+      cache.loaded = true;
+      cache.loading = null;
+      if (layerKey === "lines") {
+        buildLineLegend(lineBucketGroups, lineBucketVisibility, setLineBucketVisible);
+        setLineLegendVisible(document.getElementById("toggle-lines")?.checked, lineBucketGroups);
+      }
+      if (layerKey === "plants") {
+        buildPlantLegend(plantBucketGroups, plantBucketVisibility, setPlantBucketVisible, plantLegendOptions(setStatus));
+        setPlantLegendVisible(document.getElementById("toggle-plants")?.checked, plantBucketGroups);
+      }
+      return geoLayer;
+    })();
+
+    return cache.loading;
+  }
+
+  function updateStatusMessage(setStatus) {
+    const parts = [];
+    if (layerCache.plants?.loaded) parts.push(`${layerCache.plants.count.toLocaleString()} plants`);
+    if (layerCache.turbines?.loaded) {
+      const zoomNote = turbineZoomOk() ? "" : ` (zoom ${config.turbineMinZoom}+ to show)`;
+      parts.push(`${layerCache.turbines.count.toLocaleString()} wind turbines${zoomNote}`);
+    }
+    if (layerCache.lines?.loaded) parts.push(`${layerCache.lines.count.toLocaleString()} transmission lines`);
+    if (layerCache.substations?.loaded) parts.push(`${layerCache.substations.count.toLocaleString()} substations`);
+    if (layerCache.dno?.loaded) parts.push(`${layerCache.dno.count.toLocaleString()} DNO areas`);
+    if (layerCache.gsp?.loaded) parts.push(`${layerCache.gsp.count.toLocaleString()} GSP regions`);
+    if (zoneFilter.label) parts.push(`filter: ${zoneFilter.label}`);
+    if (!parts.length) {
+      setStatus("Ready. Enable a layer to load data.");
+      return;
+    }
+    setStatus(`Loaded ${parts.join(", ")}.`);
+  }
+
+  async function setLayerEnabled(layerKey, enabled, setStatus) {
+    const checkbox = document.getElementById(`toggle-${layerKey}`);
+    try {
+      if (enabled) {
+        await loadLayer(layerKey, setStatus);
+        if (layerKey === "turbines") {
+          syncTurbineLayerOnMap();
+        } else {
+          map.addLayer(layerGroups[layerKey]);
+        }
+        if (layerKey === "lines") {
+          syncLineBucketLayers();
+          setLineLegendVisible(true, lineBucketGroups);
+        }
+        if (layerKey === "plants") {
+          syncPlantBucketLayers();
+          setPlantLegendVisible(true, plantBucketGroups);
+        }
+      } else {
+        map.removeLayer(layerGroups[layerKey]);
+        if (layerKey === "lines") setLineLegendVisible(false, lineBucketGroups);
+        if (layerKey === "plants") setPlantLegendVisible(false, plantBucketGroups);
+      }
+      if (layerKey === "turbines") {
+        syncTurbineCheckboxes(enabled);
+      }
+      updateStatusMessage(setStatus);
+    } catch (error) {
+      console.error(error);
+      if (checkbox) checkbox.checked = false;
+      if (layerKey === "turbines") syncTurbineCheckboxes(false);
+      setStatus(`Failed to load ${LAYER_CONFIG[layerKey]?.label || layerKey}: ${error.message}`, true);
+    }
+  }
+
+  function destroy() {
+    for (const id of layerIds) {
+      map.removeLayer(layerGroups[id]);
+      layerGroups[id].clearLayers();
+    }
+  }
+
+  return {
+    layerIds,
+    layerCache,
+    layerGroups,
+    LAYER_CONFIG,
+    loadLayer,
+    setLayerEnabled,
+    syncTurbineLayerOnMap,
+    updateStatusMessage,
+    rebuildFilterableLayers,
+    restoreFilterableLayers,
+    destroy,
+  };
+}

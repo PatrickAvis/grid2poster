@@ -1,0 +1,124 @@
+import { loadPlantBmuMap } from "./bmuMap.js";
+import {
+  buildRegionConfig,
+  loadCatalog,
+  persistRegionId,
+  resolveRegionId,
+} from "./catalog.js";
+import { createLayerManager } from "./layers.js";
+import { createZoneFilter } from "./zones.js";
+import { buildLayerPanel, buildRegionSelector, fitRegionBounds, setMapTitle } from "./ui.js";
+import { boundsFromGeoJson, pointInPolygonGeometry } from "./utils.js";
+
+const statusEl = document.getElementById("status");
+let map;
+let layerManager;
+let zoneFilterState;
+let zonesController;
+let catalog;
+
+function setStatus(message, isError = false) {
+  statusEl.textContent = message;
+  statusEl.classList.toggle("error", isError);
+}
+
+function createZoneState() {
+  return {
+    geometry: null,
+    label: null,
+    createZoneLayer: null,
+    pointInside(lat, lon, geom) {
+      return pointInPolygonGeometry(lat, lon, geom || this.geometry);
+    },
+  };
+}
+
+async function initRegion(regionId) {
+  const regionConfig = buildRegionConfig(catalog, regionId);
+  if (regionConfig.plantBmuMapUrl) {
+    try {
+      regionConfig.bmuLookup = await loadPlantBmuMap(regionConfig.plantBmuMapUrl);
+    } catch (error) {
+      console.warn("Plant BMU map not loaded:", error);
+      regionConfig.bmuLookup = null;
+    }
+  }
+  persistRegionId(regionId);
+  setMapTitle(regionConfig.title);
+
+  if (layerManager) {
+    layerManager.destroy();
+  }
+  if (zonesController?.clearSelection) {
+    zonesController.clearSelection();
+  }
+
+  zoneFilterState = createZoneState();
+  layerManager = createLayerManager(map, regionConfig, zoneFilterState);
+  zonesController = createZoneFilter(layerManager, zoneFilterState);
+  zoneFilterState.createZoneLayer = zonesController.createZoneLayer;
+
+  buildLayerPanel(regionConfig, (layerId, enabled) => {
+    layerManager.setLayerEnabled(layerId, enabled, setStatus);
+  });
+
+  fitRegionBounds(map, regionConfig.bounds);
+
+  const defaultLayer = regionConfig.layerIds.find(
+    (id) => regionConfig.layers[id]?.defaultOn,
+  ) || regionConfig.layerIds.find((id) => id === "plants");
+
+  if (!defaultLayer) {
+    setStatus("Select a layer to load data.");
+    return;
+  }
+
+  try {
+    await layerManager.setLayerEnabled(
+      defaultLayer,
+      document.getElementById(`toggle-${defaultLayer}`)?.checked ?? true,
+      setStatus,
+    );
+    const cache = layerManager.layerCache[defaultLayer];
+    if (cache?.data) {
+      const bounds = boundsFromGeoJson(cache.data);
+      if (bounds) {
+        map.fitBounds(bounds.pad(0.05));
+      }
+    }
+    layerManager.updateStatusMessage(setStatus);
+  } catch (error) {
+    console.error(error);
+    setStatus(
+      `Failed to load ${regionConfig.title}. Run scripts/prepare_map_data.py --region ${regionId}. ${error.message}`,
+      true,
+    );
+  }
+}
+
+async function main() {
+  catalog = await loadCatalog();
+  const regionId = resolveRegionId(catalog);
+
+  map = L.map("map", { zoomControl: true, preferCanvas: true }).setView([54.5, -3.5], 6);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+
+  buildRegionSelector(catalog, regionId, (newRegionId) => {
+    initRegion(newRegionId);
+  });
+
+  map.on("zoomend", () => {
+    layerManager?.syncTurbineLayerOnMap();
+    layerManager?.updateStatusMessage(setStatus);
+  });
+
+  await initRegion(regionId);
+}
+
+main().catch((error) => {
+  console.error(error);
+  setStatus(error.message, true);
+});

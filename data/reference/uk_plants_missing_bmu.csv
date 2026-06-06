@@ -1,0 +1,1715 @@
+osm_id,name,operator,capacity_mw,source_bucket,latitude,longitude
+way/681379770,Abbey Farm,,,solar,52.4193267,-0.23690032516796278
+way/694050268,Abbey Fields Farm,Foresight Group LLP,5.3,solar,51.31850385,0.9107164469622218
+way/689356309,Abbots Ann,,7.0,solar,51.1648366,-1.509747753750962
+way/956290944,Abbots Moor Farm Anaerobic Digester,Private Developer,1.0,biomass,52.8391606,-2.9234895542657613
+way/552554263,Abbots Ripton Solar Farm,,28.6,solar,52.37508355,-0.20119234595561952
+relation/18430519,Aberdeen Anaerobic Digestion Plant,,,biomass,57.1892731,-2.1935859593465468
+relation/9457091,Abergelli Glas Solar Farm,,7.7,solar,51.70090035,-3.9463632040364356
+way/746212386,Aberporth Solar Farm,JBM Solutions,1.5,solar,52.1235575,-4.563928847922014
+way/295309162,Achanalt Power Station,Scottish & Southern Energy,3.0,hydro,57.6158932,-4.8326536642226685
+way/956074585,Acharn Forest Killin Biomass Plant,Northern Energy Developments,5.6,biomass,56.44730305,-4.344753037523242
+way/1524881880,Afon Llan Solar Park,PS Renewables,10.6,solar,51.69302015,-3.94039358383581
+way/100549593,Aigas Power Station,SSE Renewables,20.0,hydro,57.4574966,-4.545054917060366
+way/277665663,Airfield Farm,,5.0,solar,52.47409905,0.9425412619741418
+way/938161768,Albion Close STOR,Mercia Power Response,4.0,gas,53.30949845,-1.1171929121513489
+way/797433430,Albrighton,,15.8,solar,52.64422705,-2.245498070142199
+way/687525411,Albury Landfill,SITA UK,1.5,gas,51.2262557,-0.4894966966441243
+way/974759938,Alders Way STOR,,,other,50.42315905,-3.589751313103054
+relation/20742099,Aller Court Farm Solar Park,NESF (formerly British Solar Renewables),15.0,solar,51.05973815,-2.8775190177218173
+way/753701906,Allerton Park Incinerator,,,biomass,54.03311165,-1.3821648279028351
+way/416998346,Allerton Waste Recovery Park,Amey,27.0,biomass,54.03126025,-1.377872583227747
+way/903794089,Allington Energy from Waste,Kent Enviropower (FCC Environment),51.0,biomass,51.2933745,0.4925029404980061
+way/956324056,Allt Cheanna Mhuir Hydro,Green Highland Renewables,1.3,hydro,56.9749778,-5.1200406
+way/1423497550,Allt Choire a Bhalachain,Green Highland,0.8,hydro,57.056157,-5.081723977375193
+way/999985214,Allt Eirichaellach,,0.7,hydro,57.07762525,-5.304846322162232
+way/824367579,Allt Essan powerhouse,,1.2,hydro,56.4194328,-4.520968153064306
+way/956324059,Allt Ladaidh Hydro,Green Highland Renewables,1.3,hydro,57.07209985,-4.9168308
+way/1469892125,Allt Laghain (Laggan),Highland Community Energy Society,0.5,hydro,57.03474955,-4.808324479454421
+way/1062565961,Allt Mhor Hydro,Pitmain Hydro Ltd,0.6,hydro,57.0973477,-4.07175975
+way/1192135716,Allt Mor Hydro,SSE,,other,56.7023918,-4.187730039147084
+way/990890963,Allt Nathrach Hydroelectric Power Plant,,,hydro,56.7137393,-5.00003340385051
+way/1469894792,Allt a Chaitchinn (Achlain),Highland Community Energy Society,0.0906,hydro,57.16889545,-4.8498025
+way/348314831,Allt na Lairige hydro power station,Scottish Hydro,6.0,hydro,56.3064685,-4.861065228990081
+way/1276579594,Altaveedan Wind Farm,,,wind,55.0772003,-6.262057675847815
+way/361491953,Altcar Solar Farm,,1.5,solar,53.53387825,-3.066446376643626
+way/615273008,Alton Solar Farm,Canadian Solar,11.0,solar,51.144153,-0.9558622680301392
+way/955818223,Ambleston Solar Panels,Arqiva Ltd,6.0,solar,51.8988332,-4.866407634438119
+way/956290941,Anaerobic Digester Plant,ABP Ellesmere,1.1,biomass,52.84942425,-2.897633353375374
+way/1149153338,Anaerobic Digestion Plant,,,biomass,52.78194375,-2.660579593975408
+way/544173113,Andover Solar Farm,,5.0,solar,51.21157875,-1.5362102611051358
+way/424527485,Angus Biofuels,,,biomass,56.6531489,-2.9426427758531286
+relation/10302697,Anthony Estate Solar Farm - resubmission,St Anthony 101 PV Park Ltd,4.7,solar,50.35328645,-4.25068673648121
+relation/20784174,Arborfield Solar Park,,16.8,solar,51.38547375,-0.9177264956144713
+way/828510684,Ardtornish Estate Hydro,Ardtornish Estate,1.5,hydro,56.55789945,-5.6925166
+way/985465888,Ardveenish Power Station,,2.5,oil,57.0037052,-7.409424654438761
+way/681366625,Arkwright Solar Farm,Conergy,8.0,solar,53.2484499,-1.345080746190007
+way/956244599,Arlesey Landfill Gas Plant,Waste Recycling Group,2.3,biomass,52.00302395,-0.27020039510338334
+relation/8239461,Arna Wood Solar Farm,BE Renewables,6.2,solar,54.0272698,-2.82588766336744
+way/583452725,Arna Wood Solar Farm,,6.2,solar,54.02743635,-2.8239611625469703
+way/985464670,Arnish Power Station,,10.3,oil,58.1877935,-6.387550881092029
+way/956023500,Arpley Landfill Scheme,Novera,7.9,biomass,53.3768378,-2.617661928230642
+way/737276205,Asfordby B,Sembcorp,23.4,other,52.77740515,-0.9267613908061625
+way/682002164,Asfordby B,,,solar,52.78282835,-0.9361446102716461
+way/730037363,Ash Row PV,Octopus Investments Limited,3.8,solar,53.7992301,-1.2088120766866552
+way/545114568,Ashby Solar Farm (a),Primrose Solar,5.0,solar,52.72269055,-1.484236576536024
+way/938143767,Asher Lane 2 Generation Facility,Mercia Power Response,14.0,gas,53.06183435,-1.4139288953705997
+way/938143766,Asher Lane STOR Site,Mercia Power Response,4.75,gas,53.06206405,-1.413302256206119
+way/710528596,Ashford Peaking Plant,,21.0,gas,51.1286936,0.8904958999999946
+way/724796214,Ashlawn Farm,,6.8,solar,51.2561978,-2.903755078266317
+way/729189513,Askern Colliery solar farm,Anesco,5.0,solar,53.62120985,-1.1596689367668527
+way/725697662,Aspatria,United Photovoltaics,19.0,solar,54.78178,-3.3226466464917817
+way/955831842,Aspatria Creamery AD Plant,First Milk Cheese Company,5.0,biomass,54.7592783,-3.326399342253797
+way/1492076354,Assured Energy,Assured Energy LLP,0.5,biomass,54.45025305,-6.40483205358818
+way/730028101,Astley Solar Farm,,5.0,solar,52.4693478,-2.3163420322878387
+way/238053723,AstraZeneca Macclesfield CHP,Veolia UK,23.0,gas,53.2755433,-2.11021311691919
+way/336785980,Atherstone Solar Farm,Belectric UK,14.7,solar,52.613356,-1.5583277980972172
+way/1510914885,Atherton Battery energy storage,FPC Electric Land Limited / Pulse Clean Energy,30.0,other,53.52671555000001,-2.503849534172824
+way/690267794,Attleborough Eco Electric,,,biomass,52.5210997,0.9951228797726509
+way/840160107,Attlebridge Landfill Site,Renewable Power Generation Ltd,1.3,biomass,52.70012435,1.1759233867696435
+way/956335706,Auchencarroch Landfill Gas Plant,Auchencarroch Energy Ltd / CLP,4.1,biomass,55.99821525,-4.536521723793104
+way/824367580,Auchessan powerhouse,,0.225,hydro,56.42042365,-4.52102745
+way/956335707,Auchinlea Landfill Gas Plant,Natural Power,2.3,biomass,55.8093743,-3.900124638838119
+way/1474404445,Auchteraw BESS,Field Energy,49.9,other,57.12787805,-4.727145786861056
+way/342523389,Auchtertyre Hydropower,,0.1,hydro,56.4254637,-4.6701288077564245
+way/1143614067,Aurora Solar Farm,,31.9,solar,51.78018375,-1.4096327801114408
+way/687451477,Aveley,Waste Recycling Group,1.2,gas,51.50385175,0.2335080762973814
+way/687451478,Aveley Landfill Scheme,Aveley Methane Ltd,2.1,gas,51.50423945,0.2327222
+way/642629130,Avenue Farm,Lightsource Renewable Energy,7.3,solar,52.5756212,1.3887320078682777
+way/383553613,Averhill Farm,Lightsource BP,5.0,solar,53.15033415000001,-1.3948049642985167
+way/746116906,Avonmouth,Bristol Energy Co-Op,4.2,solar,51.5083685,-2.66438425721526
+way/334978199,Avonmouth Resource Recovery Centre,Viridor,34.0,biomass,51.5327802,-2.6678229169050613
+way/1116869247,Aylesford Battery Storage,Zenobe Energy,29.0,other,51.31509995,0.4624409768708059
+way/688883404,Ayshford Solar Farm,Lightsource BP,5.0,solar,50.92967595,-3.3491541233195274
+way/956548278,BAE Samlesbury Aerodrome,British Aerospace Defence Limited,2.0,solar,53.77101695,-2.5782381776053556
+way/956264050,BV Dairy Anaerobic Digestion Plant,BV Dairy,1.5,biomass,51.01131795,-2.1786674880451384
+way/1149127476,Back Lane Battery,Arlington Energy (formerly Enso Energy),20.0,other,53.22389045,-1.3748078290907437
+way/956323024,Badachro Hydro Scheme,Badachro Hydro Limited,1.5,hydro,57.67778145,-5.7074669
+way/536184338,Baddesley Energy from Waste,Ancala Bioenergy (formerly Biogen),10.5,biomass,52.5730181,-1.5866136452159063
+way/665996712,Bake Farm Solar Farm,British Solar Renewables,5.0,solar,51.04963485,-1.8374184603316346
+way/956046655,Balderton,SPEP,20.3,biomass,53.05076655,-0.8090642067314409
+way/956074582,Baldovie Waste to Energy,Dundee Energy Recycling,8.3,biomass,56.4855107,-2.9016570864970377
+way/709009050,Balhearty Solar,NESF (formerly Lark Energy),5.0,solar,56.1449614,-3.7053071279117527
+way/529791425,Ballinderry Solar Farm,Lightsource BP,20.5,solar,54.5180922,-6.103381693185369
+way/745132295,Balls Wood Solar Farm,Due South Energy & SunE Project6 Ltd,8.7,solar,50.36021245,-4.024059897386451
+way/621575697,Ballyboley Solar (Carrowdore),Island Green Power,6.0,solar,54.57196215,-5.569929300773937
+way/718916340,Ballygarvey Road,Elgin Energy EsCo,9.0,solar,54.88197465,-6.250743643856269
+way/616340215,Ballykeel Wind Farm,,16.1,wind,54.85548475,-5.9062217863711535
+way/39681973,Ballylumford Power Station,EP UK Investments,1246.0,gas,54.84488335,-5.7851165908208095
+way/871988523,Banbury Power Station,Welsh Power,12.0,gas,52.07169315,-1.329965825676143
+way/337543200,Banchory Biomass,HoBESCo,,biomass,57.06278535,-2.4805470761113764
+way/718919380,Bann Road (Tullaghans Road),,25.0,solar,54.99718075,-6.492896372498366
+way/485027251,Bann Road Solar Farm,Elgin Energy,46.0,solar,54.9635147,-6.5010937951450725
+way/730028098,Bargoed Solar Farm,,5.0,solar,51.73976125,-3.3133680866010726
+way/725688781,Barley Wood Farm Lane (Gaston Lane - resubmission),Lightsource Renewable Energy,5.4,solar,51.11837085,-0.9668064469014943
+way/956542768,Barnby Moor Solar Farm,Lark Energy,4.0,solar,53.35666535,-0.9954181472962276
+way/746180280,Barnfield Solar Park,Public Power Solutions,2.5,solar,51.57518895,-1.8208320874554165
+way/746212394,Barr Farm,Lark Energy,1.8,solar,52.66947155,-2.1269343145098873
+way/955815591,Barry Docks Biogas Plant,Sunrise Renewables,10.0,biomass,51.40141615,-3.257697746156809
+way/913310331,Barry STOR,,,oil,51.4104527,-3.2294229071564127
+way/799376518,Barugh Farm,,5.0,solar,54.17088165,-1.49173546321423
+way/103721031,Barvills Solar Farm,BE Renewables/Barvills Solar Limited,5.0,solar,51.4734327,0.4202612434636626
+way/745490222,Basin Bridge Farm,Sun Farming UK,5.0,solar,52.56234775,-1.4162649388175412
+way/689356312,Basingstoke Sewage Treatment Works Anaerobic Digestion,Thames Water Utilities,1.2,biomass,51.29298705,-1.0298678725609758
+way/681358231,Bassingbourn Solar Farm,,14.4,solar,52.0635881,-0.04031842189645779
+way/940065305,Batleys generation,Peak Gen Power,6.0,oil,52.43345095,-1.4249231334396102
+way/708338019,Battens Farm Solar Park,Battens Farm Solar Park Ltd,11.0,solar,51.48919645,-2.1686541130175394
+way/439747780,Battlefield Energy Recovery Facility,Veolia,8.0,biomass,52.7427737,-2.72649444869667
+way/160045220,Bay Farm,NextEnergy Solar Fund (NESF),8.1,solar,52.315377,0.49818371695297115
+way/723603977,Beachampton Solar Farm,PS Renewables,7.0,solar,52.0174238,-0.8632924287639883
+way/689361318,Beacon Hill Landfill,,3.0,biomass,50.7568555,-2.03060255
+relation/9574598,Beaford Brook Solar Park,Wessex Solar Energy,5.2,solar,50.92244375,-4.0334726632101265
+way/1255970089,Beaufort Power Station,Velox Power Limited,21.0,gas,51.7981244,-3.24486914420482
+way/1181799005,Beaufort Road Power Station,Sembcorp,20.0,gas,53.40285095,-3.047163662471939
+way/689359681,Beckley Solar Farm,,1.7,solar,50.75928485,-1.6834949758750046
+way/571570523,Beckton CHiP Facility,,,other,51.5136642,0.07317097218029044
+way/646316465,Beckton Sludge Powered Generator,,8.0,biomass,51.51817625,0.08960284965552884
+way/723603975,Bedborough Farm,Solstice Renewables Ltd,7.0,solar,50.8174145,-1.9243538449161717
+way/656736108,Beddington Energy Recovery Facility,Viridor,26.0,biomass,51.38569125,-0.14558083785956927
+way/746023127,Beech Farm Solar Park,,4.6,solar,51.60907,-1.7358119688118658
+relation/7880260,Beechgrove Solar Farm,,4.0,solar,50.78913435,-2.9240071822634164
+way/681695128,Belfast Road Solar Farm,Lightsource BP,10.0,solar,54.6388012,-6.110282015863746
+way/687676054,Bellhouse Pit Landfill Scheme,,2.7,biomass,51.87505215,0.8198196791443867
+way/687676055,Bellhouse South,Cory Environmental,3.9,biomass,51.86546225,0.8286757445753381
+way/203754495,Belper Mills Hydro,Derwent Hydroelectric Power Limited,0.35,hydro,53.0283522,-1.4857953737993812
+way/29120163,Belvedere Incinerator,Cory Environmental,72.0,biomass,51.50502855000001,0.15412937510203978
+way/299924515,Benbole Solar Farm,,2.0,solar,50.53918055,-4.783436964453673
+way/745490218,Bent Spur Solar Farm,Active Renewables,5.0,solar,53.53331435,-2.3803276104651014
+relation/9982794,Bentham Solar Farm,Hive Energy,8.0,solar,51.6060551,-1.8953698227771607
+way/729189515,Bentley Estate,Lightsource BP,5.0,solar,50.9328521,0.11139351292924753
+way/956288191,Bentwaters Park Anaerobic Digestion Plant,Agri-Gen,2.0,biomass,52.1274972,1.442245770382358
+way/1489706790,Berkswell BESS,BW ESS,200.0,other,52.3827084,-1.618347413656015
+way/745490229,Berthlwyd Farm,Greencoat Capital,5.0,solar,51.58381325000001,-3.3423209580366002
+relation/12333123,Berwick Solar Farm,Susenco/Low Carbon,8.2,solar,50.8562951,0.1746470039339245
+way/1215111150,Bicester Ardley Energy Waste Power Plant,Viridor,24.0,biomass,51.9238963,-1.212440467735522
+way/1524125805,Bicker Fen BESS,AGR Power,,other,52.9275302,-0.20952930122280697
+relation/20772603,Bicker Fen PV,AGR Power,80.0,solar,52.9169149,-0.22394123717228734
+relation/17984893,Bicker Fen Solar Farm,Innova Renewables Limited,22.6,solar,53.1469194,0.18939084862740949
+way/729189529,Bidwell Solar Farm,Wessex Solar Energy,5.0,solar,50.438836,-3.7312268489636367
+relation/10099445,Biglis Farm,Conergy West Sussex,5.0,solar,51.4195261,-3.2372311849995548
+way/1490977291,Bilbo Solar Farm,Ethical Power,36.6,solar,57.59211955,-1.9021081538398978
+way/956548273,Billinge Hill Quarry Landfill Gas Plant,Bidston Methane,1.0,biomass,53.5063059,-2.71349565
+way/725688494,Bilsborrow Solar Farm,,5.0,solar,53.84304535,-2.762612438269974
+way/685329977,Bilsham Farm,NextEnergy Solar Fund,14.5,solar,50.8129719,-0.6376663624974422
+way/686122665,Bilsthorpe Quarry Solar Park,Anesco,4.8,solar,53.1413873,-1.02120452569963
+way/687462886,Binsted Farm,Lightsource BP,5.0,solar,50.8341762,-0.6052600894451954
+way/493737288,Bio-Mass Plant,,,biomass,56.94681035,-5.000660262449561
+way/322545462,Bio-digesters,Biffa,5.0,biomass,51.0977319,-0.3265906018150585
+way/307409912,Biogen Bygrave,Ancala Bioenergy (formerly Biogen),2.3,biomass,52.00413865,-0.14272513249780935
+way/994072504,Biomass Generator,National Trust,,gas,51.04393375,-1.1520897721406491
+way/559089367,Biossence Solar Farm,Biossence Ltd,4.5,solar,51.31148215,0.46114230014819696
+way/730028111,Birch Airfield,Push Energy/ NextEnergy Solar Fund (NESF),5.6,solar,51.84326495,0.7763223895809259
+way/1483395783,Birch Battery Storage,,30.0,other,51.85643045,0.7983186763918253
+way/1483395784,Birch Solar Farm,Low Carbon Investment Management Ltd,39.0,solar,51.85939985,0.7987443313431861
+way/458121916,Birmingham Bio-Power Plant,Birmingham Bio-Power,10.3,biomass,52.4609093,-1.840273898852196
+relation/20711332,Bishampton Solar Farm,Infinis,30.0,solar,52.1627231,-2.003527799953769
+way/746155612,Bishop's Waltham Solar Farm,Solafields U/Bishop's Waltham Renewables Ltd,12.0,solar,50.94355105,-1.210235003039577
+relation/9539071,Bishops Sutton Solar Farm,Lightsource BP,12.0,solar,51.0830168,-1.151119067556846
+way/951922827,Bitterley Biogas AD Ltd,,0.5,biomass,52.3959315,-2.6288079195562117
+way/662867685,Blaby Solar Farm,Blaby Solar Farm,3.5,solar,52.5650201,-1.130797668997956
+way/746155618,Blackawton Solar Farm,Maria Bailey Planning,3.0,solar,50.35849815,-3.6469751313407
+way/218842171,Blackberry Solar Farm North,,4.2,solar,52.9350297,-1.058965219731344
+way/411095115,Blackberry Solar Farm South,,4.9,solar,52.9186067,-1.0493746856595236
+way/956288193,Blackborough End Landfill Gas Plant,Combined Landfill Projects (CLP),1.5,biomass,52.7045257,0.4735706602859758
+way/754025433,Blackburn Meadows,,30.0,biomass,53.4201911,-1.4013954782553681
+way/956031606,Blackburn Meadows Battery Storage,E.ON UK,10.0,other,53.4187211,-1.4041486372067027
+way/996809744,Blackburn Mill Power Station,VPI,60.0,gas,53.71821555,-2.537554603908095
+way/1152542223,Blackhillock Energy Storage,Zenobe,200.0,other,57.51602405,-2.94251523715057
+way/571030552,Blackwell Grange Solar Farm,Blackwell Grange Solar Farm,5.0,solar,52.08768125,-1.6703613649556988
+way/1161783300,Blair Castle Hydro Electric Power Station,Atholl Estates,0.084,hydro,56.77222505,-3.855336024677766
+way/655210512,Blakenhall Park Solar Farm,Mercer Farming,1.8,solar,52.75354835,-1.7471837587418828
+way/550883529,Blatchworthy Farm,,1.5,solar,50.9412897,-3.569577562410598
+way/688883405,Blatchworthy Farm,Lightsource Renewable Energy,1.5,solar,50.95232055,-3.474244559105706
+way/956290943,Blazer Fuels,Newbridge Energy,3.0,biomass,53.1211008,-3.322385178358758
+relation/7877230,Blenches Mill Solar Farm,NextEnergy Solar Fund,6.1,solar,51.2748419,-2.18818976091904
+way/713301102,Bletchley Landfill,,2.2,biomass,51.9802215,-0.7562383452258202
+way/480687055,Blowmans Harbour Solar Farm,,,solar,52.5917511,-2.093879467257234
+way/1122855396,Bloxwich Battery,Gresham House Energy Storage,41.0,other,52.5891224,-2.0107942260799523
+relation/9542484,Blue Gates Farm,M H Leyland Ltd,10.5,solar,51.8607987,1.00433020351478
+way/745490221,Blue House Farm Solar,,5.0,solar,54.6321577,-1.2683029604272855
+way/347754837,Blue Post Solar Farm,,5.2,solar,50.4199486,-3.7797612079935274
+way/1174960823,Bluestone Solar Farm,,,solar,51.77903635,-4.795721622724027
+way/704114018,Bobbing Solar Farm,,11.3,solar,51.35744635,0.6893405732046702
+relation/9566699,Bodmin 2 Solar Farm,,5.3,solar,50.48318355,-4.732427968166302
+way/722350909,Bodorgan Solar Farm,Anesco,12.6,solar,53.2188942,-4.4301297062123774
+way/725688489,Bodwen Solar Park,Greencoat Capital,5.5,solar,50.4107158,-4.77840797236521
+way/1268117977,Boiler House,,,gas,51.44820675,-0.12223951734510151
+way/502985479,Boiler Room,,,other,53.52777805,-2.1912341420642365
+way/956542769,Bolton Road Waste Treatment and Renewable Energy Facility (Waste AD),Shanks Group,4.0,biomass,53.5080198,-1.315978723267938
+way/956023499,Bolton TRF,Viridor (GMWDA),10.8,biomass,53.5671237,-2.4081690439610073
+relation/10088594,Bommertown Solar Farm,Steadfast Molland Solar Ltd,5.0,solar,51.01746695,-3.678858562419039
+way/247079828,Bonnyrigg Landfill Gas Plant,Natural Power,2.2,biomass,55.8879364,-3.126992
+way/956542771,Bootham Lane Landfill Gas Plant,,2.7,biomass,53.5898187,-1.0115842394409396
+relation/14227475,Boscar Grange Farm,,34.7,solar,54.1476996,-1.2246251582459897
+way/956049359,Boscar Grange Farm Battery Storage,Gridserve,27.0,other,54.1448644,-1.2347464796532377
+way/687531499,Boscombe Airfield Solar Farm,Lark Energy,12.3,solar,51.1516195,-1.7387857076148516
+way/923165989,Boskennal Solar Farm,,,solar,50.15416785,-5.4925034516668525
+way/780887890,Boston Energy Production Facility,Alternative Use Group plc & Alchemy Farms,10.5,biomass,52.9597304,-0.005187070346552691
+way/538582351,Bottom Plain,,5.0,solar,50.71331155,-2.164644893391313
+way/1189878179,Boulby Battery Storage,,6.0,other,54.55194745,-0.8278431675335236
+way/729739569,Bourne Farm,Farm Power Apollo,2.4,solar,50.7741933,-2.3799141647482616
+way/729739570,Bourne Park (Solar),Sovereign Energy Partners LLP,5.0,solar,50.7762998,-2.3954998853161955
+way/956264055,Bourne Park Anaerobic Digestion Plant,Eco Sustainable Solutions,1.1,biomass,50.77823795,-2.393045508661057
+way/718495374,Bowerhouse Farm,KWTN Solar,8.3,solar,51.34683765,-2.854973609505319
+relation/16771660,Bowerhouse II Solar Farm,,19.8,solar,51.3476115,-2.8591136483910278
+way/684035481,Boxted Airfield Solar Power Station,NextEnergy Solar Fund,18.8,solar,51.9351819,0.9358334816984607
+way/1195952453,Brackagh Quarry Windfarm,RES Group,6.0,wind,54.75257245,-6.829799335604767
+relation/17984827,Bracks Farm Solar Power Station,British Solar Renewables / BayWa r.e. UK Limited,28.0,solar,52.3245216,0.31090168433352816
+way/1491212351,Bracon Ash Solar Farm,Luminous Energy,28.5,solar,52.562448,1.2119763173638738
+way/725694066,Bradford Solar Park,Wessex Solar Energy,5.3,solar,50.7802956,-4.442037607146232
+way/840983068,Bradgate Quarry Landfill Gas Scheme,,2.5,biomass,52.6733379,-1.2438026155775717
+way/939100187,Bradon Farm Gen (Cantelo Nurseries),UK Power Reserve Limited,9.7,gas,50.97437215,-2.9098835595637365
+way/1388011272,Braintree Road BESS,EDF Renewables,57.0,other,51.8662907,0.5740608332961383
+way/1386143668,Bramford battery storage,EDF Renewables,57.0,other,52.0727312,1.0650310226693036
+way/1489574220,Bramley BESS,BW ESS,100.0,other,51.3334769,-1.0715617206904708
+way/322912806,Branston South Solar Farm,,18.9,solar,53.17861745,-0.46144472898784694
+way/681500452,Bratton Fleming Solar Farm,Wessex Solar Energy,5.0,solar,51.125562,-3.9179438642640845
+way/718494060,Braydon Manor Farm,Public Power Solutions,8.7,solar,51.58460265,-1.932593123466062
+way/201703142,Brazier Landfill Scheme,Pioneer Aggregates (UK) Ltd,3.9,biomass,51.8159096,-0.05519172909460901
+way/974813723,Breach Farm Battery Storage,,10.0,other,52.76801315,-1.609744766833333
+way/1187832990,Breach Solar Farm,,68.0,solar,52.2856808,0.3590197398179149
+relation/10305176,Briar Solar Farm,NR16/ RenEnergy,1.9,solar,52.6438365,1.250553609777866
+way/693008679,Brickyard Barn,Sun Glow,4.1,solar,52.25307015,-1.5533831464747354
+way/333141828,Bristol Bioresources & Renewal Energy Park,Wessex Water,10.0,biomass,51.5112932,-2.67206971245711
+way/943375236,Bristol Energy,Whitetower Energy Limited,50.0,gas,51.5265315,-2.5648227989155354
+way/839835038,Bristol Road,,20.0,gas,51.84155825,-2.262872766210437
+way/956288186,British Sugar Anaerobic Digestion Plant,British Sugar,5.0,biomass,52.2578622,0.7285389185978592
+way/939954553,Briton Ferry Battery Storage,Habitat Energy,20.0,other,51.6246264,-3.823302329405477
+way/956271021,Briton Ferry Landfill Gas Plant,,2.2,biomass,51.64276215,-3.8311537832552895
+way/781935017,Broad Raine Hydro,Raine Power,0.035,hydro,54.30577255,-2.5836274663411833
+way/73354555,Broad Street City Centre Energy Network CHP,Utilicom,1.5,gas,52.479028,-1.912560395440013
+way/746180288,Broadgate Solar Farm,Lightsource Renewable Energy,1.1,solar,50.8485992,-3.732421235996892
+way/478862013,Brogborough Phase III,Waste Recycling Group,11.0,biomass,52.0513141,-0.5859351941542161
+way/478862016,Brogborough Phase IV,Waste Recycling Group,11.0,biomass,52.0553428,-0.5858824511595216
+way/722350032,Bronwylfa Reservoir Solar Farm,Wrexham County Borough Coucnil,3.0,solar,53.0310614,-3.0596909869509714
+way/1218554876,Brooke Energy Winchester,Brooke Energy,0.42,biomass,51.01741085,-1.3539883666228263
+way/682004205,Brooks Farm Solar Park,Green Energy UK Direct Ltd,25.0,solar,51.8506984,-1.129646671577659
+way/1484246598,Broxburn BESS,Engie,50.0,other,55.91523835,-3.4614852546573607
+way/956007730,Broxburn Battery Storage,Renewable Energy Systems (RES),20.0,other,55.9192613,-3.4556383806884403
+way/1020424691,Bruach Caorainn Hydroelectric Power Station,,1.2,hydro,56.17443495000001,-4.547298900675202
+way/956271023,Bryn Pica Anaerobic Digestion Plant,Ancala Bioenergy (formerly Biogen),1.0,biomass,51.73842835,-3.4361330510643793
+relation/9493113,Bryn yr Odyn Solar Farm,,15.0,solar,53.2336551,-4.403290126493475
+way/722018739,Bryncyrnau Isaf Solar Park,,5.9,solar,51.83128385000001,-4.283380494989499
+relation/20622988,Bryngolwg Farm Solar Farm,Enviromena,8.99,solar,51.74149275000001,-3.555537273523708
+relation/20691340,Brynrhyd Solar Farm,Capital Dynamics Limited,36.0,solar,51.75139115,-4.042925730968811
+way/374197823,Brynteg Farm Solar Park,Lightsource BP,14.8,solar,51.70981375,-4.180814037570302
+relation/11036975,Brynwhilach Solar Farm,,10.0,solar,51.6858528,-3.959626293607507
+way/1299672719,Bubney Solar Farm,AlphaReal,40.0,solar,52.9744379,-2.725019063552219
+way/320001184,Bull's Head Farm Solar Farm,,4.7,solar,52.1545011,-0.8109592089593636
+way/1464317759,Bullionfield Solar Farm,,2.6,solar,56.4632928,-3.0698599970497584
+relation/15315163,Bumpers Battery Storage,Foresight group,99.0,other,51.74774155,-0.8895757741019837
+relation/4476342,Bumpers Solar Farm,,22.68,solar,51.749023,-0.8996264956026401
+way/228179381,Bunhill 2 Energy Centre,,,biomass,51.5295645,-0.097744050494234
+way/173744680,Bunhill Energy Centre,,1.9,gas,51.52545905,-0.09598651501488556
+way/1516058102,Bunkers Hill Solar farm,Vantage RE,49.9,solar,51.30271635,-0.9513500482559456
+way/798849208,Bunn's Hill,,5.0,solar,52.79908035,1.3959788299003746
+way/956316117,Burnhills Landfill Gas Plant,SITA UK,3.8,biomass,54.9513205,-1.7595243186021943
+way/717568682,Burnthouse Solar Farm,Lightsource BP,,solar,52.53194895,-0.025886099548684403
+way/708338040,Burntstalk Solar Power Station,Lightsource Renewable Energy,11.5,solar,52.6731164,0.6262803195193758
+way/956542767,Burntstump Landfill Scheme,Waste Recycling Group,1.8,biomass,53.0449639,-1.128021836460349
+way/631071004,Burrowton Farm,British Solar Renewables Ltd.,5.0,solar,50.76788585,-3.4170041489170515
+way/550725995,Burthy Farm Solar Park,Lightsource BP,13.1,solar,50.3621788,-4.944790337391003
+relation/9291287,Bury Lane Solar Farm,Lightsource BP,22.0,solar,52.0798839,-0.006909230166830646
+way/723689460,Bypass Nurseries Solar Farm,Sun Spirit,3.3,solar,52.1024145,-1.9203997952186613
+relation/9225947,Bystock Solar Farm,Lightsource Renewable Energy,4.1,solar,50.6477826,-3.3811890511437
+way/255128464,Caban Coch Hydro,Dŵr Cymru - Welsh Water,,hydro,52.26854135,-3.575852661785578
+relation/10094391,Caddington Solar Farm (Phase 2),Emsrayne Limited,8.0,solar,51.85682355,-0.47282786036937363
+relation/9461356,Cadland Solar Park,Cadland Estate,8.4,solar,50.8072946,-1.355067309981402
+way/295090759,Caeremlyn,,18.0,solar,51.82869515,-4.638026914697882
+way/746146647,Caergarw Farm,Suncredit UK (Sunventures 7),3.8,solar,51.5376939,-3.7161536875406282
+way/724282776,Cairnhill Farm Solar Farm,,2.4,solar,57.5609879,-2.372177075549378
+way/724277605,Cairnmore,,5.0,solar,57.30748675,-2.823037460559175
+way/1200813225,Caldale Battery Storage,,,other,59.1668267,-2.8032805691861746
+way/729739559,Caldecote Manor Farm,Sustain Energy Solutions,5.0,solar,52.2025532,-0.21911417849162132
+way/821985754,Callagheen Windfarm,Callagheen Wind Farm Ltd (Scottish Power Renewables),16.9,wind,54.4427396,-8.011234230621064
+way/550725980,Callington Solar Farm,Inazin (Low Carbon Solar),6.4,solar,50.5094335,-4.32917854414642
+way/231769327,Calvert Landfill Gas Plant,FCC Environment,11.2,biomass,51.9000749,-0.9934098783406748
+way/538582338,Canada Farm Solar Park,British Solar Renewables,8.25,solar,50.8439149,-2.2078554263254113
+way/956264045,Cannington Cold Stores Anaerobic Digestion Plant,Cannington Bioenergy,3.3,biomass,51.1450321,-3.0985720875019296
+way/730017661,Canopus Farm,Countryside Renewables,5.0,solar,53.01002275,-0.05423237422996244
+relation/5488556,Cantelupe Solar Farm,BELECTRIC,5.0,solar,52.1630995,0.06307658367329276
+way/551286865,Canworthy Solar Farm,Equitix,43.0,solar,50.71130955,-4.500468649362606
+way/687453295,Capel Grange Solar Park,West Coast Energy,6.6,solar,51.179453,0.35888625944035857
+way/956252565,Capel Landfill Gas Plant,Hanson Brick Ltd,1.0,biomass,51.1327722,-0.32395887424242453
+way/681500454,Capeland Farm,juwi Renewable Energies,8.3,solar,51.1347011,-3.9108371352014286
+way/955815592,Cardiff Waste Water Treatment Biogas Plant,Dwr Cymru Welsh Water,5.5,biomass,51.4734658,-3.1370046226849606
+way/253027599,Carey Solar Farm,,,solar,56.33863755,-3.3450418387030387
+way/729739560,Carlam Hill Farm,Renesola,10.0,solar,53.8088557,-0.31760141091322347
+relation/7873445,Carloggas Farm Solar Park,,8.3,solar,50.35112055,-4.873528057697628
+way/474390249,Carlton Farm,,5.0,solar,52.8030531,1.393927665215553
+way/1274928964,Carn Hill Wind Farm,,,wind,54.72338645,-5.922648517245783
+way/1442564905,Carn Nicholas Farm,Innova Renewables Limited,10.0,solar,51.6302657,-3.9161622752561422
+way/688333765,Carnemough Farm Solar Park,,7.0,solar,50.33136275,-4.928388343225304
+way/835301549,Carnoch Hydro,Npower Renewables,1.4,hydro,56.68614215,-5.5069974
+way/766094206,Carousel Dairy Anaerobic Digestion Plant,Biogen (formerly Tamar Energy),1.5,biomass,51.21961835,-1.1289752706296923
+way/380244342,Carsfad Hydroelectric Power Station,,12.0,hydro,55.1435865,-4.189230194247248
+way/746180281,"Carver Hay, moss lane",Navitas Project,2.5,solar,53.7033332,-2.7777806060331254
+way/224384158,Cashlie Power Station,SSE,11.0,hydro,56.54744115,-4.430065326852594
+way/295029801,Cassley Power Station,Scottish & Southern Energy,10.0,hydro,58.1686576,-4.727931138687305
+way/668068196,Castle Combe Solar Park,Lightsource BP,15.4,solar,51.4887929,-2.2125357643024968
+way/178198218,Castle Drogo Hydro Electric Plant,,,hydro,50.69448145,-3.806428924431818
+way/668060179,Castle Eaton Farm,Hive Energy,17.8,solar,51.6463582,-1.789337456576531
+way/1132369947,Castlereagh Battery Storage,Energia,50.0,other,54.561436,-5.86805013580366
+way/724803563,Caswell Farm Solar Park,Juwi Renewable Energies,6.7,solar,50.8835292,-2.602778226801313
+way/1421373804,Cathkin BESS,Engie,50.0,other,55.7862036,-4.195532899516367
+way/1476449909,Catsbrain Farm BESS,Conrad Energy,30.0,other,51.60079275,-1.7486025757388834
+way/956244588,Cattlegate Farm Anerobic Digestion Plant,Willen Biogas & Xergi,1.5,biomass,51.6960506,-0.11099080696527397
+relation/9458181,Causilgey Solar Farm,,4.4,solar,50.2872863,-5.112300763985896
+relation/20728895,Cawarden Solar Farm,Spring CHE,49.9,solar,52.76341355,-1.9170273509710178
+way/562893654,Ceannacroc Power Station,Scottish & Southern Energy,20.0,hydro,57.15445455,-4.939027312141209
+way/374098131,Cefn Betingau,Wessex Solar Energy,9.0,solar,51.69605665,-3.9358245807288967
+way/736625428,Cefn Mawr Emergency Standby Generation Facility,,20.0,gas,52.9865102,-3.0570733298160953
+way/167003752,Chadderton BESS,Field Energy,20.0,other,53.53115935,-2.166025947852104
+way/1419351025,Chadderton Generation,,20.0,gas,53.52859045,-2.164902439775838
+way/681983894,Chalcroft Solar Farm,,6.3,solar,50.949644,-1.3065660194997024
+way/693736109,Chamabhreac,,0.1,hydro,56.78312975,-4.739526910226694
+way/956288190,Chamber 16 (Cold Store),Pinguin Foods UK,1.2,solar,52.7395725,0.4208802931704382
+way/687676053,Chancery Farm,BlackRock,11.9,solar,51.90898345,0.9974820492889299
+way/746155611,Chard Solar Park,Conergy,3.0,solar,50.88627725,-2.945349605186274
+way/708338050,Charity Farm Solar Farm,,11.9,solar,52.82224215,-2.8108327103123454
+way/759190405,Charlesfield Biomass CHP Plant,Charlesfield First LLP & Biogas Power,10.0,biomass,55.5604053,-2.6529534956900305
+way/1510918424,Charnock Richard Battery Storage,Pulse Clean Energy,30.0,other,53.6160123,-2.692103437981146
+way/675024104,Chawton Farm Solar Farm,BRNG Renewables,3.2,solar,50.73701535,-1.2977984214814782
+way/687677933,Chediston Hall Solar Power Station,Lightsource Renewable Energy,12.3,solar,52.35256175,1.4730323332467266
+way/944225468,Chelson Meadow Landfill Gas Plant,Combined Landfill Projects (CLP),1.4,biomass,50.37380705,-4.100813838820573
+way/593058156,Chelwood Solar Farm,Chelwood Community Energy,5.0,solar,51.34888905,-2.5165635482371442
+way/746246316,Chelworth Industrial Estate Solar Park,Bath & West Community Energy Ltd,1.0,solar,51.6276731,-1.8880685475176393
+way/729189514,Cherry Tree Farm,Trina Solar,5.0,solar,53.23971285,-1.356695436626983
+way/673809792,Chester Energy (East Woolley Farm),,5.0,solar,50.91998635,-4.47236104995136
+way/550716638,Chilton Cantelo Solar Farm,NextEnery Solar Fund (NESF),5.0,solar,50.9941783,-2.6010231776452195
+way/916300400,Chilton Energy Plant,Dalkia,18.0,biomass,54.6680673,-1.5654608387309141
+relation/18906943,Chineham Energy Recovery Facility,Veolia,8.0,biomass,51.2917926,-1.0372497131950786
+way/314886516,Chisbon Solar Farm,ESCO NRG,13.0,solar,51.82706185,1.0923144576743113
+way/257772998,Chittering Solar Farm,Abbey Renewables,11.3,solar,52.313518,0.22140806102409463
+way/978672528,Chliostair Power Station,SSE,1.1,hydro,57.97399265,-6.974730861182335
+way/956323028,Chonais Hydro,Green Highland Renewables,2.0,hydro,57.49084695000001,-5.2589470036730726
+way/1041302256,Chreagaich,,0.1,hydro,56.78867835,-4.598259039522931
+way/684269249,Church Farm,Push Energy/NextEnergy Solar Fund (NESF),16.5,solar,52.13421905,-0.08325423909572921
+way/725463867,Church Farm,Lightsource Renewable Energy,6.2,solar,51.87016835,-0.634131168420173
+way/1122930955,Cirencester Solar Farm,Rock Fire Energy,23.0,solar,51.7112661,-1.9249834729263537
+way/646298325,Citigen Charterhouse Street CHP,E.ON,,gas,51.51919175,-0.10423526954767375
+way/621815776,Clann Solar Farm,Lightsource BP,1.4,solar,50.4399281,-4.776074693596467
+way/723603985,Clapham solar farm,SBC Renewables,7.5,solar,52.1755592,-0.48592268906601144
+way/725697661,Clapton Farm Solar Park,British Solar Renewables,5.0,solar,51.05732145,-2.347282740295735
+way/956025739,Claredown Farm Battery Storage,Zenobe (formerly Energy Reservoir 15),20.0,other,52.07053575,0.6081015692922878
+way/310685599,Clawdd Ddu Solar Farm,,13.5,solar,51.76399805,-4.035570391734472
+way/1371215613,Clay Hill Solar Farm,EEC Power Systems Ltd,0.3,solar,52.0053595,0.7122952751943596
+way/1176283907,Clay Tye BESS,Fotowatio Renewable Ventures and Harmony Energy,99.0,other,51.55242985,0.2978011096646379
+relation/20278029,Clayhill Farm,Gridserve,10.0,solar,51.98957455,-0.47673044345212945
+relation/20278030,Clayhill Farm Battery Storage,,6.0,other,51.987585,-0.4805674
+way/723603988,Claypit Moor Solar Farm (Lexham),Lightsource Renewable Energy,7.9,solar,52.7455282,0.7758767120278627
+way/746187953,Clearwell Farm - solar,Heritage Energy,2.0,solar,51.563278,-3.08707573152609
+way/828552931,Cleator Battery Storage,Low Carbon Storage Investment Company/ VLC,10.0,other,54.502805,-3.529524294161767
+way/746020115,Cleave Farm Solar Park,Lightsource Renewable Energy,4.7,solar,51.0037063,-4.139875931477415
+way/1483412359,Clifton Farm,Voltalia UK,35.0,solar,50.90921485,-2.5972500189931464
+way/956548281,Clifton Marsh Energy,SITA UK / Natural Power,3.3,biomass,53.7524936,-2.8045809926200382
+way/895243457,Clifton Marsh Wastewater Treatment Works,United Utilities,1.3,solar,53.7513195,-2.8257566583619256
+way/804607244,Clifton Marsh Wastewater Treatment Works,,3.2,solar,53.74997385,-2.8317851727258674
+way/938353593,Clyne Power,Clyne Power Limited,16.0,gas,51.7866893,-3.22281595
+way/682850489,Cobbs Cross,,5.0,solar,51.11321325,-3.037873386621935
+way/800673328,Cockett Valley,,4.0,solar,51.6360813,-4.013715003333874
+way/682783416,Cockhill Solar Farm,,20.0,solar,51.33104405,-2.2215294888245745
+way/222708564,Codford Biogas,,1.5,gas,51.17219785,-2.0150637315448408
+way/104799107,Colchester Sewage Treatment Works,Anglian Water,1.2,biomass,51.8731805,0.9340552496482235
+way/729739563,Cold Harbour Farm,Lightsource Renewable Energy,5.0,solar,54.16928125,-1.3160976181896495
+way/746026628,Collacott Farm,,4.5,solar,51.0511879,-4.129246001574992
+way/956241643,Colnbrook Landfill Gas Plant,Biffa,1.9,biomass,51.49007905,-0.5310760449465742
+way/443953029,Colpmans Farm,Greencoat Capital,5.0,solar,52.4037288,-0.5646137636271586
+way/956611831,Colwick Industrial Estate Anaerobic Digestion Plant,Bio Dynamic,2.0,biomass,52.95212225,-1.0571447528046447
+way/685748658,Combermere Abbey Solar Farm,,14.0,solar,53.0007889,-2.5971301631311143
+way/714071820,Common Farm,Public Power Solutions / Swindon Borough Council,4.8,solar,51.53613755,-1.8015085825481552
+way/714078457,Condover (Green Farm),,10.2,solar,52.6571163,-2.729089147016434
+relation/7886592,Condover Airfield,,12.3,solar,52.63483885,-2.7228390563995015
+way/723603979,Congresbury Solar Farm,FIM Solar Distribution,7.1,solar,51.3491971,-2.825309774727386
+way/26427510,Connahs Quay Power Station,Uniper,1380.0,gas,53.2327995,-3.0831460831608393
+way/923129502,Connon Bridge Landfill Gas Project,Combined Landfill Projects (CLP Envirogas),5.2,biomass,50.43327805,-4.5664698407887085
+relation/7873289,Coombe Solar Farm,,8.0,solar,50.65798075,-3.3917216391122285
+way/315825797,Coombeshead Solar Farm,AEE Renewables,8.0,solar,50.38867275,-3.7543567594607996
+way/730032442,Cooper House Farm,Suncredit UK/ Vogt solar,5.0,solar,53.7675433,-2.8813689638086197
+way/679116880,Copley Farm Solar Power Station,,30.0,solar,53.02270065,-0.7250158735309903
+way/1451092444,Cordon Solar Farm,,,solar,56.3470248,-3.326188984625358
+way/1414702183,Corlacky Hill Wind Farm,Renewable Energy Systems,47.0,wind,54.91189015,-6.739079003799928
+way/1001921827,Cornavarrow Wind Farm,Energia,38.4,wind,54.5826367,-7.439928362576127
+way/797496006,Corntown Farm,,3.4,solar,51.4796334,-3.5316661123322612
+way/888004739,Cornwall Energy Recovery Centre,SUEZ,20.0,biomass,50.37776405,-4.891444091292268
+relation/20708314,Cornwell Solar Farm,,49.9,solar,51.7003813,-1.0309164819070862
+way/956288196,Costessey Landfill Gas Project 2,Combined Landfill Projects (CLP),2.0,biomass,52.6508646,1.1935854681344018
+way/841621478,Cotesbach Landfill Gas Project,Lafarge Redlands Aggregates Ltd,2.3,biomass,52.4227333,-1.211352227361543
+way/402566315,Cottam Development Centre,E.ON,445.0,gas,53.3065261,-0.7861630039584105
+way/1346001570,Cotton Wind Farm,,,wind,52.2608011,-0.19329503106778384
+way/860353612,Coursers Farm Anaerobic Digestion Plant,Severn Trent (formerly Agrivert),3.0,biomass,51.72685465,-0.25934241053870516
+way/555316981,Court Coleman solar farm,,15.0,solar,51.52280835000001,-3.6193873424100262
+way/718494058,Court Farm,BE Renewables,8.5,solar,51.60651665,-2.8798188587742057
+way/808367950,Court Lodge Farm Anaerobic Digestion Plant,Oncoland Energy Ltd,,biomass,51.3903049,0.25908537463345915
+way/405995239,Cowdown Lane Solar Farm,,40.0,solar,51.1961232,-1.4601820885524526
+way/113555597,Cowie Board Factory,Norbord,15.0,biomass,56.07635195,-3.8671289973803784
+way/1479938778,Cowlyd Lower Hydroelectric generator,Dŵr Cymru - Welsh Water,0.2,hydro,53.17665315,-3.8459909551291793
+way/824126260,Cowlyd Upper Hydroelectric generator,Dŵr Cymru - Welsh Water,0.2,hydro,53.1700885,-3.8609285084136777
+way/1149198459,Cowstead Battery Storage,,50.0,other,51.40879005,0.7680182300386149
+way/463273463,Cramlington Biomass CHP Plant,Estover Energy Ltd,27.7,biomass,55.0981912,-1.6203797895898138
+way/704333982,Cranfield Airfield,,1.0,solar,52.06865805,-0.6134920275651006
+way/474494452,Cranham Golf Course Solar Park,Cranham Golf Course,2.6,solar,51.557515,0.28836988719631174
+way/290068926,Crannaford Solar Farm,MS Power Projects Ltd.,12.5,solar,50.76009505,-3.4016817624871374
+way/798910691,Crapnell Farm,,5.4,solar,51.2088293,-2.58325080917548
+relation/20354095,Crays Hall Solar Farm,,25.6,solar,51.61012945,0.4589498015883021
+relation/9539171,Craysmarsh Solar Farm,Lightsource BP,1.8,solar,51.3642893,-2.0936669474275025
+way/895224193,Creacombe Solar Farm,Gnaton Farm,7.3,solar,50.33309705,-3.9762567373670175
+way/746212395,Creathorne Farm  - Solar Farm,Good Energy Generation,1.8,solar,50.7953261,-4.544408043382482
+way/745132283,Cressing Solar Farm (Phase 1),Octopus Investments,5.0,solar,51.83849685,0.6011736906080718
+relation/10099446,Creswell Solar Park,Sovereign Energy Partners,5.0,solar,53.2506502,-1.2118198408571899
+way/1149201592,Creyke Beck Battery Storage,Statera Energy,49.9,other,53.79742155,-0.4191283419082878
+way/1149201591,Creyke Beck Power,Statera Energy,50.0,gas,53.79755465,-0.41785770822473217
+way/1514710552,Crick Road Solar Farm,Lightrock Power / Bluefield Solar Income Fund,49.9,solar,52.3647269,-1.137951078852796
+way/1293845946,Crifton Solar Farm,Goldbeck Solar,,solar,53.1230344,-1.0475828754290801
+way/1280208407,Crifton Solar Farm (South),Goldbeck Solar,,solar,53.11976415,-1.04587488752089
+way/706302417,Crighshane Wind Farm,Energia,32.0,wind,54.6417506,-7.793539156201839
+way/1509536389,Crimscote Solar Farm,Regener8 Power,45.0,solar,52.12277195,-1.6763710793853468
+relation/9566527,Crinacott Solar Farm,,6.7,solar,50.7904592,-4.404508494796302
+way/449973224,Crockagarran Wind Farm,ESB Generation and Wholesale Markets,17.5,wind,54.55279455,-7.018160895464852
+way/688883410,Crockers Hele,,1.3,solar,50.8443975,-4.09127331934968
+way/681692998,Crookedstone Road,Lightsource BP,4.8,solar,54.6706724,-6.199018461239262
+relation/18328017,Croome Airfield Solar Farm,Croome Airfield Solar,49.9,solar,52.10179855,-2.141099874504005
+way/1122785112,Crossness Sewage Works PV,Thames Water Utilities,1.5,solar,51.5078683,0.13796055934796453
+relation/11895883,Crossways Solar Farm,British Solar Renewables Ltd,4.95,solar,50.6948091,-2.318105112454596
+way/256209291,Crouch Solar Farm,Low Carbon Storage,23.0,solar,51.58642795,0.3779290240438903
+way/425431811,Crow Solar Farm,,4.7,solar,53.10776985,-1.2966741173423406
+way/956285099,Crowmarsh Battle Farm Anaerobic Digestion Plant,Severn Trent (formerly Agrivert),2.3,biomass,51.6105492,-1.1031426593671667
+way/725676998,Crown Farm,Suncredit UK (Sunventures 7),6.0,solar,52.6679312,-1.3641949050695295
+way/449382367,Cruachan Power Station,Drax,440.0,hydro,56.3937909,-5.113640040605065
+relation/9539912,Crucis Park,Solar Planning Limited,12.5,solar,51.7263752,-1.9187940243438741
+relation/10048420,Crugmore Farm,John Laing Environmental Assets,6.4,solar,52.0924968,-4.623035930166052
+way/846563603,Crumlin STOR,Plutus Powergen,20.0,gas,51.67416485,-3.159054845708074
+relation/7879998,Crundale/Fenton Home Farm Extension,,5.9,solar,51.8243932,-4.923828558642881
+way/201007847,Cuaich Power Station,SSE,2.5,hydro,56.95286885,-4.181784528548368
+way/551258375,Cuckoo Grove Solar Farm,,6.1,solar,51.8088192,-5.010842462538638
+way/938157357,Cuckoo Road,Mercia Power Response,8e-06,gas,52.50490235,-1.860365914539741
+way/567002529,Cuileig Hydro Scheme,Scottish Hydro-Electric plc,3.3,hydro,57.7636811,-5.040181204202822
+way/1483661713,Cullerlie Solar Farm,Elgin Energy,13.0,solar,57.11464895,-2.3704125727560434
+way/563030728,Culligran Power Station,Scottish & Southern Energy,19.1,hydro,57.42561825,-4.7043197
+relation/7873224,Culmhead Solar Farm,Ingenious Renewable Enterprises Energy Ltd.,7.5,solar,50.9255959,-3.1277588160814105
+way/746155617,Culworth House Solar Farm,Private Developer,3.0,solar,52.1050969,-1.206441572601673
+way/1097516657,Cumhachd Shlèite,Sleat Hydro Community Benefit Society,0.034,hydro,57.05033715,-5.924691311282085
+way/1062971116,Cumhachd Shlèite community hydro scheme,,0.034,hydro,57.05078195,-5.932372844815312
+way/1364017483,Cuxton Battery Storage,,49.5,other,51.37682625,0.46552006706870874
+way/799764431,Cwm Derwyn Farm,,5.0,solar,51.4125931,-3.323883166376997
+way/717789530,Cwmcaesingrug Farm,Kronos Solar,10.0,solar,51.6211864,-3.167477874986518
+way/601402640,Cwrt Henllys Farm,Lightsource Renewable Energy,5.0,solar,51.62158095,-3.0802618703487576
+way/656296883,Cynon Power,Cynon Power Limited,16.0,gas,51.6972426,-3.4171123740516336
+relation/17657963,DTTC Lyneham Solar Farm,Defence Infrastructure Organisation,69.5,solar,51.50557395,-2.0114962494047353
+way/676222604,Dagenham Docks Biogas,ReFood UK,1.4,biomass,51.52398515,0.13627496542377765
+way/130861299,Dalchonzie Power Station,Scottish and Southern Electric,4.0,hydro,56.3732545,-4.04085635
+way/1353838798,Darren Farm Solar Park,SRE (Darran),2.6,solar,51.698191,-3.170094479786178
+way/796498485,Dayfields Farm,,4.7,solar,53.02623865,-1.6583774113507783
+way/956012450,Dean Group Business Park AD Plant,BioConstruct,5.1,biomass,54.64768295,-1.205212296769999
+way/729739572,Decoy Farm,Push Energy/ NextEnergy Solar Fund (NESF),5.0,solar,52.69555155,-0.13844662159982918
+way/503582660,Decoy Solar Farm,MS Power Projects Ltd,6.0,solar,50.8292176,-0.6920435283436717
+way/956255093,Deep Moor Gas to Energy,DEVON WASTE MANAGEMENT LTD,2.0,biomass,50.96919,-4.1068791
+way/738308245,Deepdale Farm,Deepdale Farm Solar Ltd,8.0,solar,53.0296211,-0.39547807716290617
+way/47922002,Deephams Sewage Treatment Works,Thames Water,3.0,biomass,51.62452715000001,-0.03884803828419882
+way/641543893,Derriford Hospital Biomass Plant,Plymouth Hospital NHS Trust,1.5,biomass,50.4163858,-4.111937974688944
+way/1192963443,Derril Water Solar Farm,Renewable Energy System Limited / Ripple Energy,42.0,solar,50.79063125,-4.414398228459669
+way/724617838,Derriton Fields Solar Farm,,11.8,solar,50.80224795,-4.369963553762194
+way/728893770,Desford Solar Farm,Trina Solar,5.0,solar,52.6402292,-1.2655453178541776
+way/955988920,Diageo Biomass Energy Project,Diageo,5.5,biomass,56.18956465,-3.055924703928307
+way/956264051,Dimmer Landfill Gas Scheme,NOVERA,2.3,biomass,51.0759191,-2.5534389555875485
+way/467791543,Dinas Power Station,Statkraft,13.0,hydro,52.43110095,-3.8449796740144215
+way/903810114,Discovery Park,Burmeister & Wain Scandinavian Contractor (BWSC),16.0,biomass,51.2908332,1.347747641465522
+way/840979882,Dogsthorpe South Landfill Site,,1.9,biomass,52.601625,-0.22168544004854318
+way/427502357,Dolgarrog Hydroelectric Power Station,RWE,32.0,hydro,53.19156275,-3.8421322498851422
+relation/9580918,Dolmans Hill Solar Farm,,5.0,solar,50.75112635,-2.102908347995192
+way/1189798471,Doncaster Battery Storage,ForePower,10.0,other,53.50147335,-1.1158810857326587
+way/840064939,Dorket Head,FCC Environment,2.8,biomass,53.02074555,-1.1141030444213313
+way/956252568,Dorking Battery Energy Storage System,Grid Battery Storage (GBSL),6.0,other,51.23033275,-0.35487265
+relation/20636507,Doverdale - Solar Farm & Battery Storage,RWE,49.9,solar,52.30301405,-2.211234575000001
+way/1199234081,Drakelow Refuse Derived Fuel (RDF) Power Station,Vital Energi,18.0,biomass,52.7754888,-1.656873681654023
+way/730017648,Drakelow Solar Farm,BlackRock,5.0,solar,52.7788628,-1.6662705313660688
+way/725677002,Drapers Farm Solar Park,Lightsource Renewable Energy,6.0,solar,51.85709465,0.5043698614051109
+way/630322625,Drayton Manor Farm,Anesco,25.0,solar,52.19289465,-1.7683206015065642
+way/1391444372,Driffield Solar Farm,BayWa r.e. UK Limited,48.0,solar,53.99138155,-0.40425438181976553
+way/1418365576,Driffield Solar Farm Battery Storage,BayWa r.e. UK Limited,30.0,other,53.9955209,-0.4131400946099495
+way/535731540,Drumjohn Power Station,,2.25,hydro,55.2481885,-4.3266517
+way/1001614044,Drumkee Battery Storage,Drumkee Energy Limited (Low Carbon Storage Ireland Ltd),50.0,other,54.511917,-6.677911765612301
+way/1490968279,Ducklington Solar Farm,Innova,27.5,solar,51.76310785,-1.491849350003106
+way/1122123281,Dudbridge Hydro Turbine,Stroud Valleys Canal Company,,hydro,51.7423059,-2.239045734412515
+way/90830667,Dudley Energy from Waste,MES Environmental (CNIM Group),7.4,biomass,52.49939225,-2.082694709872503
+way/629650474,Dunbar Energy Recovery Facility,Viridor,25.6,biomass,55.97559325,-2.4639699446697385
+way/956076707,Dunbar Power Plant,Viridor,14.0,biomass,55.9716181,-2.4635092936026517
+way/1228587815,Dunbeg Wind Farm,,,wind,55.08811755,-6.82346927634512
+way/746187954,Dunkeswell Airfield Solar Farm,,2.0,solar,50.8666845,-3.22858696027106
+way/1411125810,Dunmow Solar Farm,Thrive Renewables,14.0,solar,51.8636436,0.3846082892484881
+way/1430715269,Dunsfold Park Solar Farm,Dunsfold Park Ltd,2.0,solar,51.11893855,-0.5442671977234091
+way/1187631521,Dunsinane Battery Storage,,50.0,other,56.4802964,-3.0127122327431906
+way/371509334,Dura Park Bynea Industrial Site,Short Bros Homes,1.4,solar,51.66700955,-4.089326364506295
+way/681493117,Durrants Solar Farm,,4.5,solar,50.7090592,-1.3645869333489942
+way/1171274864,Dutton Sluice Hydro,,0.2,hydro,53.28875595,-2.620286701468631
+way/294523259,EB Equipment Ltd,,,solar,53.56736215,-1.522503007840286
+way/1011022184,EMEC Fall of Warness Tidal Energy Test Site,EMEC,,hydro,59.15168235,-2.816242059790779
+way/666271254,Eaglescliffe Solar Farm,UK Sustainable Energy,5.0,solar,54.5460101,-1.3569575266209102
+way/410930645,Eakring Solar Farm,Lightsource BP,11.9,solar,53.1554854,-1.0127653881023675
+way/256508141,Earlstoun Power Station,,,hydro,55.1118755,-4.174215903355893
+relation/11037303,Easington Farm,,21.3,solar,51.66843765,-1.0613012596216225
+way/688879039,Eastacombe Solar Farm,,3.6,solar,50.77504295,-4.3304720994348695
+way/31353854,Eastcroft Incinerator,,9.0,biomass,52.94603705,-1.1348957829045883
+way/830141064,Easter Alltbeithe,,,hydro,57.11009525,-5.272275258309626
+relation/20710678,Eastfields Solar Farm,Vantage RE,34.8,solar,52.2392047,-1.4342692685969507
+relation/8003186,Ebbsfleet Solar Farm,ibvogt,9.9,solar,51.3142839,1.3445123331013318
+relation/10298564,Ebnal Lodge,Greencoat Capital,5.0,solar,52.89887015,-3.0144114065134153
+way/680558996,Eckland Solar Farm,,2.9,solar,52.45471755,-0.8442269726410746
+way/251060732,Eco Park Surrey,Suez,1.7,biomass,51.4062032,-0.44118882327962095
+relation/20245832,Eco-Pak Rooftop Solar Array,Big Solar Co-op,0.593,solar,52.4652595,0.04764225000000247
+way/644333188,EcoPark,LondonEnergy,55.0,biomass,51.61684025,-0.04115249431113821
+relation/20245947,Eden Court Medical Practice Rooftop Solar Array,Big Solar Co-op,0.029,solar,52.51813555,-1.794021433318187
+way/1520888032,Edison Power 4Mw Gas fired Peaker power station,AMP (Aggregated Micro Power plc),4.0,gas,52.1493034,-0.41904057463259076
+way/685748664,Egmanton,,14.2,solar,53.2135245,-0.8800778227052037
+way/864157471,Eigg Solar Farm,Eigg Electric,0.15,solar,56.8876653,-6.138348398864023
+way/1274696352,Elginny / Broughshane Wind Farm,,,wind,54.929953,-6.222217942053433
+way/689086418,Ellicombe Farm,Lightsource BP,1.4,solar,50.83356045,-3.7881092372084817
+way/685985153,Ellough Airfield Solar Farm,,13.2,solar,52.4313719,1.604242398605334
+way/687582323,Elms Farm,Bluefield Solar,29.0,solar,51.6050563,-1.3996461561979598
+way/1435220844,Elmsett Airfield Solar Farm,,,solar,52.0786412,0.9782442482938961
+way/840166961,Elstow Landfill Site,,1.8,biomass,52.10344985,-0.4717359475263404
+way/682011099,Elton solar farm,Valfortec,5.0,solar,52.9481988,-0.8554771152182945
+way/136074841,Ely Power Station,,40.0,biomass,52.3984928,0.13151886126467865
+way/662771488,Emberton Solar Park,,9.0,solar,52.13672695,-0.685042505836764
+way/892701416,Energy Works,Energy Works / The Spencer Group,25.0,biomass,53.75608035,-0.3284954763440338
+way/873102251,EnviRecover Energy-from-Waste,Mercia Waste Management,25.0,biomass,52.3264089,-2.207432423251479
+way/78193818,Enviroenergy,Enviroenergy (Nottingham City Council),,solar,52.9492215,-1.1409282204638116
+way/668067579,Epwell Solar Park,Lightsource BP,9.0,solar,52.06816125,-1.4603710164041876
+way/1005326708,Ermine Street Solar Farm,,32.5,solar,53.01111185,-0.4993058223337129
+way/944217070,Ernesettle Lane STOR,,,other,50.4214298,-4.1870745429963225
+way/494633928,Ernesettle Solar Farm,,4.1,solar,50.4183263,-4.192059699383638
+way/641654199,Errol Estate,Elgin Energy EsCo,13.0,solar,56.3671614,-3.2788307052806194
+way/1475625561,Erskine BESS,Muirhall Energy,29.9,other,55.90283125000001,-4.4854251773123295
+way/1475625560,Erskine Gas Generation,Erskine Gas Generation Ltd,19.9,gas,55.9023598,-4.484448911365172
+way/1231198636,Eshmore Wind Farm,Energia,7.4,wind,54.53825855,-6.98129244841744
+way/251118459,European Offshore Wind Deployment Centre,Vattenfall,92.4,wind,57.2257253,-1.9969078529813011
+way/897046720,Eveley Solar Farm,,49.0,solar,51.1066688,-1.5320857478730003
+way/1037306432,Evishagaran Wind Farm,ERG S.p.A.,35.0,wind,54.93150005,-6.829318845757114
+way/239340762,ExCeL District Energy Centre,Engie,,gas,51.5088624,0.022962290621380787
+way/617708524,Exning Solar Power Station,Lightsource BP,30.3,solar,52.2514151,0.35151522245912914
+way/174145427,Eye Biomass Plant,South Western Power (NOVERA),14.3,biomass,52.33505235,1.1288451094907228
+way/231348386,FCC Enviroment,FCC Environment,,other,53.70863765,-1.2256077369084728
+way/687528290,Fairoak Landfill,Renewable Power Generation Ltd,1.5,gas,50.9632119,-1.2808792680480774
+way/714505543,Fairwind Farm Solar Park,Lightsource BP,12.0,solar,51.56321295,0.3875500989974134
+way/729739564,Fambridge Road/Canewdon Road,UK Solar Assets (Alcor LS-SPV),5.0,solar,51.6201465,0.6980275827949574
+way/179613591,Fanny House Farm,Primrose Solar,5.0,solar,54.04035185,-2.8786272496793206
+way/940099181,Faraday Road STOR Generation,Green Frog Power,25.5,oil,50.367739,-4.112471573119782
+way/1311888745,Feeder Road Battery,Thrive Renewables,20.0,other,51.44750925,-2.5646237846578606
+relation/20265633,Feldon Vale Solar Farm,Low Carbon,49.9,solar,52.19632435,-1.432119401175414
+way/956271020,Felinfach,Volac,3.2,biomass,52.1991511,-4.170934367769229
+way/673825036,Fen Farm Solar Park,Ecotricity,1.0,solar,53.41736705,0.0851189386242321
+way/739092658,Fen Road,,,solar,52.96588965,-0.07172529906680909
+relation/7879999,Fenton Home Farm Solar Park,,30.375,solar,51.81731215,-4.923964208954927
+way/1469897053,Feorline,Highland Community Energy Society,0.0975,hydro,56.12339785,-5.1554759
+way/1364018651,Ferrymuir Battery Storage,,50.0,other,56.31042115,-3.0424307886667563
+way/372525379,Ffestiniog Hydroelectric generator,Dŵr Cymru - Welsh Water,0.71,hydro,52.9752758,-3.9457575525297806
+way/402796795,Ffestiniog Power Station,First Hydro,360.0,hydro,52.98066545,-3.9689445381297332
+way/215882049,Ffos Las Solar Farm,Ffos Las Solar Developments Limited,5.5,solar,51.7258613,-4.238201516878293
+way/370288530,Fideoak Mill Battery Storage,Kiwi Power (formerly Taunton Battery Storage),30.0,other,51.01868245,-3.1572424942036053
+relation/9460754,Field House Solar Farm,Foresight Solar Fund Ltd.,6.4,solar,51.00849695,-1.3893461242342664
+way/1474381139,Field Newport BESS,,20.0,other,51.5657066,-2.966518890315391
+way/400995834,Field at School Aycliffe Lane,Lightsource Renewable Energy,5.0,solar,54.60800825,-1.591944644595749
+way/550726465,Fieldscale,,10.6,solar,50.43603255,-4.382033814674701
+way/1446948920,Fieldscale,,10.0,solar,50.6783449,-1.2515857975697444
+way/478496282,Fieldscale,,10.6,solar,50.65789575,-1.235669706862831
+way/800715146,Finvoy Road Solar Farm,,5.9,solar,54.9621429,-6.492562607362046
+relation/9456291,Fiskerton Solar Farm,,34.0,solar,53.24598955,-0.41969089559106787
+relation/11655160,Five Fords Waste Water Energy Park,,,solar,53.0287711,-2.9508547032122596
+way/331566829,Five Oaks Power Station,,9.0,oil,51.05016475,-0.42215677123067163
+way/283457790,Five Oaks Solar Farm,John Laing Environmental Assets,5.0,solar,51.0543522,-0.44126594958751564
+way/730028110,Flixborough Industrial Estate,NESF (formerly INRG Solar),5.0,solar,53.61902165,-0.6890340959966388
+way/713476742,Folly Solar Farm,,13.1,solar,51.83930025,-0.7393073547401764
+way/500283444,Ford Farm (Ashurst),Conergy,10.0,solar,50.9452015,-0.3340015816836247
+way/550725978,Ford Farm Solar Farm,Ford Farm PV Scheme LLP,5.0,solar,50.47400285,-4.37946616946106
+relation/20265628,"Ford Research And Engineering Centre, Dunton - Solar Farm",Ford Motor Company Limited,5.2,solar,51.58136155,0.39647101679320945
+way/746155613,Forest Farm,NESF (formerly Earthworm/Waltham Solar),3.0,solar,50.94352315,-1.197373735148663
+way/122832334,Forest Heath Solar Power Station,Munich RE,5.0,solar,52.2791365,0.39127219700891747
+way/550725998,Four Burrows Solar Park,,7.2,solar,50.30438825,-5.139782198676619
+way/1442566461,Fox Covert Solar Farm,Low Carbon,22.0,solar,51.9632213,-0.899097543615849
+relation/9542497,Foxburrow Farm Solar Power Station,UK Sustainable Energy,8.0,solar,52.04768715,1.2985957680512215
+relation/10039645,Foxcombe Farm Solar Farm,,5.0,solar,50.80016285,-4.2949657207457985
+way/956288195,Foxhall Landfill Gas Plant,Renewable Power Generation Ltd,1.2,biomass,52.0492991,1.2630360033649204
+relation/10303994,Francis Court Solar Farm,Lightsource BP,4.0,solar,50.77201265,-3.465637775536421
+way/1481206446,Freemantle and Shirley Community Centre Rooftop Solar Array,Big Solar Co-op,0.027,solar,50.91734405,-1.429397807245281
+way/745132287,Frog's Loke,,5.0,solar,52.79707015,1.3992927675356168
+way/616783234,Frying Down Copse Solar Farm,,5.0,solar,51.2149857,-1.0701149506454357
+way/800758925,Fullerton,,4.2,solar,51.1728086,-1.4769472406820863
+way/468739515,Fulton Building CHP,Dundee University,4.2,gas,56.458843,-2.979867818943948
+relation/14569381,GEMEC - Pratt's Field,GEMEC Ltd.,21.6,solar,50.75553315,-1.7496856078989942
+way/797469971,Galton Manor,,5.0,solar,50.67028195,-2.3075158332968897
+relation/20355068,Gammaton Moor Solar farm,Sonnedix Ltd,32.0,solar,51.0019679,-4.14177798115627
+way/1524904550,Gander Down Solar Farm,,7.0,solar,51.1091965,-1.5305677620677658
+way/956323025,Garbhaig Hydro Scheme,Garbhaig Hydro Power Co Ltd,2.0,hydro,57.6815714,-5.5325305
+way/956335703,Garlaff Landfill Gas Plant,Barr Environmental / CLP,1.3,biomass,55.4293536,-4.305912639553725
+way/374133264,Garlandhayes Farm Solar Park,Hive Energy,5.0,solar,50.82416225,-3.3978386586108873
+way/721984225,Garn Solar Farm,Equitix,7.4,solar,51.4539621,-3.387928137992124
+way/505606363,Garnett Wharfe Hydro,,0.35,hydro,53.91044155,-1.6913145541240868
+way/974983010,Garnham Close STOR,,,other,53.0906252,-1.3662109214019387
+way/114239090,Garrogie Hydro Scheme,RWE npower,2.0,hydro,57.18574895,-4.482142125901049
+way/541086396,Garvinack Farm Solar Farm,Garvinack Farm,7.1,solar,50.2935118,-5.125169071655707
+way/850463559,Gateshead District Energy Scheme,Gateshead Energy Company,4.0,gas,54.96483805,-1.5958861437633671
+relation/9338387,Gaultney Solar Farm,,20.5,solar,52.4485759,-0.7985231235089352
+way/956053899,Gaur Power Station,Scottish and Southern Energy (SSE),6.4,hydro,56.6782403,-4.508640135670499
+way/718206641,Gawcott Fields Farm,Harper Solar Ltd,9.2,solar,51.9879195,-1.006520790553076
+way/334208574,Gedling Energy Park,Alkane Energy,3.0,gas,52.98912915,-1.090037847695081
+way/334210044,Gedling Solar Farm,Foresight,5.7,solar,52.9902571,-1.0796927177474402
+way/486974638,Gelliwern Isaf Farm,,6.0,solar,51.6987284,-3.989081743128824
+way/858727812,Ghuilbinn,,2.8,hydro,56.8877084,-4.576659665977742
+way/685985152,Gib Lane Solar Farm,Haymaker Energy Ltd,29.2,solar,51.8279805,-0.7410111222642338
+way/800762322,Gibson Farm,Lightsource BP,6.4,solar,54.67508745,-6.016054309764397
+way/286804832,Gisla Power Station,SSE,0.7,hydro,58.1274599,-6.878279781496175
+way/612379608,Glasgow Renewable Energy and Recycling Centre,Viridor,10.0,biomass,55.8336497,-4.2439596803518365
+way/898189771,Gleann Casaig Hydro Scheme,,0.5,hydro,56.2533435,-4.3745708
+way/594780571,Glebe Farm Solar Energy Park,Vento Ludens Ltd,15.0,solar,52.25146165,-0.5874257881031226
+way/1122855747,Glebe Farm Solar Farm,NextEnergy Capital LLP,32.0,solar,52.07001435,-2.1479678621684535
+way/1165083431,Glenachulish Hydro,LEG Power Lochaber Limited,0.547,hydro,56.68122245,-5.189894720067777
+way/320868796,Glenlee Power Station,,24.0,hydro,55.0996505,-4.186086142772306
+way/562892205,Glenmoriston Power Station,,38.0,hydro,57.201626,-4.72075740006259
+relation/12678697,Golden Hill,John Laing Environmental Assets Group,6.2,solar,51.68390325,-4.902708625079023
+way/550716634,Goldenhaye Field Solar Farm,Cricket St Thomas Estate,2.0,solar,50.8746509,-2.9052884583009417
+way/1419396927,Golds Hill BESS,Constantine Energy Storage,57.0,other,52.54001345,-2.0309541160429365
+relation/20672626,Gonerby Moor Solar Farm,BP,23.0,solar,52.957524,-0.6648805130968136
+way/688049606,Goonhilly Downs Solar Farm,,4.5,solar,50.04145445,-5.20921522175565
+way/1122856189,Goosehall Solar Farm,Lightsource Renewable Energy,39.5,solar,52.2945436,0.3209974973675962
+way/504274456,Gore Cross Anerobic Digestion Plant,Wight Farm Energy,2.2,biomass,50.675157,-1.254122117827082
+relation/20729942,Gorse Lane Solar Farm,Elgin Energy,49.9,solar,52.9656926,-0.4117749841506737
+way/518501186,Gosfield Airfield Solar Farm,,12.6,solar,51.9557336,0.5788436399716539
+way/713660065,Gover Farm Solar Park,Green Energy UK Direct Ltd,8.0,solar,50.28981395,-5.196045732709962
+way/929894596,Gowerton STOR,,38.0,gas,51.648977,-4.015466284739074
+way/675627211,Gowy Landfill Site,Waste Recycling Group,6.0,biomass,53.23882555,-2.8302253516283886
+way/688375034,Grange Farm,,5.0,solar,50.7113197,-4.424240248219235
+way/684277345,Grange Farm,,21.0,solar,51.54239675,-2.5287074552109576
+relation/9455967,Grange Farm (Burton Pedwardine),Lark Energy,15.0,solar,52.9769838,-0.3519632491438749
+way/541383600,Grange Farm (Kirkby on Bain),Solar Park Developments,9.0,solar,53.14158325,-0.15797913446636333
+way/688022947,Grange Farm Solar Farm,,6.0,solar,50.7137629,-1.259951030008014
+way/550883524,Grange Farm Solar Farm,Anesco,5.0,solar,51.0111338,-3.222178845074697
+way/335989791,Grange Farm Solar Park,,12.7,solar,52.7492312,0.06256512187678911
+way/339183787,Grange Solar Farm,Lark Energy,4.6,solar,53.03259805,-0.8094903006579273
+way/944898036,Grangemouth CHP Power Plant,,145.0,gas,56.01107635,-3.695553398947351
+way/956023503,Granox Biogas Plant,ReFood UK,5.0,biomass,53.3519058,-2.746919530721744
+way/603018713,Granville Road Solar Farm,Ancala Partners LLP (O&M by Anesco),5.0,solar,52.71426835,-2.414110352949576
+way/199594396,"Gravel Works, Wasing Estate",NESF (formerly INRG Solar),5.0,solar,51.38744905,-1.1868452483636807
+way/676054685,Greatmoor Energy From Waste,FCC Environment,25.0,biomass,51.89633745,-0.9783117265066618
+way/798083446,Greaves,,5.0,solar,54.28912535000001,-2.6899011665442436
+way/1115785311,Greenburn Hydro,The National Trust,0.1,hydro,54.41571395,-3.08209647623839
+way/1457412912,Greendykes Communal Heating,City of Edinburgh Council,,gas,55.92819845,-3.1228821617148093
+way/956035096,Greenfield Road BESS,Arlington Energy,40.0,other,51.98380525,-0.48256845
+way/530490732,Greenhill Anaerobic Digestion Plant,Black Dog Biogas,1.0,biomass,50.72185235,-1.2895655908576562
+way/956335709,Greenoakhill Landfill Gas Plant,Graveson Energy Management,3.9,biomass,55.8391524,-4.130093204359173
+way/16289467,Greenwich Peninsula Energy Centre,Pinnacle Power,,gas,51.49394895,0.007842085062580034
+way/35535207,Greenwich Power Station,London Underground,117.6,oil,51.4850956,-0.0007798236765787655
+way/1303046320,Greenwood Family Park solar farm,,0.15,solar,53.17989,-4.195415654580685
+way/1414297792,Greybarn Solar Energy Farm Battery storage,Statkraft UK,55.0,other,52.0772694,1.062790689535407
+relation/20265578,Grounds Farm Solar farm,Encavis,26.0,solar,51.933481,-0.619317204709141
+way/746146644,Grove Farm (solar),juwi Renewable Energies,3.5,solar,51.07633575,-3.2616932265896694
+way/470613666,Grove Solar Park,Solar Century,16.0,solar,50.9629182,-1.478140001306687
+way/129923951,Grudie Bridge Power Station,Scottish & Southern Energy,18.7,hydro,57.61946215,-4.830987275224725
+way/1511991454,Guildford Hydro,,0.04,hydro,51.2337668,-0.5749858904881066
+relation/5474028,Gwynt y Môr Offshore Wind Farm,,576.0,wind,53.45928825,-3.6340750670899657
+way/682008033,Gypsum Solar Farm,BE Renewables,5.0,solar,52.7398287,-1.1163233338574068
+way/684266747,Hadley Farm (Orta Membury) Solar Farm,,17.0,solar,51.4813678,-1.5642695612731592
+way/724803561,Hadley Solar Farm,Lightsource Renewable Energy,6.6,solar,52.9608652,-2.7239771467356624
+way/687453296,Hadlow Place Solar Farm,,14.3,solar,51.1870282,0.34056535548024636
+way/796947205,Hafod-Y-Dafal Farm,,14.0,solar,51.7280891,-3.159240088225306
+relation/20325403,Haigh Hall,,5.0,solar,53.70913515,-1.5691293696428528
+relation/9580879,Hale Solar Farm,,8.0,solar,50.77605385,-1.861160483281068
+way/938174993,Hall Farm,Hall Farm Energy Limited,5.0,oil,52.0525538,-1.1466488726327118
+relation/10048777,Hall Farm,United Photovoltaics,5.1,solar,52.0534023,-1.153145749218473
+way/684277356,Hall Farm Park,,15.0,solar,52.5080904,1.2365265153307214
+relation/19718843,Hall Farm Solar Farm (Newbold Verdon),Push Energy/ NextEnergy Solar Fund (NESF),10.0,solar,52.6237488,-1.3619127591121956
+way/1442574500,"Hall Farm, West End Northwold Solar Power Station",Ampyr Solar Europe,10.0,solar,52.55401015,0.5758436561816169
+way/1122857352,Hallen BESS,FPC Industry & Enterprise,32.0,other,51.5282798,-2.6606341209307525
+way/550883520,Halse Solar Farm,Silverstone Green Energy,8.24,solar,51.0494399,-3.205720147078568
+way/956244597,Halstead Renewable Power Project,Biogen (formerly Tamar Energy),2.0,biomass,51.94299355,0.6596092569475348
+way/336287036,Halton Lune Community Hydro,Halton Lune Hydro Limited,0.16,hydro,54.07629525,-2.7466481150096502
+way/1520582781,Halton Power,AMP (Aggregated Micro Power plc),5.0,gas,53.3399989,-2.714470445880619
+way/799389328,Hammond Court Farm,,15.0,solar,51.5369859,-2.536555083638458
+way/1489688066,Hams Hall BESS,BW ESS,400.0,other,52.5366842,-1.713929440409684
+way/614566443,Handley Park - resubmission,Haymaker Energy,5.0,solar,52.10609795,-1.021964864890792
+way/956335702,Harbour Road Power Station,Glennon Brothers Troon,2.6,biomass,55.5471331,-4.681081422847862
+way/685329990,Hardingham Solar Power Station,,20.0,solar,52.59917535,1.0343567275745835
+way/1381279741,Harelaw Peaking Plant,Forsa Energy,20.0,gas,55.91707365000001,-4.710703247818892
+way/1052211666,Harlaw Hydro,,0.085,hydro,55.87315585,-3.3118675201612926
+relation/20708095,Harlesford Solar Farm,,49.9,solar,51.7038422,-1.0162222184542564
+way/1108013448,Hartham Park Community Energy,,,solar,51.4448637,-2.2029187236362215
+way/1125260566,Hartmoor Generation,Forsa Energy,49.5,gas,54.702707,-1.2910594929121124
+relation/20265799,Hatherden Farm,Nextpower SPV 10 Limited,49.9,solar,51.2411588,-1.5160679599004214
+relation/9469655,Hawkers Farm,Greenfields (A),9.5,solar,51.2275639,-2.7636381687177494
+way/1148936262,Hawkers Hill Energy Park,Tag Energy,20.0,other,51.01370885,-2.208007391041332
+way/504427664,Hayeswater Hydro Electricity Station,The National Trust,0.25,hydro,54.50782165,-2.902692674874843
+relation/11603039,Hayford Solar Farm,WS Systems Ltd,17.1,solar,52.69050285,-2.9551125671289773
+way/725458006,Hazard Farm,TGC Renewables,6.4,solar,50.4198255,-3.7602829741102823
+way/849325195,Hazelside Farm CHP,,1.0,biomass,55.5753843,-3.85614528535287
+way/95811753,Heartlands Power Station,,100.0,gas,52.51010165,-1.808565118948005
+way/956255096,Heathfield 'C' Landfill Scheme,Haul Waste Limited,2.2,biomass,50.57314815,-3.60995326516489
+way/956241633,Heathrow Airport Biomass CHP,Heathrow Airport,1.8,biomass,51.45917655,-0.459428435023041
+way/717941405,Helland Meads,Aton Energy,1.2,solar,51.01501645,-2.957685977502133
+way/746146648,Henbury Quarry,Lightsource Renewable Energy,3.9,solar,50.7723314,-2.0493749602348914
+relation/19405633,Hendai Solar Farm,,13.4,solar,51.67587865,-3.276983115229803
+way/550665894,Hendra Holiday Park Solar Farm,Hendra Holiday Park,1.2,solar,50.3965387,-5.044977016622342
+relation/8844218,Hendre Fawr Farm,INRG Solar,11.6,solar,51.74345625,-3.5858355359119987
+way/724803558,Henley Solar Farm,,6.5,solar,52.49133935,-2.800811491124639
+way/938188206,Hermitage Lane,UK Power Reserve,20.0,gas,53.1326779,-1.2191362236842616
+relation/20270371,Herts & Essex High School solar,,0.215,solar,51.8682404,0.17081282805373865
+way/550725994,Hewas Solar Farm,,5.0,solar,50.3444231,-4.930319675255765
+way/718495375,Heywood Grange Farm,,8.4,solar,52.99943405,-2.0565742513307246
+way/974769433,Higher Berechapel Farm Anaerobic Digestion Plant,,,biomass,50.84549535,-2.8592059173703848
+way/724796215,Higher Bye Solar Farm,,6.8,solar,51.1723477,-3.361481408545894
+relation/9462348,Higher Hatherleigh Solar Farm,Hive Energy,5.0,solar,51.04160135,-2.4123265790717046
+relation/7873195,Higher Hill Farm,Solar Power Generation,6.5,solar,51.0806713,-2.693749794498411
+way/631905191,Higher Knapp Farm Solar Park,Octopus Investments,1.5,solar,51.01950055,-2.9961388614494924
+way/196324983,Higher Pirzwell Solar Farm,Lightsource BP,1.2,solar,50.87898915,-3.3140902295485732
+way/1517051486,Higher Stockbridge Solar Farm,Voltalia,35.0,solar,50.89498405000001,-2.5255471969834264
+relation/9562377,Higher Tregarne Solar Farm,John Laing Environmental Assets,5.0,solar,50.1300166,-5.130217622115321
+way/401085185,Highfields Solar Farm,,15.0,solar,51.8250124,0.7178119561079828
+way/333916883,Hillhouse Solar Farm,Lightsource BP,28.3,solar,51.73833885000001,-2.363198809262953
+way/725697663,Hillside Solar Farm,,25.2,solar,54.55592255000001,-6.175754862057238
+way/688883411,Hillsmoor Solar Farm,Mosscliff Environmental,1.2,solar,50.8111407,-4.086874812325581
+way/736773644,Hinksford Emergency Standby Generation Facility,,20.0,gas,52.5061501,-2.193004758647091
+way/956244592,Hitchin Landfill Gas Plant,Biffa,1.5,biomass,51.97647415,-0.30149906518718184
+relation/9458205,Hoback Solar Farm,,13.1,solar,52.11919225,-0.02870586418003148
+way/956255092,Hogsbrook Farm Anerobic Digestion Plant,Greener for Life Energy,1.0,biomass,50.6946673,-3.384470347574559
+way/874166837,Holbrook Community Renewable Energy Centre,UYE (UK) / Veolia,6.5,biomass,53.3300004,-1.3331877363901392
+way/956548274,Holiday Moss Gas to Energy,Biffa,1.4,biomass,53.675462,-2.763707447526599
+way/956548275,Holiday Moss Gas to Energy,Biffa,1.4,biomass,53.5078355,-2.761364536758893
+way/738162878,Hollamoor Farm Solar Farm,Lightsource BP,2.0,solar,51.05869355,-4.068447211405821
+way/745132281,Holly Farm Solar Park,British Solar Renewables,5.0,solar,50.6795318,-2.3175693425001462
+way/708338011,Holton Airfield,Private Developer,11.0,solar,52.35990295000001,1.5235525772609964
+way/745490223,Holtwood Farm Solar Park,,5.0,solar,52.89013605,-1.801784547510628
+relation/7877229,Holwell Hill,Lightsource BP,6.0,solar,51.1971594,-2.3846601156060765
+way/608111170,Home Farm,R S Assemblies Limited,18.3,solar,51.8685826,-1.1436347267845959
+way/746155610,Home Farm,Cenin Renewables,3.0,solar,51.47470245,-3.2932229120807133
+way/724803562,Home Farm,Wirsol Energy,6.7,solar,51.9398435,-2.0886028229375566
+way/668061824,Home Farm,Lightsource BP,11.5,solar,51.23859695,1.2753130347561505
+relation/7877225,Homeland Solar Farm,,13.2,solar,50.85506275,-1.8626453057291594
+relation/20796891,Homer Warren Solar Farm,,28.5,solar,50.88977045,-1.815720806008553
+relation/9455352,Homestead Solar Farm,,17.0,solar,52.1063279,-0.9200995384236733
+relation/9559715,Homestead Solar Park,,10.7,solar,50.69312235,-1.4258986812600138
+relation/9516279,Honington Solar Power Station,,13.6,solar,52.3398966,0.7876138864466622
+relation/9462347,Hook Valley Solar Park,British Solar Renewables (formerly know as Solar Power Generation),17.0,solar,51.05584545,-2.452975113231768
+way/1167568576,Hooton Bio Power,CoGen,24.0,biomass,53.31371315,-2.941803247627438
+relation/9561079,Hope Solar Farm,,7.3,solar,50.21152035,-5.3658738348321275
+way/681476091,Hoplass Solar Farm,,10.0,solar,51.66911845,-5.009858337190941
+way/614259981,Horam Solar Park,Lightsource BP,8.1,solar,50.93049375,0.22853723161654757
+way/956548282,Horncliffe Quarry Landfill Gas Plant,Natural Power,1.0,biomass,53.688218,-2.2984834591725214
+way/725458007,Horsacott Solar Park,,6.4,solar,51.06325025,-4.109426181216493
+way/1442571367,Horsey Levels Solar Farm,Enviromena Asset Management UK Limited,24.0,solar,51.15807755,-2.9783864113851184
+way/840105704,Horton Landfill Site,Viridor Waste Management Ltd.,2.0,biomass,50.8982867,-0.2869307416000727
+relation/20692612,Houndbeare Solar Farm,Spring Che,15.0,solar,50.7352151,-3.338097194383865
+way/956010232,Howdon STW Biogas Plant,Northumbrian Water,6.0,biomass,54.99298905,-1.47042855
+way/550725977,Howton Farm,,4.4,solar,50.4468446,-4.290302046400164
+way/746246314,Huddlesford Farm,NESF (formerly Green Energy Networks),1.0,solar,52.67898385,-1.774992369301244
+way/723603973,Hullavington Solar Park,Wessex Solar Energy,7.0,solar,51.5432591,-2.164317249546377
+way/1149494773,Hulley Road Battery Energy Storage,,20.0,other,53.271827,-2.1123794
+way/720373090,Hunciecroft Farm,Solar century / Magnetar Solar,8.0,solar,53.26109295,-1.1881087742530494
+way/689356310,Hungerford Solar Farm,Solstice Renewables,5.0,solar,51.27823125,-0.8762047235712104
+way/1214563590,Hunter's Hill/Lendrum's Bridge Wind Farm,ESB,20.0,wind,54.43902835,-7.347065536591407
+relation/16017621,Hunters Race Solar Park,,9.3,solar,50.8625095,-0.7956925211686048
+way/799620341,Huntingfield,,,solar,52.6418622,0.8481325677474403
+way/804613100,Huntington Water Treatment Works,United Utilities,7.2,solar,53.17374075,-2.8728399355910987
+way/746023128,Huntspill Level,,5.5,solar,51.1850965,-2.9667998042515693
+way/338549041,Huntworth Generator,,,other,51.1126337,-2.989241873073227
+way/550716636,Hurcott Copse Solar Farm,Dillington Farms Ltd,10.0,solar,50.93898235,-2.8672012375958538
+relation/19652993,Hursley Park Solar Farm,,,solar,51.02466035,-1.3942859605910638
+way/674306699,Hurst Farm,Bee Green Solar,5.0,solar,51.7273856,-2.507788689400442
+way/938082194,Huthwaite STOR Twinyards,,5.0,gas,53.1230145,-1.3209269366596033
+relation/9897310,Hylton Plantation,,4.8,solar,54.9093165,-1.4779229183106306
+way/997446415,Hythe CHP,RWE COGEN UK (HYTHE) LIMITED,53.0,gas,50.8502571,-1.3816107163792064
+way/1128088550,ICI No2 (Teesport) Landfill,Highfield Environmental,1.0,biomass,54.5925221,-1.1560838283738963
+way/938183574,ISIS House STOR,Redditch Peaking Power Limited,20.0,gas,52.29022775,-1.9115277796908319
+way/1214157290,Iggesund Paperboard CHP Plant,Iggesund Paperboard (Workington),49.0,biomass,54.664659,-3.546124909177884
+way/956012451,Imperial Park Anerobic Digestion Plant,BioConstruct,5.1,biomass,54.5822398,-1.184804500899927
+way/587411022,Ince Bio Power,Cogen,21.5,biomass,53.2838591,-2.8000213093852517
+way/1424654351,Infinis Stewartby,Infinis,,other,52.07517015,-0.5215868780059038
+way/1308027016,Ingham North Solar Power Station,,14.2,solar,52.3192803,0.7109502732676667
+way/545115638,Ingles Hill Farm Solar,,3.0,solar,52.7547303,-1.4927734033273798
+relation/20266031,"Inkersall Road, Staveley Solar Farm",Low Carbon,31.0,solar,53.2493984,-1.353249691381298
+way/1448043442,Inkersall Solar farm,Goldbeck Solar,49.9,solar,53.1291243,-1.0679298981590806
+way/562727161,Inverawe Power Station,,25.0,hydro,56.4396308,-5.218343606862746
+way/956027875,Invergordon Pellet Mill,Balcas,5.0,biomass,57.70225605,-4.155619165464996
+way/567002530,Inverlael Hydro Scheme,RWE nPower Renewables,2.5,hydro,57.8221836,-5.050841654367465
+way/23135870,Ipswich Hospital Energy Centre,Naturegen Energy Centre,2.6,biomass,52.05986345,1.1974214120343478
+way/1512652328,Iron Acton BESS,,120.0,other,51.56827045,-2.477873766996767
+way/85826216,Isles of Scilly Power Station,,5.7,oil,49.91378315,-6.309969286153118
+way/746212388,Iwade Solar Farm,FH Dean Ltd,1.7,solar,51.36441945,0.6508035429877709
+way/720373091,Iwood Lane Solar Farm,Wessex Solar Energy,8.0,solar,51.35996425,-2.792292190998161
+way/896193908,J G Pears Biomass Plant,,12.0,biomass,53.213723,-0.7980399037617296
+way/944409830,JCB World Headquarters,JCB,0.2,solar,52.9528131,-1.848632634479713
+way/1412158221,JLR Gaydon Solar Farm,JLR,20.1,solar,52.1848917,-1.4789116311216128
+way/206309987,Jaguar Land Rover,Jaguar Land Rover,5.8,solar,52.635738,-2.143789350519903
+way/895245568,Jaywick Water Recycling Centre,Anglian Water,0.9,solar,51.7840047,1.1034711122804186
+way/551258369,Jordanston Solar Farm,,5.0,solar,51.67434825,-4.796582227489817
+way/729189512,"Jubilee Farm, Barnby Moor",NESF (formerly Lark Energy),5.0,solar,53.3671277,-1.0373831388090298
+way/841291554,Judkins Landfill Scheme,,2.7,biomass,52.53134665,-1.4814209491482098
+way/232827778,Kaimes Landfill Site,,2.4,biomass,55.88396415,-3.3962709638714177
+way/367357930,"Kelda Organic Energy, Millerhill",Ancala Bioenergy (formerly Biogen/Aluana Renewable Energy),1.5,biomass,55.92634775,-3.086481858894347
+way/800761318,Kellingley,,5.0,solar,53.7029289,-1.201597441137167
+way/269056832,Kellow Turbine House,,,hydro,52.99378385,-4.015191791753374
+way/1105530307,Kells BESS,ABO Wind,50.0,other,54.80365795,-6.16513962609885
+way/746128239,Kellygreen Farm,,4.0,solar,50.54724845,-4.75356571372777
+relation/20354938,Kemble Solar Farm,Aura Power,49.0,solar,51.6574092,-2.0337605879810665
+relation/9489337,Kenardington Place Solar Farm,,7.0,solar,51.06519085,0.8109597282608692
+relation/11066504,Kencot Hill Solar Farm,,37.0,solar,51.7637354,-1.6449372004400376
+way/474233200,Kendoon Hydroelectric Power Station,Scottish Power,24.0,hydro,55.1646822,-4.1908091
+relation/9455338,Kenninghall Solar / Hazeldick Solar,Lark Energy Services,8.0,solar,52.42900625,0.9804215611465352
+way/114323074,Kentish Flats Offshore Wind Farm,Vattenfall,139.5,wind,51.45591515,1.0877892158073894
+way/728888403,Kentishes Solar Farm,Push Energy/ NextEnergy Solar Fund (NESF),12.67,solar,51.9078771,0.5921513928342053
+relation/7873446,Kernick Mica Dam Solar Farm,Imerys,12.0,solar,50.36171505,-4.896698896729295
+way/550725992,Kernow Solar Farm,Cornwall Council Property Services,5.0,solar,50.4309942,-5.00563654921875
+way/718206642,Kerriers Solar Park,Kronos Solar,9.6,solar,50.4368611,-4.816329020454921
+way/210284729,Kerry Falls Power Station,Scottish Hydro,1.0,hydro,57.6851449,-5.643408587496154
+relation/20245919,Kerry Ingredients Rooftop Solar Array,Big Solar Co-op,0.294,solar,52.3164534,-2.600079629073803
+way/318012802,Kestral Road,Durham RP Limited,4.0,gas,53.13075875,-1.2153786008443115
+way/718206639,Ketton solar farm - phase 2,Lark Energy,12.0,solar,52.6433358,-0.5584994668202558
+way/550883537,Kia Ora Farm,Lightsource Renewable Energy,1.8,solar,50.8502372,-3.422930554790855
+way/593814301,Kickles Solar Farm,Green Energy UK Direct Ltd/ Vogt Solar,7.5,solar,52.0966388,-0.7424536174018421
+way/471869695,Kielder Water Hydroelectric Plant,RWE,6.1,hydro,55.1851891,-2.4576618628474396
+way/800754289,Killan Farm,Gower Power Co-op CIC,1.0,solar,51.6259256,-4.045253048088618
+way/781939282,Killington Hydro,Community Energy Cumbria,0.03,hydro,54.31011985000001,-2.630995819886849
+way/1342452259,Kilmarnock South Battery Energy Storage System,Zenobe Energy Limited,300.0,other,55.5772216,-4.467682847155874
+way/426795292,Kilmelford Power Station,SSE,2.1,hydro,56.27312585,-5.489370357108628
+way/100549578,Kilmorack Power Station,SSE Renewables,20.0,hydro,57.4632636,-4.512039588837498
+relation/20353944,Kiln Fields Solar Farm,,18.0,solar,51.326596,-0.9620707075929809
+way/937891045,Kiln Power,Kiln Power Limited,16.0,gas,52.52924285,-1.3919331132552122
+way/39951424,Kilroot Power Station,EP UK Investments,656.0,gas,54.72684055,-5.764115087179178
+way/423236022,Kinblethmont Solar Park,,5.0,solar,56.61482145,-2.5985098779645313
+way/28390306,King's Lynn Power Station,,386.0,gas,52.72729105000001,0.3798968793914782
+way/127345392,King's Yard Energy Centre,Equans,10.02,biomass,51.543201,-0.02077734097617727
+way/278833953,Kingairloch Hydro,Scottish and Southern Energy (SSE),3.5,hydro,56.6211217,-5.528500918513503
+way/956062400,Kingmoor Park,Push Energy / Kingmoor Park,5.0,solar,54.93066805,-2.971908387290523
+way/729739558,Kingsland Barton Solar Farm,Padero Solar,5.0,solar,51.01774365,-3.8644330586082316
+relation/9539161,Kingston Farm,BOA Property / AEE Renewables UK,5.0,solar,51.3445706,-2.231883310457908
+way/1469899546,Kinlochbervie,Kinlochbervie Community Energy Limited,0.2,hydro,58.43012955,-4.97157190258186
+way/436389233,Kinmel 1 & 2,Haymaker Energy,10.0,solar,53.28545955,-3.526033402338391
+way/1521245706,Kinneil Solar Farm,,,solar,56.01165145,-3.6693319443412227
+way/974983007,Kirkby-in-Ashfield Gas Peaking Plant,Infinis,6.0,gas,53.09081125,-1.2697185808810103
+way/956548276,Kirkless Power,FCC Environment,2.1,biomass,53.5494352,-2.589834422154
+way/1516554592,Kirkthorpe Hydropower,Barn Energy,0.5,hydro,53.6866222,-1.4588943329649562
+way/617337807,Kirkwall Power Station,Scottish and Southern Electricity,16.0,oil,58.98249065,-2.964479987052214
+way/746155619,Kirton Solar PV Farm,Ethical Power,3.2,solar,52.9324802,-0.09389516602436715
+way/616338652,Knockcairn Road Solar Farm,,6.5,solar,54.6093162,-6.1697105776921
+way/471343768,Knockmore Hill Combined Heat and Power,ContourGlobal,15.0,gas,54.50825555,-6.090602283038853
+way/736552967,Knolton Farmhouse Cheese Solar Farm,Pegasus Group,1.0,solar,52.9594057,-2.9487649922394477
+way/386094234,Knottingley A,Envantage Renewables,7.4,solar,53.7012026,-1.2431867922230972
+way/941061834,Knypersley Generation,Knypersley Power Limited,7.0,gas,53.0984405,-2.1810045116181733
+way/840565677,L'Field Stewartby Landfill Site,,10.7,biomass,52.0764591,-0.5185198015951318
+way/725697665,Laceby Solar Farm,Conergy,27.1,solar,53.52565355,-0.14621097461548405
+way/682783461,Lackford Estate Solar Power Station,,20.9,solar,52.2888266,0.6114700200050576
+way/840162235,Lackford Landfill Scheme,,1.2,biomass,52.2933706,0.6370742506409557
+way/746155609,Lady Hole Farm,Solarig,3.0,solar,53.00873165,-1.6908207212008783
+way/207095161,Laig Hydroelectric,Eigg Electric,0.1,hydro,56.91021185,-6.160992637103594
+way/799613190,Lains Farm,,5.0,solar,51.2001067,-1.6011943832483957
+way/295161337,Lairg Power Station,SSE,3.5,hydro,58.0286721,-4.414849346807702
+way/420134785,Lake Farm,AEE Renewables,,solar,51.4976121,-2.0890749547358207
+way/955815593,Lamby Way Solar Farm,Cardiff Council,8.9,solar,51.49412485000001,-3.1248589323720797
+way/1315970652,Lancaster University Solar Photovoltaic Farm,,,solar,54.01059525,-2.772139356671337
+way/677272056,Land At Court Farm,Sybac Solar International GmbH,2.2,solar,51.4951942,-3.5150313062047536
+way/730032443,Land North of Sandhutton Lane,Greencoat Capital,5.0,solar,54.23659105,-1.3989212942100617
+way/746180287,Land at Morfa Camp,Novus Solar Developments,2.8,solar,52.59133415,-4.095109709299777
+way/322545471,Landfill Gas Power Plant,Biffa,2.0,biomass,51.1005527,-0.328818585933353
+way/318018233,Landmead Solar Farm,First Solar/Belectric,46.0,solar,51.64353415,-1.371813875365272
+way/682102563,Langar Lane,,10.0,solar,52.90285645,-0.950532771586353
+way/682783467,Langenhoe Solar Farm,,21.3,solar,51.8133398,0.936682414017487
+way/401420606,Langford Solar Farm,Lark Energy,13.0,solar,52.04033535,-0.2535271031221841
+relation/20664404,Langford Solar Farm,JBM Solar Projects,35.0,solar,50.82302355,-3.3722094936229086
+way/673507744,Langlands Solar Farm,Bluefield Solar Income Fund,2.1,solar,50.8974417,-3.3610484101495595
+way/956285100,Langley Hall Farm,Lark Energy,2.4,solar,51.6608692,-1.1005366285870486
+way/474022952,"Langley Priory, Walnut Yard (Phase 2)",Lark Energy,8.0,solar,52.79962685,-1.3605658789099984
+way/1378000855,Langleys Lane - Electricity Generation Plant,Biogas Technologies Limited,6.0,biomass,51.289992,-2.5084815726039467
+way/400809447,Langstone Court Road Solar Farm,,2.5,solar,51.60022365,-2.9126308347210994
+way/746116918,Langton Farm Solar park,Lightsource Renewable Energy,4.4,solar,51.96159565,-4.99785577092931
+relation/9291186,Langunnett Solar Power Plant,Lightsource BP,6.2,solar,50.39016885,-4.595162864273183
+way/956321375,Langwell Estate hydro scheme,DHG Hydro,1.2,hydro,57.9695211,-5.0632447
+way/839818417,Larport Farm Battery,Anesco,20.0,other,52.05494145,-2.6217807053951026
+way/1442570954,Larport Solar Farm,Conrad Energy,45.0,solar,52.0533473,-2.6270514877121265
+way/436471884,Lascar Works Battery Storage,Anesco,20.0,other,53.59571985,-2.2974464785996984
+way/804612142,Lathom,,2.5,solar,53.56856285000001,-2.8193837070333885
+way/955922477,Laughton Levels Solar Farm,Wessex Solar Energy,7.0,solar,50.8706675,0.11893010328214063
+relation/9969128,Laurelhill,BNRG Northern Power,8.5,solar,54.40202145,-6.272047814010007
+relation/19720628,Layer Solar Farm,Layer Solar Farm Limited,49.0,solar,51.8482319,0.8462672334764898
+relation/20639625,Laynes Wood Solar Farm and Battery Storage,RWE,49.9,solar,51.90845805,-2.3529107895077717
+way/730017651,"Ld At Lawrence End Park &, Dane Street",Lightsource Renewable Energy,5.0,solar,51.8715409,-0.3511035058380305
+way/746146641,Ld NW Of Ratcliffe House Farm,Lightsource Renewable Energy,3.5,solar,52.58825375,-1.5077788533432475
+way/1020439735,Lednock Power Station,SSE,3.0,hydro,56.44748115,-4.113929984642845
+relation/20629891,Ledwyche Solar Farm,Aukera Energy,12.0,solar,52.37020675,-2.672426079970358
+way/955894920,Lee Farm,Vogt Solar,5.0,solar,50.6956846,-1.451953110345951
+relation/20241623,Leominster Primary School Solar Array,Big Solar Co-op,0.09,solar,52.21890945,-2.742044833246337
+way/378032755,Lerwick District Heating and Energy Recovery Plant,,7.0,biomass,60.1683159,-1.1650501257811765
+way/378032955,Lerwick Power Station,SSE,66.0,oil,60.1668136,-1.1643250337427888
+way/956007728,Levenseat EfW,Levenseat,12.5,biomass,55.79993455,-3.6939299638371774
+way/974974752,Leverton Battery Storage,Eelpower,10.0,other,53.26609095,-0.5535398217768348
+way/798896860,Leverton Ings,,12.0,solar,53.02054535000001,0.062288849882417494
+way/963893680,Levitt Hagg Power Plant,Infinis Limited,,biomass,53.50069345,-1.1917964914702157
+way/434938444,Liberty Steel Power Station,SIMEC/ Liberty House,9.0,biomass,51.55751695,-2.961731038102787
+way/318933801,Liddeston Ridge Solar Park,,5.0,solar,51.71909875,-5.044077250857055
+way/687462869,Lidsey Landfill,,1.4,gas,50.82357735,-0.6774978282118715
+way/738235984,Limberlost Farm,,1.5,solar,51.38001875,-1.2357581128973498
+way/377215316,Limes Farm Solar Farm,Lark Energy,,solar,52.7741888,-0.3193889524067825
+way/708338032,Lincoln Farm,juwi Renewable Energies,11.4,solar,53.14056995,0.2088364800239528
+way/1054281771,Lincoln Farm,juwi Renewable Energies,11.4,solar,53.1426555,0.20717995781817194
+way/1054281770,Lincoln Farm,juwi Renewable Energies,11.4,solar,53.14373385,0.21222229116506452
+way/1054281769,Lincoln Farm,juwi Renewable Energies,11.4,solar,53.1390326,0.21019301605753316
+way/456413696,Lincolnshire Energy from Waste,,16.4,biomass,53.1990669,-0.6072981465339833
+way/730017659,Lindridge Farm,Sun Farming,3.96,solar,52.6397399,-1.322851242538471
+way/78065922,Linton Falls Hydro,,0.1,hydro,54.06712955,-2.0027237759632612
+way/386298866,Lisahally Power Station,Evermore Renewable Energy,15.8,biomass,55.04143015,-7.257041516790348
+relation/17984763,Litchardon Cross Solar Farm,Aura Power / Infinis Energy Services,49.9,solar,51.04505665,-4.123158264169261
+way/1510482813,Littleton Solar Farm,SSE,31.0,solar,52.11531665,-1.8505293393751567
+way/510414747,Littleton Solar Farm,Lightsource BP,12.14,solar,50.8443098,-2.1666520925237496
+way/518134065,Littlewood Farm Solar Farm,,14.0,solar,52.12895035,-0.8113004629428744
+way/681180165,Littlewood Lane Solar,Littlewood Renewables,5.0,solar,53.1815693,-1.1980059996084877
+way/273431594,Liverpool Airport Solar Farm,Liverpool John Lennon Airport,3.0,solar,53.33684885,-2.82821372755106
+relation/7873288,Liverton Solar Farm,,4.8,solar,50.63543685,-3.3704557562166446
+way/562892202,Livishie Power Station,,15.0,hydro,57.20522155,-4.728187295004935
+way/888608497,Llancadle Farm,Llancadle Solar Farm Ltd,5.0,solar,51.41035755,-3.3932403045793897
+way/624131361,Llancayo Solar Farm,PS Renewables,5.0,solar,51.72363865,-2.924908210175131
+way/929919289,Llandarcy STOR,,,other,51.64959795,-3.854304310945845
+relation/15034996,Llanwern Solar Farm,,75.0,solar,51.5594733,-2.900477915566902
+way/939093168,Llethri Road Dafen,Dafen Reserve Power Ltd,10.0,gas,51.69942245,-4.1306855304299255
+way/799375012,Llwyn Du,,8.0,solar,52.1084617,-4.523602051854617
+way/201719864,Llyn Celyn Power Station,Dwr Cymru Welsh Water,4.5,hydro,52.9452145,-3.668372178463856
+way/666490634,Llynbrianne Power Station,Dŵr Cymru - Welsh Water,4.4,hydro,52.11955115,-3.766580197828034
+way/956324058,Loch An Laoigh Hydro,Gilkes Energy,1.0,hydro,57.4038969,-5.303612280154638
+way/862058617,Loch Carnan Power Station,,11.8,oil,57.36460575,-7.270687845446869
+way/853596351,Loch Eilde Mor Hydroelectric Power Plant,,2.0,hydro,56.7131195,-4.95250615
+way/627893127,Loch Ericht Hydro Scheme,SSE,2.2,hydro,56.8238952,-4.37205804325013
+way/956053729,Loch Gair Power Station,Scottish and Southern Energy (SSE),6.0,hydro,56.0655409,-5.335979507032365
+way/1212133121,Loch a' Bhraoin Hydro,Inverbroom Estate,2.0,hydro,57.7435176,-5.062089832384467
+way/130870162,Lochay Power Station,SSE,45.0,hydro,56.4846171,-4.363545857258064
+relation/20021205,Lochhead Solar Farm,,,solar,56.09355835,-3.481020957333005
+way/852980890,Lockleaze Energy Storage,Aura Power,15.0,other,51.48491655,-2.5716101696266502
+way/617892994,Lodge Farm,,12.4,solar,52.96477985,-0.8357935384094008
+way/746187957,Lodge Farm,G & D Castle Ltd,2.4,solar,52.37011995,-0.13149767787829952
+way/421373975,Lodge Farm,,14.5,solar,51.3479941,-2.054234686892003
+way/1117350511,Lodge Lane Power Station,,,other,53.4679065,-2.6323463885138443
+way/718206638,Long Ash Lane Solar Park,,9.0,solar,50.8232343,-2.5503499991231813
+way/1484089630,Long Meadow Solar Farm,Low Carbon Investment Management Ltd,19.0,solar,52.01188375,0.29928356343295437
+way/956023504,Lostock Works Anerobic Digestion Plant,Orsted (formerly Dong Energy),5.0,biomass,53.26386015,-2.4821197010199563
+way/1474375739,Loudwater BESS,Capbal,40.0,other,51.6120033,-0.6903788041163157
+way/725697664,Lough Road Solar Farm,,4.8,solar,54.55640165,-6.1880041825456455
+way/545114572,Lount,,2.8,solar,52.75687115,-1.4401057615914215
+way/681831375,Lovedean Farm,,4.5,solar,50.9128374,-1.0343190296964562
+way/1214315748,Low Farm Solar,Anesco,50.0,solar,53.0999114,0.1802321738676002
+way/1055092682,Low Farm Solar Array,Wirsol / Island Green Power,20.0,solar,53.53238195,-0.1351839439720248
+way/828794817,Low Wood Hydroelectric Station,,4.0,hydro,54.2451748,-3.004234465714247
+way/582950242,Low Wood Solar Farm,,1.2,solar,54.02437665,-2.827177753301015
+way/714071829,Lower Basset Down Farm,INRG Solar,10.5,solar,51.52754175,-1.8292624555754364
+relation/7873444,Lower Bodiniel Farm,,5.0,solar,50.482058,-4.738454327531864
+way/738126964,Lower Coombe Farm (Bean Field),A H Warren Trust,1.0,solar,50.883349,-2.8374829128804784
+way/510205306,Lower Coombe Farm Solar,Solar South West,1.0,solar,50.88507365,-2.83112656705237
+way/1510899544,Lower Dunton Road Battery Storage Facility,Eku Energy,28.0,other,51.56660025,0.39106585038102637
+relation/9493803,Lower End,,4.9,solar,51.30607425,-2.035080989865845
+way/797063601,Lower House Farm,,8.1,solar,51.7341269,-2.9471072498071993
+way/688883401,Lower Marsh Solar Park,Solar Power South,5.0,solar,51.0468919,-3.1047397075990117
+way/696883771,Lower Newton Solar Farm,,11.5,solar,52.9432321,-2.0129510129267327
+way/1189880143,Lower Road Battery,,10.0,other,51.64075625,0.357956701888518
+way/713760526,Lower Severalls Farm,,10.8,solar,50.89960235,-2.7764685311142117
+relation/10107607,Lower Slade Farm Solar Farm,,4.1,solar,50.2930364,-3.7658108494022686
+way/746128235,Lower Stanley Farm,Green Hedge (BayWa r.e.),4.0,solar,51.9847744,-2.006669962891591
+way/463066063,Lower Ufford Lane Solar Power Station,William Notcutt Estates,1.1,solar,52.1374158,1.3666232126491944
+way/723687791,Lower Venn Farm,,5.0,solar,52.1441818,-2.6719154953286965
+way/746212396,Lowther Farms,Lowther Farms,1.8,solar,52.3608499,-1.0241463264925346
+way/223551118,Lubreoch Power Station,SSE,4.0,hydro,56.5421394,-4.517061379230771
+way/1214537164,Lumley Water Treatment Works - Solar Panels,Northumbrian Water Limited,1.9,solar,54.84104625,-1.534247145982098
+way/737366199,Luscott Barton,Sunsave 7 Luscott Barton Ltd/ vogt Solar,13.0,solar,51.11536595,-4.1204087858508105
+way/746212399,Luson Farm,,1.9,solar,50.36051815,-3.93784813326765
+way/561536810,Lussa Power Station,,2.4,hydro,55.476138,-5.58453255
+way/687584472,Lynt Farm,Meag,27.0,solar,51.6659927,-1.6988910208216839
+way/938149796,Lyon Road,UK Utility Reserve Limited,20.0,gas,52.00467295,-0.7381320710344832
+way/66098406,Lyreco,Addison Energy,3.811,solar,52.70662395,-2.4221911492376664
+way/690149750,Mackies Dairy PV,,1.8,solar,57.37898265,-2.3886045120432007
+way/290451585,Maentwrog Hydroelectric Power Station,,30.0,hydro,52.9359562,-4.004008791891913
+way/797057045,Maes Bach Farm,,4.9,solar,51.55929235,-3.2914394144180257
+way/723603983,Maesgwyn solar farm,Walters Group,7.5,solar,51.76552595,-3.622150004550412
+way/681706875,Maghaberry Solar Farm,,25.7,solar,54.51320875,-6.175883824609117
+way/746246319,Majors Hill/Turners Hill Solar Farm,Haymaker Energy,1.1,solar,51.11065915,-0.10850788654542629
+way/389189229,Maldie Burn Hydro,RWE,4.0,hydro,58.2601385,-4.98319025000001
+way/1442572653,Maldon Wycke Solar Power Station,Low Carbon UK,25.0,solar,51.70538865,0.661028693121082
+relation/9385050,Malmaynes Hall Farm,Congen,12.0,solar,51.4550443,0.6171939597242189
+way/681352483,Malmesbury Solar,Sunstroom Energy,5.0,solar,51.62410815,-2.1102864059912707
+way/804604414,Mamhilad,Active Renewables,5.0,solar,51.7122419,-2.9938928880756936
+way/1183990489,Manchester Civic Quarter power station,,,other,53.47548575,-2.2473863628770596
+way/746180282,Manmoel Road Solar Park,Pearmat Solar,4.1,solar,51.70034175,-3.168794457455129
+way/938061179,Manners Avenue 2,Mercia Power Response,6.8,gas,52.97572845,-1.3242570368760247
+way/1071916908,Mannington Battery Storage Plant,Still Waters Green Technology,49.9,other,51.5523341,-1.8146971628470905
+way/684277334,Manor Farm,Prosolia UK,15.0,solar,52.26797985,-0.42354417135377376
+way/799371334,Manor Farm,,10.5,solar,51.83422245,-2.9251721150996115
+way/687462870,Manor Farm,BNRG Renewables,5.0,solar,50.8109163,-0.6831077147088808
+way/723603984,Manor Farm,Lightsource Renewable Energy,7.5,solar,51.9240063,-0.6113610935870533
+way/746212393,Manor Farm (Castle Cary),Brilliant Harvest Installations,1.8,solar,51.0806567,-2.5101017930758225
+relation/7877227,Manor Farm (Dorset) Solar Park,INRG Solar,5.0,solar,51.05467965,-2.3173620668375188
+way/490933376,Manor Farm (Keinton Mandeville),Private Developer,1.0,solar,51.07157235,-2.634802449796709
+way/985465038,Manor Farm AD,,0.235,biomass,52.4638443,-2.84087230238831
+way/518134066,Manor Farm Solar Farm,Lightsource,5.0,solar,52.17166085,-0.7821396501465139
+way/293012396,Manor Farm Solar Farm,,,solar,50.33753335,-4.829112819396286
+way/179653409,Manor Farm Solar Farm,Renewable Energy Systems,,solar,50.3353688,-4.828848219265633
+way/179653410,Manor Farm Solar Farm,,,solar,50.3374159,-4.831940593263056
+way/492866466,Manston Solar Farm,Lightsource BP,9.9,solar,51.3519948,1.3673099297840647
+way/416578288,Marchington Solar Farm,Trina Solar,4.3,solar,52.87833165,-1.8293025034509691
+way/671417118,Margam Green Energy Plant,Glennmont Partners,40.0,biomass,51.56337815000001,-3.747610498726729
+way/746155615,Margate Solar Farm,Lanhydrock Estate Company,3.0,solar,50.4700608,-4.6954014305378395
+relation/14425529,Markinch Biomass,,65.0,biomass,56.2011422,-3.16012779034077
+relation/5182719,Marley Thatch Solar Farm,,6.3,solar,50.42584085,-3.7965639103055127
+way/680599634,Marsh Farm Hilperton,Foresight,9.1,solar,51.346195,-2.190795669540875
+relation/9455264,Marsh Farm Solar Farm,,14.0,solar,51.6243912,-2.097499857808944
+way/319385727,Marshwood Farm,KWTN Solar,1.8,solar,50.8410837,-2.933577799513665
+way/681405471,Marston Solar Farm,Lark Energy,4.9,solar,52.9700073,-0.6937060870158562
+way/688721832,Mary Tavy Power Station,South West Water,2.6,hydro,50.58663905,-4.106938271868132
+way/840561587,Masons Power Plant Landfill Scheme,,5.5,biomass,52.1090923,1.0885254768522377
+relation/20346944,Mauxhall Farm Solar Farm,,44.5,solar,53.604898,-0.1935568867105678
+way/956288187,May Farm Anaerobic Digester,Barway Farms /Shropshire Energy,2.4,biomass,52.46217455,0.35106358357224454
+way/956288184,Mayton Wood Landfill Gas Plant,Combined Landfill Projects (CLP),1.5,biomass,52.73924405,1.325198
+way/725677001,Meadow Farm Solar Power Station,,6.0,solar,52.54286695,0.5447029411686262
+way/158805973,Meadow Hall Power,Waste Recycling Group,1.1,biomass,53.42524565,-1.4059435067580233
+way/1296375122,Meadow Lane Solar Farm,Anesco,20.0,solar,53.1076405,-1.3769660710780927
+relation/19313452,Medebridge Road - Solar Farm,Environmena,49.9,solar,51.5372218,0.3172464198027814
+way/956611830,Meece Landfill Gas Plant,Thomas Graveson Ltd,1.3,biomass,52.9026803,-2.2187423153156116
+way/1442631887,Melton Ross,Singleton Birch / Energos,5.8,biomass,53.59136735,-0.3578281333891251
+way/688726513,Mendennick Solar Farm,REG Solarpower,2.8,solar,50.3553905,-4.242073996063649
+way/812596247,Mepal CHP,Pretoria Energy Company,14.4,biomass,52.4297759,0.08340381317805717
+relation/11067266,Merston,,10.0,solar,50.8080975,-0.72179661241329
+way/956046653,Metheringham Heath Farm AD,Future Biogas (Blankney Estate),6.5,biomass,53.13388635,-0.47409185
+way/1163481876,MeyGen tidal energy project,Ampeak Energy,6.0,hydro,58.6598216,-3.12556755
+way/943542650,Michelin CHP,E.ON,,gas,52.9863834,-2.195925448384519
+way/1489710216,Midsummer Norton Energy Storage Facility,Conrad Energy,6.0,other,51.29138415,-2.47047175
+way/746116909,Milborne Port Solar Farm,Big 60 Million,4.2,solar,50.9760143,-2.455382571117843
+way/745490212,Mill Farm,Push Energy/ NextEnergy Solar Fund (NESF),5.0,solar,51.90858165,-0.03504632250114406
+way/974974757,Mill Farm Battery Storage,,7.2,other,53.0252049,-0.5846411
+way/650270301,Mill Hill Farm,Lightsource Renewable Energy,5.0,solar,54.09551445,-1.0324728811060524
+relation/9459449,Millar Farm Solar,Lightsource BP,6.0,solar,54.74015665,-6.247544558749977
+way/601126643,Millerhill Recycling and Energy Recovery Centre,FCC Environment,12.5,biomass,55.9241133,-3.085340999945884
+way/916031500,Milton Keynes Waste Recovery Park,AmeyCespa,7.0,biomass,52.06748815,-0.817036721453633
+relation/14931014,Minety Battery Storage,Penso Power,100.0,other,51.60577735,-2.0031824
+way/966722628,Minety South 1,Statera Energy Limited,50.0,other,51.60783095,-1.9985997840927991
+way/1482537908,Minety South 2,Statera Energy Limited,50.0,other,51.60772285,-1.9968976762832114
+way/1449636362,Minewater Heat Pump,Gateshead Energy Company,,hydro,54.9644879,-1.5919056890221968
+way/683006900,Mingay Solar Farm,,24.3,solar,52.33392525,0.15638896213886633
+way/956027268,Minsworth Sewage Treatment Works Biogas Plant,Severn Trent Water,9.7,biomass,52.53053555,-1.7529606240599578
+relation/10298563,Misson Solar Farm,Novus,5.0,solar,53.4441455,-0.9869260516007823
+way/725463865,Moat Farm Photovoltaic,,6.2,solar,52.87354775,-1.7732234502670485
+way/1210996726,Moat Farm Solar Farm,,24.0,solar,51.785154,-0.8127508182200793
+way/4253226,Mogden Sewage Works,Thames Water,5.8,biomass,51.4628051,-0.3397300777157354
+way/681697542,Moira Road,,6.5,solar,54.62033095,-6.178453827700553
+way/401106667,Molehill Solar Farm,,14.96,solar,51.3569089,1.0856111668470367
+way/1053031491,Molly Mountain,,15.0,wind,54.19369925,-7.6295770557458775
+way/730028105,Moneystone Quarry Solar Farm,SBC Renewables,5.0,solar,53.0131373,-1.928931012116612
+way/551042185,Monksham Solar Farm,,10.7,solar,51.1861069,-2.338038199607627
+way/370586332,Montys Farm Solar Farm,Solar Ventures UK Limited,5.0,solar,51.03193325,-3.165966591929613
+way/1512123002,Moor Bioenergy Ltd,,,biomass,52.9595873,-0.6823150056894183
+relation/9605289,Moorend Solar Farm,South Gloucestershire Council,0.749,solar,51.5042896,-2.5049746813725493
+way/730017662,Moorhouse Farm,Solar Park Developments,5.0,solar,54.6108238,-3.531991273411326
+way/746116905,Moorhouse Lane - resubmission,Orta Solar Ltd,1.8,solar,51.51252725000001,-2.6570567167278663
+way/956325764,Morayhill Anaerobic Digestion Plant,Morayhill,2.0,biomass,57.5173368,-4.089145240274911
+way/721984228,Morfa Farm,,2.0,solar,51.42340265,-3.4938079081850804
+way/558727068,Morton Wood Farm Solar Farm,Sun & Soil,4.8,solar,52.17713835,-1.9543916161971833
+way/312955990,Morwellham Power Station,South West Water,0.64,hydro,50.50744215,-4.190848358964657
+way/295169563,Mossford Hydro Power Station,Scottish & Southern Energy,18.6,hydro,57.6283102,-4.7977921098176015
+way/94241986,Mount Farm Solar Farm,,22.0,solar,52.0642965,-1.920642503386905
+way/405358284,Mount Mill Solar Power Station,,12.0,solar,52.0392651,-0.8947190461259016
+way/864157461,Muck Solar Farm,Isle of Muck Power,0.033,solar,56.83645515000001,-6.228261621174208
+way/186033979,Mucking Gas 2 Landfill Scheme,Energy Developments (UK) Ltd,3.8,gas,51.49414885,0.4251863569724389
+way/293890672,Mucomir Power Station,Scottish and Southern Energy (SSE),2.0,hydro,56.91030695000001,-4.984982693419827
+way/563076199,Mullardoch Power Station,Scottish & Southern Energy,2.4,hydro,57.3343707,-4.95505327001739
+way/1001561831,Mullavilly Battery Storage,Mullavilly Energy Limited (Low Carbon Storage Ireland Ltd),50.0,other,54.37001675,-6.4284311241769965
+way/660059453,Muncey's Farm,Lightsource Renewable Energy,31.6,solar,52.065469,0.009188701384838032
+way/502748760,Mynyddislwyn Solar Park,,8.5,solar,51.63567905,-3.1609124900839136
+way/1215129461,NESS Energy from Waste Plant,Acciona,11.1,biomass,57.12675185000001,-2.077250045235075
+way/542260558,Nanteague Solar Farm,,7.65,solar,50.3051298,-5.0954881316999465
+way/673679846,Nanterrow Farm,,4.7,solar,50.2151325,-5.367833623117865
+way/745132275,Nanthenfoel Solar Farm,,5.0,solar,52.14995635,-4.130898316512809
+way/956611829,Narborough Landfill Gas Plant,Sita Uk,2.7,biomass,52.5716025,-1.2260235701425617
+way/687457755,Natewood Farm,Haymaker Energy,8.9,solar,50.84417065,0.23571467935009438
+way/766722672,National Trust Solar,,0.4,solar,52.13479365000001,-0.039546832532749376
+way/384508265,Nether Mill Solar Farm,Armstrong Energy,3.8,solar,50.89878155,-3.3947254234272775
+way/349329544,Netherfield Lane,Lightsource Renewable Energy,19.7,solar,53.2316239,-1.091288263670724
+way/724798135,Netley Landfill Solar Farm,,12.0,solar,50.8857544,-1.344500512572114
+way/925923418,Nevendon Battery Storage,Belectric UK / Foresight,15.0,other,51.59457605,0.48610449529737554
+way/938361171,Nevern Power,Nevern Power Limited,16.0,gas,51.7872675,-3.2230214357091436
+way/860786617,New Life Baptist Church Rooftop Solar,Big Solar Co-op,0.0156,solar,52.4353084,-1.893809601652122
+way/550883521,New Rendy Farm Solar Farm,TGC Renewables,4.8,solar,51.0076004,-3.199580856935305
+way/665057286,New Row Farm,Lightsource BP,3.9,solar,51.19884685,-2.536069087434032
+way/676146074,New Stone House Solar Farm,,12.5,solar,51.8645786,-1.189086585264599
+relation/19720524,Newbold Pacey Solar Farm,Innova Renewables / ISGRenewables,28.7,solar,52.20942125,-1.5782763977446304
+way/1099750304,Newhurst Energy Recovery Facility,Multifuel Energy (Wheelabrator)/ BIFFA,42.0,biomass,52.757063,-1.276953543186519
+way/1149370429,Newlands Farm Battery Storage,,60.0,other,50.8327745,-1.1913274101356266
+relation/9461308,Newlands Solar Farm,Lightsource BP,20.5,solar,50.8316997,-1.1958586261325626
+way/551275515,Newlands Solar Farm,,5.0,solar,50.7737471,-2.9506189204753
+way/1003716051,Newlincs (IWMF) Ltd,Newlincs Development Ltd (NEL Council),,biomass,53.6064858,-0.1441243148518851
+relation/9458147,Newnham Estate Solar Farm,,14.0,solar,50.4131105,-4.023314625971796
+way/681352482,Newnton Dairy Farm,,7.2,solar,51.6300424,-2.104983639144052
+relation/9991809,Next Distribution Centre Doncaster,Next/ Eneco,2.5,solar,53.5341409,-1.0349880469278272
+relation/11060086,Ninnis Farm,,5.0,solar,50.3256985,-4.839948201075879
+way/262294570,Norlands Lane Landfill Gas Plant,Thames Waste Management,4.0,biomass,51.41476525,-0.5249654055536701
+relation/8156808,Norrington Common Solar Farm,,11.1,solar,51.3822259,-2.1788708505846177
+way/1189807956,Northfield House Solar Farm,Lightsource BP,26.0,solar,52.43255845,-1.228059465638736
+way/551286862,Northmoor Solar Farm,Lightsource Renewable Energy,5.0,solar,50.75314235,-4.443148632030588
+way/746187956,Northwick Estate Extension,,2.2,solar,52.0174334,-1.8000275121054883
+way/843842962,Nostie Bridge Power Station,,1.3,hydro,57.2851658,-5.5654043787185
+way/957523989,Nottingham Road STOR,,,gas,52.90089915,-1.2677244570219144
+way/681812833,Nottington Lane Solar Farm,PS Renewables,5.0,solar,50.6436157,-2.5062141560591993
+way/272567888,Nova Scotia Solar Power Station,,13.9,solar,52.66095425,1.7005182089683262
+relation/9456023,Nowhere Farm,Estover Energy,8.1,solar,52.9266765,-0.10906256715961708
+way/746012682,Oak Cottage,Anesco,4.9,solar,51.81998155,-4.8598545981491075
+way/956288185,Oak Grove Biomass Facility,Oak Grove Renewables,2.0,biomass,52.7695912,1.3562985967164387
+way/725688491,Oak Grove Farm,,5.7,solar,51.60546445,-2.7323914958894244
+way/1061433210,Oakfield Farm,Warkworth Renewables Ltd,0.475,biomass,52.0533312,-1.305480707667896
+way/745490207,Oakfield Farm - extension,Renewable Source,6.7,solar,53.77209555,-2.810122693666996
+way/670047804,Oaklands Farm Solar Farm,,6.9,solar,51.1676269,0.8060050473196106
+way/538582352,Oaklands Plantation,,5.0,solar,50.70439715000001,-2.141908679917095
+way/1134508333,Oately's Farm,,,solar,52.02895115,-1.1073599688872393
+way/956335704,Oatslie Landfill Gas Plant,FCC Environment,2.0,biomass,55.8509333,-3.186073367724908
+relation/19313486,Ockendon Landfill Solar Farm,NTR Plc,38.0,solar,51.52309255,0.32266303269187546
+way/605749358,Odell Solar Park,,16.8,solar,52.2327337,-0.5950509798607259
+way/687452966,Offham Landfill Site,,1.2,gas,51.29247505,0.3603816
+way/687452967,Offham Landfill Solar Power Station,Ethical Power,,solar,51.29065225,0.3655118433548807
+way/552919330,Office Field Solar Farm,,7.5,solar,50.75705025,-1.7039451810159614
+way/938346940,Ogmore Power Station,Ogmore Power Limited,16.0,gas,51.8004328,-3.2322118629623624
+way/702988021,Old Rides,,8.0,solar,51.3926913,0.8716276421181823
+way/1421894129,Oldbury Standby Power Generation Plant,Conrad Energy,10.0,gas,52.4920935,-2.0204458282511277
+way/956244593,Ongar Landfill Scheme,Waste Recycling Group,1.8,biomass,51.69821015,0.25974909036736316
+way/675764906,Orchard Solar Farm,Orchard Community Energy,10.0,solar,51.3686282,0.6977750225108265
+way/295309163,Orrin Power Station,Scottish & Southern Energy,18.0,hydro,57.55405345,-4.615374563973534
+way/797306924,Orton Park Farm,,6.4,solar,54.87283075000001,-2.9940187036894645
+way/1413157186,Osbaldwick Substation Battery Storage,UK Battery Storage,49.9,other,53.9575942,-1.0193980969422203
+way/723687786,Otherton Farm,,4.0,solar,52.18228705,-2.282500823093647
+way/728202722,Oulton Airfield Solar Farm (Phase 1),Solar Century/ Bluefield Solar,5.0,solar,52.79878515,1.1712765410036967
+relation/20711180,Oulton Airfield Solar Farm (Phase 2),,5.0,solar,52.80026775,1.1817204858172579
+way/1303922982,Outwood Solar Farm,,,solar,51.615525,0.4552644248908632
+way/1303922981,Outwood Solar Farm,,,solar,51.61573595,0.4580822291765857
+way/701171456,Outwood Solar Farm,MS Power Projects,5.0,solar,51.61827635,0.4538492849634866
+way/1288814815,Ovenden Moor Wind Farm,E.ON SE,22.5,wind,53.77999045,-1.9347447062045822
+way/746128238,Overton,British Solar Renewables,4.0,solar,51.24986035,-1.2735088425924057
+way/589023144,Oving Solar Farm,Vogt Solar,5.0,solar,50.83961785,-0.7050292355488708
+relation/9465915,Owl's Hatch Solar Farm,British Solar Renewables,49.99,solar,51.3483745,1.1018554979108033
+way/551042756,Owls Lodge Solar Farm,Anesco,10.0,solar,51.18636075000001,-1.3695971094356028
+way/956316118,PG2 Bolam Power Generator (Extension),CLP and Briagas,1.1,biomass,54.6019654,-1.7009134916296764
+way/832955449,PV Solar Farm,,,solar,57.1441422,-2.8580952517021494
+way/152350681,Packington Generation Plant,Energy Developments (UK) / SITA UK,8.5,biomass,52.46918055,-1.6899918577637405
+way/545115384,Packington Solar Farm,,13.9,solar,52.70753505,-1.4734200588071156
+way/1453947185,Paddock Solar Park,Voltalia,49.9,solar,51.1694088,0.4386591875105903
+way/687456907,Paddock Wood Solar Farm,Foresight Solar Fund,9.2,solar,51.17254395,0.4118017971916337
+way/385564677,Padleywood Farm,OST Energy,5.0,solar,53.1567882,-1.3890504791406668
+way/230557536,Pant yr Afon Powerhouse,Pant yr Afon Hydro Scheme,0.4,hydro,53.0033782,-3.942978495398372
+relation/9566738,Parabel North Beer Solar Farm,35 Degrees,6.8,solar,50.7036192,-4.4047911329764045
+way/891904606,Parc Adfer Energy from Waste,Enfinium,16.0,biomass,53.2382198,-3.0350565017891338
+way/797382220,Parc Cynog,,5.0,solar,51.75684245,-4.54446727262942
+way/1189879377,Parc Stormy Battery,,4.0,other,51.508169,-3.6728823256153014
+way/685751628,Parciau Solar Farm,,13.9,solar,53.1604373,-4.239408997961192
+way/684266757,Parham Airfield Solar Power Station,,17.5,solar,52.1935519,1.409817099363773
+way/676771889,Parkhill Solar Farm,Innova / Lark Energy,5.0,solar,56.60289535,-2.5883233455329355
+way/746023125,Parklands,Anesco,4.6,solar,51.5459164,-2.57754703182906
+way/724803560,Parkview solar park,NextEnergy,6.5,solar,50.5053856,-3.7433777881729338
+way/956542773,Parkwood Landfill Scheme,,1.17,biomass,53.4011691,-1.48305387271615
+way/550716637,Parsonage Barn,,7.6,solar,50.94333015,-2.89149527855378
+way/703382928,Partridge Farm (Solar Farm),,10.6,solar,51.10190875,0.9762125008011326
+way/495033112,Pashley Solar Farm,IB Vogt,11.6,solar,50.8661411,0.4237460267406732
+way/956316121,Path Head Landfill Gas Plant,SITA UK,1.0,biomass,54.9652543,-1.7340898467566292
+way/308960566,Patteson Court Landfill Gas Plant 1,Biogeneration / Biffa,1.8,biomass,51.24300365000001,-0.15558089421069818
+way/956252566,Patteson Court Landfill Gas Plant 2,Biffa,3.0,biomass,51.24446645,-0.15297545641986723
+way/956252567,Paulsgrove Landfill Site,Associated Energy Projects plc,2.4,biomass,50.83901365,-1.0941750536830597
+way/957175187,Pebble Hall Farm Anaerobic Digestion Plant,Welland Waste Management,4.0,biomass,52.4550602,-1.0272652184094895
+way/521315970,Pebsham Landfill Gas Plant,Biffa,1.0,biomass,50.85498865,0.5117139592178402
+relation/12866379,Pen Rhiw Caradog,Lightsource Renewable Energy,4.7,solar,51.6707082,-3.380310070134313
+way/1174755534,Pen-Llan Biomass Generator,,,biomass,52.036981,-2.962517201861248
+way/542266213,Penare Farm Solar Park,Penare Farm Solar Park,11.0,solar,50.30409015,-5.0757085004935085
+way/718494059,Pencoose Farm,First Solar Project Ltd,8.5,solar,50.19968025,-5.18406595074298
+way/956116985,Pengelly Barton Farm Anaerobic Digestion Plant,Pengelly Farms,1.0,biomass,50.14199985,-5.339699944516871
+way/1518656260,Pennine [Isabella] Power 5MW Gas fired Peaker power station,amp (,5.0,gas,53.42650135,-2.1176151770975133
+way/689361325,Pennington Recycling Centre Solar Farm,,1.2,solar,50.73699325,-1.5634467709572528
+way/729189527,Pensipple Farm,Elgin Energy EsCo,5.0,solar,50.40725945,-4.452155529235956
+way/1442572375,Pentlow Hill,Nextpower SPV 11 Limited,24.0,solar,52.0777208,0.6632532545529279
+way/374198124,Pentre Farm Solar,Kinetica Solar,5.5,solar,51.75659915,-4.123944340829635
+way/681746433,Pentylands Farm,Moser Baer,19.0,solar,51.65386445,-1.732949613321168
+way/1511660343,Penwortham Storage,,50.0,other,53.74777425,-2.7591756309034183
+way/730017655,Penycae Solar Farm,SBC Renewables,5.0,solar,52.99001965,-3.056203014323467
+relation/20266024,Pepperhill Solar Farm,Low Carbon,23.0,solar,52.61194175,-2.2616329895055642
+relation/20710584,Periwinkle Hall - Links Solar photovoltaic farm & Battery storage,Low Carbon Limited,35.0,solar,51.86609665,0.631152837178975
+way/745490219,Peterlee Solar Farm,Zaravolt,5.0,solar,54.77467525,-1.3677601663231798
+way/956255095,Philip Dennis Food Service,Philip Dennis Food Service,3.8,other,51.0652356,-4.087534067128159
+way/746212390,Pierce's Solar Farm,Anesco,1.7,solar,51.40092415,-1.0218956141509363
+way/956023501,Pilsworth Cryogenic Storage Demonstrator,Viridor/Highview Power Storage,5.0,other,53.58413525,-2.2576665639463824
+way/956548283,Pilsworth Quarry Landfill Scheme,Terry Adams Ltd,4.1,biomass,53.58398605,-2.258167785308265
+way/543320933,Pimlico District Heating Undertaking,,3.1,gas,51.48569975,-0.14021320459183734
+way/475613744,Pingewood Road South Solar Farm,,15.8,solar,51.4188723,-1.0131500528379256
+relation/18823861,Pingry Farm - Phase 2,Coleford Energy,6.8,solar,51.7823774,-2.62518105061684
+way/551697149,Pitchford,,10.2,solar,52.62237945,-2.712542037086615
+way/1419126111,Pitkevy Farm - Battery Storage Facility,Intelligent Land Investments,50.0,other,56.21495635,-3.2213704250353055
+way/233188910,Pitlochry Power Station,Scottish and Southern Energy (SSE),15.0,hydro,56.69918535,-3.7402832515443682
+way/687451479,Pitsea Landfill Scheme,Veolia,11.6,gas,51.5398994,0.5091310294272053
+way/725694068,Pitt's Farm,,2.6,solar,51.21084905,-2.584539401195536
+relation/10040379,Pitworthy Farm Solar Farm,,15.6,solar,50.81733405,-4.430964980090952
+way/746012680,Place Barton Farm,British Solar Renewables,4.9,solar,50.3572147,-3.7484365730725453
+way/687678258,Playters Solar Farm,,8.6,solar,52.43788115,1.5903581913468614
+way/800746231,Pollington Airfield,,5.0,solar,53.6803973,-1.0792907119495077
+way/730028106,Pollington Solar Farm,Pollington Solar,5.0,solar,53.68217185,-1.081610727752976
+way/654579269,Polmaugan Farm,Munich RE,5.0,solar,50.4320809,-4.665613617675193
+way/682031324,Pond Farm,Lark Energy,3.6,solar,52.90141675,1.1754633324853354
+way/216535638,Pont Andrew Solar Farm,Lightsource BP,1.5,solar,51.77616265,-4.13867501525431
+way/273458269,Poplars Anaerobic Digestion Facility,Biffa,6.0,biomass,52.68430605,-2.010155099107764
+way/1332863417,Porth Wen Solar Farm,,,solar,53.40241415,-4.418262420818545
+way/606166164,Portsmouth Energy Recovery Facility,Veolia,14.0,biomass,50.82188725,-1.0540315701831258
+way/596509079,Potters Bar Solar Farm,UK Sustainable Energy,5.0,solar,51.7089064,-0.2045512802913907
+way/411535844,Pressock Solar Farm,,5.0,solar,56.63507465,-2.703630090864407
+relation/20742145,Preston Farm Solar Array,British Solar Renewables,28.0,solar,51.17993545,-1.1587266421168154
+relation/7787637,Prestop Park Farm,Lightsource BP,15.8,solar,52.7503135,-1.4996102122829447
+way/837810842,Priest Weston,Mellington Farm,1.0,solar,52.56921245,-3.0508864132240783
+way/746146646,Primrose Hill Farm,Sun & Soil,3.8,solar,53.2749208,-0.29749213361154336
+way/390156313,Priors Byne Solar Farm,Hadstone Energy Limited,7.5,solar,50.945305,-0.3412290626790764
+way/687678970,Priory Farm,,3.1,solar,52.44846575,1.6739730139254076
+way/938146663,Private Road No. 5,Mercia Power Response,15.2,gas,52.9571047,-1.070967910261258
+way/956542772,Prosper Demulder Anaerobic Digestion Plant,Prosper Demulder / ReFood,3.0,biomass,53.5340297,-1.1357320485777538
+way/692274354,Prothither Solar Farm,Smarter Energy Solutions,5.0,solar,51.97339475,-2.6752629577310603
+relation/10694712,Puriton Landfill Solar Farm,SBC Renewables,11.4,solar,51.1765887,-2.984002725929885
+way/708338031,Puriton Solar Farm,BNRG Renewables,4.6,solar,51.17724705,-2.9674557364940126
+way/682849360,Pyde Drove,,7.0,solar,51.1823659,-2.927081377116105
+way/620263756,Queen Elizabeth II Reservoir Floating Solar,Lightsource BP,6.338,solar,51.39520515,-0.3923074524816176
+way/181352637,Quoich Power Station,Scottish & Southern Energy,18.5,hydro,57.0626342,-5.12356845
+way/1227138567,RTO,,,biomass,53.98218395,-2.0928585690476194
+way/1227138572,RTO,,,biomass,53.98313385,-2.0923705548730185
+way/679991315,Radford Semele Solar Farm,Anesco,10.0,solar,52.2560022,-1.4811713586632917
+way/1386015620,Radyr Weir Hydroelectric Station,,0.394,hydro,51.5194084,-3.2538296655699854
+relation/9461026,Raglington Farm,NextEnery Solar Fund (NESF),5.9,solar,50.91382525,-1.217324570908579
+way/687451476,Rainham Landfill Scheme,Cleanaway / EDL,3.9,gas,51.4912881,0.19472656037444214
+way/729739555,Rampisham North,British Solar Renewables,5.0,solar,50.8123991,-2.646747640018127
+way/1497097482,Rampisham Woods,British Solar Renewables,,solar,50.81011845,-2.6384207334166456
+way/745490216,Ramsey Airfield Solar Farm,,5.0,solar,52.4455967,-0.13195309193600568
+way/26550612,Rannoch Power Station,SSE,44.1,hydro,56.693031,-4.402026571059876
+way/809913712,Ransom Wood Solar Farm,Ransom Wood Business Park,0.54,solar,53.1292277,-1.1403550843806214
+way/956244586,Ratty's Lane Sustainable Energy Facility,Biogen (formerly Tamar Energy),3.0,biomass,51.7611239,0.010218721298479653
+relation/10099314,Ravens Close,NESF (formerly Tau Solar),5.0,solar,54.1313345,-2.540833316764086
+way/352173386,Raventhorpe Solar Farm,,38.0,solar,53.55970975,-0.5788275504141216
+way/1189810828,Ray Battery Storage Facility,Vattenfall Wind Power,20.0,other,55.16562765,-2.0779577
+way/462843337,Reach Solar Farm,Reach Community Solar Farm Ltd,0.25,solar,52.2701267,0.28438032685680126
+way/725677003,Reaches Farm Solar Power Station,Lightsource Renewable Energy,6.1,solar,52.5600894,0.565090635746782
+way/951532079,Reading Hydro,Reading Hydro,0.049,hydro,51.4615408,-0.9646119559657722
+way/797060382,Red Hill Farm,,4.8,solar,50.95461805,-3.303243800252617
+way/722020045,Redcourt Farm,,3.3,solar,51.84886725,-4.359352092221002
+way/729189526,Redhall Industrial Estate,Dodds Limited,5.0,solar,53.69721785,-0.06456193985313859
+way/550715207,Redlands Farm,,6.2,solar,51.11183945000001,-2.8149247607097894
+way/956288188,Reepham Road Anaerobic Digestion Plant,Material Change,1.5,biomass,52.69999395,1.2013670981995808
+relation/13134064,Reliance Street Mechanical Biological Treatment Facility,Viridor,2.0,biomass,53.5055425,-2.1796081081515233
+way/895234867,Renishaw PLC Factory,Renishaw Group,0.8,solar,51.7527602,-2.297495842042866
+way/885499857,Resourceful Earth Anaerobic,Resourceful Earth Anaerobic Limited,,biomass,51.39039945,-2.5247571406527034
+relation/10048636,Rew Farm Solar Farm,Lightsource BP,6.1,solar,50.4224351,-4.689847073610359
+way/688876398,Rexton Cross Solar Farm,,2.0,solar,50.68444255,-4.231638105893973
+way/681360635,Reydon Farm,Green Hedge (BayWa r.e.),3.9,solar,52.3404637,1.6501963962413482
+way/156707732,Rheidol Power Station,Statkraft,41.0,hydro,52.39636845,-3.8997328215190037
+way/725676999,Rhewl Farm,Renesola,6.0,solar,51.6333272,-2.732306871334542
+way/746246322,Rhug Estate,Rhug Estate,1.2,solar,52.9875493,-3.4458556988841433
+way/798893197,Rhyd-y-Pandy,Wessex Solar Energy,6.0,solar,51.69922445,-3.942452512231289
+way/136368935,Rhyl Flats Wind Farm,,90.0,wind,53.38035825,-3.6493833348747
+way/903794096,Ridham CHP Plant,"MVV Energie, Ridham Dock",25.0,biomass,51.38023535,0.7611436375239924
+way/956548279,Rigby Landfill Gas Plant,FCC Environment,3.0,biomass,53.6052445,-2.6265359623062317
+way/460077819,Rigged Hill Wind Farm,Scottish Power Renewables,5.0,wind,55.02286165,-6.822895690787515
+relation/9455288,Ring 'o' Bells Solar Farm,,5.0,solar,51.49709195,-2.3911564059300203
+way/1307310484,Rise Car EES1,Northern Powergrid,2.5,other,54.5463953,-1.5591992540164017
+way/444985769,Risley Landfill Gas Plant,Biffa,10.0,biomass,53.43499825,-2.5168033077350045
+way/1296033544,Rivenhall Integrated Waste Management Facility,Indaver,65.0,biomass,51.8528848,0.6462041811335483
+way/942929897,Riverway Nursery,Stafford Borough Council,,solar,52.80399245,-2.1032677107859072
+way/724803559,Roanhead Solar Farm,,6.5,solar,54.1747611,-3.2104963969217963
+way/690058126,Robertswall Solar Farm,,2.5,solar,51.67149055,-4.748975115028863
+way/291146217,Robin Rigg Offshore Wind Farm,RWE,174.0,wind,54.75130585,-3.7158340345431777
+way/723603987,Rodbourne Rail Farm - Solar Park,British Solar Renewables,7.6,solar,51.5600174,-2.102180209566069
+way/551696695,Rolleston Park Solar Farm,,18.7,solar,52.84462125,-1.682853024806732
+way/1058300456,Romney Weir Hydroelectric Scheme,,0.2,hydro,51.4881009,-0.6061021
+way/1216088925,Romsey X,,,solar,50.96410855000001,-1.4805027140305327
+way/420134786,Rook Wood Solar Farm,Good Energy,5.0,solar,51.54998535,-1.8728951116166113
+way/409723297,Rookery Business Park Solar Power Station,Solar Century/ Bluefield Solar,5.0,solar,52.5354787,1.0665719535710316
+way/687462878,Rookery Farm,,3.8,solar,50.806022,-0.6251883286571591
+way/725694067,Rookery Farm Solar Power Station,Prosolia UK Ltd,5.3,solar,52.3195361,-0.3811358833333356
+way/1122851920,Rookery South Energy From Waste,Veolia/Covanta,65.0,biomass,52.0586228,-0.5240769001616403
+relation/9919785,Roscarnick Farm Solar Farm,Roscarnick Farm,0.12,solar,50.2840132,-5.1551514155684846
+way/649698214,Rose and Crown Farm Solar Farm,,30.0,solar,52.71121745000001,0.19674397662897553
+way/714890968,Rosedew Farm,,5.0,solar,51.3980836,-3.4705887914501745
+way/685751649,Rotherdale Solar Park,,19.351,solar,52.1554876,-2.0510915195687374
+way/688503800,Roves Solar Farm,,12.7,solar,51.59940925,-1.7062695385233473
+relation/9463132,Rowles Farm Solar Park,United Photovoltaics,13.0,solar,51.8430147,-1.228448161111114
+way/965868502,Rownhams Generation Station,Keekle Power,20.0,gas,50.949701,-1.473535586785161
+way/956046654,Roxby Gas to Energy,Biffa,8.5,biomass,53.64327915,-0.62788
+way/956244587,Roxwell Landfill Scheme,Redland Aggregates Ltd (Lafarge Redland),1.3,biomass,51.763397,0.4048406274138431
+way/134135963,Royston Solar Farm,Gemec LTD,10.0,solar,52.0654268,-0.017606629357683243
+relation/7880015,Rudbaxton Solar Park,,10.8,solar,51.8495204,-4.948205770777375
+way/723603978,Rudge Farm,,7.0,solar,51.4266813,-1.6152997666224067
+relation/9225946,Rudge Hill Solar Farm,Lightsource BP,1.5,solar,50.91398015,-2.3121361511995397
+way/686128679,Rufford Lane,Anesco,2.6,solar,53.1535617,-1.031641819842073
+way/215431021,Runcorn Thermal Power Station,Ineos Runcorn TPS Ltd,100.0,biomass,53.3294454,-2.754102406109114
+way/956252569,Runfold Landfill Gas Plant,SITA UK,1.2,biomass,51.21705625,-0.7628437
+way/745132286,Rushmoor Lane Farm (Cheshire Coppice),Sunsave 38/ Vogt Solar,5.0,solar,52.7270564,-2.560519848967253
+way/1234764904,Rusholme Grange Battery Storage,Harmony Energy Storage,40.0,other,53.73110605,-0.9413109931497825
+way/724793800,Rydon Farm Solar Farm,,12.0,solar,50.50702665,-3.640765080766366
+way/55955507,Rye House Power Station,VPI,715.0,gas,51.7630772,0.00924166350172606
+way/136596536,Rye Meads Sewerage Treatment Works,Thames Water,2.3,biomass,51.77286705,0.01688578654370734
+way/724796217,Rymes Farm,,13.7,solar,51.91971,-2.3703789681683647
+way/746020117,Ryston Estate Solar Power Station,Lightsource BP,4.8,solar,52.5941181,0.39500937058051644
+way/1511732629,Ryton Battery,,78.0,other,54.9751793,-1.7405361072780778
+way/1069674094,Ryton Pools Landfill Gas Generator,Warwickshire County Council,,biomass,52.34997195,-1.4545136649859542
+way/70313495,SAICA Paper Mill,SACIA,41.6,biomass,53.42547455,-2.4194580119459173
+way/681175591,SPF Thirty Acres Farm,SPF Thirty Acres Limited,3.8,solar,53.20620315,-1.1967710443469906
+relation/9455366,Salcey Solar Farm,,5.0,solar,52.148147,-0.8065079697561204
+way/718286051,Salford Lodge,AR Partners,5.0,solar,52.15491,-1.938971737208762
+way/746187955,Salford Road Solar Farm,Greater Manchester Waste Disposal Authority,2.2,solar,53.53766835,-2.4462388328189553
+way/660825456,Salhouse Solar Power Station,Island Green Power,5.0,solar,52.68833755,1.3996280726734647
+way/991983002,Salt Ayre Leisure Centre solar farm,Lancaster City Council,1.0,solar,54.0528373,-2.827322594500436
+way/312992167,Saltend Power Station,,1200.0,gas,53.7335706,-0.24281775265653072
+way/1136276675,Saltholme North Power Station,Statera Energy Operations,50.0,gas,54.60781565,-1.24389475
+way/1136274456,Saltholme South Power Station,Statera Energy Operations,50.0,gas,54.6072869,-1.2437121416827277
+way/303691102,Salutation Farmhouse Solar Farm,Solar Century,13.4,solar,51.79417365,-1.426125087732667
+way/1484583346,Sambar Power BESS,Ethical Power ; Varco Energy,47.5,other,50.39341175,-4.90174759850534
+way/395235113,Sandhill Solar Farm,Solar Power South,2.0,solar,51.0605404,-3.1974621237236045
+way/1489751781,Sandridge BESS,Foresight,49.9,other,51.3780096,-2.10018165
+way/1298646089,Sandwell Gas Reserve Power Plant (g2 Energy),GB Energy,21.0,gas,52.5444349,-2.0204262563696913
+way/939517421,Sandylands Nurseries CHP,,1.13,gas,52.10668855,-1.9121753991974604
+way/311956818,Saron Road Solar Park,,6.7,solar,51.7964813,-4.015339529932586
+way/451500586,Saundercroft Solar Park,NextEnergy Solar Fund Ltd.,7.0,solar,50.7646372,-3.406781877105703
+relation/9243705,Sawmills Solar Farm,Foresight,6.5,solar,50.5890605,-3.530935585014423
+way/689356307,Saxley Solar Farm,,5.0,solar,51.16045235,-1.5446101021761425
+relation/6171003,Says Court Solar Farm,Lightsource BP,19.8,solar,51.5273669,-2.4455271286179814
+way/1011305988,Scabba Woods Power Plant,FCC Environment,,biomass,53.50574765,-1.211047116772096
+relation/6331464,Scottow Solar Power Station,Greencoat Solar,50.0,solar,52.75523455,1.3542741266248606
+way/956548271,Scouthead Power Plant,Onyx,2.9,biomass,53.55532835,-2.044738414846544
+way/1214782649,Screggagh Wind Farm,WPO,20.0,wind,54.45161305000001,-7.3324443792816005
+way/956611828,Screwfix Direct,Kingfisher Scottish Limited Partnership,2.5,solar,52.9750904,-2.1700766492852193
+way/114328399,Scroby Sands Wind Farm,RWE,60.0,wind,52.64067705,1.7872821737054623
+relation/20672186,Scurf Dike Solar Farm,BayWa,50.0,solar,53.95643955,-0.4075196511288087
+way/1512084438,Scurf Dyke BESS,,8.0,other,53.9511661,-0.40277165886743593
+way/1288179863,Seamer Wind Farm,Ventient Energy,10.25,wind,54.4919741,-1.2581292145522749
+way/590451152,Seaton Road Solar Farm,SBC Renewables,4.0,solar,52.58585575,-0.7086940196723992
+way/555317308,Seaview Farm,,1.7,solar,51.49804225,-3.696659291640442
+way/729189525,Sedbury Park,Bee Green Solar,5.0,solar,51.63728765,-2.64270308672807
+way/706307586,Seegronan Wind Farm,Seegronan Windfarm Limited,14.1,wind,54.64776985,-7.7010274295833065
+way/956252570,Sefter Farm Anaerobic Digestion Plant,Barfoots of Botley,1.0,biomass,50.78783095,-0.7372156607199083
+way/956316120,Seghill Village Landfill Gas Plant,Northumberland Waste Management / SITA UK,4.1,biomass,55.0627122,-1.5364793026979506
+relation/20282563,Select Environmental Recycling Depot Rooftop Solar Array,Reading Community Energy,0.0497,solar,51.4242291,-0.976741460784694
+way/336283982,Settle Community Hydro,Settle Hydro Limited,,hydro,54.07274065,-2.2804196571341917
+way/377764520,Severnside Energy Recovery Centre,,32.0,biomass,51.5415171,-2.6684277489338273
+relation/9461090,Sevor Farm,,9.3,solar,51.59372345,-1.7153221298960166
+way/605762189,Shacks Barn,,5.0,solar,52.1023879,-1.0052587794702146
+way/551042174,Shaftesbury Solar Farm,Lightsource Renewable Energy,6.2,solar,51.0210887,-2.1841366778114835
+way/796501581,Sharland,,,solar,50.83576445,-3.7797642818615054
+way/1228020960,Sheaf Energy Park,Pacific Green,249.0,other,51.3137832,1.3376549859595452
+way/729189511,Sheepbridge Court Farm,,5.0,solar,51.38688435,-0.9603460945236876
+way/699194701,Sheffield Energy Recovery Facility,Veolia,19.3,biomass,53.38673685,-1.4501776061784892
+way/955899491,Shelford Generation Plant II,ENERGY DEVELOPMENTS (UK) LTD,8.0,biomass,51.2993189,1.1033164342195612
+way/728888401,Shelswell Park Solar Farm,Anesco,5.0,solar,51.96847385,-1.115122894931625
+relation/19721244,Sherburn,Kingspan,5.0,solar,54.17912315,-0.5247497643853123
+way/720373095,Sheriffhales Solar Farm,Lightsource Renewable Energy,8.2,solar,52.7099969,-2.3724354808469816
+way/1163468801,Shetland Tidal Array,Nova Innovation,0.3,hydro,60.69988675,-0.9828213997152302
+way/295161340,Shin Diversion Weir,SSE Renewables,18.6,hydro,58.01283595,-4.4016219205831675
+way/130127380,Shin Power Station,SSE Renewables,18.6,hydro,57.94344115,-4.4114217843778825
+way/532425959,Shirebrook Energy Park,Infinis,10.0,gas,53.19949985,-1.21016195
+way/551257566,Shoals Hook Solar Farm,Lightsource BP,43.7,solar,51.81294385,-4.939964343346315
+way/723603976,Shooters Bottom Solar Park,Anesco,7.0,solar,51.2501442,-2.584606023177847
+way/545116212,Short Hazel Solar Farm,Pearmat Solar,5.0,solar,52.77730895,-1.515073635801074
+way/745490224,Shortheath Solar Park,,5.0,solar,52.72777765,-1.551714893420586
+way/288829101,Shotwick Solar Park,We-Link Energy & Compton Group,72.2,solar,53.24139365000001,-3.0215805330310475
+relation/20281660,Shropshire Hills Discovery Centre Rooftop Solar Array,Big Solar Co-op,0.078,solar,52.4373729,-2.8325727584049405
+relation/20734371,Siddington Solar Farm,Anesco,19.94,solar,51.6890895,-1.9516260025375063
+way/1122787983,Silent Valley Landfill Scheme,Novera,2.7,biomass,51.75818585,-3.1855128869540517
+way/551695987,Six Hills Solar Farm,Lightsource BP,18.7,solar,52.78062995000001,-1.0264280811110371
+relation/20683853,Skeeby Solar Farm,Atrato Onsite Energy / Harmony Energy,55.0,solar,54.41152165,-1.6809748492618457
+way/668754895,Skegness Solar Park,Skegness Solar Park,,solar,53.1490974,0.30183668989700463
+way/300469760,Skelbrooke Landfill Gas Project,Darrington Quarries Ltd,2.1,biomass,53.5970662,-1.230165059080149
+way/1147501603,Skelton Grange EFW,enfinium,49.0,biomass,53.7759107,-1.4945086165813093
+way/956046650,Skelton Grange Landfill Gas Plant,Biffa,5.2,biomass,53.769898,-1.4524690525602075
+way/551042177,Slaughtergate Farm Solar Park,Lightsource Renewable Energy,1.8,solar,51.0456672,-2.312154504197961
+way/294838034,Sleaford Renewable Energy Power Station,,40.0,biomass,52.99985575,-0.3827434441715057
+way/245262417,Slepe Farm Solar Farm,,0.505,solar,50.7367794,-2.1117018970692154
+way/1001931544,Slieveglass Wind Farm,Energia,6.9,wind,54.64599895,-7.572193204927567
+way/23233565,Slough Heat and Power,SSE Thermal,50.0,biomass,51.52399155000001,-0.6272557273049721
+way/170089967,Slough Sewage Treatment Works,Thames Water,1.2,biomass,51.5069448,-0.6417624979273839
+way/729189516,Smith Hall Farm Solar Park,Trina Solar,5.0,solar,53.01260085,-1.6032373920193055
+way/778656714,Snetterton Renewable Energy Plant,BWSC East Anglia Ltd,44.2,biomass,52.48109325,0.9540344634395941
+way/746180284,Snettisham Solar Farm,Solar Associates,2.7,solar,52.8767355,0.5234899278666362
+way/400674335,Somersal Mill Farm Solar Park,,2.6,solar,52.90364535000001,-1.8057366454232615
+way/550715206,Somerton Door Farm,Lightsource BP,8.7,solar,51.0701033,-2.7513999567254355
+relation/9439063,Southam Solar Farm,Big60million Ltd,10.4,solar,52.21451655,-1.447304289471318
+way/749289324,Southampton District Energy Scheme,,,gas,50.90482055,-1.4096738103917712
+way/10360214,Southampton Energy Recovery Facility,Veolia,16.0,biomass,50.899862,-1.438429954121101
+way/746237143,Southcombe Farm,,1.2,solar,50.88746845,-4.206530665348752
+way/688726515,Southdown Quarry Solar Farm,Ethical Power,1.5,solar,50.3544065,-4.20057844693252
+way/799599026,Southfield Farm,,11.5,solar,51.009743,-2.6066011010305137
+way/699477002,Southill Solar,,4.5,solar,51.85852335,-1.4755398525758812
+way/687462868,Southleigh Landfill Gas Plant,ONYX LANDFILL LTD,3.5,biomass,50.8706523,-0.9469461175859125
+way/746146645,Southmoor Farm Solar,,3.8,solar,50.4644638,-4.928190486470587
+relation/4487491,Southwick Estate Solar Park,Hive Energy,40.0,solar,50.88746745,-1.0776401000452882
+relation/8296087,Sowerby Lodge Solar Farm,,5.0,solar,54.1388855,-3.2392782645053404
+way/891377334,Speyside Biomass CHP Plant,Speyside Renewable Energy Partnership,12.5,biomass,57.49583035,-3.2086314580090676
+way/938073475,Spondon Peaking,UK Utility Reserve Limited,40.0,gas,52.9055834,-1.4006520481885094
+way/688509230,Spriggs Solar Farm,,12.0,solar,51.9671948,0.3683563471790514
+way/956288194,Spring Farm Anaerobic Digestion Plant,Private Developer,1.0,biomass,52.7011049,1.1938924850296786
+way/900475893,Squabb Wood Power Plant,Veolia UK Ltd.,1.0,gas,50.9918364,-1.53452769139647
+way/562606772,Sron Mor Power Station,Scottish and Southern Energy (SSE),5.0,hydro,56.33724545,-4.9759450011780775
+way/1320795627,St Andrew's C-of-E Rooftop Solar Array,Big Solar Co-op,0.0195,solar,52.524474,-2.006129523099851
+way/550725990,St Columb Major Solar Farm,Inazin Solar,7.0,solar,50.42387225,-4.926361421680684
+relation/9461069,St Francis Solar Farm,Lightsource BP,4.0,solar,50.87543045,0.45459855396308824
+way/745490213,St Helen's Lane,UK Sustainable Energy,5.0,solar,54.6741629,-3.5269517472030936
+way/131981072,St Nicholas Solar Farm,,0.4,solar,51.3584333,1.2426328521750019
+relation/20245990,St Richard's C-of-E Church Rooftop Solar Array,Big Solar Co-op,0.00988,solar,52.48154005,-1.78519205
+way/561527029,Stables Farm Solar Farm,,1.5,solar,50.6972557,-1.4221135392452666
+way/944208732,Stafford Civic Centre,Stafford Borough Council,,solar,52.8050508,-2.115271181882175
+way/687867281,Staffordshire ERF,Veolia,30.0,biomass,52.67283425,-2.1145992289257993
+way/746012679,Staining Wood Farm,Lightsource BP,4.9,solar,53.78028385,-2.960818718601452
+way/687452963,Stangate Landfill Site,ARC Ltd,4.5,gas,51.2839137,0.2989500761752351
+way/1411139683,Stansted Solar Project,Manchester Airport Group Plc,14.3,solar,51.8823119,0.26584628745376526
+relation/10088597,Stanton Solar Park,Quercus Renewable Holding 2,5.0,solar,51.62071885,-1.741835316622038
+way/693954897,Stantway Solar Farm,Private Developer,5.0,solar,51.8179679,-2.394758003153798
+way/1053619666,Stargoose,StatKraft,50.0,solar,52.24380155,-0.01579659935733737
+relation/16061689,Staughton Airfield Solar Farm,,50.0,solar,52.2395184,-0.3643168756756758
+way/912558906,Staunch Standby,Noriker Power,20.0,other,53.03276765,-2.246438284301507
+way/956016428,Steven's Croft Power Station,E.ON (formerly Powergen). Agent Environmental Planning and Management,50.4,biomass,55.15277645,-3.3805593524252604
+way/668067339,Steventon Solar Park,,10.0,solar,51.6327855,-1.3540243383433959
+way/701028587,Stob House Farm,Anesco,4.9,solar,54.63370555,-1.2957202888602384
+way/1472008744,Stock Lane Power Station,Sembcorp,20.0,gas,53.54252125,-2.142325550185757
+way/691042859,Stocking Pelham Battery Storage,,49.99,other,51.93806915,0.11996276086647725
+way/336291215,Stockport Community Hydro,Stockport Hydro Ltd,0.068,hydro,53.40156325,-2.097342957517109
+way/956542765,Stoke Bardolph Energy Crop Anaerobic Digestion Plant,Severn Trent Water,2.0,biomass,52.9700647,-1.0492615736111988
+way/26450436,Stoke-on-Trent Waste Incinerator Plant,MES Environmental,14.2,biomass,52.98891,-2.182427045847648
+relation/19720436,Stokeford Farm,Alaska (The Holme Estate),28.5,solar,50.69105285000001,-2.1879074604511493
+way/684269252,Stokes Marsh Farm,South West Solar Parks,16.6,solar,51.30520785,-2.0890711123388215
+relation/9457155,Stone Farm Solar Park,,,solar,50.67054225,-1.27659575251257
+way/746180283,Stone Hill,Solar Century,2.6,solar,50.923935,0.22176555453721492
+relation/7880258,Stonebarrow Solar Farm,,8.0,solar,50.78494485,-2.9175827815066246
+way/513730507,Stonepit Farm,,19.0,solar,52.13427615000001,-0.8394973356297812
+way/480925228,Stoneshill Solar Farm,Green Energy International,5.0,solar,50.88090115,-3.38595500091806
+way/1311888166,Stony Energy Storage Facility,Gore Street Energy Storage Fund,79.9,other,52.0176977,-0.8688748810670673
+way/738159920,Stormy Down,,3.8,solar,51.51271215,-3.6641760573463795
+way/570778394,Stormy Down Anaerobic Digestion Plant,Severn Trent,3.0,biomass,51.507348,-3.6694100024413565
+way/173579083,Storr Lochs Power Station,scottish hydro-electric,2.4,hydro,57.49669745,-6.145501500590025
+way/713763790,Stow Solar Farm,Freewatt,24.0,solar,53.326612,-0.7035386574039959
+way/681379746,Stowbridge Solar Farm,,23.0,solar,52.32840745,0.21913256591415772
+way/859087120,Stowey Farm Ground Mounted,,0.25,solar,51.3267862,-2.5748113466165083
+way/411094996,Stragglethorpe Road farm,Lightsource BP,5.0,solar,52.9267098,-1.0504881828752195
+way/1421620456,Stranoch 2 battery storage,,20.0,other,55.0257867,-4.873237155159744
+way/548832521,Stratford City Energy Centre,Cofely District Energy,3.3,biomass,51.54388615,-0.0033987118975696467
+way/708338047,Stratton Hall Solar Power Station,,11.6,solar,52.01087875,1.2876060384804546
+way/1189807655,Streetfields Solar Farm,Lightsource BP,18.3,solar,52.4396818,-1.2562702558195276
+way/286467483,Strete Solar Power Plant,MS Power Projects Ltd.,4.8,solar,50.7458594,-3.359813813108702
+way/610725533,Strettington Solar Farm,Sunsave 30 (Strettington)/ Vogt solar,5.0,solar,50.8566405,-0.7260273629446007
+way/562567451,Striven Power Station,Scottish and Southern Energy (SSE),8.0,hydro,56.00944365,-5.119610286780806
+way/956542764,Stud Farm Anaerobic Digestion Plant,Future Biogas,2.2,biomass,53.1614191,-1.0244968129371177
+way/624744813,Sudbrook Solar Farm,,5.0,solar,51.58768955,-2.7126538987063986
+way/388896101,Sudbury Solar Farm,,20.0,solar,52.8809837,-1.743617984525695
+way/868013889,Sullom Voe Power Station,,80.0,gas,60.4573467,-1.2718069291902405
+way/642149864,Sully STOR,,,other,51.4109482,-3.2295700798530413
+way/746246320,Summercourt Solar Farm (Glebe Farm),Solar Securities Group Ltd,1.1,solar,50.3732449,-4.957468727462555
+way/668069381,Sundorne Grove Solar Park,Lightsource BP,18.2,solar,52.7350866,-2.7082800905800974
+way/551042178,Sutor Farm Solar Farm,,5.0,solar,51.0388827,-2.400784694782434
+way/385840963,Swancote Energy,,2.2,biomass,52.5430812,-2.380698536525358
+way/1474392747,Swangate BESS,Econergy,50.0,other,53.5016852,-1.380348142099238
+way/596509078,Swanland Road Solar Farm,Gascoyne Holdings,5.0,solar,51.6975115,-0.22201610825363532
+relation/9461514,Swanton Solar Farm,,14.96,solar,51.2795737,1.1431398838091462
+way/186894027,Sweeting Thorns,,,solar,53.56144575,-0.603388657272341
+way/186894094,Sweeting Thorns,,,solar,53.5557466,-0.6020958708685875
+way/186894129,Sweeting Thorns,,,solar,53.55282035,-0.6017635454081864
+way/186894080,Sweeting Thorns,,,solar,53.55820235,-0.6023923042232721
+way/670050929,Sycamore Farm Solar Farm,,20.0,solar,50.9910838,0.8788860795183158
+way/956288189,Symonds Farm Anaerobic Digestion Plant,Geo E Gittus and Son,1.4,biomass,52.2569902,0.6285516892731586
+relation/10034398,Sytchwythy Fields Solar Farm,,1.4,solar,52.10034015,-1.9109799315943157
+way/729189530,Sywell Road Solar Farm,NESF (formerly Lark Energy),5.0,solar,52.311437,-0.7726108634985662
+relation/20271833,TBSHS solar array,,,solar,51.84999045,0.15369225
+way/944217071,Tamerton Bridge STOR,,,other,50.42201515,-4.186762183043525
+way/539246198,Tangmere Solar Farm,,5.0,solar,50.84686825,-0.6953909928732305
+way/1051339202,Tansterne Biomass,Solar 21,22.0,biomass,53.81891605,-0.1396467859071734
+way/689356311,Taplins Farm Solar Park,PS Renewables,5.9,solar,51.28858395,-0.8832539031337087
+way/841751108,Tarbothill Landfill Site,,2.2,gas,57.21525065,-2.066605396987577
+way/550716628,Taunton Racecourse Solar Farm,Green Hedge (BayWa r.e.),1.5,solar,50.99129635,-3.088026633844872
+way/344756950,Tavells Lane Solar Farm,,5.3,solar,50.89421315,-1.4579666103770004
+way/940971824,Taylor Lane STOR,,,other,53.0236061,-1.3657791811379911
+way/318841702,Taylors Lane Power Station,,132.0,gas,51.54587455,-0.25764736798142274
+way/100095758,Teesport Renewable Energy Plant,MGT Power,300.0,biomass,54.6012041,-1.1617612135918893
+way/55450845,Teesside Energy from Waste Plant,SITA UK,29.2,biomass,54.59541965,-1.2587536414997669
+way/1147376802,Teesside Green Energy Plant (Waste AD),,4.8,biomass,54.58256155,-1.244887009292806
+way/673872212,Teesside Offshore Wind Farm,EDF,62.1,wind,54.6448905,-1.0936503292382178
+way/804168540,Templeborough Biomass Power Plant,Greencoat Capital,42.0,biomass,53.42259085,-1.3727321997706428
+relation/9462866,Tengore Lane Solar Farm,Foresight,3.6,solar,51.0430001,-2.7880169267008346
+way/1066821723,Terriers Farm,Low Carbon,44.0,solar,51.96311615,0.366394552671268
+way/895237755,Tesco Super-Store (Bridge Road),Push Energy,0.4,solar,51.44259715,0.7597183862342285
+way/740984046,Testwood Water Supply Works,,1.9,solar,50.9325237,-1.4942577878176506
+way/507788655,The Breck,,5.0,solar,53.2815291,-1.361972296601739
+way/330248031,The Flit,United Photovoltaics,10.5,solar,51.8061764,-1.2920307327126788
+way/1161187670,The Grange,Lightsource BP,49.9,solar,53.02897215,-0.8219017560724036
+relation/11707187,The Grange,Elgin Energy EsCo,8.0,solar,51.36734885,-2.8819755443940007
+way/791119882,The Hollies Solar Park - Skegness,Private Developer,8.6,solar,53.1470706,0.2322859924989351
+way/759216732,The Sawmill Biomass Plant,Veolia Energy Services,6.8,biomass,52.84376175,-1.0328105021499205
+relation/20281667,The Speech House Hotel Rooftop Solar Array,Big Solar Co-op,0.045,solar,51.8063434,-2.5519730610820193
+relation/12869925,The Stables Solar Farm,Anesco,1.8,solar,52.567552,-1.4061769135947233
+way/94504224,Thetford Power Station,,38.5,biomass,52.44796525,0.7241397239202043
+way/729739561,Thompson House Equestrian farm,Emotion Solar One,5.0,solar,53.60011785,-2.683147269767567
+way/305438025,Thorne Farm,,5.0,solar,53.6355354,-0.9348044747375878
+way/703386580,Thorne Farm,,6.2,solar,51.3386017,1.3482309253717215
+way/1255643386,Thornham Solar Power Station,,20.6,solar,52.93328215,0.5853850282100264
+way/1001934342,Thornog Wind Farm,Energia,20.0,wind,54.58589235,-7.624699481198357
+way/1524464764,Three Bridges Solar Farm and BESS,Pathfinder Clean Energy UK,15.0,solar,52.71677775000001,1.0447713468542816
+relation/17984880,Three Maids Hill Solar Farm,Blackfinch Energy,25.0,solar,51.11048225,-1.3461938
+way/1122855054,Thurcroft Battery Storage,Thurcroft Energy (Max Design Consultancy),49.9,other,53.40391455,-1.2684186959512567
+relation/19849605,Thurrock Storage,Statera Energy Limited,300.0,other,51.4629103,0.3928097944132801
+relation/7880014,Tiers Cross Solar Farm,,24.0,solar,51.7507594,-5.028753037858163
+way/1051754706,Tievenamenta Wind Farm,SSE Renewables,34.5,wind,54.63687005,-7.756479809080695
+way/367967826,Tillydrone Energy Centre,Aberdeen Heat & Power Ltd,1.067,gas,57.17308095,-2.118074291663153
+way/714799366,Tiln Farm,,9.7,solar,53.34724335,-0.9302625410930754
+way/929920226,Tir John Battery Storage,Habitat Energy,20.0,other,51.6254706,-3.897283310114644
+way/487510772,Tiree Power Station,,2.5,oil,56.4974905,-6.881938949966077
+way/688503793,Toggam Solar Farm,,12.5,solar,52.43440825,0.5027539132779169
+way/730017660,Tonedale Farm,Capital Estate Tonedale,5.0,solar,50.98105765,-3.2559345350876523
+way/704064112,Tonge Corner Farm,,22.0,solar,51.35330295,0.7730418683510647
+way/474235828,Tongland Hydro-Electric Power Station,,33.0,hydro,54.8599799,-4.034418375466876
+way/670955094,Tongue Gill Hydro,,,hydro,54.47447685,-3.02492495
+way/939970743,Tonypandy STOR,,18.0,gas,51.6287372,-3.4550948120338982
+relation/10048778,Tooleys Farm,Lightsource BP,5.3,solar,51.88471995,0.39293604551657246
+way/1412315348,Torr Achilty Power Station,Scottish & Southern Energy,15.0,hydro,57.5539429,-4.598476292422248
+way/363987542,Torrs Hydro,Torrs Hydro New Mills Limited,0.063,hydro,53.36399475,-2.0000813
+way/938159092,Toton STOR Site Nottingham Rd,Mercia Power Response,7.0,gas,52.90420225,-1.2410729569079004
+way/682462335,Tower Hayes  Farm,,5.0,solar,52.6887511,-1.3449877820813354
+relation/9982795,Tower Hill solar farm,,8.1,solar,51.5989597,-2.478265516048702
+way/723603981,Towerbrook Farm (Banwell Solar Farm),Aquila Capital,7.2,solar,51.3325905,-2.8550671533446503
+relation/4516780,Towersey Solar Farm,Luminous Energy,4.3,solar,51.74709635000001,-0.9336765081125052
+way/631362720,Toyota Engine Plant Solar Farm,,,solar,53.22865595,-3.0247979659079136
+way/676239154,Toyota Motors UK - Burnaston,Toyota Motors UK,4.1,solar,52.8757626,-1.5833480960044746
+way/904134862,Traston Road,UK Power Reserve,16.0,gas,51.5662363,-2.967730377755089
+way/904134861,"Traston Road STOR, Newport",UK Power Reserve,20.0,gas,51.56620935,-2.966837816402247
+way/725688493,Tredinnick Fields,,5.9,solar,50.4072427,-4.756250034549903
+way/746237144,Tredown Solar Farm,Lightsource Renewable Energy,1.2,solar,50.6111283,-4.265127561059224
+relation/9458182,Trefinnick Farm,MTS Trefinnick Solar Ltd,5.0,solar,50.5422391,-4.349679442158262
+way/184046266,Trefullock Solar Park,Moser Baer,5.0,solar,50.36711345,-4.956527394708207
+way/550725997,Tregassow Farm,,6.0,solar,50.30673345,-5.015685312549387
+way/721984227,Treguff Farm,,4.4,solar,51.4308516,-3.4065977535798524
+way/799061443,Trelow Farm,,1.6,solar,50.4841036,-4.9311171545164
+way/723603980,Trench Farm,,7.2,solar,52.9513223,-2.915207847420194
+way/396236107,Trenouth Farm,Low Carbon Solar,3.6,solar,50.4932276,-4.950136456759207
+way/725688492,Trenoweth Solar Farm,Kronos Solar,2.5,solar,50.40207305,-4.753558413996206
+relation/7873452,Trequite Farm solar park,Elgin Energy EsCo,9.9,solar,50.42536405,-4.363520706032456
+way/550725984,Treswarrow Solar Park,,6.5,solar,50.5641994,-4.8468972218359845
+way/550725987,Trethosa Farm Solar Park,Trethosa Solar Ltd,4.8,solar,50.3571454,-4.904310749861603
+way/215319639,Trevartha Solar Farm,Smarter Energy Solutions Ltd,3.0,solar,50.4515825,-4.427969485626681
+way/550725991,Trevemper,,1.7,solar,50.3976009,-5.080703799802417
+way/717789512,Triangle Park,,10.0,solar,52.32676005,0.31546782748787094
+relation/9198524,Trickey Warren Solar Farm,Anesco,4.75,solar,50.93532065,-3.1362276996515193
+way/937887302,Trident Park Energy from Waste,Viridor,35.0,biomass,51.47119155,-3.1504476658473393
+way/538582350,Trigon,,7.0,solar,50.7102392,-2.174224343515403
+relation/20265531,Trinity Hall Solar Farm,European Energy Photovoltaics Limited,15.0,solar,51.91573985,-0.5857279508595914
+way/1474200295,Trondheim Way Immingham BESS,KXP Immingham Ltd,80.0,other,53.60718965,-0.18270553341880624
+way/551042755,Troughton Farm Solar Park,Hive Energy,25.0,solar,51.96022425,-2.1209056504003
+way/687537570,Trowbridge Sewage Works,Wessex Water,1.2,biomass,51.32770055,-2.2201713391833975
+way/687537568,Trowle Common,Low Carbon,5.0,solar,51.32556515,-2.238576454621751
+way/956241641,Trumps Farm Anerobic Digestion Plant,Severn Trent (formerly Agrivert),2.4,biomass,51.38626665,-0.5655088115210859
+way/467788288,Tummel Bridge Hydro-electric Power Station,,34.0,hydro,56.70638885,-4.021198198261516
+way/728888404,Tump Solar Farm,Green Energy UK Direct,5.0,solar,51.645367,-2.6429849130089487
+way/653770949,Turweston Airfield Solar Farm,,17.4,solar,52.03909965,-1.1102272720503739
+way/715187614,Twemlows Solar Farm,Sunsave 27 / Vogt solar,10.0,solar,52.9311361,-2.6490029199731797
+way/746246318,Twin Elm Solar,,1.0,solar,51.35851455,-2.7957990834495847
+way/494519262,Twin Yards Solar Farm,Global Renewable Construction,5.0,solar,53.116991,-1.3181986902467804
+way/1312185142,Two Post Lane Solar Farm,Solar South West,12.0,solar,50.7468947,-3.8743286548714266
+relation/20691162,Tycroes Solar Farm,Spring,40.0,solar,51.76538735,-4.067546754866324
+way/724271275,Tyddyn Cae (Nefyn),Lightsource Renewable Energy,4.9,solar,52.91143515,-4.478034579999639
+way/797308045,Tyddyn Gwyn,,3.8,solar,52.93794265,-4.352946881003827
+way/569374834,Tyle'r-fedwen Farm,EEW Eco Energy World,5.0,solar,51.6002087,-3.763888290989198
+way/660504632,Tynemouth Energy Storage System,,25.0,other,55.02497005,-1.5028962235828227
+way/856723912,Tyseley Energy From Waste,Veolia,30.0,biomass,52.45957185,-1.843773130413898
+way/956271016,Tythegston Landfill Gas Plant,Renewable Power Generation Ltd,1.2,biomass,51.49818135,-3.6559388420726258
+way/383448251,Ugley Landfill Gas Plant,Biffa,1.1,biomass,51.9279669,0.20414191029356882
+way/956324055,Uisge Dubh Hydro,Gilkes Energy,2.0,hydro,57.3759672,-5.32793325
+way/829084110,Uisge Labhair,,1.195,hydro,56.7960861,-4.592107745588227
+way/850854940,United Downs Deep Geothermal Power Project,,3.0,other,50.22972765,-5.165588968892737
+relation/20282565,University of Reading - School of Art - Rooftop Solar Array,Reading Community Energy,0.0738,solar,51.4371225,-0.9433139312535549
+way/655114907,University of St Andrews Biomass Energy Centre,University of St Andrews,,biomass,56.36488465,-2.889713803352781
+way/626415801,Upper Clayhill Solar Farm,Anesco,10.0,solar,50.92198345,0.05862771761677142
+way/615273007,Upper Farm Solar Farm,,12.0,solar,51.16790365,-1.077386321371845
+way/681369195,Upper Huntingford Farm,Foresight,7.7,solar,51.64386515,-2.40715610062035
+way/713760523,Upper Meadowley Farm,,10.7,solar,52.5314697,-2.4953986753840365
+way/746012678,Upper Pant-Ysgawen Farm/Crumlin,Suncredit UK,4.9,solar,51.6742368,-3.151931756156819
+way/956048852,Upper Wick Solar Farm,Upper Wick Solar Farm,5.0,solar,51.65980325,-2.408664147962413
+way/844328440,Utha Hydropower Scheme,,0.5,hydro,56.8773688,-5.48986255
+way/647871633,Ventnor Road Solar Park,,4.8,solar,50.6413061,-1.1996589073349933
+way/366219201,Veolia Recycling and Energy Recovery Facility,Veolia,11.6,biomass,53.7876663,-1.5039207158394474
+way/551042171,Verwood Solar Farm,,20.4,solar,50.86500435,-1.8852322011517906
+relation/20772478,Vicarage Drove Solar Farm,European Energy,66.0,solar,52.93670855,-0.23532894987115938
+way/799674282,Vine Farm,,45.0,solar,52.1054598,-0.06728997488345506
+way/129912817,Vine Street Energy from Waste,SITA UK,9.5,biomass,53.6559561,-1.7778466425092652
+way/689365478,Wadbrook Solar Farm,,5.0,solar,50.8115076,-2.95422306606554
+way/405994012,Wadswick Solar Farm,,6.3,solar,51.40983955,-2.218508685504397
+way/956288766,Waen Biogas,Ancala Bioenergy (formerly Biogen),1.0,biomass,53.26451245,-3.416617469090389
+way/327178849,Walkers Wood Solar Farm,,27.0,solar,53.31300685,-1.001198277281866
+way/729739571,Walland Farm,Lightsource BP,5.0,solar,50.97574745,-4.346760185035929
+way/411802369,Wally Corner Landfill Site,SBC Renewables,7.0,solar,51.6573643,-1.1623243646207437
+way/361488693,Walmoor Farm solar park,Green Switch Solutions,4.0,solar,53.3022573,-0.9193644816107922
+way/1411193344,Walpole Bank Solar Farm,DIF Capital Partners / Green Investment Group,40.0,solar,52.72591285,0.18903489351946
+way/956264047,Walpole Landfill Anaerobic Digestion Plant,Thomas Graveson Ltd,1.6,biomass,51.1859299,-2.9826662123073993
+way/687445859,Walton Water Treatment Works PV,Thames Water,1.8,solar,51.40346725000001,-0.3972567804301378
+relation/10303995,Wambrook Farm,Sunsave 19 (Wambrook)/ Vogt Solar,4.1,solar,50.8743836,-2.9850571469013487
+way/956082869,Wapsey's Wood Landfill Gas Plant,Veolia,7.5,biomass,51.5898243,-0.5961381986442729
+way/956611827,Waresley Landfill Gas Plant,Biffa,1.6,biomass,52.3288861,-2.2113050618247128
+way/688724938,Warleigh Barton Solar Farm,,5.0,solar,50.4280263,-4.173358001958222
+way/722858944,Warren Energy AD,,,other,52.50685455,0.5510067957060079
+way/903795289,Warren Farm Solar Farm,Warren Solar Power Ltd.,5.0,solar,50.98534305,-1.457674334404849
+way/956611832,Warren Quarry Landfill Gas Scheme,,6.8,biomass,52.5974797,-1.2070219548650356
+way/714078449,Watchfield Lawn,Belltown Power,10.2,solar,51.2251629,-2.9469092307413995
+way/681357475,Waterloo,,14.6,solar,52.14839705,-0.27724764038694216
+way/1255303844,Watnall Solar Farm,,,solar,53.01803375,-1.2396122603622644
+way/929894595,Waunarlwydd STOR,Green Frog Power,20.0,oil,51.64903625,-4.01470066318408
+relation/7877226,Wedgehill Solar Farm,,13.0,solar,50.86081435,-1.8997435471003281
+relation/9469654,Wedmore Community Power,,1.0,solar,51.23000715,-2.8232741050923362
+way/688883406,Week Farm Solar Park,,3.3,solar,50.95140895,-4.116271782297734
+way/476763383,Welbeck,Foresight,11.3,solar,53.2230755,-1.1403029029480236
+relation/9493014,Welbeck/Hazel Gap Solar Farm,,16.0,solar,53.24009335,-1.107718952893195
+way/1476868465,Welkin Mill BESS,Equinor,35.0,other,53.41897595,-2.135925122245782
+way/1476872890,Welkin Road BESS,Masdar,20.0,other,53.41638235,-2.136121203375283
+way/662532040,Wellingborough Solar Farm,,8.5,solar,52.281037,-0.6929874003371134
+way/531817720,Weltec Biopower,Lacpatrick Ballyrashane Energy,,biomass,55.15132025,-6.61012012039245
+way/550883528,West Bradley Farm,,1.5,solar,50.91639205,-3.5705970867634407
+way/719347785,West Carclaze Solar Farm,Imerys,,solar,50.36269725,-4.786443149415591
+way/1256842637,West Didsbury Battery Storage,Statera Energy / Gresham House,49.99,other,53.4193727,-2.279772235906527
+way/729189517,West Ditchen Farm,PV Sunpower Ltd,5.0,solar,50.72392225,-4.4052242905043
+relation/9291234,West Farm Solar Park,Lightsource BP,7.6,solar,51.69903055,-4.893416181567247
+way/1122854027,West Gourdie Battery,Flexitricity,49.9,other,56.4718281,-3.0527479527297805
+way/1492970935,West Hall Solar Farm,,7.0,solar,51.39514705000001,-3.404979518604283
+way/723603982,West Hill Farm,,7.3,solar,51.1470529,-4.136510019583248
+way/688724936,West Kingsmill Farm Solar Power Station,,1.6,solar,50.44337555,-4.245287858696157
+way/665592729,West Raynham Solar Farm,Good Energy,49.9,solar,52.79029595,0.7453331533565071
+way/388655577,West Solent Solar,,2.389,solar,50.7399132,-1.5545620779946496
+way/673713702,West Strathore Solar Limited,West Strathore Limited,5.0,solar,56.16774765,-3.1709432472788466
+way/745132274,West Venn Solar Farm,Solar Securities Group,5.0,solar,50.75420125,-4.298483453522694
+relation/7877228,West Woodlands,Sunsave 24/ Vogt solar,5.0,solar,51.19746445,-2.3156016956970427
+way/687533954,Westbury Landfill Scheme,,1.1,gas,51.27270665,-2.1690338319784157
+way/551042189,Westbury Landfill Site Solar Farm,Viridor,3.5,solar,51.27582015,-2.168325932165385
+relation/4603573,Westcott solar farm,,1.25,solar,51.8442966,-0.9678141440024816
+way/830141071,Wester Alltbeithe,,,hydro,57.10864475,-5.2752567
+way/799615338,Westerfield Farm,,12.5,solar,51.78553055,-1.6080918635475567
+way/132210998,Westfield Biomass Plant,EPR Scotland,12.5,biomass,56.1689255,-3.305756026984014
+way/1417601733,Westfield Energy Recovery Facility,,,biomass,56.16922145,-3.2923690917240678
+way/729739556,Westfield Farm,Hive Energy/ Vogt Solar,5.0,solar,53.86892705,-2.769815446864021
+way/589571431,Westhampnett solar farm,West Sussex County Council,7.5,solar,50.8473444,-0.7429194805472632
+way/176912520,Westmill Farm PV,Westmill Solar Co-operative Ltd,5.0,solar,51.61776435,-1.6455955153287944
+way/956244590,Westmill Quarry Landfill Gas Plant,,2.6,biomass,51.8262959,-0.0533455436934126
+way/689356308,Westover Farm,,7.0,solar,51.1617619,-1.5067945628606192
+way/725694063,Westwood Farm Solar Park,Lightsource Renewable Energy,5.1,solar,53.22453195,-0.9458631969304104
+relation/9465975,Westwood Solar Farm,Lightsource BP,9.2,solar,51.3530516,1.3704192449777526
+way/723603974,Weycock Road,,7.0,solar,51.4177131,-3.305595112031835
+way/688047345,Wheal Alfred Road Solar Farm,TGC Renewables,3.5,solar,50.17686895,-5.387467923877669
+way/189121471,Wheal Jane Solar Farm,,1.4,solar,50.24119275,-5.121788475950418
+way/675229088,Wheat Leasows Solar Farm,,,solar,52.72104255,-2.4849122672008104
+way/746246317,Whiddon Farm,,1.0,solar,50.7525518,-4.2774579213379536
+relation/20346764,Whinfield Solar Farm,,33.0,solar,54.5963143,-1.5340711380046193
+way/739511820,Whinney Hill Landfill Gas Plant,,3.0,biomass,53.76831545,-2.3645091474663342
+way/1193421532,Whirlbush Solar farm,,49.9,solar,51.75796415,-0.8993192701702448
+way/799112400,Whitchurch Farm,,6.5,solar,51.26775,-2.5281011181497552
+relation/20729057,Whitecross Solar Farm,,35.22,solar,52.97682905,-0.36770312330428995
+way/1418429266,Whitehall Farm Solar,Mccarthy Contractors (Bridgend) Limited,1.3,solar,51.5317179,-3.4291003540845653
+way/956023505,Whitehead Landfill Gas Plant,Biridor Limited,5.3,biomass,53.4928808,-2.441167818748041
+way/956046656,Whitemoor Biomass Plant,REG Bio-Power,18.0,biomass,53.8132603,-0.9912769186638553
+way/687531504,Whiteparish Landfill Gas Plant,Biffa,1.1,gas,51.01799985,-1.69178351562323
+way/689361321,Whites Landfill Site,,6.0,biomass,50.7698374,-1.9525181912769272
+way/550715208,Whitley Farm (2 of 2),NextEnery Solar Fund (NESF),7.0,solar,51.1287408,-2.791940837241106
+way/725677000,Whitton Mawr,Cenin Renewables,6.0,solar,51.44351025,-3.3190080256676913
+way/687674182,Wick Farm,Countryside Renewables,5.0,solar,51.62585985,0.8426997849957807
+way/746180285,Wick Farm,,14.6,solar,51.2809342,-2.985792887353117
+way/746180286,Wick Lane Solar Ltd,Navitas Project,2.8,solar,51.27017865,-2.96204021604738
+relation/17931730,Wickfield Farm,NESF (formerly A C Crocker Properties Ltd),5.0,solar,51.54293885,-1.8668834961513354
+way/745490217,Widehurst Farm,Wirsol (formerly Susenco),5.0,solar,51.16045715,0.5002559330573132
+way/492434816,Widnes 3MG Biomass/Mersey Bioenergy (CHP) Plant,Burmeister & Wain Scandinavian (BWSC)/ Bioenergy Infrastructure Group,20.0,biomass,53.35469395,-2.752288747176589
+way/1424256281,Widow Hill BESS,Shinhan Asset Management and Solos Power,70.0,other,53.80754665,-2.209421808680606
+way/724796216,Wiggin Hill Solar Farm - Phase 1,Lightsource BP,10.9,solar,52.35673475,-0.07867344543034628
+relation/9537556,Wilbees Farm,,5.0,solar,50.8396111,0.1884435799631819
+way/293568507,Willersey Solar Farm,BELECTRIC UK,4.0,solar,52.06968445,-1.8559797776086213
+relation/20281799,William Twigg Rooftop Solar Array,Big Solar Co-op,0.059,solar,53.1400314,-1.5584048998569355
+way/675229082,Williams Farm,Solar Ventures,5.0,solar,53.0281925,-2.926623219977854
+way/202996492,Willsland Solar Farm,,3.267,solar,50.81726115,-4.116053894004342
+way/681493116,Wilmingham Lane Solar Farm,Low Carbon Solar,7.0,solar,50.6860043,-1.4856089120110765
+way/593062056,Wilmington Farm Solar Array,Bath & West Community Energy,2.34,solar,51.3517625,-2.503738980121322
+way/1152745624,Winchester Battery Storage,Conrad Energy,19.0,other,51.04007665,-1.3696047194998606
+way/380629563,Winnington Brunner CHP,E.ON,130.0,gas,53.2671203,-2.53101601284375
+way/688375035,Winsdon Farm,,5.0,solar,50.69787115,-4.4497044279194125
+way/936362246,Winterbrook Solar Farm,S.A.T. Sun & Alternative Technology,1.2,solar,51.58696085,-1.1321239060331794
+way/746146643,Wisbech Solar Farm,British Solar Renewables,3.5,solar,52.6383889,0.15382327224025483
+way/681358230,Wisbridge Farm,Push Energy,9.3,solar,52.0002145,-0.0005765417803641913
+relation/17830611,Withernwick Wind Farm,Energiekontor UK,26.0,wind,53.8521664,-0.15818887849226826
+way/956548284,Withnell Landfill Gas Plant,,2.3,biomass,53.70890155,-2.546457647452282
+way/926832828,Withyhedge Generation Plant,,2.4,biomass,51.8551134,-4.944137901849251
+way/932654182,Withypool Anaerobic Digester,,0.8,biomass,52.3749409,-2.524128886906258
+way/857545612,Wix Lodge Solar Farm,Sunsave 25 (Wix Lodge Farm) Limited/ Vogt Solar,18.7,solar,51.91484065,1.130040906215203
+relation/10088595,Woden Park,Caerau Solar IQ,5.0,solar,51.4697362,-3.2337318168245375
+way/1274934626,Wolf Bog / Elliot's Hill Windfarms,ScottishPower Renewables,,wind,54.8034557,-6.099373929216202
+way/718206640,Woodforde Farm,Esconrg,9.0,solar,52.70034465000001,1.0889617007305434
+way/745490228,Woodhouse Solar Farm,,5.0,solar,52.9492391,-1.8729067039749099
+way/746012683,Woodlands Barton Solar Farm,Laurence Associates,4.9,solar,50.42261795,-4.805111215856046
+way/574812222,Woodlands Farm Solar Park,Lightsource BP,10.0,solar,51.32684815,1.1299801809759424
+relation/8440253,Woodnesborough Solar Farm,,5.0,solar,51.27680865,1.318765753783485
+way/689359392,Woodtown Solar Farm,,3.8,solar,50.77551515,-1.8707638452347277
+relation/7868947,Woolbridge Solar Farm,Good Energy,5.0,solar,50.6884733,-2.2185969393189424
+way/641679299,Wormit Solar Farm,Green Hedge (BayWa r.e.),4.0,solar,56.416474,-2.9623178254122497
+relation/18528939,Worset Solar Farm,Reliance Energy Limited,50.0,solar,54.69931645,-1.2820981861263545
+way/683729358,Worsted Solar Farm,S4N Worsted,5.0,solar,51.12496375,0.014508962843637226
+way/703820777,Wraysbury Landfill,,4.8,solar,51.447671,-0.5433748337861524
+way/797484146,Wreay,Anesco,5.0,solar,54.81983985,-2.8962846667861832
+way/551697150,Wrockwardine Solar Park,,10.5,solar,52.70612935,-2.578449510365858
+way/455150879,Wroughton Airfield Solar Park,,60.0,solar,51.5035767,-1.801230121172813
+way/956264053,Wyke Farms Biogas Plant,Wyke Farms,1.0,biomass,51.110151,-2.480242925723288
+way/551275520,Wyld Meadow Solar Farm,,4.8,solar,50.78048725,-2.932340936258814
+relation/7886587,Wymeswold,,6.1,solar,52.8041312,-1.068812994714523
+relation/4487446,Wymeswold Airfield Solar Farm,Lark Energy,34.0,solar,52.7975522,-1.1324507171986156
+way/1518800770,Xela Energy Hursley,IBM Hursley,,solar,51.0155101,-1.401209854453656
+way/720373094,Yarburgh Grove Farm,Foresight,8.1,solar,53.40882195,0.017705699713662357
+way/746155616,Yardwall Manor,Foresight,3.0,solar,51.21906155,-2.9135799916776666
+relation/9589255,Yerbeston Gate Solar Farm,,6.1,solar,51.7501719,-4.795408833991714
+way/730028104,Yorkley Solar Park,Bee Green Solar,5.0,solar,51.7452703,-2.535940472534833
+way/1158718398,Ystradffin Hydropower Plant,,1.8,hydro,52.0978402,-3.7889241042026076
+way/1525622432,enewable Power Systems Ltd (RPS),renewable Power Systems Ltd (RPS),,biomass,54.63164775,-5.910438203029961

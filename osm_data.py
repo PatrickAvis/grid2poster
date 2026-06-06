@@ -221,7 +221,7 @@ def fetch_power_features_single(
     import requests as http_requests
 
     values = power_tag_values(include_minor_lines, include_cables)
-    key = cache_key("power_single_v1", country, values, sea_buffer_km)
+    key = cache_key("power_single_v2", country, values, sea_buffer_km)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
@@ -283,14 +283,13 @@ def fetch_power_features_single(
         if len(geom_coords) < 2:
             continue
         coords = [(pt["lon"], pt["lat"]) for pt in geom_coords]
-        tags = elem.get("tags", {})
-        rows.append({
-            "power": tags.get("power"),
-            "voltage": tags.get("voltage"),
-            "name": tags.get("name"),
-            "operator": tags.get("operator"),
+        tags = elem.get("tags", {}).copy()
+        tags.update({
+            "element_type": elem.get("type"),
+            "osmid": elem.get("id"),
             "geometry": LineString(coords),
         })
+        rows.append(tags)
 
     if not rows:
         raise RuntimeError(
@@ -299,6 +298,9 @@ def fetch_power_features_single(
         )
 
     result = gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
+    for col in ["power", "voltage", "name", "operator", "geometry"]:
+        if col not in result.columns:
+            result[col] = None
     cache_set(key, result)
     return result
 
@@ -360,9 +362,29 @@ def make_query_tiles(
 # spanning a tile border are returned by both tiles) can be dropped on merge.
 _TILE_ID_COLS = ["element", "element_type", "osmid", "id"]
 
-# Tag columns kept in the final combined frame, per feature kind.
-_LINE_COLS = ["power", "voltage", "name", "operator", "geometry"]
-_PLANT_COLS = ["power", "plant:source", "plant:output:electricity", "name", "operator", "geometry"]
+_REQUIRED_LINE_COLS = ["power", "voltage", "name", "operator", "geometry"]
+_REQUIRED_PLANT_COLS = ["power", "plant:source", "plant:output:electricity", "name", "operator", "geometry"]
+_REQUIRED_SUBSTATION_COLS = ["power", "substation", "voltage", "name", "operator", "geometry"]
+_REQUIRED_WIND_TURBINE_COLS = [
+    "power",
+    "generator:source",
+    "generator:method",
+    "generator:type",
+    "generator:output:electricity",
+    "name",
+    "operator",
+    "manufacturer",
+    "model",
+    "height",
+    "rotor:diameter",
+    "ref",
+    "geometry",
+]
+
+_WIND_TURBINE_TAG_QUERIES = (
+    {"power": "generator", "generator:source": "wind"},
+    {"power": "generator", "generator:method": "wind_turbine"},
+)
 
 
 def _fetch_tiles(
@@ -370,7 +392,7 @@ def _fetch_tiles(
     tags: dict[str, Any],
     tile_cache_key: Callable[[Any], str],
     geometry_types: list[str],
-    keep_cols: list[str],
+    required_cols: list[str],
     use_cache: bool,
     tile_delay: float,
 ) -> list[gpd.GeoDataFrame]:
@@ -378,8 +400,10 @@ def _fetch_tiles(
 
     Shared engine behind fetch_power_features and fetch_power_plants: per-tile
     caching, adaptive rate-limit backoff, and indefinite retries for failed
-    tiles. Only features whose geometry type is in ``geometry_types`` are kept,
-    trimmed to ``keep_cols``.
+    tiles. Only features whose geometry type is in ``geometry_types`` are kept.
+    All OSM tag columns are preserved so GeoJSON exports can carry the full
+    downloaded feature metadata, while required columns are added as empty when
+    absent so downstream rendering code sees a stable schema.
     """
     frames: list[gpd.GeoDataFrame] = []
     empty_tile = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
@@ -418,8 +442,10 @@ def _fetch_tiles(
             cache_set(tile_cache_key(tile_geom), empty_tile)
             return True
 
-        cols = [col for col in keep_cols if col in matching.columns]
-        tile_gdf = gpd.GeoDataFrame(matching[cols], geometry="geometry", crs="EPSG:4326")
+        tile_gdf = gpd.GeoDataFrame(matching.copy(), geometry="geometry", crs="EPSG:4326")
+        for col in required_cols:
+            if col not in tile_gdf.columns:
+                tile_gdf[col] = None
         cache_set(tile_cache_key(tile_geom), tile_gdf)
         frames.append(tile_gdf)
         return True
@@ -472,15 +498,18 @@ def _fetch_tiles(
     return frames
 
 
-def _combine_tile_frames(frames: list[gpd.GeoDataFrame], keep_cols: list[str]) -> gpd.GeoDataFrame:
-    """Merge per-tile frames, drop cross-tile duplicates, and trim to ``keep_cols``."""
+def _combine_tile_frames(frames: list[gpd.GeoDataFrame], required_cols: list[str]) -> gpd.GeoDataFrame:
+    """Merge per-tile frames, drop cross-tile duplicates, and ensure required columns exist."""
     combined = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), geometry="geometry", crs="EPSG:4326")
     id_cols = [col for col in _TILE_ID_COLS if col in combined.columns]
     if id_cols:
         combined = combined.drop_duplicates(subset=id_cols)
     else:
         combined = combined.drop_duplicates(subset=["geometry"])
-    return combined[[col for col in keep_cols if col in combined.columns]]
+    for col in required_cols:
+        if col not in combined.columns:
+            combined[col] = None
+    return combined
 
 
 def fetch_power_features(
@@ -495,7 +524,7 @@ def fetch_power_features(
     tile_delay: float = 0,
 ) -> gpd.GeoDataFrame:
     values = power_tag_values(include_minor_lines, include_cables)
-    key = cache_key("power_features", country, values, tile_size_km, render_crs, sea_buffer_km)
+    key = cache_key("power_features_v2", country, values, tile_size_km, render_crs, sea_buffer_km)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
@@ -514,14 +543,14 @@ def fetch_power_features(
         # Per-tile key so partial progress survives a crash or Overpass outage:
         # geometry WKB folds in tile_size_km / render_crs / sea_buffer_km, since
         # those parameters fully determine the tile polygon.
-        return cache_key("power_tile_v1", country, values, tile_geom.wkb_hex)
+        return cache_key("power_tile_v2", country, values, tile_geom.wkb_hex)
 
     frames = _fetch_tiles(
         tiles,
         tags={"power": values},
         tile_cache_key=tile_cache_key,
         geometry_types=["LineString", "MultiLineString"],
-        keep_cols=_TILE_ID_COLS + _LINE_COLS,
+        required_cols=_TILE_ID_COLS + _REQUIRED_LINE_COLS,
         use_cache=use_cache,
         tile_delay=tile_delay,
     )
@@ -532,7 +561,7 @@ def fetch_power_features(
             "Try a smaller --tile-size-km or rerun later if Overpass is busy."
         )
 
-    combined = _combine_tile_frames(frames, _LINE_COLS)
+    combined = _combine_tile_frames(frames, _REQUIRED_LINE_COLS)
     cache_set(key, combined)
     return combined
 
@@ -553,7 +582,7 @@ def fetch_power_plants(
     """
     # Distinct cache namespaces ("power_plants_v1"/"power_plant_tile_v1") keep
     # plant tiles from ever colliding with the line tile cache.
-    key = cache_key("power_plants_v1", country, tile_size_km, render_crs)
+    key = cache_key("power_plants_v2", country, tile_size_km, render_crs)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
@@ -564,14 +593,14 @@ def fetch_power_plants(
     print(f"Downloading OSM power plants: power=plant across {len(tiles):,} tiles")
 
     def tile_cache_key(tile_geom: Any) -> str:
-        return cache_key("power_plant_tile_v1", country, tile_geom.wkb_hex)
+        return cache_key("power_plant_tile_v2", country, tile_geom.wkb_hex)
 
     frames = _fetch_tiles(
         tiles,
         tags={"power": "plant"},
         tile_cache_key=tile_cache_key,
         geometry_types=["Point", "Polygon", "MultiPolygon"],
-        keep_cols=_TILE_ID_COLS + _PLANT_COLS,
+        required_cols=_TILE_ID_COLS + _REQUIRED_PLANT_COLS,
         use_cache=use_cache,
         tile_delay=tile_delay,
     )
@@ -582,6 +611,110 @@ def fetch_power_plants(
         cache_set(key, combined)
         return combined
 
-    combined = _combine_tile_frames(frames, _PLANT_COLS)
+    combined = _combine_tile_frames(frames, _REQUIRED_PLANT_COLS)
+    cache_set(key, combined)
+    return combined
+
+
+def fetch_power_substations(
+    country: str,
+    boundary: gpd.GeoDataFrame,
+    tile_size_km: float = 200,
+    render_crs: str = "EPSG:8857",
+    use_cache: bool = True,
+    tile_delay: float = 0,
+) -> gpd.GeoDataFrame:
+    """Fetch power=substation features inside the boundary, tiled like the lines."""
+    key = cache_key("power_substations_v2", country, tile_size_km, render_crs)
+    if use_cache:
+        cached = cache_get(key)
+        if cached is not None:
+            print(f"Using cached power substations for {country}")
+            return cached
+
+    tiles = make_query_tiles(boundary, tile_size_km=tile_size_km, render_crs=render_crs)
+    print(f"Downloading OSM power substations: power=substation across {len(tiles):,} tiles")
+
+    def tile_cache_key(tile_geom: Any) -> str:
+        return cache_key("power_substation_tile_v2", country, tile_geom.wkb_hex)
+
+    frames = _fetch_tiles(
+        tiles,
+        tags={"power": "substation"},
+        tile_cache_key=tile_cache_key,
+        geometry_types=["Point", "Polygon", "MultiPolygon"],
+        required_cols=_TILE_ID_COLS + _REQUIRED_SUBSTATION_COLS,
+        use_cache=use_cache,
+        tile_delay=tile_delay,
+    )
+
+    if not frames:
+        combined = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+        cache_set(key, combined)
+        return combined
+
+    combined = _combine_tile_frames(frames, _REQUIRED_SUBSTATION_COLS)
+    cache_set(key, combined)
+    return combined
+
+
+def fetch_wind_turbines(
+    country: str,
+    boundary: gpd.GeoDataFrame,
+    tile_size_km: float = 200,
+    render_crs: str = "EPSG:8857",
+    use_cache: bool = True,
+    tile_delay: float = 0,
+) -> gpd.GeoDataFrame:
+    """Fetch individual wind turbines mapped as ``power=generator`` in OSM.
+
+    Queries both ``generator:source=wind`` and ``generator:method=wind_turbine``
+    so turbines tagged either way are included, then deduplicates on OSM identity.
+    All downloaded OSM tag columns are preserved for export.
+    """
+    key = cache_key("wind_turbines_v1", country, tile_size_km, render_crs)
+    if use_cache:
+        cached = cache_get(key)
+        if cached is not None:
+            print(f"Using cached wind turbines for {country}")
+            return cached
+
+    tiles = make_query_tiles(boundary, tile_size_km=tile_size_km, render_crs=render_crs)
+    print(
+        "Downloading OSM wind turbines: power=generator with "
+        "generator:source=wind or generator:method=wind_turbine "
+        f"across {len(tiles):,} tiles"
+    )
+
+    frames: list[gpd.GeoDataFrame] = []
+    for query_index, tags in enumerate(_WIND_TURBINE_TAG_QUERIES, start=1):
+        tag_label = ",".join(f"{k}={v}" for k, v in tags.items())
+        tile_label = f"q{query_index}_{tag_label}"
+
+        def tile_cache_key(tile_geom: Any, _tile_label: str = tile_label) -> str:
+            return cache_key(
+                "wind_turbine_tile_v1",
+                country,
+                _tile_label,
+                tile_geom.wkb_hex,
+            )
+
+        tile_frames = _fetch_tiles(
+            tiles,
+            tags=tags,
+            tile_cache_key=tile_cache_key,
+            geometry_types=["Point", "Polygon", "MultiPolygon"],
+            required_cols=_TILE_ID_COLS + _REQUIRED_WIND_TURBINE_COLS,
+            use_cache=use_cache,
+            tile_delay=tile_delay,
+        )
+        frames.extend(tile_frames)
+
+    if not frames:
+        combined = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+        cache_set(key, combined)
+        return combined
+
+    combined = _combine_tile_frames(frames, _REQUIRED_WIND_TURBINE_COLS)
     cache_set(key, combined)
     return combined

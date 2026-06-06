@@ -284,3 +284,41 @@ def prepare_plants(
         plants_projected = plants_projected[plants_projected["capacity_mw"] >= min_capacity_mw]
 
     return plants_projected
+
+
+def parse_numeric_tag(value: Any) -> float | None:
+    """Parse a simple OSM numeric tag such as height or rotor diameter."""
+    if value is None:
+        return None
+    if isinstance(value, float) and np.isnan(value):
+        return None
+    text = str(value).lower().strip()
+    multiplier = 1.0
+    if text.endswith("m"):
+        text = text[:-1].strip()
+    text = text.replace(",", ".")
+    match = re.search(r"\d+(?:\.\d+)?", text)
+    if not match:
+        return None
+    return float(match.group()) * multiplier
+
+
+def prepare_wind_turbines(turbines: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Add parsed numeric columns while preserving all downloaded OSM tags."""
+    if turbines.empty:
+        return turbines
+
+    out = turbines.copy()
+    capacity_raw = out.get("generator:output:electricity")
+    if capacity_raw is not None:
+        out["capacity_mw"] = capacity_raw.apply(parse_capacity_to_mw)
+
+    height_raw = out.get("height")
+    if height_raw is not None:
+        out["height_m"] = height_raw.apply(parse_numeric_tag)
+
+    rotor_raw = out.get("rotor:diameter")
+    if rotor_raw is not None:
+        out["rotor_diameter_m"] = rotor_raw.apply(parse_numeric_tag)
+
+    return out

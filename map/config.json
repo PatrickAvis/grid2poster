@@ -1,0 +1,5 @@
+{
+  "_note": "Deprecated. Use data/catalog.json as the source of truth.",
+  "defaultRegion": "uk",
+  "catalog": "../data/catalog.json"
+}
