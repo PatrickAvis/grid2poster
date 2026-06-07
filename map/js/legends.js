@@ -2,10 +2,8 @@ import {
   LINE_TYPE_COLORS,
   LINE_TYPE_LABELS,
   LINE_TYPE_ORDER,
-  PLANT_BUCKET_LABELS,
-  PLANT_BUCKET_ORDER,
-  PLANT_COLORS,
 } from "./constants.js";
+import { fuelTypeColor, fuelTypeLabel, fuelTypeOrder } from "./fuelTypes.js";
 
 export function buildLineLegend(
   lineBucketGroups,
@@ -82,11 +80,12 @@ export function buildPlantLegend(
   listEl.replaceChildren();
 
   const buckets = [
-    ...PLANT_BUCKET_ORDER.filter((bucket) => plantBucketGroups[bucket]),
+    ...fuelTypeOrder().filter((bucket) => plantBucketGroups[bucket]),
     ...Object.keys(plantBucketGroups)
-      .filter((bucket) => !PLANT_BUCKET_ORDER.includes(bucket))
+      .filter((bucket) => !fuelTypeOrder().includes(bucket))
       .sort(),
   ];
+  let turbineToggleAdded = false;
 
   for (const bucket of buckets) {
     const label = document.createElement("label");
@@ -101,14 +100,15 @@ export function buildPlantLegend(
 
     const swatch = document.createElement("span");
     swatch.className = "plant-swatch";
-    swatch.style.background = PLANT_COLORS[bucket] || PLANT_COLORS.other;
+    swatch.style.background = fuelTypeColor(bucket);
 
-    const text = document.createTextNode(PLANT_BUCKET_LABELS[bucket] || bucket);
+    const text = document.createTextNode(fuelTypeLabel(bucket));
 
     label.append(checkbox, swatch, text);
     listEl.appendChild(label);
 
-    if (bucket === "wind" && options.onTurbinesToggle) {
+    if (bucket.startsWith("wind") && options.onTurbinesToggle && !turbineToggleAdded) {
+      turbineToggleAdded = true;
       const subLabel = document.createElement("label");
       subLabel.className = "plant-legend-item plant-legend-subitem";
 

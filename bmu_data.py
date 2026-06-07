@@ -20,9 +20,56 @@ PLANT_BMU_MAP_PATH = REPO_ROOT / "data" / "reference" / "uk_plant_bmu_map.csv"
 PLANT_BMU_MAP_JSON_PATH = REPO_ROOT / "data" / "reference" / "uk_plant_bmu_map.json"
 # Legacy alias; migrated into uk_plant_bmu_map.csv on first propose run
 BMU_OVERRIDES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_overrides.csv"
+BMU_UNMAPPED_DISPLAYABLE_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_unmapped_displayable.csv"
+BMU_CANDIDATE_MATCHES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_candidate_matches.csv"
+BMU_REFERENCE_ONLY_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_reference_only.csv"
 
 MAP_COLUMNS = ("osm_id", "plant_name", "bmu_id", "ngc_bmu_id", "bmu_type", "source", "notes")
 BMU_FIELDS = ("bmu_id", "ngc_bmu_id", "bmu_type")
+
+# Elexon fuel types that represent physical generation, storage, or interconnectors.
+DISPLAYABLE_FUEL_TYPES: frozenset[str] = frozenset({
+    "WIND",
+    "CCGT",
+    "OCGT",
+    "NPSHYD",
+    "PS",
+    "BIOMASS",
+    "NUCLEAR",
+    "COAL",
+    "OTHER",
+    "INTELEC",
+    "INTGRNL",
+    "INTVKL",
+    "INTNED",
+    "INTEW",
+    "INTFR",
+    "INTIFA2",
+    "INTIRL",
+    "INTNSL",
+    "INTNEM",
+})
+
+# Supplier, virtual, and import BMUs are kept for reference but not plotted.
+REFERENCE_ONLY_BMU_TYPES: frozenset[str] = frozenset({"S", "V", "I"})
+
+# Map Elexon fuel codes to compatible OSM source_bucket values.
+ELEXON_FUEL_TO_BUCKETS: dict[str, tuple[str, ...]] = {
+    "WIND": ("wind", "wind_onshore", "wind_offshore"),
+    "CCGT": ("gas", "gas_ccgt", "gas_chp"),
+    "OCGT": ("gas", "gas_ocgt", "gas_chp"),
+    "NPSHYD": ("hydro_non_pumped", "hydro"),
+    "PS": ("hydro_pumped",),
+    "BIOMASS": ("biomass", "biogas", "waste"),
+    "NUCLEAR": ("nuclear",),
+    "COAL": ("coal",),
+    "OTHER": ("other", "battery", "geothermal", "tidal", "wave", "oil"),
+}
+
+UNIT_NUMBER_SUFFIX = re.compile(
+    r"\s+(?:unit\s*)?\d+[a-z]?$|(?:\s*[-/]\s*\d+[a-z]?)+$",
+    re.IGNORECASE,
+)
 
 NAME_SUFFIXES = (
     " power station",
@@ -48,6 +95,15 @@ def normalize_site_name(name: str | None) -> str:
     return text
 
 
+def normalize_bmu_site_name(name: str | None) -> str:
+    """Strip unit numbers from BMU names like 'Dinorwig 1' -> 'dinorwig'."""
+    text = normalize_site_name(name)
+    if not text:
+        return ""
+    text = UNIT_NUMBER_SUFFIX.sub("", text).strip()
+    return text
+
+
 def is_empty(value) -> bool:
     if value is None:
         return True
@@ -56,6 +112,52 @@ def is_empty(value) -> bool:
     if isinstance(value, str) and not value.strip():
         return True
     return False
+
+
+def _parse_capacity_mw(value: Any) -> float | None:
+    if is_empty(value):
+        return None
+    try:
+        return float(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def classify_bmu(bmu: dict[str, Any]) -> str:
+    """Classify a BMU as displayable, reference_only, or needs_review."""
+    bmu_type = str(bmu.get("bmUnitType") or "").strip().upper()
+    fuel = str(bmu.get("fuelType") or "").strip().upper()
+    flag = str(bmu.get("productionOrConsumptionFlag") or "").strip().upper()
+    interconnector = bmu.get("interconnectorId")
+    generation_mw = _parse_capacity_mw(bmu.get("generationCapacity")) or 0.0
+
+    if bmu_type in REFERENCE_ONLY_BMU_TYPES:
+        return "reference_only"
+    if flag == "C" and is_empty(interconnector):
+        return "reference_only"
+    if fuel.startswith("INT") or not is_empty(interconnector):
+        return "displayable"
+    if fuel in DISPLAYABLE_FUEL_TYPES:
+        if bmu_type in {"T", "E", "G"}:
+            return "displayable"
+        return "needs_review"
+    if bmu_type in {"T", "E", "G"} and generation_mw > 0:
+        return "needs_review"
+    return "reference_only"
+
+
+def fuel_compatible(plant_bucket: str | None, bmu_fuel: str | None) -> bool | None:
+    """Return True/False when compatibility is known, else None."""
+    if is_empty(plant_bucket) or is_empty(bmu_fuel):
+        return None
+    bucket = str(plant_bucket).strip().lower()
+    fuel = str(bmu_fuel).strip().upper()
+    if fuel.startswith("INT"):
+        return bucket in {"other", "oil", "gas"}
+    allowed = ELEXON_FUEL_TO_BUCKETS.get(fuel)
+    if allowed is None:
+        return None
+    return bucket in allowed
 
 
 def fetch_bmunits(*, timeout: int = 120) -> list[dict[str, Any]]:
@@ -86,37 +188,95 @@ def load_bmunits(path: Path = BMU_REFERENCE_PATH) -> list[dict[str, Any]]:
     return payload
 
 
+def propose_match_candidates_for_plant(
+    plant: pd.Series,
+    bmunits: list[dict[str, Any]],
+    *,
+    displayable_only: bool = True,
+) -> list[dict[str, Any]]:
+    """Return candidate BMU matches with confidence and reason."""
+    if is_empty(plant.get("name")):
+        return []
+
+    plant_norm = normalize_site_name(str(plant["name"]))
+    plant_bucket = plant.get("source_bucket")
+    candidates: list[dict[str, Any]] = []
+
+    for bmu in bmunits:
+        if displayable_only and classify_bmu(bmu) == "reference_only":
+            continue
+
+        bmu_name = str(bmu.get("bmUnitName") or "")
+        bmu_norm = normalize_site_name(bmu_name)
+        bmu_site = normalize_bmu_site_name(bmu_name)
+        fuel = bmu.get("fuelType")
+
+        confidence: str | None = None
+        reason: str | None = None
+
+        if plant_norm and bmu_norm == plant_norm:
+            confidence = "high"
+            reason = "exact_bmUnitName"
+        elif plant_norm and bmu_site and plant_norm == bmu_site:
+            confidence = "high"
+            reason = "bmu_site_name"
+        elif plant_norm and bmu_site and len(plant_norm) >= 5 and len(bmu_site) >= 5:
+            if plant_norm in bmu_site or bmu_site in plant_norm:
+                confidence = "medium"
+                reason = "site_name_contains"
+        elif plant_norm:
+            words = plant_norm.split()
+            if len(words) >= 2:
+                phrase = " ".join(words[:2])
+                if len(phrase) >= 5 and phrase in bmu_norm:
+                    confidence = "medium"
+                    reason = "two_word_phrase"
+            if confidence is None and words:
+                token = words[0]
+                if len(token) >= 4:
+                    pattern = re.compile(rf"\b{re.escape(token)}\b")
+                    if pattern.search(bmu_norm):
+                        confidence = "low"
+                        reason = "first_token"
+
+        if confidence is None:
+            continue
+
+        compat = fuel_compatible(plant_bucket, fuel)
+        if compat is False and confidence != "high":
+            continue
+        if compat is False and confidence == "high":
+            confidence = "medium"
+            reason = f"{reason};fuel_mismatch"
+
+        candidates.append({
+            "bmu": bmu,
+            "confidence": confidence,
+            "reason": reason,
+            "fuel_compatible": compat,
+        })
+
+    order = {"high": 0, "medium": 1, "low": 2}
+    candidates.sort(key=lambda item: order[item["confidence"]])
+    return candidates
+
+
 def match_bmunits_for_plant(plant_name: str | None, bmunits: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    normalized = normalize_site_name(plant_name)
-    if not normalized:
-        return []
-
-    exact = [row for row in bmunits if normalize_site_name(row.get("bmUnitName")) == normalized]
-    if exact:
-        return exact
-
-    words = normalized.split()
-    if len(words) >= 2:
-        phrase = " ".join(words[:2])
-        if len(phrase) >= 5:
-            phrase_hits = [row for row in bmunits if phrase in normalize_site_name(row.get("bmUnitName"))]
-            if phrase_hits:
-                return phrase_hits
-
-    if not words:
-        return []
-
-    token = words[0]
-    if len(token) < 4:
-        return []
-
-    pattern = re.compile(rf"\b{re.escape(token)}\b")
-    token_hits = [
-        row for row in bmunits if pattern.search(normalize_site_name(row.get("bmUnitName")))
+    """High-confidence BMU matches for a plant name (backward-compatible helper)."""
+    plant = pd.Series({"name": plant_name, "source_bucket": None, "capacity_mw": None})
+    return [
+        item["bmu"]
+        for item in propose_match_candidates_for_plant(plant, bmunits)
+        if item["confidence"] == "high"
     ]
-    if token_hits and len(token_hits) <= 30:
-        return token_hits
-    return []
+
+
+def mapped_bmu_ids(map_frame: pd.DataFrame) -> set[str]:
+    return {
+        str(value).strip().upper()
+        for value in map_frame["bmu_id"].dropna()
+        if str(value).strip()
+    }
 
 
 def _index_bmunits(bmunits: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
@@ -297,6 +457,7 @@ def propose_plant_bmu_map(
     reference_path: Path = BMU_REFERENCE_PATH,
     map_path: Path = PLANT_BMU_MAP_PATH,
     migrate_embedded: bool = True,
+    auto_confidence: str = "high",
 ) -> pd.DataFrame:
     frame = load_plant_bmu_map(map_path)
     frame = migrate_legacy_overrides(frame)
@@ -314,8 +475,10 @@ def propose_plant_bmu_map(
             continue
         osm_id = None if is_empty(plant.get("osm_id")) else str(plant["osm_id"])
         plant_name = str(plant["name"])
-        for bmu in match_bmunits_for_plant(plant_name, bmunits):
-            fields = bmu_row_to_map_fields(bmu)
+        for candidate in propose_match_candidates_for_plant(plant, bmunits):
+            if candidate["confidence"] != auto_confidence:
+                continue
+            fields = bmu_row_to_map_fields(candidate["bmu"])
             before = len(frame)
             frame = append_map_row(
                 frame,
@@ -329,8 +492,98 @@ def propose_plant_bmu_map(
             if len(frame) > before:
                 proposed += 1
 
-    print(f"BMU map: {len(frame):,} rows ({proposed:,} new auto proposals)")
+    print(f"BMU map: {len(frame):,} rows ({proposed:,} new high-confidence auto proposals)")
     return frame
+
+
+def write_bmu_coverage_reports(
+    plants: gpd.GeoDataFrame,
+    map_frame: pd.DataFrame,
+    bmunits: list[dict[str, Any]],
+    *,
+    unmapped_path: Path = BMU_UNMAPPED_DISPLAYABLE_PATH,
+    candidates_path: Path = BMU_CANDIDATE_MATCHES_PATH,
+    reference_only_path: Path = BMU_REFERENCE_ONLY_PATH,
+) -> dict[str, int]:
+    """Write review CSVs for displayable, candidate, and reference-only BMUs."""
+    mapped_ids = mapped_bmu_ids(map_frame)
+    candidate_rows: list[dict[str, Any]] = []
+    unmapped_rows: list[dict[str, Any]] = []
+    reference_rows: list[dict[str, Any]] = []
+    seen_candidates: set[tuple[str, str]] = set()
+
+    for _, plant in plants.iterrows():
+        if is_empty(plant.get("name")):
+            continue
+        osm_id = None if is_empty(plant.get("osm_id")) else str(plant["osm_id"])
+        for candidate in propose_match_candidates_for_plant(plant, bmunits):
+            bmu = candidate["bmu"]
+            bmu_id = str(bmu.get("elexonBmUnit") or "").strip().upper()
+            if not bmu_id or bmu_id in mapped_ids:
+                continue
+            if candidate["confidence"] == "high":
+                continue
+            key = (osm_id or str(plant["name"]), bmu_id)
+            if key in seen_candidates:
+                continue
+            seen_candidates.add(key)
+            candidate_rows.append({
+                "osm_id": osm_id,
+                "plant_name": plant.get("name"),
+                "plant_source_bucket": plant.get("source_bucket"),
+                "plant_capacity_mw": plant.get("capacity_mw"),
+                "bmu_id": bmu.get("elexonBmUnit"),
+                "ngc_bmu_id": bmu.get("nationalGridBmUnit"),
+                "bmUnitName": bmu.get("bmUnitName"),
+                "fuelType": bmu.get("fuelType"),
+                "bmUnitType": bmu.get("bmUnitType"),
+                "confidence": candidate["confidence"],
+                "reason": candidate["reason"],
+                "fuel_compatible": candidate["fuel_compatible"],
+            })
+
+    for bmu in bmunits:
+        bmu_id = str(bmu.get("elexonBmUnit") or "").strip().upper()
+        category = classify_bmu(bmu)
+        row = {
+            "bmu_id": bmu.get("elexonBmUnit"),
+            "ngc_bmu_id": bmu.get("nationalGridBmUnit"),
+            "bmUnitName": bmu.get("bmUnitName"),
+            "fuelType": bmu.get("fuelType"),
+            "bmUnitType": bmu.get("bmUnitType"),
+            "productionOrConsumptionFlag": bmu.get("productionOrConsumptionFlag"),
+            "generationCapacity": bmu.get("generationCapacity"),
+            "leadPartyName": bmu.get("leadPartyName"),
+            "gspGroupName": bmu.get("gspGroupName"),
+            "interconnectorId": bmu.get("interconnectorId"),
+            "category": category,
+            "mapped": bmu_id in mapped_ids if bmu_id else False,
+        }
+        if category == "reference_only":
+            reference_rows.append(row)
+        elif bmu_id and bmu_id not in mapped_ids:
+            unmapped_rows.append(row)
+
+    for path, rows in (
+        (unmapped_path, unmapped_rows),
+        (candidates_path, candidate_rows),
+        (reference_only_path, reference_rows),
+    ):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame(rows).to_csv(path, index=False)
+
+    counts = {
+        "unmapped_displayable": len(unmapped_rows),
+        "candidate_matches": len(candidate_rows),
+        "reference_only": len(reference_rows),
+    }
+    print(
+        "BMU coverage reports: "
+        f"{counts['unmapped_displayable']:,} unmapped displayable, "
+        f"{counts['candidate_matches']:,} candidate matches, "
+        f"{counts['reference_only']:,} reference-only",
+    )
+    return counts
 
 
 def plants_missing_bmu_map(

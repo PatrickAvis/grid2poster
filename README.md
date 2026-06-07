@@ -418,6 +418,23 @@ python scripts/build_tiles.py --region uk
 `build_tiles.py` requires Tippecanoe and the PMTiles CLI on `PATH`.
 On Windows, use WSL for Tippecanoe if it is not available natively.
 
+### Fuel type taxonomy
+
+Plant generation types are defined in [`data/reference/fuel_types.json`](data/reference/fuel_types.json).
+Each entry controls the map legend order, label, marker colour, and keyword-based
+classification of OSM `plant:source` tags. Python prep uses the same taxonomy via
+`fuel_taxonomy.py`, and the browser loads it at startup for plant styling.
+
+After editing fuel types or keywords, refresh the plant web layer so generated
+`source_bucket` values are updated:
+
+```powershell
+python scripts/prepare_map_data.py --region uk --skip-lines --skip-substations --skip-turbines --skip-zones
+```
+
+Ambiguous fuels, such as pumped vs non-pumped hydro or CCGT vs generic gas, can
+only be split automatically when the OSM source tags include enough detail.
+
 ### UK plant BMU mapping
 
 UK balancing-mechanism unit (BMU) ids are kept **separate** from OSM plant geometry. The map joins them at popup time.
@@ -431,7 +448,17 @@ UK balancing-mechanism unit (BMU) ids are kept **separate** from OSM plant geome
 
 **Mapping table columns:** `osm_id`, `plant_name`, `bmu_id` (Elexon, e.g. `E_ABERDARE`), `ngc_bmu_id` (e.g. `ABERU-1`), `bmu_type` (e.g. `E`), `source` (`auto` / `manual` / `migrated`), `notes`.
 
-Multi-unit stations need **one row per BMU**. Existing CSV rows are never overwritten — scripts only append new auto matches.
+Multi-unit stations need **one row per BMU**. Existing CSV rows are never overwritten — scripts only append new **high-confidence** auto matches.
+
+**Why not all ~3k Elexon BMUs appear on the map:** the map only plots BMUs that are linked to a physical plant asset. Supplier, virtual, import, and demand BMUs remain in the Elexon reference but are classified as reference-only and are not shown as map markers.
+
+| File | Role |
+| --- | --- |
+| `data/reference/uk_manual_plants.csv` | Physical stations missing from OSM (e.g. Dinorwig); merged into `uk_plants_web.geojson` on sync |
+| `data/reference/uk_bmu_unmapped_displayable.csv` | Physical generation/storage/interconnector BMUs still missing from the plant map |
+| `data/reference/uk_bmu_candidate_matches.csv` | Medium/low-confidence plant↔BMU matches for manual review |
+| `data/reference/uk_bmu_reference_only.csv` | BMUs intentionally not plotted (supplier, virtual, demand, etc.) |
+| `data/reference/uk_bmu_fuel_types.csv` | Full Elexon BMU list with fuel types |
 
 #### Routine update
 
@@ -441,9 +468,11 @@ After refreshing OSM exports or editing plant data:
 # 1. Merge raw OSM into the editable plants GeoJSON (fills blank fields only)
 python scripts/sync_uk_plants.py
 
-# 2. Refresh Elexon registry, propose new auto links, export JSON for the map
+# 2. Refresh Elexon registry, propose high-confidence auto links, export JSON + coverage reports
 python scripts/propose_plant_bmu_map.py --fetch
 ```
+
+`propose_plant_bmu_map.py` also writes the three BMU coverage CSVs under `data/reference/` unless you pass `--skip-coverage-reports`.
 
 `prepare_map_data.py --region uk` runs the same OSM plant merge as `sync_uk_plants.py` (other UK layers unchanged). You can skip plants when you have already synced:
 
@@ -468,6 +497,25 @@ python scripts/propose_plant_bmu_map.py --list-unmatched data/reference/uk_plant
 ```
 
 Review the CSV and add manual rows for plants you care about. Many OSM plants are not registered BMUs, so gaps are expected.
+
+#### Missing physical stations (OSM gaps)
+
+If Elexon has BMUs for a real station but OSM does not, add one row to `data/reference/uk_manual_plants.csv` with coordinates and fuel bucket, then re-sync plants:
+
+```powershell
+python scripts/sync_uk_plants.py
+python scripts/propose_plant_bmu_map.py
+```
+
+Add the BMU links in `uk_plant_bmu_map.csv` with `source=manual` if auto-matching does not pick them up.
+
+#### Review unmapped displayable BMUs
+
+```powershell
+python scripts/propose_plant_bmu_map.py --fetch
+```
+
+Open `data/reference/uk_bmu_unmapped_displayable.csv` for physical BMUs still without a plant asset. Use `uk_bmu_candidate_matches.csv` to approve uncertain matches manually.
 
 #### Deploy
 

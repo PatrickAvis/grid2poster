@@ -1,0 +1,137 @@
+{
+  "types": [
+    {
+      "id": "nuclear",
+      "label": "Nuclear",
+      "color": "#6a1b9a",
+      "keywords": ["nuclear"]
+    },
+    {
+      "id": "gas_ccgt",
+      "label": "Gas CCGT",
+      "color": "#ef6c00",
+      "keywords": ["ccgt", "combined cycle", "combined-cycle"]
+    },
+    {
+      "id": "gas_ocgt",
+      "label": "Gas OCGT",
+      "color": "#ff9800",
+      "keywords": ["ocgt", "open cycle", "open-cycle", "gas turbine"]
+    },
+    {
+      "id": "gas_chp",
+      "label": "Gas CHP",
+      "color": "#f57c00",
+      "keywords": ["chp", "combined heat", "cogeneration"]
+    },
+    {
+      "id": "gas",
+      "label": "Gas",
+      "color": "#e65100",
+      "keywords": ["natural gas", "gas", "lng", "methane"]
+    },
+    {
+      "id": "coal",
+      "label": "Coal",
+      "color": "#4e342e",
+      "keywords": ["lignite", "coal"]
+    },
+    {
+      "id": "wind_offshore",
+      "label": "Offshore wind",
+      "color": "#01579b",
+      "keywords": ["offshore wind", "wind offshore"]
+    },
+    {
+      "id": "wind_onshore",
+      "label": "Onshore wind",
+      "color": "#0288d1",
+      "keywords": ["onshore wind", "wind onshore"]
+    },
+    {
+      "id": "wind",
+      "label": "Wind",
+      "color": "#03a9f4",
+      "keywords": ["wind"]
+    },
+    {
+      "id": "solar",
+      "label": "Solar",
+      "color": "#f9a825",
+      "keywords": ["photovoltaic", "solar", "pv"]
+    },
+    {
+      "id": "hydro_pumped",
+      "label": "Pumped storage",
+      "color": "#004d40",
+      "keywords": ["pumped storage", "pumped-storage", "pump storage"],
+      "name_keywords": [
+        "dinorwig",
+        "electric mountain",
+        "ffestiniog power station",
+        "cruachan power station",
+        "foyers power station"
+      ]
+    },
+    {
+      "id": "hydro_non_pumped",
+      "label": "Non-pumped hydro",
+      "color": "#00897b",
+      "keywords": ["run of river", "run-of-river", "hydro", "water"]
+    },
+    {
+      "id": "tidal",
+      "label": "Tidal",
+      "color": "#00acc1",
+      "keywords": ["tidal", "tide"]
+    },
+    {
+      "id": "wave",
+      "label": "Wave",
+      "color": "#26c6da",
+      "keywords": ["wave"]
+    },
+    {
+      "id": "biomass",
+      "label": "Biomass",
+      "color": "#558b2f",
+      "keywords": ["biomass", "biofuel", "wood"]
+    },
+    {
+      "id": "biogas",
+      "label": "Biogas",
+      "color": "#7cb342",
+      "keywords": ["biogas"]
+    },
+    {
+      "id": "waste",
+      "label": "Waste",
+      "color": "#827717",
+      "keywords": ["waste", "landfill"]
+    },
+    {
+      "id": "battery",
+      "label": "Battery storage",
+      "color": "#455a64",
+      "keywords": ["battery", "bess", "storage"]
+    },
+    {
+      "id": "oil",
+      "label": "Oil",
+      "color": "#5d4037",
+      "keywords": ["diesel", "petroleum", "oil"]
+    },
+    {
+      "id": "geothermal",
+      "label": "Geothermal",
+      "color": "#ad1457",
+      "keywords": ["geothermal"]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "color": "#757575",
+      "keywords": []
+    }
+  ]
+}

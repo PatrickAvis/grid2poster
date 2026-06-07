@@ -1,0 +1,7 @@
+osm_id,plant_name,plant_source_bucket,plant_capacity_mw,bmu_id,ngc_bmu_id,bmUnitName,fuelType,bmUnitType,confidence,reason,fuel_compatible
+way/951797053,Hirwaun,battery,21.76,T_HIRWN-1,HIRWN-1,Hirwaun 1,OCGT,T,medium,bmu_site_name;fuel_mismatch,False
+way/956007730,Broxburn Battery Storage,battery,20.0,E_BROXB-1,BROXB-1,BroxburnBattery,OTHER,E,medium,site_name_contains,True
+way/1421373804,Cathkin BESS,battery,50.0,E_CATHB-1,CATHB-1,CathkinBattery,OTHER,E,medium,site_name_contains,True
+way/1484246598,Broxburn BESS,battery,50.0,E_BROXB-1,BROXB-1,BroxburnBattery,OTHER,E,medium,site_name_contains,True
+way/143902275,Spalding Power Station,gas,860.0,T_SEEL-1,SEEL-1,Spalding Energy Expansion Ltd,OCGT,T,medium,site_name_contains,True
+relation/19293473,Tye Lane - Solar Power Station,solar,49.9,T_TYLNB-1,TYLNB-1,Tye Lane BESS,,T,medium,site_name_contains,

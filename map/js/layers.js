@@ -8,6 +8,7 @@ import {
 } from "./legends.js";
 import { attachLazyPopup, plantPropsForPopup, popupRows, turbinePropsForPopup } from "./popups.js";
 import { loadLayerData, createLayerFromData } from "./sources/index.js";
+import { fuelTypeOrder } from "./fuelTypes.js";
 import {
   lineStyle,
   lineTypeBucket,
@@ -144,9 +145,10 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       delete plantBucketGroups[bucket];
     }
 
+    const fuelOrder = fuelTypeOrder();
     const orderedBuckets = [
-      ...["nuclear", "gas", "coal", "wind", "solar", "hydro", "biomass", "oil", "other"].filter((b) => byBucket.has(b)),
-      ...[...byBucket.keys()].filter((bucket) => !["nuclear", "gas", "coal", "wind", "solar", "hydro", "biomass", "oil", "other"].includes(bucket)).sort(),
+      ...fuelOrder.filter((bucket) => byBucket.has(bucket)),
+      ...[...byBucket.keys()].filter((bucket) => !fuelOrder.includes(bucket)).sort(),
     ];
 
     for (const bucket of orderedBuckets) {

@@ -12526,5 +12526,59 @@
     "bmu_type": "T",
     "source": "auto",
     "notes": null
+  },
+  {
+    "osm_id": "manual/dinorwig",
+    "plant_name": "Dinorwig Power Station",
+    "bmu_id": "T_DINO-1",
+    "ngc_bmu_id": "DINO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Manual plant point; absent from OSM plant export"
+  },
+  {
+    "osm_id": "manual/dinorwig",
+    "plant_name": "Dinorwig Power Station",
+    "bmu_id": "T_DINO-2",
+    "ngc_bmu_id": "DINO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Manual plant point; absent from OSM plant export"
+  },
+  {
+    "osm_id": "manual/dinorwig",
+    "plant_name": "Dinorwig Power Station",
+    "bmu_id": "T_DINO-3",
+    "ngc_bmu_id": "DINO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Manual plant point; absent from OSM plant export"
+  },
+  {
+    "osm_id": "manual/dinorwig",
+    "plant_name": "Dinorwig Power Station",
+    "bmu_id": "T_DINO-4",
+    "ngc_bmu_id": "DINO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Manual plant point; absent from OSM plant export"
+  },
+  {
+    "osm_id": "manual/dinorwig",
+    "plant_name": "Dinorwig Power Station",
+    "bmu_id": "T_DINO-5",
+    "ngc_bmu_id": "DINO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Manual plant point; absent from OSM plant export"
+  },
+  {
+    "osm_id": "manual/dinorwig",
+    "plant_name": "Dinorwig Power Station",
+    "bmu_id": "T_DINO-6",
+    "ngc_bmu_id": "DINO-6",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Manual plant point; absent from OSM plant export"
   }
 ]

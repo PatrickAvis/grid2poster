@@ -14,7 +14,8 @@ from bmu_data import (
     save_plant_bmu_map,
     strip_bmu_from_plants,
 )
-from prepare import bucket_plant_source, parse_capacity_to_mw
+from manual_plants import merge_manual_plants
+from prepare import bucket_plant_row, parse_capacity_to_mw
 
 WEB_PLANT_COLS = [
     "osm_id",
@@ -97,7 +98,7 @@ def plants_from_raw(source: Path) -> gpd.GeoDataFrame:
         frame["capacity_mw"] = capacity_raw.apply(parse_capacity_to_mw)
     source_raw = frame.get("plant:source")
     if source_raw is not None:
-        frame["source_bucket"] = source_raw.apply(bucket_plant_source)
+        frame["source_bucket"] = frame.apply(bucket_plant_row, axis=1)
     return trim_plant_columns(frame)
 
 
@@ -130,6 +131,9 @@ def merge_plant_properties(existing: pd.Series, incoming: pd.Series) -> pd.Serie
         if col in BMU_FIELDS or col == "geometry":
             continue
         incoming_value = incoming[col]
+        if col == "source_bucket" and not is_empty(incoming_value):
+            merged[col] = incoming_value
+            continue
         if col not in merged.index:
             if not is_empty(incoming_value):
                 merged[col] = incoming_value
@@ -287,6 +291,7 @@ def sync_uk_plants(
         frame = plants_from_raw(raw_source)
 
     frame = dedupe_plants_ground_truth(frame)
+    frame = merge_manual_plants(frame)
 
     ground_truth_path.parent.mkdir(parents=True, exist_ok=True)
     frame.to_crs("EPSG:4326").to_file(ground_truth_path, driver="GeoJSON")

@@ -1391,3 +1391,9 @@ node/13164880249,Main Boilerhouse,T_DIDCB6,DIDCB6,T,auto,
 node/13164880249,Main Boilerhouse,T_KEAD-2,KEAD-2,T,auto,
 node/13164880249,Main Boilerhouse,T_LBAR-1,LBAR-1,T,auto,
 node/13164880249,Main Boilerhouse,T_TSREP-1,TSREP-1,T,auto,
+manual/dinorwig,Dinorwig Power Station,T_DINO-1,DINO-1,T,manual,Manual plant point; absent from OSM plant export
+manual/dinorwig,Dinorwig Power Station,T_DINO-2,DINO-2,T,manual,Manual plant point; absent from OSM plant export
+manual/dinorwig,Dinorwig Power Station,T_DINO-3,DINO-3,T,manual,Manual plant point; absent from OSM plant export
+manual/dinorwig,Dinorwig Power Station,T_DINO-4,DINO-4,T,manual,Manual plant point; absent from OSM plant export
+manual/dinorwig,Dinorwig Power Station,T_DINO-5,DINO-5,T,manual,Manual plant point; absent from OSM plant export
+manual/dinorwig,Dinorwig Power Station,T_DINO-6,DINO-6,T,manual,Manual plant point; absent from OSM plant export

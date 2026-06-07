@@ -12,6 +12,7 @@ import shapely
 from shapely.ops import unary_union
 
 from common import tqdm
+from fuel_taxonomy import bucket_fuel_properties, bucket_fuel_source, fuel_type_ids
 
 
 def parse_voltage_to_kv(value: Any) -> float | None:
@@ -102,71 +103,22 @@ def parse_capacity_to_mw(value: Any) -> float:
     return float(sum(values)) if values else float("nan")
 
 
-# Plant:source values are bucketed into these categories for marker coloring;
-# the order also fixes the plant legend row ordering.
-PLANT_SOURCE_BUCKETS: tuple[str, ...] = (
-    "solar",
-    "wind",
-    "hydro",
-    "nuclear",
-    "coal",
-    "gas",
-    "oil",
-    "biomass",
-    "other",
-)
-
-# Substring → bucket, checked in order so e.g. "biogas" matches biomass before
-# the bare "gas" keyword. Rare sources fold into the nearest bucket (tidal →
-# hydro, waste → biomass); the rest (geothermal, battery, ...) become "other".
-_PLANT_SOURCE_KEYWORDS: tuple[tuple[str, str], ...] = (
-    ("photovoltaic", "solar"),
-    ("solar", "solar"),
-    ("pv", "solar"),
-    ("wind", "wind"),
-    ("hydro", "hydro"),
-    ("tidal", "hydro"),
-    ("wave", "hydro"),
-    ("water", "hydro"),
-    ("nuclear", "nuclear"),
-    ("lignite", "coal"),
-    ("coal", "coal"),
-    ("biomass", "biomass"),
-    ("biogas", "biomass"),
-    ("biofuel", "biomass"),
-    ("wood", "biomass"),
-    ("waste", "biomass"),
-    ("gas", "gas"),
-    ("diesel", "oil"),
-    ("petroleum", "oil"),
-    ("oil", "oil"),
-)
+# Plant:source values are bucketed via data/reference/fuel_types.json.
+PLANT_SOURCE_BUCKETS: tuple[str, ...] = fuel_type_ids()
 
 
 def bucket_plant_source(source: Any) -> str:
-    """Map an OSM plant:source tag onto one of PLANT_SOURCE_BUCKETS."""
-    if source is None:
-        return "other"
-    if isinstance(source, float) and np.isnan(source):
-        return "other"
-    if isinstance(source, (list, tuple, set)):
-        for item in source:
-            bucket = bucket_plant_source(item)
-            if bucket != "other":
-                return bucket
-        return "other"
+    """Map an OSM plant:source tag onto one of the fuel taxonomy buckets."""
+    return bucket_fuel_source(source)
 
-    text = str(source).lower()
-    # Multi-source plants ("gas;oil") are colored by their first recognizable
-    # source — usually the dominant one by tagging convention.
-    for token in re.split(r"[;,/|]+", text):
-        token = token.strip()
-        if not token:
-            continue
-        for keyword, bucket in _PLANT_SOURCE_KEYWORDS:
-            if keyword in token:
-                return bucket
-    return "other"
+
+def bucket_plant_row(row: Any) -> str:
+    """Map an OSM plant row onto one of the fuel taxonomy buckets."""
+    return bucket_fuel_properties(
+        row.get("plant:source"),
+        row.get("name"),
+        row.get("operator"),
+    )
 
 
 def prepare_lines(

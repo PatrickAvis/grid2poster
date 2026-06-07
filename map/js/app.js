@@ -9,6 +9,7 @@ import { createLayerManager } from "./layers.js";
 import { createZoneFilter } from "./zones.js";
 import { buildLayerPanel, buildRegionSelector, buildSearchPanel, fitRegionBounds, setMapTitle } from "./ui.js";
 import { boundsFromGeoJson, pointInPolygonGeometry } from "./utils.js";
+import { loadFuelTypes } from "./fuelTypes.js";
 
 const statusEl = document.getElementById("status");
 let map;
@@ -101,6 +102,7 @@ async function initRegion(regionId) {
 }
 
 async function main() {
+  await loadFuelTypes();
   catalog = await loadCatalog();
   const regionId = resolveRegionId(catalog);
 

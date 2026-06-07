@@ -1,12 +1,12 @@
 import {
   LINE_TYPE_COLORS,
   PLANT_CAP_REF_MW,
-  PLANT_COLORS,
   PLANT_MARKER_FALLBACK_RADIUS,
   PLANT_MARKER_MAX_RADIUS,
   PLANT_MARKER_MIN_RADIUS,
   SUBSTATION_COLORS,
 } from "./constants.js";
+import { bucketFuelProperties, bucketFuelSource, fuelTypeColor, hasFuelType } from "./fuelTypes.js";
 import { parseCapacityToMw, parseVoltageKv } from "./utils.js";
 
 const DNO_FILL_COLORS = [
@@ -102,24 +102,16 @@ export function plantCapacityMw(props) {
 }
 
 export function bucketPlantSource(source) {
-  if (!source) return "other";
-  const text = String(source).toLowerCase();
-  if (text.includes("solar") || text.includes("photovoltaic") || text.includes("pv")) return "solar";
-  if (text.includes("wind")) return "wind";
-  if (text.includes("hydro") || text.includes("tidal") || text.includes("wave")) return "hydro";
-  if (text.includes("nuclear")) return "nuclear";
-  if (text.includes("coal") || text.includes("lignite")) return "coal";
-  if (text.includes("biomass") || text.includes("biogas") || text.includes("wood")) return "biomass";
-  if (text.includes("gas")) return "gas";
-  if (text.includes("oil") || text.includes("diesel") || text.includes("petroleum")) return "oil";
-  return "other";
+  return bucketFuelSource(source);
 }
 
 export function plantSourceBucket(props) {
-  const bucket = props.source_bucket || bucketPlantSource(
+  const bucket = props.source_bucket || bucketFuelProperties(
     props["plant:source"] || props.generator_source || props.source,
+    props.name,
+    props.operator,
   );
-  return PLANT_COLORS[bucket] ? bucket : "other";
+  return hasFuelType(bucket) ? bucket : "other";
 }
 
 export function plantMarkerRadius(props) {
@@ -131,7 +123,7 @@ export function plantMarkerRadius(props) {
 
 export function plantPolygonStyle(props) {
   const bucket = plantSourceBucket(props);
-  const color = PLANT_COLORS[bucket] || PLANT_COLORS.other;
+  const color = fuelTypeColor(bucket);
   return {
     color: "#263238",
     weight: 1,
@@ -143,7 +135,7 @@ export function plantPolygonStyle(props) {
 
 export function plantMarkerStyle(props) {
   const bucket = plantSourceBucket(props);
-  const color = PLANT_COLORS[bucket] || PLANT_COLORS.other;
+  const color = fuelTypeColor(bucket);
   return {
     radius: plantMarkerRadius(props),
     fillColor: color,
@@ -182,7 +174,7 @@ export function substationMarkerStyle(props) {
 export function turbineMarkerStyle() {
   return {
     radius: 2,
-    fillColor: PLANT_COLORS.wind,
+    fillColor: fuelTypeColor("wind"),
     color: "#263238",
     weight: 0.5,
     opacity: 0.85,

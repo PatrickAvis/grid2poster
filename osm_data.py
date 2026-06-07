@@ -582,7 +582,7 @@ def fetch_power_plants(
     """
     # Distinct cache namespaces ("power_plants_v1"/"power_plant_tile_v1") keep
     # plant tiles from ever colliding with the line tile cache.
-    key = cache_key("power_plants_v2", country, tile_size_km, render_crs)
+    key = cache_key("power_plants_v3", country, tile_size_km, render_crs)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
@@ -593,7 +593,7 @@ def fetch_power_plants(
     print(f"Downloading OSM power plants: power=plant across {len(tiles):,} tiles")
 
     def tile_cache_key(tile_geom: Any) -> str:
-        return cache_key("power_plant_tile_v2", country, tile_geom.wkb_hex)
+        return cache_key("power_plant_tile_v3", country, tile_geom.wkb_hex)
 
     frames = _fetch_tiles(
         tiles,

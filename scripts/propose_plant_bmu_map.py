@@ -13,13 +13,16 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from bmu_data import (
+    BMU_REFERENCE_PATH,
     PLANT_BMU_MAP_PATH,
     export_plant_bmu_map_json,
     fetch_bmunits,
+    load_bmunits,
     plants_missing_bmu_map,
     propose_plant_bmu_map,
     save_bmunits,
     save_plant_bmu_map,
+    write_bmu_coverage_reports,
 )
 from region_catalog import catalog_layer_path, map_path, raw_path
 
@@ -56,6 +59,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         metavar="CSV",
         help="Write plants with no map entry to this CSV",
+    )
+    parser.add_argument(
+        "--skip-coverage-reports",
+        action="store_true",
+        help="Skip writing unmapped displayable, candidate match, and reference-only BMU CSVs",
     )
     return parser.parse_args()
 
@@ -101,6 +109,13 @@ def main() -> int:
         except ValueError:
             rel = args.list_unmatched
         print(f"Unmatched plants: {len(missing):,} -> {rel}")
+
+    if not args.skip_coverage_reports:
+        if BMU_REFERENCE_PATH.exists():
+            bmunits = load_bmunits(BMU_REFERENCE_PATH)
+            write_bmu_coverage_reports(plants, frame, bmunits)
+        else:
+            print("Skipping coverage reports: BMU reference not found")
 
     return 0
 
