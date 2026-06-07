@@ -236,7 +236,7 @@ function gspFillColor(props) {
 export function zoneStyle(kind, selected = false, props = {}) {
   const color = kind === "dno" ? dnoFillColor(props) : gspFillColor(props);
   return {
-    color: selected ? "#ff6f00" : "#37474f",
+    color: selected ? "#000000" : "#37474f",
     weight: selected ? 3 : (kind === "dno" ? 1.4 : 1),
     opacity: selected ? 0.95 : 0.7,
     fillColor: color,
