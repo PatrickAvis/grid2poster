@@ -412,6 +412,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
             use_cache=not args.no_cache,
         )
     cable_buffer_km = args.cable_sea_buffer_km if args.include_cables else 0.0
+    offshore_buffer_km = args.cable_sea_buffer_km
     if args.single_query:
         raw_lines = fetch_power_features_single(
             country=args.country,
@@ -448,6 +449,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
             boundary=boundary_wgs84,
             tile_size_km=args.tile_size_km,
             render_crs=args.crs,
+            sea_buffer_km=offshore_buffer_km,
             use_cache=not args.no_cache,
             tile_delay=args.tile_delay,
         )
@@ -541,6 +543,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
             boundary=boundary_wgs84,
             tile_size_km=args.tile_size_km,
             render_crs=args.crs,
+            sea_buffer_km=offshore_buffer_km,
             use_cache=not args.no_cache,
             tile_delay=args.tile_delay,
         )

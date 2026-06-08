@@ -107,6 +107,43 @@ export function buildSearchPanel(onSearch, onSelect) {
   };
 }
 
+export function buildBasemapControl(map, basemapLayer) {
+  const slider = document.getElementById("basemap-intensity");
+  const valueEl = document.getElementById("basemap-intensity-value");
+  if (!slider) return;
+
+  function applyIntensity(pct) {
+    const tilePane = map.getPane("tilePane");
+    const clamped = Math.max(0, Math.min(100, pct));
+    const intensity = clamped / 100;
+
+    if (intensity === 0) {
+      if (map.hasLayer(basemapLayer)) map.removeLayer(basemapLayer);
+      if (tilePane) tilePane.style.filter = "";
+      if (valueEl) valueEl.textContent = "Off";
+      return;
+    }
+
+    if (!map.hasLayer(basemapLayer)) basemapLayer.addTo(map);
+    basemapLayer.setOpacity(intensity);
+
+    const subdued = 1 - intensity;
+    if (tilePane) {
+      tilePane.style.filter = intensity >= 0.99
+        ? ""
+        : `grayscale(${subdued * 0.75}) brightness(${1 + subdued * 0.1}) contrast(${1 - subdued * 0.15})`;
+    }
+
+    if (valueEl) valueEl.textContent = `${Math.round(clamped)}%`;
+  }
+
+  slider.addEventListener("input", () => {
+    applyIntensity(Number(slider.value));
+  });
+
+  applyIntensity(Number(slider.value));
+}
+
 export function setMapTitle(title) {
   const heading = document.getElementById("map-title");
   if (heading) {

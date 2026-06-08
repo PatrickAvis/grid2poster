@@ -1,8 +1,11 @@
 import { LINE_TYPE_ORDER } from "./constants.js";
 import { buildLayerConfig } from "./layerDefs.js";
 import {
+  buildEtysLegend,
   buildLineLegend,
   buildPlantLegend,
+  compareEtysBoundaries,
+  setEtysLegendVisible,
   setLineLegendVisible,
   setPlantLegendVisible,
 } from "./legends.js";
@@ -46,7 +49,13 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   let turbinesRequested = false;
   const plantBucketGroups = {};
   const plantBucketVisibility = {};
+  const etysBucketGroups = {};
+  const etysBucketVisibility = {};
   let searchHighlight = null;
+
+  function etysBoundaryBucketId(props) {
+    return props.boundary_id || props.name || "unknown";
+  }
 
   function scaledLineStyle(props) {
     const style = lineStyle(props);
@@ -164,9 +173,55 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     return container;
   }
 
+  function createEtysBoundaryLayer(data, layerConfig) {
+    const byBucket = new Map();
+    for (const feature of data.features || []) {
+      const bucket = etysBoundaryBucketId(feature.properties || {});
+      if (!byBucket.has(bucket)) byBucket.set(bucket, []);
+      byBucket.get(bucket).push(feature);
+    }
+
+    const container = L.layerGroup();
+    for (const key of Object.keys(etysBucketGroups)) {
+      delete etysBucketGroups[key];
+    }
+
+    const buckets = [...byBucket.keys()].sort(compareEtysBoundaries);
+    for (const bucket of buckets) {
+      const bucketGroup = L.geoJSON(
+        { type: "FeatureCollection", features: byBucket.get(bucket) },
+        {
+          style: () => (layerConfig.styleFn ? layerConfig.styleFn() : undefined),
+          onEachFeature: (feature, layer) => {
+            const props = feature.properties || {};
+            attachLazyPopup(layer, props, layerConfig.popupKeys);
+            const label = props.name || props.boundary_id;
+            if (label) {
+              layer.bindTooltip(String(label), {
+                permanent: true,
+                direction: "center",
+                className: "boundary-line-label",
+              });
+            }
+          },
+        },
+      );
+      etysBucketGroups[bucket] = bucketGroup;
+      etysBucketVisibility[bucket] = etysBucketVisibility[bucket] ?? true;
+      if (etysBucketVisibility[bucket]) {
+        container.addLayer(bucketGroup);
+      }
+    }
+
+    return container;
+  }
+
   function buildGeoJsonLayer(layerKey, data, layerConfig) {
     if (layerKey === "lines") {
       return createLineLayer(data, layerConfig);
+    }
+    if (layerKey === "etys_boundaries") {
+      return createEtysBoundaryLayer(data, layerConfig);
     }
     if (layerKey === "plants") {
       return createPlantLayer(data, layerConfig, zoneFilter.geometry);
@@ -197,6 +252,16 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
           const props = feature.properties || {};
           const popupProps = layerConfig.popupPropsFn ? layerConfig.popupPropsFn(props) : props;
           attachLazyPopup(layer, popupProps, layerConfig.popupKeys);
+          if (layerConfig.lineLabels) {
+            const label = props.name || props.boundary_id;
+            if (label) {
+              layer.bindTooltip(String(label), {
+                permanent: true,
+                direction: "center",
+                className: "boundary-line-label",
+              });
+            }
+          }
         },
       },
     );
@@ -298,6 +363,55 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     syncPlantBucketLayers();
   }
 
+  function clearAllPlantBuckets(setStatus) {
+    for (const bucket of Object.keys(plantBucketGroups)) {
+      plantBucketVisibility[bucket] = false;
+    }
+    syncPlantBucketLayers();
+    buildPlantLegend(
+      plantBucketGroups,
+      plantBucketVisibility,
+      setPlantBucketVisible,
+      plantLegendOptions(setStatus),
+    );
+  }
+
+  function syncEtysBucketLayers() {
+    const parent = layerCache.etys_boundaries?.geoLayer;
+    if (!parent || !document.getElementById("toggle-etys_boundaries")?.checked) return;
+    for (const [bucket, group] of Object.entries(etysBucketGroups)) {
+      const visible = etysBucketVisibility[bucket] !== false;
+      if (visible && !parent.hasLayer(group)) parent.addLayer(group);
+      if (!visible && parent.hasLayer(group)) parent.removeLayer(group);
+    }
+  }
+
+  function setEtysBucketVisible(bucket, visible) {
+    if (!etysBucketGroups[bucket]) return;
+    etysBucketVisibility[bucket] = visible;
+    syncEtysBucketLayers();
+  }
+
+  function setAllEtysBuckets(visible, setStatus) {
+    for (const bucket of Object.keys(etysBucketGroups)) {
+      etysBucketVisibility[bucket] = visible;
+    }
+    syncEtysBucketLayers();
+    buildEtysLegend(
+      etysBucketGroups,
+      etysBucketVisibility,
+      setEtysBucketVisible,
+      etysLegendOptions(setStatus),
+    );
+  }
+
+  function etysLegendOptions(setStatus) {
+    return {
+      onSelectAll: () => setAllEtysBuckets(true, setStatus),
+      onClearAll: () => setAllEtysBuckets(false, setStatus),
+    };
+  }
+
   function syncTurbineCheckboxes(enabled) {
     turbinesRequested = enabled;
     const main = document.getElementById("toggle-turbines");
@@ -311,6 +425,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       turbineMinZoom: config.turbineMinZoom,
       turbinesEnabled: turbinesRequested,
       onTurbinesToggle: (enabled) => setLayerEnabled("turbines", enabled, setStatus),
+      onClearAll: () => clearAllPlantBuckets(setStatus),
     };
   }
 
@@ -443,6 +558,10 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
         buildPlantLegend(plantBucketGroups, plantBucketVisibility, setPlantBucketVisible, plantLegendOptions(setStatus));
         setPlantLegendVisible(document.getElementById("toggle-plants")?.checked, plantBucketGroups);
       }
+      if (layerKey === "etys_boundaries") {
+        buildEtysLegend(etysBucketGroups, etysBucketVisibility, setEtysBucketVisible, etysLegendOptions(setStatus));
+        setEtysLegendVisible(document.getElementById("toggle-etys_boundaries")?.checked, etysBucketGroups);
+      }
       return geoLayer;
     })();
 
@@ -468,6 +587,12 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     if (layerCache.substations?.loaded) parts.push(`${layerCache.substations.count.toLocaleString()} substations`);
     if (layerCache.dno?.loaded) parts.push(`${layerCache.dno.count.toLocaleString()} DNO areas`);
     if (layerCache.gsp?.loaded) parts.push(`${layerCache.gsp.count.toLocaleString()} GSP regions`);
+    if (layerCache.generation_zones?.loaded) {
+      parts.push(`${layerCache.generation_zones.count.toLocaleString()} TNUoS generation zones`);
+    }
+    if (layerCache.etys_boundaries?.loaded) {
+      parts.push(`${layerCache.etys_boundaries.count.toLocaleString()} ETYS boundaries`);
+    }
     if (zoneFilter.label) parts.push(`filter: ${zoneFilter.label}`);
     if (!parts.length) {
       setStatus("Ready. Enable a layer to load data.");
@@ -492,6 +617,9 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       props.bmu_id,
       props.ngc_bmu_id,
       props.gsp_id,
+      props.zone_id,
+      props.tariff_zone,
+      props.boundary_id,
       props.dno_operator,
     ].filter(Boolean);
     return details.length ? `${label} · ${details.join(" · ")}` : label;
@@ -506,6 +634,10 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       "ngc_bmu_id",
       "gsp_id",
       "gsp_name",
+      "zone_id",
+      "zone_name",
+      "tariff_zone",
+      "boundary_id",
       "dno_name",
       "dno_operator",
       "substation",
@@ -601,10 +733,15 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
           syncPlantBucketLayers();
           setPlantLegendVisible(true, plantBucketGroups);
         }
+        if (layerKey === "etys_boundaries") {
+          syncEtysBucketLayers();
+          setEtysLegendVisible(true, etysBucketGroups);
+        }
       } else {
         map.removeLayer(layerGroups[layerKey]);
         if (layerKey === "lines") setLineLegendVisible(false, lineBucketGroups);
         if (layerKey === "plants") setPlantLegendVisible(false, plantBucketGroups);
+        if (layerKey === "etys_boundaries") setEtysLegendVisible(false, etysBucketGroups);
       }
       if (layerKey === "turbines") {
         syncTurbineCheckboxes(enabled);

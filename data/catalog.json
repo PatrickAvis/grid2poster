@@ -49,6 +49,18 @@
           "label": "GSP regions",
           "zone": true,
           "zoneKind": "gsp"
+        },
+        "generation_zones": {
+          "type": "geojson",
+          "path": "map/uk/uk_generation_charging_zones_web.geojson",
+          "label": "TNUoS generation zones",
+          "zone": true,
+          "zoneKind": "generation"
+        },
+        "etys_boundaries": {
+          "type": "geojson",
+          "path": "map/uk/uk_etys_boundaries_web.geojson",
+          "label": "ETYS transmission boundaries"
         }
       }
     },

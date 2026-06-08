@@ -5,6 +5,28 @@ import {
 } from "./constants.js";
 import { fuelTypeColor, fuelTypeLabel, fuelTypeOrder } from "./fuelTypes.js";
 
+const ETYS_BOUNDARY_COLOR = "#b71c1c";
+
+function etysBoundarySortKey(name) {
+  const match = String(name).match(/^([A-Z]+)(\d+(?:\.\d+)?)([a-z]?)$/);
+  if (!match) return [String(name), 0, ""];
+  return [match[1], parseFloat(match[2]), match[3] || ""];
+}
+
+export function compareEtysBoundaries(a, b) {
+  const left = etysBoundarySortKey(a);
+  const right = etysBoundarySortKey(b);
+  for (let idx = 0; idx < 3; idx += 1) {
+    if (left[idx] < right[idx]) return -1;
+    if (left[idx] > right[idx]) return 1;
+  }
+  return 0;
+}
+
+export function sortEtysBoundaryIds(ids) {
+  return [...ids].sort(compareEtysBoundaries);
+}
+
 export function buildLineLegend(
   lineBucketGroups,
   lineBucketVisibility,
@@ -129,6 +151,23 @@ export function buildPlantLegend(
     }
   }
 
+  let actionsEl = document.getElementById("plant-legend-actions");
+  if (!actionsEl) {
+    actionsEl = document.createElement("div");
+    actionsEl.id = "plant-legend-actions";
+    legendEl.appendChild(actionsEl);
+  }
+  actionsEl.replaceChildren();
+
+  if (buckets.length && options.onClearAll) {
+    const clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.className = "clear-filter";
+    clearBtn.textContent = "Clear all generation types";
+    clearBtn.addEventListener("click", options.onClearAll);
+    actionsEl.appendChild(clearBtn);
+  }
+
   legendEl.hidden = buckets.length === 0;
 }
 
@@ -136,4 +175,76 @@ export function setPlantLegendVisible(visible, plantBucketGroups) {
   const legendEl = document.getElementById("plant-legend");
   if (!legendEl) return;
   legendEl.hidden = !visible || Object.keys(plantBucketGroups).length === 0;
+}
+
+export function buildEtysLegend(
+  etysBucketGroups,
+  etysBucketVisibility,
+  setEtysBucketVisible,
+  options = {},
+) {
+  const legendEl = document.getElementById("etys-legend");
+  const listEl = document.getElementById("etys-legend-list");
+  if (!legendEl || !listEl) return;
+
+  listEl.replaceChildren();
+
+  const buckets = sortEtysBoundaryIds(Object.keys(etysBucketGroups));
+
+  for (const bucket of buckets) {
+    const label = document.createElement("label");
+    label.className = "plant-legend-item";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = etysBucketVisibility[bucket] !== false;
+    checkbox.addEventListener("change", (event) => {
+      setEtysBucketVisible(bucket, event.target.checked);
+    });
+
+    const swatch = document.createElement("span");
+    swatch.className = "line-swatch";
+    swatch.style.background = ETYS_BOUNDARY_COLOR;
+
+    const text = document.createTextNode(bucket);
+
+    label.append(checkbox, swatch, text);
+    listEl.appendChild(label);
+  }
+
+  let actionsEl = document.getElementById("etys-legend-actions");
+  if (!actionsEl) {
+    actionsEl = document.createElement("div");
+    actionsEl.id = "etys-legend-actions";
+    actionsEl.className = "legend-actions";
+    legendEl.appendChild(actionsEl);
+  }
+  actionsEl.replaceChildren();
+
+  if (buckets.length) {
+    if (options.onSelectAll) {
+      const selectBtn = document.createElement("button");
+      selectBtn.type = "button";
+      selectBtn.className = "clear-filter";
+      selectBtn.textContent = "Select all boundaries";
+      selectBtn.addEventListener("click", options.onSelectAll);
+      actionsEl.appendChild(selectBtn);
+    }
+    if (options.onClearAll) {
+      const clearBtn = document.createElement("button");
+      clearBtn.type = "button";
+      clearBtn.className = "clear-filter";
+      clearBtn.textContent = "Clear all boundaries";
+      clearBtn.addEventListener("click", options.onClearAll);
+      actionsEl.appendChild(clearBtn);
+    }
+  }
+
+  legendEl.hidden = buckets.length === 0;
+}
+
+export function setEtysLegendVisible(visible, etysBucketGroups) {
+  const legendEl = document.getElementById("etys-legend");
+  if (!legendEl) return;
+  legendEl.hidden = !visible || Object.keys(etysBucketGroups).length === 0;
 }

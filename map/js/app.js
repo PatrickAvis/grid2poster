@@ -7,7 +7,14 @@ import {
 } from "./catalog.js";
 import { createLayerManager } from "./layers.js";
 import { createZoneFilter } from "./zones.js";
-import { buildLayerPanel, buildRegionSelector, buildSearchPanel, fitRegionBounds, setMapTitle } from "./ui.js";
+import {
+  buildBasemapControl,
+  buildLayerPanel,
+  buildRegionSelector,
+  buildSearchPanel,
+  fitRegionBounds,
+  setMapTitle,
+} from "./ui.js";
 import { boundsFromGeoJson, pointInPolygonGeometry } from "./utils.js";
 import { loadFuelTypes } from "./fuelTypes.js";
 
@@ -107,10 +114,11 @@ async function main() {
   const regionId = resolveRegionId(catalog);
 
   map = L.map("map", { zoomControl: true, preferCanvas: true }).setView([54.5, -3.5], 6);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  const basemapLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
+  buildBasemapControl(map, basemapLayer);
 
   buildRegionSelector(catalog, regionId, (newRegionId) => {
     initRegion(newRegionId);

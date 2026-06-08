@@ -6,6 +6,9 @@ export function createZoneFilter(layerManager, state) {
 
   function zoneLabel(props, kind) {
     if (kind === "dno") return props.name || props.operator || "DNO area";
+    if (kind === "generation") {
+      return props.zone_name || props.name || props.tariff_zone || props.zone_id || "Generation zone";
+    }
     return props.gsp_name || props.gsp_id || props.name || "GSP region";
   }
 
@@ -57,7 +60,9 @@ export function createZoneFilter(layerManager, state) {
         layer._zoneProps = props;
         attachLazyPopup(layer, props, kind === "dno"
           ? ["name", "operator"]
-          : ["gsp_id", "gsp_name", "name"]);
+          : kind === "generation"
+            ? ["zone_name", "name", "zone_id", "tariff_zone"]
+            : ["gsp_id", "gsp_name", "name"]);
         layer.on("click", (event) => {
           L.DomEvent.stopPropagation(event);
           selectZone(feature, layer, kind);

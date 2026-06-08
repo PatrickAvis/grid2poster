@@ -314,6 +314,23 @@ def power_tag_values(include_minor_lines: bool, include_cables: bool) -> list[st
     return values
 
 
+def effective_tile_size_km(tile_size_km: float, sea_buffer_km: float) -> float:
+    """Shrink Overpass grid cells when querying a sea-buffered extent.
+
+    A 400 km nominal tile over a 600 km offshore margin often intersects an
+    area many times larger than Overpass allows, causing read timeouts.
+    """
+    if sea_buffer_km <= 0:
+        return tile_size_km
+    if sea_buffer_km >= 500:
+        return min(tile_size_km, 80.0)
+    if sea_buffer_km >= 300:
+        return min(tile_size_km, 100.0)
+    if sea_buffer_km >= 150:
+        return min(tile_size_km, 150.0)
+    return min(tile_size_km, 200.0)
+
+
 def make_query_tiles(
     boundary: gpd.GeoDataFrame,
     tile_size_km: float,
@@ -323,6 +340,14 @@ def make_query_tiles(
     """Split a large country boundary into smaller projected tiles for Overpass."""
     if tile_size_km <= 0:
         raise ValueError("tile_size_km must be greater than zero")
+
+    effective_size = effective_tile_size_km(tile_size_km, sea_buffer_km)
+    if effective_size < tile_size_km:
+        print(
+            f"  Sea buffer {sea_buffer_km:g} km: using {effective_size:g} km Overpass tiles "
+            f"(requested {tile_size_km:g} km) to avoid timeouts",
+        )
+        tile_size_km = effective_size
 
     boundary_projected = boundary.to_crs(render_crs)
     country_geom = unary_union(boundary_projected.geometry)
@@ -571,6 +596,7 @@ def fetch_power_plants(
     boundary: gpd.GeoDataFrame,
     tile_size_km: float = 200,
     render_crs: str = "EPSG:8857",
+    sea_buffer_km: float = 0.0,
     use_cache: bool = True,
     tile_delay: float = 0,
 ) -> gpd.GeoDataFrame:
@@ -582,18 +608,24 @@ def fetch_power_plants(
     """
     # Distinct cache namespaces ("power_plants_v1"/"power_plant_tile_v1") keep
     # plant tiles from ever colliding with the line tile cache.
-    key = cache_key("power_plants_v3", country, tile_size_km, render_crs)
+    key = cache_key("power_plants_v4", country, tile_size_km, render_crs, sea_buffer_km)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
             print(f"Using cached power plants for {country}")
             return cached
 
-    tiles = make_query_tiles(boundary, tile_size_km=tile_size_km, render_crs=render_crs)
-    print(f"Downloading OSM power plants: power=plant across {len(tiles):,} tiles")
+    tiles = make_query_tiles(
+        boundary,
+        tile_size_km=tile_size_km,
+        render_crs=render_crs,
+        sea_buffer_km=sea_buffer_km,
+    )
+    buffer_note = f" (including {sea_buffer_km:g} km sea buffer)" if sea_buffer_km > 0 else ""
+    print(f"Downloading OSM power plants: power=plant across {len(tiles):,} tiles{buffer_note}")
 
     def tile_cache_key(tile_geom: Any) -> str:
-        return cache_key("power_plant_tile_v3", country, tile_geom.wkb_hex)
+        return cache_key("power_plant_tile_v4", country, sea_buffer_km, tile_geom.wkb_hex)
 
     frames = _fetch_tiles(
         tiles,
@@ -663,6 +695,7 @@ def fetch_wind_turbines(
     boundary: gpd.GeoDataFrame,
     tile_size_km: float = 200,
     render_crs: str = "EPSG:8857",
+    sea_buffer_km: float = 0.0,
     use_cache: bool = True,
     tile_delay: float = 0,
 ) -> gpd.GeoDataFrame:
@@ -672,18 +705,24 @@ def fetch_wind_turbines(
     so turbines tagged either way are included, then deduplicates on OSM identity.
     All downloaded OSM tag columns are preserved for export.
     """
-    key = cache_key("wind_turbines_v1", country, tile_size_km, render_crs)
+    key = cache_key("wind_turbines_v2", country, tile_size_km, render_crs, sea_buffer_km)
     if use_cache:
         cached = cache_get(key)
         if cached is not None:
             print(f"Using cached wind turbines for {country}")
             return cached
 
-    tiles = make_query_tiles(boundary, tile_size_km=tile_size_km, render_crs=render_crs)
+    tiles = make_query_tiles(
+        boundary,
+        tile_size_km=tile_size_km,
+        render_crs=render_crs,
+        sea_buffer_km=sea_buffer_km,
+    )
+    buffer_note = f" (including {sea_buffer_km:g} km sea buffer)" if sea_buffer_km > 0 else ""
     print(
         "Downloading OSM wind turbines: power=generator with "
         "generator:source=wind or generator:method=wind_turbine "
-        f"across {len(tiles):,} tiles"
+        f"across {len(tiles):,} tiles{buffer_note}"
     )
 
     frames: list[gpd.GeoDataFrame] = []
@@ -693,9 +732,10 @@ def fetch_wind_turbines(
 
         def tile_cache_key(tile_geom: Any, _tile_label: str = tile_label) -> str:
             return cache_key(
-                "wind_turbine_tile_v1",
+                "wind_turbine_tile_v2",
                 country,
                 _tile_label,
+                sea_buffer_km,
                 tile_geom.wkb_hex,
             )
 

@@ -24,7 +24,7 @@ data/
   catalog.json          # region registry, bounds, layer URLs and types
   raw/{region_id}/      # full OSM exports (gitignored)
   map/{region_id}/      # web GeoJSON and PMTiles
-  zones/{region_id}/    # optional zone overlays (UK DNO/GSP today)
+  zones/                # optional zone overlays (UK DNO/GSP/TNUoS generation zones today)
 ```
 
 Paths in the catalog are relative to `data/` (e.g. `map/uk/uk_plants_web.geojson`).
@@ -34,8 +34,13 @@ Paths in the catalog are relative to `data/` (e.g. `map/uk/uk_plants_web.geojson
 ```powershell
 # UK (alias)
 python scripts/export_uk.py --all
-python scripts/fetch_neso_zones.py
+python scripts/fetch_neso_zones.py              # all registered NESO boundary datasets
+python scripts/fetch_neso_zones.py --only generation
 python scripts/prepare_map_data.py --region uk
+# zones only (after fetch):
+python scripts/prepare_map_data.py --region uk --skip-lines --skip-plants --skip-substations --skip-turbines
+
+Offshore plants/turbines use a **250 km** sea buffer for UK (cables still use 600 km). Tile size auto-shrinks for buffered exports. If Overpass times out, abort and retry with `--tile-size-km 80 --tile-delay 45`, or raise `--offshore-sea-buffer-km 300` only if farms are still missing. Then `prepare_map_data.py` and `build_tiles.py --layer turbines`.
 ```
 
 ### UK plants and BMU (separate layers)

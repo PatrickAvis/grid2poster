@@ -1436,8 +1436,50 @@ way/34383063,Drax Power Station,T_DRAXX-12G,DRAXX-12G,T,manual,Candidate match: 
 way/34383063,Drax Power Station,T_DRAXX-5,DRAXX-5,T,manual,Candidate match: bmUnitName=T_DRAXX-5; fuelType=COAL; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
 way/34383063,Drax Power Station,T_DRAXX-6,DRAXX-6,T,manual,Candidate match: bmUnitName=T_DRAXX-6; fuelType=COAL; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
 way/34383063,Drax Power Station,T_DRAXX-9G,DRAXX-9G,T,manual,Candidate match: bmUnitName=T_DRAXX-9G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
-way/449382367,Cruachan Power Station,T_CRUA-1,CRUA-1,T,auto,
-way/449382367,Cruachan Power Station,T_CRUA-2,CRUA-2,T,auto,
-way/449382367,Cruachan Power Station,T_CRUA-3,CRUA-3,T,auto,
-way/449382367,Cruachan Power Station,T_CRUA-4,CRUA-4,T,auto,
-relation/14425529,Markinch Biomass,E_MARK-1,MARK-1,E,auto,
+way/616340682,Wind Farm,T_DBAWO-1,DBAWO-1,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBAWO-2,DBAWO-2,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBAWO-3,DBAWO-3,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBAWO-4,DBAWO-4,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBAWO-5,DBAWO-5,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBBWO-1,DBBWO-1,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBBWO-2,DBBWO-2,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBBWO-3,DBBWO-3,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBBWO-4,DBBWO-4,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_DBBWO-5,DBBWO-5,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_GORDW-2,GORDW-2,T,manual,Candidate match: bmUnitName=Gordonbush WF Extension; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_SGRWO-1,SGRWO-1,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_SGRWO-2,SGRWO-2,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_SGRWO-3,SGRWO-3,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_SGRWO-4,SGRWO-4,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_SGRWO-5,SGRWO-5,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616340682,Wind Farm,T_SGRWO-6,SGRWO-6,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 6; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/951797053,Hirwaun,T_HIRWN-1,HIRWN-1,T,manual,Candidate match: bmUnitName=Hirwaun 1; fuelType=OCGT; confidence=medium; reason=site_name_bmUnitName;fuel_mismatch; fuel_compatible=False
+way/616339818,Wind Farm,T_DBAWO-1,DBAWO-1,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBAWO-2,DBAWO-2,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBAWO-3,DBAWO-3,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBAWO-4,DBAWO-4,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBAWO-5,DBAWO-5,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBBWO-1,DBBWO-1,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBBWO-2,DBBWO-2,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBBWO-3,DBBWO-3,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBBWO-4,DBBWO-4,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_DBBWO-5,DBBWO-5,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_GORDW-2,GORDW-2,T,manual,Candidate match: bmUnitName=Gordonbush WF Extension; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_SGRWO-1,SGRWO-1,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_SGRWO-2,SGRWO-2,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_SGRWO-3,SGRWO-3,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_SGRWO-4,SGRWO-4,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_SGRWO-5,SGRWO-5,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/616339818,Wind Farm,T_SGRWO-6,SGRWO-6,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 6; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/956007730,Broxburn Battery Storage,E_BROXB-1,BROXB-1,E,manual,Candidate match: bmUnitName=BroxburnBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/1122850401,Whitelee Wind Farm Battery Storage,T_WHILW-1,WHILW-1,T,manual,Candidate match: bmUnitName=T_WHILW-1; fuelType=WIND; confidence=medium; reason=compact_site_name_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
+way/1421373804,Cathkin BESS,E_CATHB-1,CATHB-1,E,manual,Candidate match: bmUnitName=CathkinBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/1484246598,Broxburn BESS,E_BROXB-1,BROXB-1,E,manual,Candidate match: bmUnitName=BroxburnBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/143902275,Spalding Power Station,T_SEEL-1,SEEL-1,T,manual,Candidate match: bmUnitName=Spalding Energy Expansion Ltd; fuelType=OCGT; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+way/208757000,Immingham Power Station,T_HUMR-1,HUMR-1,T,manual,Candidate match: bmUnitName=HUMR-1; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True
+way/677933700,Grain CHP,T_GRAI-6,GRAI-6,T,manual,Candidate match: bmUnitName=T_GRAI-6; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True
+way/677933700,Grain CHP,T_GRAI-7,GRAI-7,T,manual,Candidate match: bmUnitName=T_GRAI-7; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True
+way/677933700,Grain CHP,T_GRAI-8,GRAI-8,T,manual,Candidate match: bmUnitName=T_GRAI-8; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True
+way/677933700,Grain CHP,T_GRAI1G,GRAI1G,T,manual,Candidate match: bmUnitName=T_GRAI1G; fuelType=OCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True
+way/677933700,Grain CHP,T_GRAI4G,GRAI4G,T,manual,Candidate match: bmUnitName=T_GRAI4G; fuelType=OCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True
+relation/19293473,Tye Lane - Solar Power Station,T_TYLNB-1,TYLNB-1,T,manual,Candidate match: bmUnitName=Tye Lane BESS; fuelType=; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=None

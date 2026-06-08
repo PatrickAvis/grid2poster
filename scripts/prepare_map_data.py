@@ -83,10 +83,12 @@ ZONE_KEEP_COLS = [
     "dno",
     "zone_id",
     "zone_name",
+    "tariff_zone",
     "id",
     "dno_zone_id",
     "dno_name",
     "dno_operator",
+    "boundary_id",
 ]
 
 LEGACY_POSTERS = REPO_ROOT / "posters"
@@ -262,6 +264,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dno-output", type=Path, default=None)
     parser.add_argument("--gsp-source", type=Path, default=None)
     parser.add_argument("--gsp-output", type=Path, default=None)
+    parser.add_argument("--generation-zones-source", type=Path, default=None)
+    parser.add_argument("--generation-zones-output", type=Path, default=None)
+    parser.add_argument("--etys-boundaries-source", type=Path, default=None)
+    parser.add_argument("--etys-boundaries-output", type=Path, default=None)
     parser.add_argument("--skip-lines", action="store_true")
     parser.add_argument("--skip-plants", action="store_true")
     parser.add_argument("--skip-substations", action="store_true")
@@ -301,6 +307,10 @@ def main() -> int:
         args.dno_output = default_output(args.region, "dno")
     if args.gsp_output is None and "gsp" in layers:
         args.gsp_output = default_output(args.region, "gsp")
+    if args.generation_zones_output is None and "generation_zones" in layers:
+        args.generation_zones_output = default_output(args.region, "generation_zones")
+    if args.etys_boundaries_output is None and "etys_boundaries" in layers:
+        args.etys_boundaries_output = default_output(args.region, "etys_boundaries")
 
     if not args.skip_lines and "lines" in layers:
         if not args.lines_source.exists():
@@ -332,6 +342,10 @@ def main() -> int:
             args.dno_source = zone_raw_path(args.region, "dno")
         if args.gsp_source is None:
             args.gsp_source = zone_raw_path(args.region, "gsp")
+        if args.generation_zones_source is None:
+            args.generation_zones_source = zone_raw_path(args.region, "generation")
+        if args.etys_boundaries_source is None:
+            args.etys_boundaries_source = zone_raw_path(args.region, "etys")
         if "dno" in layers:
             if args.dno_source.exists():
                 dno_frame = build_zones_web(args.dno_source, args.dno_output)
@@ -342,6 +356,16 @@ def main() -> int:
                 gsp_frame = build_zones_web(args.gsp_source, args.gsp_output)
             else:
                 print(f"Skipping GSP zones: {args.gsp_source} not found")
+        if "generation_zones" in layers:
+            if args.generation_zones_source.exists():
+                build_zones_web(args.generation_zones_source, args.generation_zones_output)
+            else:
+                print(f"Skipping generation zones: {args.generation_zones_source} not found")
+        if "etys_boundaries" in layers:
+            if args.etys_boundaries_source.exists():
+                build_zones_web(args.etys_boundaries_source, args.etys_boundaries_output)
+            else:
+                print(f"Skipping ETYS boundaries: {args.etys_boundaries_source} not found")
         if args.region == "uk" and dno_frame is not None and gsp_frame is not None:
             gsp_frame = assign_gsp_parent_dno(gsp_frame, dno_frame)
             write_geojson(gsp_frame, args.gsp_output)

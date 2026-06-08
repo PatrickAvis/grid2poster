@@ -1,4 +1,5 @@
 import {
+  etysBoundaryStyle,
   lineStyle,
   plantMarkerStyle,
   plantPolygonStyle,
@@ -50,6 +51,18 @@ export const LAYER_BEHAVIOR = {
     label: "GSP regions",
     zoneLayer: "gsp",
     kind: "zone",
+  },
+  generation_zones: {
+    label: "TNUoS generation zones",
+    zoneLayer: "generation",
+    kind: "zone",
+  },
+  etys_boundaries: {
+    label: "ETYS transmission boundaries",
+    styleFn: etysBoundaryStyle,
+    popupKeys: ["name", "boundary_id", "id"],
+    lineLabels: true,
+    kind: "lines",
   },
 };
 

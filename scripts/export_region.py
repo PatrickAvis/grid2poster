@@ -31,10 +31,18 @@ from region_catalog import (
     region_country,
 )
 
-DEFAULT_CABLE_BUFFER = {
+DEFAULT_CABLE_BUFFER_KM = {
     "uk": 600.0,
     "fr": 400.0,
     "europe": 600.0,
+}
+
+# Offshore plants/turbines need less margin than submarine cables; a smaller
+# buffer keeps Overpass tile counts manageable (~140 tiles for UK vs ~860+).
+DEFAULT_OFFSHORE_BUFFER_KM = {
+    "uk": 250.0,
+    "fr": 200.0,
+    "europe": 300.0,
 }
 
 
@@ -60,7 +68,18 @@ def parse_args() -> argparse.Namespace:
         default=True,
         help="Include power=cable (submarine/interconnectors)",
     )
-    parser.add_argument("--cable-sea-buffer-km", type=float, default=None)
+    parser.add_argument(
+        "--cable-sea-buffer-km",
+        type=float,
+        default=None,
+        help="Sea buffer for submarine cables (default: region preset, UK 600 km)",
+    )
+    parser.add_argument(
+        "--offshore-sea-buffer-km",
+        type=float,
+        default=None,
+        help="Sea buffer for offshore plants and wind turbines (default: same as --cable-sea-buffer-km preset)",
+    )
     parser.add_argument("--tile-size-km", type=float, default=400.0)
     parser.add_argument("--tile-delay", type=float, default=30.0)
     parser.add_argument("--single-query", action="store_true")
@@ -121,19 +140,25 @@ def main() -> int:
 
     country = args.country or region_country(args.region)
     boundary_path = args.boundary_geojson or region_boundary_path(args.region)
+    default_cable_buffer_km = DEFAULT_CABLE_BUFFER_KM.get(args.region, 400.0)
     cable_buffer_km = (
         args.cable_sea_buffer_km
         if args.cable_sea_buffer_km is not None
-        else DEFAULT_CABLE_BUFFER.get(args.region, 400.0)
+        else default_cable_buffer_km
     )
     if not args.include_cables:
         cable_buffer_km = 0.0
+    offshore_buffer_km = (
+        args.offshore_sea_buffer_km
+        if args.offshore_sea_buffer_km is not None
+        else DEFAULT_OFFSHORE_BUFFER_KM.get(args.region, 200.0)
+    )
 
     out = raw_dir(args.region)
 
     ox.settings.use_cache = not args.no_cache
     ox.settings.log_console = bool(args.verbose_osmnx)
-    ox.settings.requests_timeout = 180
+    ox.settings.requests_timeout = 300 if (offshore_buffer_km > 0 or cable_buffer_km > 0) else 180
     if args.overpass_endpoint:
         ox.settings.overpass_url = args.overpass_endpoint
         print(f"Using Overpass endpoint: {args.overpass_endpoint}")
@@ -175,6 +200,7 @@ def main() -> int:
             boundary=boundary_wgs84,
             tile_size_km=args.tile_size_km,
             render_crs="EPSG:3857",
+            sea_buffer_km=offshore_buffer_km,
             use_cache=not args.no_cache,
             tile_delay=args.tile_delay,
         )
@@ -200,6 +226,7 @@ def main() -> int:
                 boundary=boundary_wgs84,
                 tile_size_km=args.tile_size_km,
                 render_crs="EPSG:3857",
+                sea_buffer_km=offshore_buffer_km,
                 use_cache=not args.no_cache,
                 tile_delay=args.tile_delay,
             )

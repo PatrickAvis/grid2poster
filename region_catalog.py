@@ -36,11 +36,15 @@ MAP_STEMS: dict[str, str] = {
 ZONE_STEMS: dict[str, str] = {
     "dno": "dno_areas",
     "gsp": "gsp_areas",
+    "generation": "generation_charging_zones",
+    "etys": "etys_boundaries",
 }
 
 ZONE_WEB_STEMS: dict[str, str] = {
     "dno": "dno_areas_web",
     "gsp": "gsp_areas_web",
+    "generation": "generation_charging_zones_web",
+    "etys": "etys_boundaries_web",
 }
 
 
@@ -186,6 +190,8 @@ def map_path(region_id: str, layer: str, *, legacy_uk: bool = True) -> Path:
             "turbines": "uk_wind_turbines_web.geojson",
             "dno": "uk_dno_areas_web.geojson",
             "gsp": "uk_gsp_areas_web.geojson",
+            "generation_zones": "uk_generation_charging_zones_web.geojson",
+            "etys_boundaries": "uk_etys_boundaries_web.geojson",
         }
         if layer in legacy_names:
             return web / legacy_names[layer]

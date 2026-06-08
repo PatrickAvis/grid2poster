@@ -26,6 +26,36 @@ const DNO_FILL_COLORS = [
   "#039be5",
 ];
 
+const GENERATION_FILL_COLORS = [
+  "#5c6bc0",
+  "#7e57c2",
+  "#ab47bc",
+  "#ec407a",
+  "#ef5350",
+  "#ff7043",
+  "#ffa726",
+  "#ffca28",
+  "#9ccc65",
+  "#66bb6a",
+  "#26a69a",
+  "#26c6da",
+  "#42a5f5",
+  "#5c6bc0",
+  "#8d6e63",
+  "#78909c",
+  "#7cb342",
+  "#00acc1",
+  "#8e24aa",
+  "#3949ab",
+  "#00897b",
+  "#c2185b",
+  "#d84315",
+  "#f9a825",
+  "#558b2f",
+  "#039be5",
+  "#6a1b9a",
+];
+
 const DNO_ZONE_COLORS = {
   // Chosen against the DNO adjacency graph to keep neighbouring areas distinct.
   10: "#009e73", // UKPN East England
@@ -171,6 +201,15 @@ export function substationMarkerStyle(props) {
   };
 }
 
+export function etysBoundaryStyle() {
+  return {
+    color: "#b71c1c",
+    weight: 2.5,
+    opacity: 0.9,
+    dashArray: "10 6",
+  };
+}
+
 export function turbineMarkerStyle() {
   return {
     radius: 2,
@@ -208,6 +247,11 @@ function mixHex(color, target, amount) {
   return `#${mixed.map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
 }
 
+function generationFillColor(props) {
+  const key = props.zone_id ?? props.tariff_zone ?? props.zone_name ?? props.name ?? "";
+  return GENERATION_FILL_COLORS[stableColorIndex(key, GENERATION_FILL_COLORS.length)];
+}
+
 function gspFillColor(props) {
   if (props.dno_zone_id || props.dno_name || props.dno_operator) {
     const base = dnoFillColor({
@@ -234,12 +278,18 @@ function gspFillColor(props) {
 }
 
 export function zoneStyle(kind, selected = false, props = {}) {
-  const color = kind === "dno" ? dnoFillColor(props) : gspFillColor(props);
+  const color = kind === "dno"
+    ? dnoFillColor(props)
+    : kind === "generation"
+      ? generationFillColor(props)
+      : gspFillColor(props);
+  const defaultWeight = kind === "dno" ? 1.4 : 1;
+  const defaultFillOpacity = kind === "gsp" ? 0.34 : kind === "generation" ? 0.3 : 0.26;
   return {
     color: selected ? "#000000" : "#37474f",
-    weight: selected ? 3 : (kind === "dno" ? 1.4 : 1),
+    weight: selected ? 3 : defaultWeight,
     opacity: selected ? 0.95 : 0.7,
     fillColor: color,
-    fillOpacity: selected ? 0.44 : (kind === "gsp" ? 0.34 : 0.26),
+    fillOpacity: selected ? 0.44 : defaultFillOpacity,
   };
 }

@@ -78,6 +78,21 @@
       font-size: 0.72rem;
       margin-top: 1px;
     }
+    .basemap-control {
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+    .basemap-control label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .basemap-control input[type="range"] {
+      width: 100%;
+      margin: 0;
+    }
     .layer-list { display: grid; gap: 6px; margin-bottom: 10px; }
     .layer-list label {
       display: flex;
@@ -102,6 +117,12 @@
       font-size: 0.78rem;
       padding: 4px 8px;
       cursor: pointer;
+    }
+    .legend-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
     }
     .popup-table {
       border-collapse: collapse;
@@ -199,6 +220,19 @@
       height: 3px;
       flex-shrink: 0;
     }
+    .boundary-line-label {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #b71c1c;
+      border-radius: 3px;
+      color: #b71c1c;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 1px 4px;
+      box-shadow: none;
+    }
+    .boundary-line-label::before {
+      display: none;
+    }
     .attribution {
       margin-top: 8px;
       font-size: 0.7rem;
@@ -217,6 +251,20 @@
       <input id="map-search" type="search" placeholder="Search loaded plants, substations, zones…" autocomplete="off" />
       <div id="search-results" class="search-results" hidden></div>
     </div>
+    <div class="basemap-control">
+      <label for="basemap-intensity">
+        <span>Background map</span>
+        <span id="basemap-intensity-value">100%</span>
+      </label>
+      <input
+        id="basemap-intensity"
+        type="range"
+        min="0"
+        max="100"
+        value="100"
+        aria-label="Background map intensity"
+      />
+    </div>
     <div id="layer-list" class="layer-list"></div>
     <div id="status" class="status">Loading…</div>
     <div id="zone-filter-status" hidden></div>
@@ -228,6 +276,10 @@
     <div id="plant-legend" class="plant-legend" hidden>
       <div class="legend-title">Generation type</div>
       <div id="plant-legend-list" class="plant-legend-list"></div>
+    </div>
+    <div id="etys-legend" class="plant-legend" hidden>
+      <div class="legend-title">ETYS boundaries</div>
+      <div id="etys-legend-list" class="plant-legend-list"></div>
     </div>
     <p class="attribution">Zone boundaries &copy; <a href="https://www.neso.energy/data-portal">NESO</a> (UK). Infrastructure &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</p>
   </div>
