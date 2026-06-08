@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -23,6 +24,7 @@ BMU_OVERRIDES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_overrides.csv"
 BMU_UNMAPPED_DISPLAYABLE_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_unmapped_displayable.csv"
 BMU_CANDIDATE_MATCHES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_candidate_matches.csv"
 BMU_REFERENCE_ONLY_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_reference_only.csv"
+BMU_OC2_MAP_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_oc2_map.csv"
 
 MAP_COLUMNS = ("osm_id", "plant_name", "bmu_id", "ngc_bmu_id", "bmu_type", "source", "notes")
 BMU_FIELDS = ("bmu_id", "ngc_bmu_id", "bmu_type")
@@ -71,6 +73,14 @@ UNIT_NUMBER_SUFFIX = re.compile(
     re.IGNORECASE,
 )
 
+NAME_ABBREVIATIONS = (
+    (r"\bw\s*/\s*farm\b", "wind farm"),
+    (r"\bw\s*/\s*f\b", "wind farm"),
+    (r"\bwfarm\b", "wind farm"),
+    (r"\bwf\b", "wind farm"),
+    (r"\bp\s*/\s*s\b", "power station"),
+)
+
 NAME_SUFFIXES = (
     " power station",
     " wind farm",
@@ -88,11 +98,17 @@ def normalize_site_name(name: str | None) -> str:
     if not name:
         return ""
     text = unicodedata.normalize("NFKD", str(name)).lower()
+    for pattern, replacement in NAME_ABBREVIATIONS:
+        text = re.sub(pattern, replacement, text)
     text = re.sub(r"[^a-z0-9]+", " ", text).strip()
     for suffix in NAME_SUFFIXES:
         if text.endswith(suffix):
             text = text[: -len(suffix)].strip()
     return text
+
+
+def compact_site_name(name: str | None) -> str:
+    return normalize_site_name(name).replace(" ", "")
 
 
 def normalize_bmu_site_name(name: str | None) -> str:
@@ -133,10 +149,12 @@ def classify_bmu(bmu: dict[str, Any]) -> str:
 
     if bmu_type in REFERENCE_ONLY_BMU_TYPES:
         return "reference_only"
-    if flag == "C" and is_empty(interconnector):
-        return "reference_only"
     if fuel.startswith("INT") or not is_empty(interconnector):
         return "displayable"
+    if fuel == "PS" and bmu_type in {"T", "E", "G"}:
+        return "displayable"
+    if flag == "C" and is_empty(interconnector):
+        return "reference_only"
     if fuel in DISPLAYABLE_FUEL_TYPES:
         if bmu_type in {"T", "E", "G"}:
             return "displayable"
@@ -188,6 +206,46 @@ def load_bmunits(path: Path = BMU_REFERENCE_PATH) -> list[dict[str, Any]]:
     return payload
 
 
+@lru_cache(maxsize=1)
+def load_bmu_oc2_aliases(path: Path = BMU_OC2_MAP_PATH) -> dict[str, str]:
+    """Load NGC/settlement BMU id -> OC2 group/site name aliases."""
+    if not path.exists():
+        return {}
+    frame = pd.read_csv(path, comment="#")
+    aliases: dict[str, str] = {}
+    for _, row in frame.iterrows():
+        group_name = row.get("BMGROUP_NAME")
+        if is_empty(group_name):
+            continue
+        for col in ("NGC_BMU_ID", "SETT_BMU_ID"):
+            value = row.get(col)
+            if not is_empty(value):
+                aliases[str(value).strip().upper()] = str(group_name).strip()
+    return aliases
+
+
+def bmu_alias_names(bmu: dict[str, Any]) -> list[tuple[str, str]]:
+    """Return named aliases used for matching a BMU to an OSM plant."""
+    aliases = [("bmUnitName", str(bmu.get("bmUnitName") or ""))]
+    oc2 = load_bmu_oc2_aliases()
+    for field, source in (
+        ("nationalGridBmUnit", "oc2_BMGROUP_NAME"),
+        ("elexonBmUnit", "oc2_BMGROUP_NAME"),
+    ):
+        key = str(bmu.get(field) or "").strip().upper()
+        if key and key in oc2:
+            aliases.append((source, oc2[key]))
+
+    deduped: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for source, name in aliases:
+        normalized = normalize_site_name(name)
+        if normalized and normalized not in seen:
+            deduped.append((source, name))
+            seen.add(normalized)
+    return deduped
+
+
 def propose_match_candidates_for_plant(
     plant: pd.Series,
     bmunits: list[dict[str, Any]],
@@ -203,41 +261,50 @@ def propose_match_candidates_for_plant(
     candidates: list[dict[str, Any]] = []
 
     for bmu in bmunits:
-        if displayable_only and classify_bmu(bmu) == "reference_only":
+        if displayable_only and classify_bmu(bmu) != "displayable":
             continue
 
-        bmu_name = str(bmu.get("bmUnitName") or "")
-        bmu_norm = normalize_site_name(bmu_name)
-        bmu_site = normalize_bmu_site_name(bmu_name)
         fuel = bmu.get("fuelType")
 
         confidence: str | None = None
         reason: str | None = None
 
-        if plant_norm and bmu_norm == plant_norm:
-            confidence = "high"
-            reason = "exact_bmUnitName"
-        elif plant_norm and bmu_site and plant_norm == bmu_site:
-            confidence = "high"
-            reason = "bmu_site_name"
-        elif plant_norm and bmu_site and len(plant_norm) >= 5 and len(bmu_site) >= 5:
-            if plant_norm in bmu_site or bmu_site in plant_norm:
-                confidence = "medium"
-                reason = "site_name_contains"
-        elif plant_norm:
-            words = plant_norm.split()
-            if len(words) >= 2:
-                phrase = " ".join(words[:2])
-                if len(phrase) >= 5 and phrase in bmu_norm:
+        for alias_source, alias_name in bmu_alias_names(bmu):
+            alias_norm = normalize_site_name(alias_name)
+            alias_site = normalize_bmu_site_name(alias_name)
+            alias_compact = compact_site_name(alias_name)
+            plant_compact = compact_site_name(plant["name"])
+
+            if plant_norm and alias_norm == plant_norm:
+                confidence = "high"
+                reason = f"exact_{alias_source}"
+            elif plant_norm and alias_site and plant_norm == alias_site:
+                confidence = "high"
+                reason = f"site_name_{alias_source}"
+            elif plant_compact and alias_compact and plant_compact == alias_compact:
+                confidence = "high"
+                reason = f"compact_site_name_{alias_source}"
+            elif plant_norm and alias_site and len(plant_norm) >= 5 and len(alias_site) >= 5:
+                if plant_norm in alias_site or alias_site in plant_norm:
                     confidence = "medium"
-                    reason = "two_word_phrase"
-            if confidence is None and words:
-                token = words[0]
-                if len(token) >= 4:
-                    pattern = re.compile(rf"\b{re.escape(token)}\b")
-                    if pattern.search(bmu_norm):
-                        confidence = "low"
-                        reason = "first_token"
+                    reason = f"site_name_contains_{alias_source}"
+            elif plant_norm:
+                words = plant_norm.split()
+                if len(words) >= 2:
+                    phrase = " ".join(words[:2])
+                    if len(phrase) >= 5 and phrase in alias_norm:
+                        confidence = "medium"
+                        reason = f"two_word_phrase_{alias_source}"
+                if confidence is None and words:
+                    token = words[0]
+                    if len(token) >= 4:
+                        pattern = re.compile(rf"\b{re.escape(token)}\b")
+                        if pattern.search(alias_norm):
+                            confidence = "low"
+                            reason = f"first_token_{alias_source}"
+
+            if confidence is not None:
+                break
 
         if confidence is None:
             continue
@@ -347,11 +414,15 @@ def export_plant_bmu_map_json(
     return json_path
 
 
+def _key_part(value: Any) -> str:
+    return "" if is_empty(value) else str(value).strip().upper()
+
+
 def _map_row_key(osm_id: str | None, bmu_id: str | None, ngc_bmu_id: str | None) -> tuple[str, str, str]:
     return (
-        str(osm_id or "").strip(),
-        str(bmu_id or "").strip().upper(),
-        str(ngc_bmu_id or "").strip().upper(),
+        "" if is_empty(osm_id) else str(osm_id).strip(),
+        _key_part(bmu_id),
+        _key_part(ngc_bmu_id),
     )
 
 
@@ -527,19 +598,22 @@ def write_bmu_coverage_reports(
             if key in seen_candidates:
                 continue
             seen_candidates.add(key)
+            notes = (
+                "Candidate match: "
+                f"bmUnitName={bmu.get('bmUnitName') or ''}; "
+                f"fuelType={bmu.get('fuelType') or ''}; "
+                f"confidence={candidate['confidence']}; "
+                f"reason={candidate['reason']}; "
+                f"fuel_compatible={candidate['fuel_compatible']}"
+            )
             candidate_rows.append({
                 "osm_id": osm_id,
                 "plant_name": plant.get("name"),
-                "plant_source_bucket": plant.get("source_bucket"),
-                "plant_capacity_mw": plant.get("capacity_mw"),
                 "bmu_id": bmu.get("elexonBmUnit"),
                 "ngc_bmu_id": bmu.get("nationalGridBmUnit"),
-                "bmUnitName": bmu.get("bmUnitName"),
-                "fuelType": bmu.get("fuelType"),
-                "bmUnitType": bmu.get("bmUnitType"),
-                "confidence": candidate["confidence"],
-                "reason": candidate["reason"],
-                "fuel_compatible": candidate["fuel_compatible"],
+                "bmu_type": bmu.get("bmUnitType"),
+                "source": "manual",
+                "notes": notes,
             })
 
     for bmu in bmunits:
@@ -561,16 +635,16 @@ def write_bmu_coverage_reports(
         }
         if category == "reference_only":
             reference_rows.append(row)
-        elif bmu_id and bmu_id not in mapped_ids:
+        elif category == "displayable" and bmu_id and bmu_id not in mapped_ids:
             unmapped_rows.append(row)
 
-    for path, rows in (
-        (unmapped_path, unmapped_rows),
-        (candidates_path, candidate_rows),
-        (reference_only_path, reference_rows),
+    for path, rows, columns in (
+        (unmapped_path, unmapped_rows, None),
+        (candidates_path, candidate_rows, list(MAP_COLUMNS)),
+        (reference_only_path, reference_rows, None),
     ):
         path.parent.mkdir(parents=True, exist_ok=True)
-        pd.DataFrame(rows).to_csv(path, index=False)
+        pd.DataFrame(rows, columns=columns).to_csv(path, index=False)
 
     counts = {
         "unmapped_displayable": len(unmapped_rows),

@@ -1,0 +1,378 @@
+NGC_BMU_ID,BMGROUP_NAME,SETT_BMU_ID
+ABRBO-1,Aberdeen Offshore W/F,T_ABRBO-1
+ABRTW-1,Auchrobert,E_ABRTW-1
+ACHLW-1,Achlachan Wind Farm,C__PSMAR001
+ACHRW-1,A'Chruach Wind Farm,T_ACHRW-1
+ACHYW-1,Achany Wind Farm,
+AFTOW-1,Afton Wind Farm,T_AFTOW-1
+AIRSW-1,Airies Wind Farm,E_AIRSW-1
+AKGLW-1,Aikengall Wind Farm,
+AKGLW-2,Aikengall II Wind Farm,T_AKGLW-2
+AKGLW-3,Aikengall II Wind Farm,T_AKGLW-3
+ANSUW-1,An Suidhe Wind Farm,T_ANSUW-1
+ARCHW-1,Arecleoch Wind Farm,T_ARCHW-1
+ASHWW-1,Andershaw Wind Farm,E_ASHWW-1
+BABAW-1,Baillie Wind Farm,E_BABAW-1
+BAGE-1,Baglan Bay Power Station,T_BAGE-1
+BAGE-2,Baglan Bay Power Station,T_BAGE-2
+BDCHW-1,Bad A Cheo Wind Farm,T_BDCHW-1
+BEATO-1,Beatrice Offshore W/Farm,T_BEATO-1
+BEATO-2,Beatrice Offshore W/Farm,T_BEATO-2
+BEATO-3,Beatrice Offshore W/Farm,T_BEATO-3
+BEATO-4,Beatrice Offshore W/Farm,T_BEATO-4
+BEINW-1,Beinneun Wind Farm,T_BEINW-1
+BETHW-1,Beinn Tharsuinn,E_BETHW-1
+BGLAW-1,Bienn Ghlas Wind,
+BHLAW-1,Bhlaraidh Wind Farm,T_BHLAW-1
+BLKWW-1,Blackcraig W/F,T_BLKWW-1
+BLLA-1,Blacklaw,T_BLLA-1
+BLLA-2,Blacklaw Extension,T_BLLA-2
+BNAKW-1,Ben Aketil,
+BNWKW-1,Burn of Whilk W/F,E_BNWKW-1
+BOULW-1,Boulfruich,
+BOWLW-1,Barrow Offshore Wind Farm,T_BOWLW-1
+BOYNW-1,Boyndie Wind Farm,
+BRBEO-1,Burbo Extension,T_BRBEO-1
+BRDUW-1,Braes of Doune,E_BRDUW-1
+BRGG-1,Brigg,E_BRGG-1
+BRYBW-1,Berry Burn Wind Farm,E_BRYBW-1
+BTUIW-1,Beinn an Turic Wind,
+BTUIW-2,Beinn An Tuirc 2,E_BTUIW-2
+BTUIW-3,Beinn An Tuirc 3,E_BTUIW-3
+BURBW-1,Burbo Bank wind Farm,E_BURBO
+CAIRW-1,Cairn Uish Wind,2_PPGEN001
+CAIRW-2,Cairn Uish Wind,2__PSTAT001
+CARR-1,Carrington P/S,T_CARR-1
+CARR-2,Carrington P/S,T_CARR-2
+CAS-BEU01,Beauly Cascade,M_CAS-BEU01
+CAS-CLU01,Clunie Cascade,M_CAS-CLU01
+CAS-CON01,Conon Cascade,M_CAS-CON01
+CAS-GAR01,Garry Cascade,M_CAS-GAR01
+CAS-KIL01,Killin Cascade,M_CAS-KIL01
+CAS-MOR01,Moriston Cascade,M_CAS-MOR01
+CAUSW-1,Causeymire,
+CDCL-1,Cottam Development Centre,T_CDCL-1
+CDWTW-1,Calder Water W/F,
+CGTHW-1,Corriegarth Wind Farm,T_CGTHW-1
+CLAC-1,Clachan,E_CLAC-1
+CLDCW-1,Clyde Central Wind Farm,T_CLDCW-1
+CLDNW-1,Clyde North Wind Farm,T_CLDNW-1
+CLDRW-1,Clashindarroch W/F,E_CLDRW-1
+CLDSW-1,Clyde South Wind Farm,T_CLDSW-1
+CLFLW-1,Clachan Flats Wind Farm,E_CLFLW-1
+CMSTW-1,Camster Wind Farm,2_PPGEN003
+CNCLW-1,Coire Na Cloiche WF,E_CNCLW-1
+CNQPS-1,Connah's Quay,T_CNQPS-1
+CNQPS-2,Connah's Quay,T_CNQPS-2
+CNQPS-3,Connah's Quay,T_CNQPS-3
+CNQPS-4,Connah's Quay,T_CNQPS-4
+CORB-1,Corby,E_CORB-1
+COSO-1,Coryton Energy Centre,T_COSO-1
+COUWW-1,Cour Wind Farm,T_COUWW-1
+COWE1,Cowes,E_COWE1
+COWE2,Cowes,E_COWE2
+CRDEW-1,Crossdykes Wind Farm,E_CRDEW-1
+CRDEW-2,Crossdykes Wind Farm,E_CRDEW-2
+CRGHW-1,Carraig Gheal Wind Farm,T_CRGHW-1
+CRMHW-1,Cruach Mhor Farm,
+CRMLW-1,Corrimoillie W/F,T_CRMLW-1
+CRMNW-1,Corrimony Wind Farm,
+CRUA-1,Cruachan,T_CRUA-1
+CRUA-2,Cruachan,T_CRUA-2
+CRUA-3,Cruachan,T_CRUA-3
+CRUA-4,Cruachan,T_CRUA-4
+CRYRW-1,Crystal Rig Wind Farm,
+CRYRW-2,Crystal Rig II,T_CRYRW-2
+CRYRW-3,Crystal Rig II,T_CRYRW-3
+DALSW-1,Dalswinton,E_DALSW-1
+DAMC-1,Damhead Creek,T_DAMC-1
+DDGNO-1,Dudgeon Offshore Wind Farm,T_DDGNO-1
+DDGNO-2,Dudgeon Offshore Wind Farm,T_DDGNO-2
+DDGNO-3,Dudgeon Offshore Wind Farm,T_DDGNO-3
+DDGNO-4,Dudgeon Offshore Wind Farm,T_DDGNO-4
+DEEP-1,Deeside,T_DEEP-1
+DEUCW-1,Deucheran Hill Wind,
+DIDC01G,Didcot A,E_DIDC01G
+DIDC02G,Didcot A,E_DIDC02G
+DIDC03G,Didcot A,E_DIDC03G
+DIDC04G,Didcot A,E_DIDC04G
+DIDCB5,Didcot B,T_DIDCB5
+DIDCB6,Didcot B,T_DIDCB6
+DINO-1,Dinorwig,T_DINO-1
+DINO-2,Dinorwig,T_DINO-2
+DINO-3,Dinorwig,T_DINO-3
+DINO-4,Dinorwig,T_DINO-4
+DINO-5,Dinorwig,T_DINO-5
+DINO-6,Dinorwig,T_DINO-6
+DNBAR-1,Dunbar Biomass,2__NSMAR001
+DNGB21,Dungeness B,T_DNGB21
+DNGB22,Dungeness B,T_DNGB22
+DNLWW-1,Dunlaw Wind Farm,T_DNLWW-1
+DOREW-1,Dorenell WF,T_DOREW-1
+DOREW-2,Dorenell WF,T_DOREW-2
+DRAXX-1,Drax,T_DRAXX-1
+DRAXX-10G,Drax,T_DRAXX-10G
+DRAXX-12G,Drax,T_DRAXX-12G
+DRAXX-2,Drax,T_DRAXX-2
+DRAXX-3,Drax,T_DRAXX-3
+DRAXX-4,Drax,T_DRAXX-4
+DRAXX-5,Drax,T_DRAXX-5
+DRAXX-6,Drax,T_DRAXX-6
+DRAXX-9G,Drax,T_DRAXX-9G
+DRDGW-1,Drumderg Wind Farm,
+DRSLW-1,Dersalloch Wind Farm,T_DRSLW-1
+DUMMW-1,Dummuies Windfarm,
+DUNGW-1,Dunmaglass Wind Farm,T_DUNGW-1
+EAAO-1,East Anglia One,T_EAAO-1
+EAAO-2,East Anglia One,T_EAAO-2
+EARBW-1,Earlsburn,
+EDINW-1,Edinbane Windfarm,T_EDINW-1
+EDTRW-1,Edintore Wind Farm Limited,
+EECL-1,Enfield Energy Centre,T_EECL-1
+ERRO-1,Errochty,T_ERRO-1
+ERRO-2,Errochty,T_ERRO-2
+ERRO-3,Errochty,T_ERRO-3
+EWHLW-1,Ewe Hill Wind Farm,T_EWHLW-1
+FAARW-1,Farr Windfarm,T_FARR-1
+FAARW-2,Farr Windfarm,T_FARR-2
+FALGW-1,Fallago Wind Farm,T_FALGW-1
+FASN-1,Fasnakyle,T_FASN-1
+FASN-4,Fasnakyle,E_FASN-4
+FASN2,Fasnakyle,T_FASN-2
+FASN3,Fasnakyle,E_FASN-3
+FAWN-1,Fawley North,E_FAWN-1
+FELL-1,Fellside,E_FELL-1
+FFES-1,Ffestiniog,T_FFES-1
+FFES-2,Ffestiniog,T_FFES-2
+FFES-3,Ffestiniog,T_FFES-3
+FFES-4,Ffestiniog,T_FFES-4
+FINL-1,Finlarig,T_FINL-1
+FOYE-1,Foyers,T_FOYE-1
+FOYE-2,Foyers,T_FOYE-2
+FRBRW-1,Fairburn Wind Farm,
+FSDLW-1,Freasdail,T_FSDLW-1
+GAOFO-1,Galloper Wind Farm,T_GANW-11
+GAOFO-2,Galloper Wind Farm,T_GANW-22
+GAOFO-3,Galloper Wind Farm,T_GANW-13
+GAOFO-4,Galloper Wind Farm,T_GANW-24
+GDSTW-1,Gordonstown  Wind Farm,E_GDSTW-1
+GLCHW-1,Glenchamber Wind Farm,E_GLCHW-1
+GLNDO-1,Glendoe Hydro,T_GLNDO-1
+GLOFW-1,Glens of Foudland,E_GLOFW-1
+GLWSW-1,Galawhistle Wind Farm,T_GLWSW-1
+GNAPW-1,Glen App WindFarm,T_GNAPW-1
+GNFSW-1,Gunfleet Sands,T_GNFSW-1
+GNFSW-2,Gunfleet Sands,E_GNFSW-2
+GORDW-1,Gordon Bush Wind Farm,T_GORDW-1
+GORDW-2,Gordon Bush Wind Farm,T_GORDW-2
+GRAI-6,Grain,T_GRAI-6
+GRAI-7,Grain,T_GRAI-7
+GRAI-8,Grain,T_GRAI-8
+GRAI1G,Grain,T_GRAI1G
+GRAI4G,Grain,T_GRAI4G
+GRGBW-1,Greater Gabbard,T_GRGBW-1
+GRGBW-2,Greater Gabbard,T_GRGBW-2
+GRGBW-3,Greater Gabbard,T_GRGBW-3
+GRIFW-1,Griffin Windfarm,T_GRIFW-1
+GRIFW-2,Griffin Windfarm,T_GRIFW-2
+GRMO-1,Grangemouth,T_GRMO-1
+GRUB-1,Grudie Bridge,
+GRUB-2,Grudie Bridge,
+GYAR-1,Great Yarmouth,E_GYAR-1
+GYMRO-15,Gwynt Y Mor,T_GYMR-15
+GYMRO-17,Gwynt Y Mor,T_GYMR-17
+GYMRO-26,Gwynt Y Mor,T_GYMR-26
+GYMRO-28,Gwynt Y Mor,T_GYMR-28
+HADHW-1,Hadyard Hill Windfarm,T_HADHW-1
+HALSW-1,Halsary Wind Farm,T_HALSW-1
+HAWFW-1,Hagshaw Hill Wind Farm,
+HBHDW-1,Harburnhead Wind Farm,E_HBHDW-1
+HEYM11,Heysham 1,T_HEYM11
+HEYM12,Heysham 1,T_HEYM12
+HEYM27,Heysham 2,T_HEYM27
+HEYM28,Heysham 2,T_HEYM28
+HINB-7,Hinkley Point B,T_HINB-7
+HINB-8,Hinkley Point B,T_HINB-8
+HLGLW-1,Hill of Glaschyle,E_HLGLW-1
+HLTWW-1,Hill of Towie Wind Farm,E_HLTWW-1
+HMGTO-1,Humber Gateway Offshore Wind Farm,T_HMGTO-1
+HMGTO-2,Humber Gateway Offshore Wind Farm,T_HMGTO-2
+HOWAO-1,Hornsea Offshore W/F,T_HOWAO-1
+HOWAO-2,Hornsea Offshore W/F,T_HOWAO-2
+HOWAO-3,Hornsea Offshore W/F,T_HOWAO-3
+HRHLW-1,Hare Hill Ext Wind Farm,E_HRHLW-1
+HRSTW-1,Harestanes Wind Farm,T_HRSTW-1
+HRTL-1,Hartlepool,T_HRTL-1
+HRTL-2,Hartlepool,T_HRTL-2
+HUMR-1,Immingham CHP LLP,T_HUMR-1
+HUNB-7,Hunterston,T_HUNB-7
+HUNB-8,Hunterston,T_HUNB-8
+HYWDW-1,Hywind Wind Farm,E_HYWDW-1
+INAW-1,Inverawe,
+INDQ-1,Indian Queens,T_INDQ-1
+JGPR-1,JG Pears Power Limited,T_JGPR-1
+KEAD-1,Keadby,T_KEAD-1
+KEAD-2,Keadby,T_KEAD-2
+KEADGT-3,Keadby,T_KEADGT-3
+KILBW-1,Kilbraur Wind Farm,T_KILBW-1
+KILLPG-1,Killingholme (PG),T_KILLPG-1
+KILLPG-2,Killingholme (PG),T_KILLPG-2
+KILNS-1,Killingholme Control Point,T_KILNS-1
+KINCW-1,Kincardine Offshore Wind Farm,E_KINCW-1
+KLDMW-1,Kildrummy Wind Farm,
+KLGLW-1,Kilgallioch Wind Farm,T_KLGLW-1
+KLYN-A-1,Kings Lynn,E_KLYN-A-1
+KPMRW-1,Kype Muir Wind Farm,T_KPMRW-1
+KTHLW-1,Keith Hill Wind Farm,T_KTHLW-1
+LAGA-1,Langage Power Station,T_LAGA-1
+LARYO-1,London Array Wind Farm,T_LARYW-1
+LARYO-2,London Array Wind Farm,T_LARYW-2
+LARYO-3,London Array Wind Farm,T_LARYW-3
+LARYO-4,London Array Wind Farm,T_LARYW-4
+LBAR-1,Little Barford,T_LBAR-1
+LBAR-1G,Little Barford,T_LBAR-1G
+LCLTW-1,Lochluichart,T_LCLTW-1
+LCSMH-1,SIMEC Lochaber Hydro,
+LGPKW-1,Longpark Wind Farm,
+LNCSO-1,Lincs Wind Farm,T_LNCSW-1
+LNCSO-2,Lincs Wind Farm,T_LNCSW-2
+LNMTH-1,Lynemouth P/S,E_LYNE1
+LNMTH-2,Lynemouth P/S,E_LYNE2
+LNMTH-3,Lynemouth P/S,E_LYNE3
+MARK-1,Markinch Biomass,E_MARK-1
+MDHLW-1,Mid Hill Wind Farm,2__PSTAT002
+MEDP-1,Medway,T_MEDP-1
+MIDMW-1,Middle Muir W/F,T_MIDMW-1
+MILWW-1,Millennium Windfarm,T_MILWW-1
+MINSW-1,Minsca,E_MINSW-1
+MKHLW-1,Mark Hill Wind Farm,T_MKHLW-1
+MOWEO-1,My Moray East Wind Farm,T_MOWEO-1
+MOWEO-2,My Moray East Wind Farm,T_MOWEO-2
+MOWEO-3,My Moray East Wind Farm,T_MOWEO-3
+MOYEW-1,Moy Wind Farm,E_MOYEW-1
+MRWD-1,Marchwood,T_MRWD-1
+MYGPW-1,Minnygap,T_MYGPW-1
+NANT-1,Nant,T_NANT-1
+NOVAW-1,Novar Wind Farm,
+NOVAW-2,Novar Wind Farm,
+NSQYT-1,Ness of Quoys Tidal Farm,
+OMNDO-1,Ormonde Eng Ltd,T_OMNDW-1
+PAUHW-1,Pauls' Hill Aberlour,2_PPGEN002
+PEHE-1,Peterhead,T_PEHE-1
+PEMB-11,Pembroke Power Station,T_PEMB-11
+PEMB-21,Pembroke Power Station,T_PEMB-21
+PEMB-31,Pembroke Power Station,T_PEMB-31
+PEMB-41,Pembroke Power Station,T_PEMB-41
+PEMB-51,Pembroke Power Station,T_PEMB-51
+PETEM1,Peterborough,E_PETEM1
+PGBIW-1,Pogbie Wind Farm,T_PGBIW-1
+PNYCW-1,Pen y Cymoedd Wind Farm,T_PNYCW-1
+PTLDW-1,Pentland Road Wind Farm,
+RANN-1,Rannoch,
+RANN-2,Rannoch,
+RANN-3,Rannoch,
+RATS-1,Ratcliffe,T_RATS-1
+RATS-2,Ratcliffe,T_RATS-2
+RATS-3,Ratcliffe,T_RATS-3
+RATS-4,Ratcliffe,T_RATS-4
+RATSGT-2,Ratcliffe,T_RATSGT-2
+RATSGT-4,Ratcliffe,T_RATSGT-4
+RCBKO-1,Race Bank Offshore Wind Farm,T_RCBKO-1
+RCBKO-2,Race Bank Offshore Wind Farm,T_RCBKO-2
+REDGT-1,Redditch Power Station,E_REDGT-1
+RMPNO-1,Rampion Offshore Wind,T_RMPNO-1
+RMPNO-2,Rampion Offshore Wind,T_RMPNO-2
+ROCK-1,Rocksavage,T_ROCK-1
+RREW-1,Robin Rigg East,T_RREW-1
+RRWW-1,Robin Rigg West,T_RRWW-1
+RSHLW-1,Rosehall Wind Farm,E_RSHLW-1
+RYHPS-1,Rye House Power Station,T_RYHPS-1
+SANQW-1,Sanquhar W/F,T_SANQW-1
+SCCL-1,Saltend,T_SCCL-1
+SCCL-2,Saltend,T_SCCL-2
+SCCL-3,Saltend,T_SCCL-3
+SEAB-1,Seabank,T_SEAB-1
+SEAB-2,Seabank,T_SEAB-2
+SEEL-1,Spalding Energy Expansion,T_SEEL-1
+SFIL-1,St Fillans,
+SHBA-1,South Humber,T_SHBA-1
+SHBA-2,South Humber,T_SHBA-2
+SHIN-1,Shin,
+SHIN-2,Shin,
+SHOS-1,Shoreham,E_SHOS-1
+SHRSO-1,Sheringham Shoal Wind Farm,T_SHRSW-1
+SHRSO-2,Sheringham Shoal Wind Farm,T_SHRSW-2
+SIMEC-1,SIMEC Uskmouth Power,T_SIMEC-1
+SIZB-1,Sizewell B,T_SIZB-1
+SIZB-2,Sizewell B,T_SIZB-2
+SLOY-1,Sloy,M_SLOY-1
+SLOY-2,Sloy,T_SLOY-2
+SLOY-3,Sloy,T_SLOY-3
+SLOY-4,Sloy,M_SLOY-4
+SPEY-1,Speyside,
+SPLN-1,Spalding Power Station,T_SPLN-1
+STAY-1,Staythorpe,T_STAY-1
+STAY-2,Staythorpe,T_STAY-2
+STAY-3,Staythorpe,T_STAY-3
+STAY-4,Staythorpe,T_STAY-4
+STCR-1,Stevens Croft,
+STLGW-1,Stronelairg W/F,T_STLGW-1
+STLGW-2,Stronelairg W/F,T_STLGW-2
+STLGW-3,Stronelairg W/F,T_STLGW-3
+STPSW-1,Stroupster W/Farm,
+STRNW-1,Strathy North Wind Farm,T_STRNW-1
+SUTB-1,Sutton Bridge,T_SUTB-1
+SVRP-10,Severn Power,T_SVRP-10
+SVRP-20,Severn Power,T_SVRP-20
+TANGW-1,"Tangy Wind, Argyll",
+TAYL2G,Taylors Lane,E_TAYL2G
+TAYL3G,Taylors Lane,E_TAYL3G
+TDBNW-1,Toddleburn Wind Farm,T_TDBNW-1
+THNTO-1,Thanet Offshore Wind,T_THNTO-1
+THNTO-2,Thanet Offshore Wind,T_THNTO-2
+TKNEW-1,Triton Knoll Wind,T_TKNEW-1
+TKNWW-1,Triton Knoll Wind,T_TKNWW-1
+TLYMW-1,Tullymurdoch W/F,E_TLYMW-1
+TMNCW-1,Tom Nan Clach WF,
+TMWLW-1,Tormywheel,
+TONG-1,Tongland,
+TONG-2,Tongland,
+TONG-3,Tongland,
+TORN-1,Torness,T_TORN-1
+TORN-2,Torness,T_TORN-2
+TRLGW-1,Tralorg,T_TRLGW-1
+TSREP-1,MGT Teesside,T_TSREP-1
+TULWW-1,"Tullo, Laurencekirk",E_TULWW-1
+TULWW-2,Tullo II,E_TULWW-2
+TUMB-1,Tummel Bridge,
+TUMB-2,Tummel Bridge,
+TWSHW-1,Twent Shillings,T_TWSHW-1
+USKM-13,Uskmouth Power Station,T_USKM-13
+USKM-14,Uskmouth Power Station,T_USKM-14
+USKM-15,Uskmouth Power Station,T_USKM-15
+WBUGT-1,West Burton,T_WBUGT-1
+WBUGT-4,West Burton,T_WBUGT-4
+WBUPS-1,West Burton,T_WBUPS-1
+WBUPS-2,West Burton,T_WBUPS-2
+WBUPS-3,West Burton,T_WBUPS-3
+WBUPS-4,West Burton,T_WBUPS-4
+WBURB-1,West Burton B PS,T_WBURB-1
+WBURB-2,West Burton B PS,T_WBURB-2
+WBURB-3,West Burton B PS,T_WBURB-3
+WBURB-41,West Burton B PS,T_WBURB-41
+WBURB-43,West Burton B PS,T_WBURB-43
+WDNSO-1,West of Duddon Sands,T_WDNSO-1
+WDNSO-2,West of Duddon Sands,T_WDNSO-2
+WDRGW-1,Windy Riggs W/F,T_WDRGW-1
+WHIHW-1,Whiteside Hill W/F,T_WHIHW-1
+WHILW-1,Whitelee Windfarm,T_WHILW-1
+WHILW-2,Whitelee Windfarm,T_WHILW-2
+WILCT-1,Wilton,T_WILCT-1
+WINN-1,Winnington CHP,E_WINN-1
+WISTW-2,Windy Standard II,T_WISTW-2
+WLNYO-2,Walney Wind Farm,T_WLNYO-2
+WLNYO-3,Walney Wind Farm,T_WLNYO-3
+WLNYO-4,Walney Wind Farm,T_WLNYO-4
+WLNYW-1,Walney Wind Farm,T_WLNYW-1
+WTGRW-1,Wethergar,T_WTGRW-1
+WTMSO-1,Westmost Rough Ltd,T_WTMSO-1

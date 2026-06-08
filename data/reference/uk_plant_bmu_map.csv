@@ -1397,3 +1397,47 @@ manual/dinorwig,Dinorwig Power Station,T_DINO-3,DINO-3,T,manual,Manual plant poi
 manual/dinorwig,Dinorwig Power Station,T_DINO-4,DINO-4,T,manual,Manual plant point; absent from OSM plant export
 manual/dinorwig,Dinorwig Power Station,T_DINO-5,DINO-5,T,manual,Manual plant point; absent from OSM plant export
 manual/dinorwig,Dinorwig Power Station,T_DINO-6,DINO-6,T,manual,Manual plant point; absent from OSM plant export
+way/143791247,Indian Queens Power Station,T_INDQ-1,INDQ-1,T,auto,
+way/402796795,Ffestiniog Power Station,T_FFES-1,FFES-1,T,auto,
+way/402796795,Ffestiniog Power Station,T_FFES-2,FFES-2,T,auto,
+way/402796795,Ffestiniog Power Station,T_FFES-3,FFES-3,T,auto,
+way/402796795,Ffestiniog Power Station,T_FFES-4,FFES-4,T,auto,
+relation/19454939,Windy Standard II,T_WISTW-2,WISTW-2,T,auto,
+way/956016428,Steven's Croft Power Station,,STCR-1,,auto,
+way/26550612,Rannoch Power Station,,RANN-1,,auto,
+way/26550612,Rannoch Power Station,,RANN-2,,auto,
+way/26550612,Rannoch Power Station,,RANN-3,,auto,
+way/129923951,Grudie Bridge Power Station,,GRUB-1,,auto,
+way/129923951,Grudie Bridge Power Station,,GRUB-2,,auto,
+way/130127380,Shin Power Station,,SHIN-1,,auto,
+way/130127380,Shin Power Station,,SHIN-2,,auto,
+way/562727161,Inverawe Power Station,,INAW-1,,auto,
+way/1020439730,St. Fillans Power Station,,SFIL-1,,auto,
+way/55955507,Rye House Power Station,T_RYHPS-1,RYHPS-1,T,auto,
+way/318841702,Taylors Lane Power Station,E_TAYL2G,TAYL2G,E,auto,
+way/318841702,Taylors Lane Power Station,E_TAYL3G,TAYL3G,E,auto,
+way/26427510,Connahs Quay Power Station,T_CNQPS-1,CNQPS-1,T,auto,
+way/26427510,Connahs Quay Power Station,T_CNQPS-2,CNQPS-2,T,auto,
+way/26427510,Connahs Quay Power Station,T_CNQPS-3,CNQPS-3,T,auto,
+way/26427510,Connahs Quay Power Station,T_CNQPS-4,CNQPS-4,T,auto,
+way/34383063,Drax Power Station,T_DRAXX-1,DRAXX-1,T,auto,
+way/34383063,Drax Power Station,T_DRAXX-2,DRAXX-2,T,auto,
+way/34383063,Drax Power Station,T_DRAXX-3,DRAXX-3,T,auto,
+way/34383063,Drax Power Station,T_DRAXX-4,DRAXX-4,T,auto,
+way/312992167,Saltend Power Station,T_SCCL-1,SCCL-1,T,auto,
+way/312992167,Saltend Power Station,T_SCCL-2,SCCL-2,T,auto,
+way/312992167,Saltend Power Station,T_SCCL-3,SCCL-3,T,auto,
+way/402566315,Cottam Development Centre,T_CDCL-1,CDCL-1,T,auto,
+way/1149621575,Keadby Power Station,T_KEAD-1,KEAD-1,T,auto,
+way/1149621575,Keadby Power Station,T_KEADGT-3,KEADGT-3,T,auto,
+way/28390306,King's Lynn Power Station,E_KLYN-A-1,KLYN-A-1,E,auto,
+way/34383063,Drax Power Station,T_DRAXX-10G,DRAXX-10G,T,manual,Candidate match: bmUnitName=T_DRAXX-10G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
+way/34383063,Drax Power Station,T_DRAXX-12G,DRAXX-12G,T,manual,Candidate match: bmUnitName=T_DRAXX-12G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
+way/34383063,Drax Power Station,T_DRAXX-5,DRAXX-5,T,manual,Candidate match: bmUnitName=T_DRAXX-5; fuelType=COAL; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
+way/34383063,Drax Power Station,T_DRAXX-6,DRAXX-6,T,manual,Candidate match: bmUnitName=T_DRAXX-6; fuelType=COAL; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
+way/34383063,Drax Power Station,T_DRAXX-9G,DRAXX-9G,T,manual,Candidate match: bmUnitName=T_DRAXX-9G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
+way/449382367,Cruachan Power Station,T_CRUA-1,CRUA-1,T,auto,
+way/449382367,Cruachan Power Station,T_CRUA-2,CRUA-2,T,auto,
+way/449382367,Cruachan Power Station,T_CRUA-3,CRUA-3,T,auto,
+way/449382367,Cruachan Power Station,T_CRUA-4,CRUA-4,T,auto,
+relation/14425529,Markinch Biomass,E_MARK-1,MARK-1,E,auto,

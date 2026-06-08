@@ -445,10 +445,6 @@ T_CRDEW-1,CRDEW-1,Crossdykes WF-1,WIND,T,C,24.000,EDF Energy Customers Limited,,
 T_CRDEW-2,CRDEW-2,Crossdykes WF-2,WIND,T,C,24.000,EDF Energy Customers Limited,,,reference_only,False
 T_CRGHD-1,CRGHD-1,Carraig Gheal Wind Farm,,T,P,0.000,Statkraft Markets Gmbh,,,reference_only,False
 T_CRMLW-1,CRMLW-1,Corriemoillie,WIND,T,C,48.000,EDF Energy Customers Limited,,,reference_only,False
-T_CRUA-1,CRUA-1,T_CRUA-1,PS,T,C,123.000,Drax Pumped Storage Limited,,,reference_only,False
-T_CRUA-2,CRUA-2,T_CRUA-2,PS,T,C,124.760,Drax Pumped Storage Limited,,,reference_only,False
-T_CRUA-3,CRUA-3,T_CRUA-3,PS,T,C,101.480,Drax Pumped Storage Limited,,,reference_only,False
-T_CRUA-4,CRUA-4,T_CRUA-4,PS,T,C,104.000,Drax Pumped Storage Limited,,,reference_only,False
 T_CRUAD-1,CRUAD-1,T_CRUAD-1,,T,C,1.244,Drax Pumped Storage Limited,,,reference_only,False
 T__HYELT002,CULJD-1,UKAEA Culham Jet,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
 T_CUMHW-1,CUMHW-1,Cumberhead wind energy limited,WIND,T,C,52.000,Uniper UK Limited,,,reference_only,True

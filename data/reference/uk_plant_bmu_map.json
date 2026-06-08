@@ -12580,5 +12580,401 @@
     "bmu_type": "T",
     "source": "manual",
     "notes": "Manual plant point; absent from OSM plant export"
+  },
+  {
+    "osm_id": "way/143791247",
+    "plant_name": "Indian Queens Power Station",
+    "bmu_id": "T_INDQ-1",
+    "ngc_bmu_id": "INDQ-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-1",
+    "ngc_bmu_id": "FFES-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-2",
+    "ngc_bmu_id": "FFES-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-3",
+    "ngc_bmu_id": "FFES-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-4",
+    "ngc_bmu_id": "FFES-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "relation/19454939",
+    "plant_name": "Windy Standard II",
+    "bmu_id": "T_WISTW-2",
+    "ngc_bmu_id": "WISTW-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/956016428",
+    "plant_name": "Steven's Croft Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "STCR-1",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26550612",
+    "plant_name": "Rannoch Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "RANN-1",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26550612",
+    "plant_name": "Rannoch Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "RANN-2",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26550612",
+    "plant_name": "Rannoch Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "RANN-3",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/129923951",
+    "plant_name": "Grudie Bridge Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "GRUB-1",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/129923951",
+    "plant_name": "Grudie Bridge Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "GRUB-2",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/130127380",
+    "plant_name": "Shin Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "SHIN-1",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/130127380",
+    "plant_name": "Shin Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "SHIN-2",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/562727161",
+    "plant_name": "Inverawe Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "INAW-1",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/1020439730",
+    "plant_name": "St. Fillans Power Station",
+    "bmu_id": null,
+    "ngc_bmu_id": "SFIL-1",
+    "bmu_type": null,
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/55955507",
+    "plant_name": "Rye House Power Station",
+    "bmu_id": "T_RYHPS-1",
+    "ngc_bmu_id": "RYHPS-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/318841702",
+    "plant_name": "Taylors Lane Power Station",
+    "bmu_id": "E_TAYL2G",
+    "ngc_bmu_id": "TAYL2G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/318841702",
+    "plant_name": "Taylors Lane Power Station",
+    "bmu_id": "E_TAYL3G",
+    "ngc_bmu_id": "TAYL3G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-1",
+    "ngc_bmu_id": "CNQPS-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-2",
+    "ngc_bmu_id": "CNQPS-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-3",
+    "ngc_bmu_id": "CNQPS-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-4",
+    "ngc_bmu_id": "CNQPS-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-1",
+    "ngc_bmu_id": "DRAXX-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-2",
+    "ngc_bmu_id": "DRAXX-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-3",
+    "ngc_bmu_id": "DRAXX-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-4",
+    "ngc_bmu_id": "DRAXX-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/312992167",
+    "plant_name": "Saltend Power Station",
+    "bmu_id": "T_SCCL-1",
+    "ngc_bmu_id": "SCCL-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/312992167",
+    "plant_name": "Saltend Power Station",
+    "bmu_id": "T_SCCL-2",
+    "ngc_bmu_id": "SCCL-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/312992167",
+    "plant_name": "Saltend Power Station",
+    "bmu_id": "T_SCCL-3",
+    "ngc_bmu_id": "SCCL-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/402566315",
+    "plant_name": "Cottam Development Centre",
+    "bmu_id": "T_CDCL-1",
+    "ngc_bmu_id": "CDCL-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/1149621575",
+    "plant_name": "Keadby Power Station",
+    "bmu_id": "T_KEAD-1",
+    "ngc_bmu_id": "KEAD-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/1149621575",
+    "plant_name": "Keadby Power Station",
+    "bmu_id": "T_KEADGT-3",
+    "ngc_bmu_id": "KEADGT-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/28390306",
+    "plant_name": "King's Lynn Power Station",
+    "bmu_id": "E_KLYN-A-1",
+    "ngc_bmu_id": "KLYN-A-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-10G",
+    "ngc_bmu_id": "DRAXX-10G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_DRAXX-10G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-12G",
+    "ngc_bmu_id": "DRAXX-12G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_DRAXX-12G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-5",
+    "ngc_bmu_id": "DRAXX-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_DRAXX-5; fuelType=COAL; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-6",
+    "ngc_bmu_id": "DRAXX-6",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_DRAXX-6; fuelType=COAL; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-9G",
+    "ngc_bmu_id": "DRAXX-9G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_DRAXX-9G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/449382367",
+    "plant_name": "Cruachan Power Station",
+    "bmu_id": "T_CRUA-1",
+    "ngc_bmu_id": "CRUA-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/449382367",
+    "plant_name": "Cruachan Power Station",
+    "bmu_id": "T_CRUA-2",
+    "ngc_bmu_id": "CRUA-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/449382367",
+    "plant_name": "Cruachan Power Station",
+    "bmu_id": "T_CRUA-3",
+    "ngc_bmu_id": "CRUA-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/449382367",
+    "plant_name": "Cruachan Power Station",
+    "bmu_id": "T_CRUA-4",
+    "ngc_bmu_id": "CRUA-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "relation/14425529",
+    "plant_name": "Markinch Biomass",
+    "bmu_id": "E_MARK-1",
+    "ngc_bmu_id": "MARK-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
   }
 ]

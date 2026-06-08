@@ -6,7 +6,6 @@ T_AKGLW-2,AKGLW-2,AIKENGALL II,WIND,T,P,63.840,Aikengall 2 CWCL,,,displayable,Fa
 T_AKGLW-3,AKGLW-3,AIKENGALL2A-W,WIND,T,P,163.400,AIK2A Sustainable Energy Ltd,,,displayable,False
 T_ANSUW-1,ANSUW-1,An Suidhe 1,WIND,T,P,19.360,Statkraft Markets Gmbh,,,displayable,False
 T_ARCHW-1,ARCHW-1,Arecleoch,WIND,T,P,114.000,SP Renewables (UK) Limited,,,displayable,False
-E_ARNKB-1,ARNKB-1,AR0006-BLOX,,E,P,41.660,Octopus Energy Trading Limited,Midlands,,needs_review,False
 E_ASHWW-1,ASHWW-1,Andershaw Wind Farm,WIND,E,P,35.000,Statkraft Markets Gmbh,South Scotland,,displayable,False
 E_BABAW-1,BABAW-1,Baillie Wind Farm,WIND,E,P,52.500,Statkraft Markets Gmbh,North Scotland,,displayable,False
 T_BAGE-1,BAGE-1,BAGE-1,CCGT,T,P,500.000,Baglan Operations Ltd,,,displayable,False
@@ -27,23 +26,10 @@ M_CAS-CON01,CAS-CON01,Conon Cascade,NPSHYD,T,P,95.226,SSE Generation Ltd,,,displ
 M_CAS-GAR01,CAS-GAR01,Garry Cascade,NPSHYD,T,P,40.000,SSE Generation Ltd,,,displayable,False
 M_CAS-KIL01,CAS-KIL01,Killin Cascade,NPSHYD,T,P,70.000,SSE Generation Ltd,,,displayable,False
 M_CAS-MOR01,CAS-MOR01,Moriston Cascade,NPSHYD,T,P,74.000,SSE Generation Ltd,,,displayable,False
-T_CASKD-1,CASKD-1,Castner Kellner,,T,P,70.000,INOVYN Energy Limited,,,needs_review,False
 E_CATHB-1,CATHB-1,CathkinBattery,OTHER,E,P,49.900,ENGIE Power Limited,South Scotland,,displayable,False
-T_CDCL-1,CDCL-1,T_CDCL-1,CCGT,T,P,445.000,Uniper UK Limited,,,displayable,False
 T_CGTHW-1,CGTHW-1,Corriegarth WF,WIND,T,P,69.000,Corriegarth Wind Energy LTD,,,displayable,False
-E_CLAYB-1,CLAYB-1,ClayTye Farm 1 Battery Storage,,E,P,49.500,Tesla Motors Limited,Eastern,,needs_review,False
-E_CLAYB-2,CLAYB-2,ClayTye Farm 2 Battery Storage,,E,P,49.500,Tesla Motors Limited,Eastern,,needs_review,False
 T_CLDCW-1,CLDCW-1,Clyde Central,WIND,T,P,200.000,Clyde Windfarm (Scotland) Ltd,,,displayable,False
 E_CNCLW-1,CNCLW-1,Coire Na Cloiche WF,WIND,E,P,30.520,Statkraft Markets Gmbh,North Scotland,,displayable,False
-T_CNQPS-1,CNQPS-1,T_CNQPS-1,CCGT,T,P,351.162,Uniper UK Limited,,,displayable,False
-T_CNQPS-2,CNQPS-2,T_CNQPS-2,CCGT,T,P,352.000,Uniper UK Limited,,,displayable,False
-T_CNQPS-3,CNQPS-3,T_CNQPS-3,CCGT,T,P,352.000,Uniper UK Limited,,,displayable,False
-T_CNQPS-4,CNQPS-4,T_CNQPS-4,CCGT,T,P,352.000,Uniper UK Limited,,,displayable,False
-T_COALB-1,COALB-1,COALBURN1 BMU-1,,T,P,100.000,Alcemi Storage Developments 4,,,needs_review,False
-T_COALB-2,COALB-2,COALBURN1 BMU-2,,T,P,100.000,Alcemi Storage Developments 4,,,needs_review,False
-T_COALB-3,COALB-3,COALBURN1 BMU-3,,T,P,100.000,Alcemi Storage Developments 4,,,needs_review,False
-T_COALB-4,COALB-4,COALBURN1 BMU-4,,T,P,100.000,Alcemi Storage Developments 4,,,needs_review,False
-T_COALB-5,COALB-5,COALBURN1 BMU-5,,T,P,100.000,Alcemi Storage Developments 4,,,needs_review,False
 T_COUWW-1,COUWW-1,Cour Wind Farm,WIND,T,P,20.500,Cour Wind farm (Scotland) Ltd,,,displayable,False
 T_CREAW-1,CREAW-1,Creag Riabhach Wind Farm,WIND,T,P,93.000,Creag Riabhach Wind Farm Ltd,,,displayable,False
 T_CRGHW-1,CRGHW-1,Carraig Gheal Wind Farm,WIND,T,P,46.000,Statkraft Markets Gmbh,,,displayable,False
@@ -67,27 +53,12 @@ T_DDGNO-1,DDGNO-1,Dudgeon Generator BMU 1,WIND,T,P,108.000,Dudgeon Offshore Wind
 T_DDGNO-2,DDGNO-2,Dudgeon Generator BMU 2,WIND,T,P,90.000,Dudgeon Offshore Wind Ltd,,,displayable,False
 T_DDGNO-3,DDGNO-3,Dudgeon Generator BMU 3,WIND,T,P,102.000,Dudgeon Offshore Wind Ltd,,,displayable,False
 T_DDGNO-4,DDGNO-4,Dudgeon Generator BMU 4,WIND,T,P,102.000,Dudgeon Offshore Wind Ltd,,,displayable,False
-E_DERW-1,DERW-1,Derwent Cogeneration Ltd,,E,P,218.000,UK Power Reserve Limited,East Midlands,,needs_review,False
 T_DNLWW-1,DNLWW-1,Dunlaw Extension,WIND,T,P,29.750,SP Renewables (UK) Limited,,,displayable,False
 T_DOUGW-1,DOUGW-1,T-DOUGW-1,WIND,T,P,45.000,Erova Energy Limited,,,displayable,False
-E__MDRX001,DRAXD-1,E__MDRX001,,E,P,49.000,Drax Power Ltd,Yorkshire,,needs_review,False
-T_DRAXX-1,DRAXX-1,T_DRAXX-1,BIOMASS,T,P,665.248,Drax Power Ltd,,,displayable,False
-T_DRAXX-10G,DRAXX-10G,T_DRAXX-10G,OCGT,T,P,33.152,Drax Power Ltd,,,displayable,False
-T_DRAXX-12G,DRAXX-12G,T_DRAXX-12G,OCGT,T,P,32.000,Drax Power Ltd,,,displayable,False
-T_DRAXX-2,DRAXX-2,T_DRAXX-2,BIOMASS,T,P,669.400,Drax Power Ltd,,,displayable,False
-T_DRAXX-3,DRAXX-3,T_DRAXX-3,BIOMASS,T,P,661.400,Drax Power Ltd,,,displayable,False
-T_DRAXX-4,DRAXX-4,T_DRAXX-4,BIOMASS,T,P,645.000,Drax Power Ltd,,,displayable,False
-T_DRAXX-5,DRAXX-5,T_DRAXX-5,COAL,T,P,645.000,Drax Power Ltd,,,displayable,False
-T_DRAXX-6,DRAXX-6,T_DRAXX-6,COAL,T,P,645.000,Drax Power Ltd,,,displayable,False
-T_DRAXX-9G,DRAXX-9G,T_DRAXX-9G,OCGT,T,P,32.454,Drax Power Ltd,,,displayable,False
 T_DRSLW-1,DRSLW-1,Dersalloch Windfarm,WIND,T,P,70.900,SP Renewables (UK) Limited,,,displayable,False
 T_DUNGW-1,DUNGW-1,Dunmglass Windfarm 1,WIND,T,P,100.000,Dunmaglass Wind Farm Limited,,,displayable,False
 T_EDINW-1,EDINW-1,Edinbane Windfarm,WIND,T,P,41.400,Vattenfall Wind Power Ltd,,,displayable,False
 T_FALGW-1,FALGW-1,Fallago Rig Wind Farm,WIND,T,P,144.000,Fallago Rig Wind Farm Limited,,,displayable,False
-T_FFES-1,FFES-1,Ffestioniog 1,PS,T,P,91.033,First Hydro Company,,,displayable,False
-T_FFES-2,FFES-2,Ffestioniog 2,PS,T,P,91.875,First Hydro Company,,,displayable,False
-T_FFES-3,FFES-3,Ffestioniog 3,PS,T,P,90.000,First Hydro Company,,,displayable,False
-T_FFES-4,FFES-4,Ffestioniog 4,PS,T,P,90.920,First Hydro Company,,,displayable,False
 T_FSDLW-1,FSDLW-1,Freasdail Wind Farm,WIND,T,P,22.200,Freasdail Energy Limited,,,displayable,False
 T_GANW-11,GAOFO-1,Galloper OSP 11,WIND,T,P,88.000,Galloper Offshore WindFarm Ltd,,,displayable,False
 T_GANW-22,GAOFO-2,Galloper OSP 22,WIND,T,P,385.820,Galloper Offshore WindFarm Ltd,,,displayable,False
@@ -118,24 +89,13 @@ T_HOWBO-1,HOWBO-1,HORNSEA_WF_2A,WIND,T,P,440.000,Breesea Limited,,,displayable,F
 T_HOWBO-2,HOWBO-2,HORNSEA_WF_2B,WIND,T,P,440.000,Sonningmay Wind Limited,,,displayable,False
 T_HOWBO-3,HOWBO-3,HORNSEA_WF_2C,WIND,T,P,440.000,Soundmark Wind Limited,,,displayable,False
 T_HUMR-1,HUMR-1,HUMR-1,CCGT,T,P,1283.000,VPI Immingham LLP,,,displayable,False
-T_HUMR-2,HUMR-2,HUMR-2,,T,P,50.000,VPI Immingham Energy Park A,,,needs_review,False
-T_HUMRD-1,HUMRD-1,HUMRD-1,,T,P,20.000,VPI Immingham LLP,,,needs_review,False
 T_HUNB-7,HUNB-7,Hunterston B Generator 7,NUCLEAR,T,P,510.000,EDF Energy Nuclear Generation,,,displayable,False
 T_HUNB-8,HUNB-8,Hunterston B Generator 8,NUCLEAR,T,P,510.000,EDF Energy Nuclear Generation,,,displayable,False
-E_ILMEB-1,ILMEB-1,Ilmer Lane BESS,,E,P,49.500,Tesla Motors Limited,Eastern,,needs_review,False
-T_INDQ-1,INDQ-1,Gas Turbine,OCGT,T,P,140.080,Indian Queens Power Ltd,,,displayable,False
-T_KEAD-1,KEAD-1,KGL CCGT 1,CCGT,T,P,764.000,Keadby Generation Limited,,,displayable,False
-T_KEADGT-3,KEADGT-3,KGL GT 3,OCGT,T,P,30.000,Keadby Generation Limited,,,displayable,False
 T_KENNW-1,KENNW-1,Kennoxhead Wind Farm,WIND,T,P,60.000,Kennoxhead Wind Farm Limited,,,displayable,False
 T_KILBW-1,KILBW-1,KILBW,WIND,T,P,68.510,Kilbraur Wind Energy Ltd,,,displayable,False
 T_KILLPG-1,KILLPG-1,T_KILLPG-1,CCGT,T,P,311.000,Uniper UK Limited,,,displayable,False
 T_KILLPG-2,KILLPG-2,T_KILLPG-2,CCGT,T,P,316.000,Uniper UK Limited,,,displayable,False
-T_KILSD-1,KILSD-1,T_KILSD-1,,T,P,0.395,ZENOBE KILMARNOCK SOUTH LTD,,,needs_review,False
-T_KILSD-2,KILSD-2,T_KILSD-2,,T,P,0.360,ZENOBE KILMARNOCK SOUTH LTD,,,needs_review,False
-T_KILSD-3,KILSD-3,T_KILSD-3,,T,P,0.363,ZENOBE KILMARNOCK SOUTH LTD,,,needs_review,False
-T_KILSD-4,KILSD-4,T_KILSD-4,,T,P,0.328,ZENOBE KILMARNOCK SOUTH LTD,,,needs_review,False
 T_KLGLW-1,KLGLW-1,Kilgallioch Windfarm,WIND,T,P,228.000,SP Renewables (UK) Limited,,,displayable,False
-T_KLGLW-2,KLGLW-2,T_KLGLW-2,,T,P,225.000,SP Renewables (UK) Limited,,,needs_review,False
 T_KPMRW-1,KPMRW-1,KYPE MUIR WIND FARM,WIND,T,P,89.000,OnPath Energy Limited,,,displayable,False
 T_KYPEW-1,KYPEW-1,KYPE MUIR EXT WIND FARM,WIND,T,P,67.000,Kype Extension Wind Farm Ltd,,,displayable,False
 T_LIMKW-1,LIMKW-1,Limekiln Wind Farm,WIND,T,P,106.000,Limekiln Extension Ltd,,,displayable,False
@@ -145,30 +105,13 @@ T_MOWWO-2,MOWWO-2,Moray West OWF2,WIND,T,P,215.000,Moray Offshore Wind West Ltd,
 T_MOWWO-3,MOWWO-3,Moray West OWF3,WIND,T,P,143.000,Moray Offshore Wind West Ltd,,,displayable,False
 T_MOWWO-4,MOWWO-4,Moray West OWF4,WIND,T,P,287.000,Moray Offshore Wind West Ltd,,,displayable,False
 T_MYGPW-1,MYGPW-1,Minnygap Wind Farm,WIND,T,P,25.000,Minnygap Energy Limited,,,displayable,False
-E_OLDHB-1,OLDHB-1,Oldham BESS,,E,P,20.000,Field Oldham Ltd,North Western,,needs_review,False
-E_PGBRKL,PGBRK-1,E_PGBRKL,,E,P,20.000,Peak Gen Top Co Limited,Southern,,needs_review,False
-E_PGBARY,PGBRY-1,E_PGBARY,,E,P,20.318,Peak Gen Top Co Limited,South Wales,,needs_review,False
-E_PGCOVE,PGCOV-1,E_PGCOVE,,E,P,6.000,Peak Gen Top Co Limited,East Midlands,,needs_review,False
-E_PGDIDC,PGDID-1,E_PGDIDC,,E,P,6.000,Peak Gen Top Co Limited,Southern,,needs_review,False
-E_PGEXTR,PGEXT-1,E_PGEXTR,,E,P,20.439,Peak Gen Top Co Limited,South Western,,needs_review,False
-E_PGFARE,PGFAR-1,E_PGFARE,,E,P,20.000,Peak Gen Top Co Limited,Southern,,needs_review,False
-E_PGHATF,PGHAT-1,E_PGHATF,,E,P,6.000,Peak Gen Top Co Limited,Eastern,,needs_review,False
-E_PGHAYD,PGHAY-1,E_PGHAYD,,E,P,6.398,Peak Gen Top Co Limited,North Western,,needs_review,False
-E_PGHVNT,PGHVT-1,E_PGHVNT,,E,P,20.000,Peak Gen Top Co Limited,Southern,,needs_review,False
-E_PGLLAN,PGLAN-1,E_PGLLAN,,E,P,20.525,Peak Gen Top Co Limited,South Wales,,needs_review,False
-E_PGSOUT,PGSOU-1,E_PGSOUT,,E,P,24.000,Peak Gen Top Co Limited,Southern,,needs_review,False
 E_PIBUW-1,PIBUW-1,Pines Burn Wind Farm,WIND,E,P,36.000,Npower Commercial Gas Limited,South Scotland,,displayable,False
 T_PNYCW-1,PNYCW-1,PNYCW-1 Export,WIND,T,P,228.000,Pen y Cymoedd Wind Farm LTD,,,displayable,False
-E_RHEI-1,RHEI-4,E_RHEI-1,,E,P,50.000,Statkraft Markets Gmbh,Merseyside North Wales,,needs_review,False
 T_RMPNO-1,RMPNO-1,Rampion Offshore Wind BMU 1,WIND,T,P,200.100,Rampion Offshore Windfarm Ltd,,,displayable,False
 T_RMPNO-2,RMPNO-2,Rampion Offshore Wind BMU 2,WIND,T,P,200.100,Rampion Offshore Windfarm Ltd,,,displayable,False
 T_RREW-1,RREW-1,T_RREW-1,WIND,T,P,114.293,RWE Renewables UK Robin Rigg,,,displayable,False
 T_RRWW-1,RRWW-1,T_RRWW-1,WIND,T,P,90.838,RWE Renewables UK Robin Rigg,,,displayable,False
-T_RYHPS-1,RYHPS-1,T_RYHPS-1,CCGT,T,P,720.980,VPI Power Limited,,,displayable,False
 T_SANQW-1,SANQW-1,SANQUHAR,WIND,T,P,32.080,SANQUHAR CWCL,,,displayable,False
-T_SCCL-1,SCCL-1,Unit 1,CCGT,T,P,408.200,SCCL,,,displayable,False
-T_SCCL-2,SCCL-2,Unit 2,CCGT,T,P,409.100,SCCL,,,displayable,False
-T_SCCL-3,SCCL-3,Unit 3,CCGT,T,P,409.300,SCCL,,,displayable,False
 T_SEEL-1,SEEL-1,Spalding Energy Expansion Ltd,OCGT,T,P,300.000,Spalding Energy Expansion Ltd,,,displayable,False
 T_SGRWO-1,SGRWO-1,Seagreen1 Offshore WF 1,WIND,T,P,358.000,Seagreen Wind Energy Limited,,,displayable,False
 T_SGRWO-2,SGRWO-2,Seagreen1 Offshore WF 2,WIND,T,P,220.000,Seagreen Wind Energy Limited,,,displayable,False
@@ -176,34 +119,18 @@ T_SGRWO-3,SGRWO-3,Seagreen1 Offshore WF 3,WIND,T,P,374.618,Seagreen Wind Energy 
 T_SGRWO-4,SGRWO-4,Seagreen1 Offshore WF 4,WIND,T,P,140.000,Seagreen Wind Energy Limited,,,displayable,False
 T_SGRWO-5,SGRWO-5,Seagreen1 Offshore WF 5,WIND,T,P,300.000,Seagreen Wind Energy Limited,,,displayable,False
 T_SGRWO-6,SGRWO-6,Seagreen1 Offshore WF 6,WIND,T,P,380.000,Seagreen Wind Energy Limited,,,displayable,False
-T_SOFOW-11,SOFWO-11,Sofia Offshore Wind BMU 1,,T,P,457.000,Sofia Offshore Wind Farm Ltd,,,needs_review,False
-T_SOFOW-12,SOFWO-12,Sofia Offshore Wind BMU 2,,T,P,457.000,Sofia Offshore Wind Farm Ltd,,,needs_review,False
-T_SOFOW-21,SOFWO-21,Sofia Offshore Wind BMU 3,,T,P,457.000,Sofia Offshore Wind Farm Ltd,,,needs_review,False
-T_SOFOW-22,SOFWO-22,Sofia Offshore Wind BMU 4,,T,P,457.000,Sofia Offshore Wind Farm Ltd,,,needs_review,False
 T_STLGW-1,STLGW-1,Stronelairg Windfarm 1,WIND,T,P,108.000,Stronelairg Windfarm Limited,,,displayable,False
 T_STLGW-2,STLGW-2,Stronelairg Windfarm 2,WIND,T,P,108.000,Stronelairg Windfarm Limited,,,displayable,False
 T_STLGW-3,STLGW-3,Stronelairg Windfarm 3,WIND,T,P,108.000,Stronelairg Windfarm Limited,,,displayable,False
-T_FERGD-1,T_FERGD-1,NR Ferguslie 1,,T,P,5.053,EDF Energy Customers Limited,,,needs_review,False
-T_FERGD-2,T_FERGD-2,NR Ferguslie 2,,T,P,2.303,EDF Energy Customers Limited,,,needs_review,False
-E_TAYL2G,TAYL2G,E_TAYL2G,OCGT,E,P,73.325,Uniper UK Limited,London,,displayable,False
-E_TAYL3G,TAYL3G,E_TAYL3G,OCGT,E,P,72.000,Uniper UK Limited,London,,displayable,False
 T_TDBNW-1,TDBNW-1,Toddleburn,WIND,T,P,31.600,SSE Generation Ltd,,,displayable,False
-E_THMRB-1,THMRB-1,Thame Road  BESS,,E,P,49.500,Tesla Motors Limited,Eastern,,needs_review,False
 T_THUPG-1,THUPG-1,T_THUPG-1,OTHER,T,P,180.000,THURROCK POWER LIMITED,,,displayable,False
-T_THURB-1,THURB-1,T_THURB-1,,T,P,100.000,THURROCK STORAGE LIMITED,,,needs_review,False
-T_THURB-2,THURB-2,T_THURB-2,,T,P,100.000,THURROCK STORAGE LIMITED,,,needs_review,False
-T_THURB-3,THURB-3,T_THURB-3,,T,P,100.000,THURROCK STORAGE LIMITED,,,needs_review,False
 T_TKNWW-1,TKNWW-1,Triton Knoll OSP west 1,WIND,T,P,412.000,Triton Knoll Offshore Wind,,,displayable,False
 E_TULWW-1,TULWW-1,Tullo Windfarm,WIND,E,P,17.000,Eneco Energy Trade,North Scotland,,displayable,False
 T_TWSHW-1,TWSHW-1,Twenty Shilling Wind Farm,WIND,T,P,37.800,Twentyshilling Limited,,,displayable,False
-T_TYLNB-1,TYLNB-1,Tye Lane BESS,,T,P,58.000,Pivoted Power LLP,,,needs_review,False
 T_USKMB-2,USKMB-2,UES Asset 1 limited BMU1 BESS1,OTHER,T,P,57.500,UES Asset 1 Limited,,,displayable,False
 T_USKMB-3,USKMB-3,UES Asset 1 limited BMU1 BESS2,OTHER,T,P,57.500,UES Asset 1 Limited,,,displayable,False
-E_VKING-2,VKING-2,Viking,,E,P,50.000,Whitetower Energy Limited,Northern,,needs_review,False
 T_VKNGW-1,VKNGW-1,Viking Energy Windfarm BMU-1,WIND,T,P,121.800,Viking Energy Wind Farm LLP,,,displayable,False
 T_VKNGW-2,VKNGW-2,Viking Energy Windfarm BMU-2,WIND,T,P,121.800,Viking Energy Wind Farm LLP,,,displayable,False
 T_VKNGW-3,VKNGW-3,Viking Energy Windfarm BMU-3,WIND,T,P,121.800,Viking Energy Wind Farm LLP,,,displayable,False
 T_VKNGW-4,VKNGW-4,Viking Energy Windfarm BMU-4,WIND,T,P,121.800,Viking Energy Wind Farm LLP,,,displayable,False
 T_WHILW-1,WHILW-1,T_WHILW-1,WIND,T,P,309.000,SP Renewables (UK) Limited,,,displayable,False
-T_WISTW-2,WISTW-2,Brockloch Rig 2 WF Exp A,WIND,T,P,61.500,BROCKLOCH RIG WINDFARM LTD,,,displayable,False
-T_WTGTB-1,WTGTB-1,Whitegate,,T,P,58.000,HD144WHI Ltd,,,needs_review,False
