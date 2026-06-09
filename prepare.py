@@ -103,7 +103,7 @@ def parse_capacity_to_mw(value: Any) -> float:
     return float(sum(values)) if values else float("nan")
 
 
-# Plant:source values are bucketed via data/reference/fuel_types.json.
+# Plant:source values are bucketed via data/shared/fuel_types.json.
 PLANT_SOURCE_BUCKETS: tuple[str, ...] = fuel_type_ids()
 
 

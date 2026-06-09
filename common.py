@@ -32,41 +32,54 @@ except ImportError:  # pragma: no cover - optional progress-bar dependency
 
 REPO_ROOT = Path(__file__).resolve().parent
 CACHE_DIR = REPO_ROOT / "cache"
-DATA_RAW_DIR = REPO_ROOT / "data" / "raw"
-DATA_MAP_DIR = REPO_ROOT / "data" / "map"
-DATA_ZONES_DIR = REPO_ROOT / "data" / "zones"
+DATA_DIR = REPO_ROOT / "data"
+# All computed data for a region lives under one portable folder so a region
+# (e.g. "uk") can be copied between machines as a single tree.
+REGION_DATA_DIR = DATA_DIR / "regions"
+# Cross-region assets that are not specific to any single region (e.g. the fuel
+# taxonomy shared by every region's prep + the browser).
+SHARED_DIR = DATA_DIR / "shared"
 FILE_ENCODING = "utf-8"
 
 
+def region_data_dir(region_id: str) -> Path:
+    path = REGION_DATA_DIR / region_id
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
 def raw_dir(region_id: str) -> Path:
-    path = DATA_RAW_DIR / region_id
+    path = region_data_dir(region_id) / "raw"
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
 def map_dir(region_id: str) -> Path:
-    path = DATA_MAP_DIR / region_id
+    path = region_data_dir(region_id) / "map"
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
 def zones_dir(region_id: str) -> Path:
-    path = DATA_ZONES_DIR / region_id
+    path = region_data_dir(region_id) / "zones"
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
-def uk_raw_dir() -> Path:
-    return raw_dir("uk")
+def reference_dir(region_id: str) -> Path:
+    path = region_data_dir(region_id) / "reference"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
-def uk_map_dir() -> Path:
-    return map_dir("uk")
+def source_dir(region_id: str) -> Path:
+    path = region_data_dir(region_id) / "source"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
-for _dir in (CACHE_DIR, DATA_RAW_DIR, DATA_MAP_DIR, DATA_ZONES_DIR):
+
+for _dir in (CACHE_DIR, REGION_DATA_DIR, SHARED_DIR):
     _dir.mkdir(parents=True, exist_ok=True)
-uk_raw_dir().mkdir(parents=True, exist_ok=True)
-uk_map_dir().mkdir(parents=True, exist_ok=True)
 
 
 def cache_key(*parts: Any) -> str:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""List map catalog regions and predefined boundaries from regions/."""
+"""List map catalog regions and predefined boundaries from boundaries/."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from region_catalog import (  # noqa: E402
-    REGIONS_DIR,
+    BOUNDARIES_DIR,
     get_region,
     list_boundary_stems,
     list_exportable_region_ids,
@@ -29,11 +29,11 @@ def main() -> int:
         print(f"  {region_id:28} {region['title']:32} layers={layer_count}  boundary={boundary}")
 
     print()
-    print("Predefined boundaries (regions/):")
+    print("Predefined boundaries (boundaries/):")
     for stem in list_boundary_stems():
-        path = REGIONS_DIR / f"{stem}.geojson"
+        path = BOUNDARIES_DIR / f"{stem}.geojson"
         on_disk = "yes" if path.exists() else "missing"
-        rel = f"regions/{stem}.geojson"
+        rel = f"boundaries/{stem}.geojson"
         in_catalog = stem in catalog_ids or any(
             resolve_boundary_rel_path(rid) == rel for rid in catalog_ids
         )

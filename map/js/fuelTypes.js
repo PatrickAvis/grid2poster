@@ -13,7 +13,7 @@ const DEFAULT_FUEL_TYPES = [
 
 let fuelTypes = DEFAULT_FUEL_TYPES;
 
-export async function loadFuelTypes(url = "../data/reference/fuel_types.json") {
+export async function loadFuelTypes(url = "../data/shared/fuel_types.json") {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);

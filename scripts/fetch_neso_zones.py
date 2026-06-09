@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download NESO boundary datasets into data/zones/ and normalize to WGS84 GeoJSON."""
+"""Download NESO boundary datasets into data/regions/uk/zones/ and normalize to WGS84 GeoJSON."""
 
 from __future__ import annotations
 
@@ -17,7 +17,9 @@ import requests
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
-from common import DATA_ZONES_DIR
+from common import zones_dir
+
+UK_ZONES_DIR = zones_dir("uk")
 
 SourceFormat = Literal["geojson", "zip", "gpkg"]
 
@@ -177,28 +179,28 @@ NESO_DATASETS: dict[str, NesoDataset] = {
         key="dno",
         label="DNO licence areas",
         url=DNO_URL,
-        output_name="uk_dno_areas.geojson",
+        output_name="dno_areas.geojson",
         normalize=normalize_dno,
     ),
     "gsp": NesoDataset(
         key="gsp",
         label="GSP regions",
         url=GSP_URL,
-        output_name="uk_gsp_areas.geojson",
+        output_name="gsp_areas.geojson",
         normalize=normalize_gsp,
     ),
     "generation": NesoDataset(
         key="generation",
         label="TNUoS generation charging zones",
         url=GENERATION_CHARGING_ZONES_URL,
-        output_name="uk_generation_charging_zones.geojson",
+        output_name="generation_charging_zones.geojson",
         normalize=normalize_generation_zones,
     ),
     "etys": NesoDataset(
         key="etys",
         label="ETYS transmission boundaries",
         url=ETYS_BOUNDARIES_URL,
-        output_name="uk_etys_boundaries.geojson",
+        output_name="etys_boundaries.geojson",
         normalize=normalize_etys_boundaries,
         source_format="zip",
     ),
@@ -257,7 +259,7 @@ def dataset_keys() -> list[str]:
 def resolve_selected_datasets(args: argparse.Namespace) -> list[str]:
     if args.list:
         for key, dataset in NESO_DATASETS.items():
-            print(f"{key}: {dataset.label} -> data/zones/{dataset.output_name}")
+            print(f"{key}: {dataset.label} -> data/regions/uk/zones/{dataset.output_name}")
         return []
 
     selected = set(NESO_DATASETS)
@@ -282,7 +284,7 @@ def resolve_selected_datasets(args: argparse.Namespace) -> list[str]:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Fetch NESO boundary datasets into data/zones/ as normalized WGS84 GeoJSON.",
+        description="Fetch NESO boundary datasets into data/regions/uk/zones/ as normalized WGS84 GeoJSON.",
     )
     parser.add_argument(
         "--only",
@@ -292,7 +294,7 @@ def parse_args() -> argparse.Namespace:
         help="Fetch only these datasets (default: all registered datasets)",
     )
     parser.add_argument("--list", action="store_true", help="List registered datasets and exit")
-    parser.add_argument("--zones-dir", type=Path, default=DATA_ZONES_DIR)
+    parser.add_argument("--zones-dir", type=Path, default=UK_ZONES_DIR)
     parser.add_argument("--dno-output", type=Path, default=None)
     parser.add_argument("--gsp-output", type=Path, default=None)
     parser.add_argument("--generation-output", type=Path, default=None)

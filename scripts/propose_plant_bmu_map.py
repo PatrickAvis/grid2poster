@@ -36,7 +36,7 @@ def parse_args() -> argparse.Namespace:
         "--plants",
         type=Path,
         default=None,
-        help="Plants ground-truth GeoJSON (default: data/map/uk/uk_plants_web.geojson)",
+        help="Plants ground-truth GeoJSON (default: data/regions/uk/map/plants_web.geojson)",
     )
     parser.add_argument(
         "--map",
