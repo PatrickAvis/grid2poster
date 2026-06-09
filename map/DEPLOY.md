@@ -11,7 +11,7 @@ The map is a static site: `map/` (HTML/JS) plus `data/catalog.json`, `data/share
   data/shared/                  # fuel_types.json
   data/regions/uk/map/          # small GeoJSON + generated *.pmtiles
   data/regions/uk/zones/        # optional zone overlays
-  data/regions/uk/reference/    # plant_bmu_map.json (UK popups)
+  data/regions/uk/reference/generated/  # plant_bmu_links.json (UK popups)
 ```
 
 Serve from the repo root so catalog paths (`../data/regions/uk/map/...`) resolve correctly:
@@ -44,7 +44,7 @@ Enable **brotli** or **gzip** for `.geojson` — compressed payloads are often 5
 | `data/catalog.json` | Yes |
 | `data/shared/` | Yes (fuel taxonomy) |
 | `data/regions/{id}/map/` | Yes |
-| `data/regions/uk/reference/plant_bmu_map.json` | Yes (UK plant ↔ BMU join for popups) |
+| `data/regions/uk/reference/generated/plant_bmu_links.json` | Yes (UK plant ↔ BMU join for popups) |
 | `data/regions/{id}/zones/` | If used (e.g. UK NESO) |
 | `data/regions/{id}/raw/` | **No** — multi-GB OSM exports (prepare `map/` locally first) |
 | `data/regions/{id}/source/` | **No** — local `.osm.pbf` extracts |

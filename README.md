@@ -26,9 +26,17 @@ python scripts/serve_map.py
 
 Open [http://localhost:8000/map/](http://localhost:8000/map/) (or `?region=fr` after exporting another country). Use `serve_map.py` instead of plain `http.server` when testing PMTiles — it supports HTTP range requests. Regions and layers are defined in [`data/catalog.json`](data/catalog.json). See [`map/README.md`](map/README.md) and [`map/DEPLOY.md`](map/DEPLOY.md).
 
-UK plant popups show BMU ids from a separate mapping table ([procedure below](#uk-plant-bmu-mapping)); OSM plant geometry lives in `data/regions/uk/map/plants_web.geojson`.
+UK **BMU-mapped sites** show BMU ids from a separate mapping table ([procedure below](#uk-plant-bmu-mapping)); OSM `power=plant` geometry lives in `data/regions/uk/map/bmu_sites_web.geojson`.
 
 All computed data for a region lives under one portable folder, `data/regions/{id}/` (e.g. `data/regions/uk/` for the UK), so a fully built region can be copied between machines as a single tree. Cross-region assets like the fuel taxonomy live in `data/shared/`, and the export clip masks live in `boundaries/`.
+
+Layer naming keeps the BMU workflow separate from the full OSM generator inventory:
+
+| Catalog id | UI label | Meaning |
+| --- | --- | --- |
+| `plants` | BMU-mapped sites | Grid-scale OSM `power=plant` sites; BMU links appear here. |
+| `generators` | All generators | Complete OSM `power=generator` inventory, from grid assets down to domestic rooftop solar. |
+| `turbines` | Wind turbines | Wind-only generator subset for turbine-level detail. |
 
 ## Installation
 
@@ -134,7 +142,7 @@ Downloaded from the [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_
 | `power=cable` | `--include-cables` (+ optional `--cable-sea-buffer-km`) | Lines | Underground and submarine cables |
 | `power=plant` | Exported unless `--skip-plants` | Point, Polygon, MultiPolygon | Power stations and wind/solar farms |
 | `power=substation` | Exported unless `--skip-substations` | Point, Polygon, MultiPolygon | Transmission and distribution substations |
-| `power=generator` + wind tags | Exported unless `--skip-turbines` | Point (mostly) | Individual wind turbines |
+| `power=generator` + wind tags | Exported unless `--skip-turbines` | Point (mostly) | Wind turbines |
 
 **Great Britain tagging context:** see the [OSM Power networks/Great Britain](https://wiki.openstreetmap.org/wiki/Power_networks/Great_Britain) wiki page.
 
@@ -147,7 +155,7 @@ Use `python scripts/export_uk.py --all` (alias for `export_region.py --region uk
 | File | Source | Contents |
 | --- | --- | --- |
 | `powerlines.geojson` / `.csv` | OSM lines, minor lines, cables | Full UK grid export with all OSM tags |
-| `plants.geojson` / `.csv` | OSM `power=plant` | Generation sites with footprints and capacity tags |
+| `plants.geojson` / `.csv` | OSM `power=plant` | Grid-scale site footprints and capacity tags |
 | `substations.geojson` / `.csv` | OSM `power=substation` | Substation footprints and attributes |
 | `wind_turbines.geojson` / `.csv` | OSM `power=generator` (wind) | Individual turbine points; parsed `capacity_mw`, `height_m`, `rotor_diameter_m` when tags exist |
 
@@ -158,10 +166,11 @@ The [interactive map](map/) does not load multi-gigabyte full exports directly. 
 | File | Derived from | What changes |
 | --- | --- | --- |
 | `lines_transmission.geojson` | `powerlines.geojson` | Drops `power=minor_line`; keeps transmission and cables; source for `lines.pmtiles` |
-| `plants_web.geojson` | `plants.geojson` | OSM ground truth: geometry and plant tags. BMU fields are joined at popup time — see [UK plant BMU mapping](#uk-plant-bmu-mapping). |
+| `bmu_sites_web.geojson` | `plants.geojson` | OSM `power=plant` site ground truth: geometry and tags. BMU fields are joined at popup time — see [UK plant BMU mapping](#uk-plant-bmu-mapping). |
 | `substations_web.geojson` | `substations.geojson` | Trims columns; adds `latitude`, `longitude` |
+| `all_generators_web.geojson` | `generators.geojson` + `wind_turbines.geojson` | Complete OSM `power=generator` inventory; source for `all_generators.pmtiles` |
 | `turbines_web.geojson` | `wind_turbines.csv` | Point-only tile-build source (~250 MB; ignored by git) |
-| `lines.pmtiles` / `turbines.pmtiles` | prepared UK GeoJSON | Fast browser layers from `scripts/build_tiles.py` |
+| `lines.pmtiles` / `all_generators.pmtiles` / `turbines.pmtiles` | prepared UK GeoJSON | Fast browser layers from `scripts/build_tiles.py` |
 | `dno_areas_web.geojson` | NESO DNO boundaries | WGS84 polygons; click to filter plants/turbines |
 | `gsp_areas_web.geojson` | NESO GSP boundaries | WGS84 polygons; click to filter plants/turbines |
 | `generation_charging_zones_web.geojson` | NESO TNUoS generation charging zones | WGS84 polygons; click to filter plants/turbines |
@@ -194,10 +203,10 @@ UK balancing-mechanism unit (BMU) ids are kept **separate** from OSM plant geome
 
 | File | Role |
 | --- | --- |
-| `data/regions/uk/map/plants_web.geojson` | **OSM ground truth** — edit plant names, geometry, capacity, etc. |
-| `data/regions/uk/reference/plant_bmu_map.csv` | **Your join table** — one row per plant↔BMU link (`osm_id` primary key) |
-| `data/regions/uk/reference/bmunits.json` | Elexon BMU registry (~3k units; auto-fetched) |
-| `data/regions/uk/reference/plant_bmu_map.json` | Generated from the CSV; loaded by the map |
+| `data/regions/uk/map/bmu_sites_web.geojson` | **OSM site ground truth** — edit plant names, geometry, capacity, etc. |
+| `data/regions/uk/reference/editable/plant_bmu_links.csv` | **Your join table** — one row per plant↔BMU link (`osm_id` primary key) |
+| `data/regions/uk/reference/source/elexon_bmu_units.json` | Elexon BMU registry (~3k units; auto-fetched) |
+| `data/regions/uk/reference/generated/plant_bmu_links.json` | Generated from the CSV; loaded by the map |
 
 **Mapping table columns:** `osm_id`, `plant_name`, `bmu_id` (Elexon, e.g. `E_ABERDARE`), `ngc_bmu_id` (e.g. `ABERU-1`), `bmu_type` (e.g. `E`), `source` (`auto` / `manual` / `migrated`), `notes`.
 
@@ -220,13 +229,13 @@ python scripts/prepare_map_data.py --region uk --skip-plants
 
 #### Manual BMU corrections
 
-1. Open `data/regions/uk/reference/plant_bmu_map.csv`.
+1. Open `data/regions/uk/reference/editable/plant_bmu_links.csv`.
 2. Add or edit rows (set `source` to `manual`).
 3. Regenerate: `python scripts/propose_plant_bmu_map.py`
 
 #### Deploy
 
-Sync `data/regions/uk/reference/plant_bmu_map.json` with the map (see [`map/DEPLOY.md`](map/DEPLOY.md)).
+Sync `data/regions/uk/reference/generated/plant_bmu_links.json` with the map (see [`map/DEPLOY.md`](map/DEPLOY.md)).
 
 **Licence:** BMU standing data is published by [Elexon](https://www.elexon.co.uk/) via the [Insights API](https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all).
 

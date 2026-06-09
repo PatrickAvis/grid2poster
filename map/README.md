@@ -29,12 +29,24 @@ data/
     raw/                         # full OSM exports (gitignored)
     map/                         # web GeoJSON and PMTiles
     zones/                       # zone overlays (UK DNO/GSP/TNUoS/ETYS today)
-    reference/                   # region reference tables (UK BMU map, etc.)
+    reference/                   # UK BMU + mapping tables
+      source/                    # downloaded Elexon reference
+      editable/                  # human-edited plant_bmu_links.csv
+      generated/                 # script outputs + map runtime JSON
+      operational/               # BM activity (future)
 ```
 
 Everything computed for a region lives under `data/regions/{region_id}/`, so a
 region can be copied between machines as a single folder. Catalog layer paths
-are relative to `data/` (e.g. `regions/uk/map/plants_web.geojson`).
+are relative to `data/` (e.g. `regions/uk/map/bmu_sites_web.geojson`).
+
+## Layer naming
+
+| Catalog id | UI label | Meaning |
+|------------|----------|---------|
+| `plants` | BMU-mapped sites | Grid-scale OSM `power=plant` sites; BMU links appear in UK popups. |
+| `generators` | All generators | Complete OSM `power=generator` inventory, from grid assets down to domestic rooftop solar. |
+| `turbines` | Wind turbines | Wind-only generator subset for turbine-level detail. |
 
 ## Export and prepare (per region)
 
@@ -54,10 +66,10 @@ Offshore plants/turbines use a **250 km** sea buffer for UK (cables still use 60
 
 | File | Role |
 |------|------|
-| [`data/regions/uk/map/plants_web.geojson`](../data/regions/uk/map/plants_web.geojson) | **OSM ground truth** — geometry and plant tags. Edit directly; sync fills blanks only. |
-| [`data/regions/uk/reference/plant_bmu_map.csv`](../data/regions/uk/reference/plant_bmu_map.csv) | **Your join table** — links `osm_id` → BMU ids. Edit this for BMU corrections. |
-| [`data/regions/uk/reference/bmunits.json`](../data/regions/uk/reference/bmunits.json) | Elexon BMU registry (auto-fetched). |
-| [`data/regions/uk/reference/plant_bmu_map.json`](../data/regions/uk/reference/plant_bmu_map.json) | Map runtime copy (generated from CSV). |
+| [`data/regions/uk/map/bmu_sites_web.geojson`](../data/regions/uk/map/bmu_sites_web.geojson) | **OSM site ground truth** — geometry and plant tags. Edit directly; sync fills blanks only. |
+| [`data/regions/uk/reference/editable/plant_bmu_links.csv`](../data/regions/uk/reference/editable/plant_bmu_links.csv) | **Your join table** — links `osm_id` → BMU ids. Edit this for BMU corrections. |
+| [`data/regions/uk/reference/source/elexon_bmu_units.json`](../data/regions/uk/reference/source/elexon_bmu_units.json) | Elexon BMU registry (auto-fetched). |
+| [`data/regions/uk/reference/generated/plant_bmu_links.json`](../data/regions/uk/reference/generated/plant_bmu_links.json) | Map runtime copy (generated from CSV). |
 
 The map joins plants + BMU map at popup time (`osm_id` first, plant name fallback).
 
@@ -69,10 +81,10 @@ python scripts/sync_uk_plants.py
 python scripts/propose_plant_bmu_map.py --fetch
 
 # Plants still without a map row
-python scripts/propose_plant_bmu_map.py --list-unmatched data/regions/uk/reference/plants_missing_bmu.csv
+python scripts/propose_plant_bmu_map.py --list-unmatched data/regions/uk/reference/generated/plants_without_bmu_links.csv
 ```
 
-Add manual BMU links in `plant_bmu_map.csv` (one row per BMU unit; use `source=manual`). Re-run `propose_plant_bmu_map.py` to refresh the JSON. Existing rows are never overwritten.
+Add manual BMU links in `plant_bmu_links.csv` (one row per BMU unit; use `source=manual`). Re-run `propose_plant_bmu_map.py` to refresh the JSON. Existing rows are never overwritten.
 
 `prepare_map_data.py --region uk` uses the same OSM merge for plants. To rebuild plants from OSM and discard edits: `python scripts/sync_uk_plants.py --force`.
 
@@ -110,6 +122,7 @@ The UK map uses PMTiles for the heavy visual layers so the browser does not fetc
 large raw GeoJSON files:
 
 - `data/regions/uk/map/lines.pmtiles` from `lines_transmission.geojson`
+- `data/regions/uk/map/all_generators.pmtiles` from `all_generators_web.geojson`
 - `data/regions/uk/map/turbines.pmtiles` from `turbines_web.geojson`
 
 Build the source web GeoJSON first, then build tiles:
@@ -146,8 +159,9 @@ Requires [tippecanoe](https://github.com/felt/tippecanoe) and the [pmtiles](http
 | Layer | File | Size |
 |-------|------|------|
 | Transmission lines | `lines_transmission.geojson` | ~50 MB |
-| Plants | `plants_web.geojson` | ~3 MB |
+| BMU-mapped sites | `bmu_sites_web.geojson` | ~3 MB |
 | Substations | `substations_web.geojson` | ~24 MB |
+| All generators | `all_generators.pmtiles` | generated |
 | Wind turbines | `turbines_web.geojson` | ~250 MB |
 
 ## Map architecture

@@ -45,10 +45,10 @@ RAW_STEMS: dict[str, str] = {
 
 MAP_STEMS: dict[str, str] = {
     "lines": "lines_transmission",
-    "plants": "plants_web",
+    "plants": "bmu_sites_web",
     "substations": "substations_web",
     "turbines": "turbines_web",
-    "generators": "generators_web",
+    "generators": "all_generators_web",
     "converters": "converters_web",
     "equipment": "power_equipment_web",
     "towers": "towers_web",
