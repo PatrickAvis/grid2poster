@@ -18,11 +18,24 @@ from region_catalog import catalog_data_path, get_region, list_region_ids
 LINE_PROPS = "power,voltage,voltage_kv,name,operator,circuits,cables,frequency,location"
 TURBINE_PROPS = "name,capacity_mw,height_m,rotor_diameter_m,operator,manufacturer,model,generator:output:electricity"
 TOWER_PROPS = "power,ref,operator,name,height"
+GENERATOR_PROPS = "power,name,operator,source_bucket,generator:source,generator:method,generator:type,generator:output:electricity,capacity_mw"
 
 LAYER_PROPS = {
     "lines": LINE_PROPS,
     "turbines": TURBINE_PROPS,
     "towers": TOWER_PROPS,
+    "generators": GENERATOR_PROPS,
+}
+
+# Per-layer tile tuning. Layers not listed use the defaults below
+# (drop-densest enabled for overview performance). Generators must keep every
+# feature, so dropping and the tile size/feature caps are disabled; tiles start
+# one level below the catalog display gate (z7) so the renderer's level offset
+# still has data to draw from.
+LAYER_TILE_OPTIONS = {
+    "generators": {"min_zoom": 6, "drop_densest": False, "no_limits": True},
+    # Few features, so keep every individual turbine at all zoom levels too.
+    "turbines": {"drop_densest": False, "no_limits": True},
 }
 
 
@@ -39,6 +52,8 @@ def geojson_to_pmtiles(
     min_zoom: int,
     max_zoom: int,
     attribute_flags: str,
+    drop_densest: bool = True,
+    no_limits: bool = False,
 ) -> None:
     tippecanoe = find_tool("tippecanoe")
     if not tippecanoe:
@@ -57,10 +72,20 @@ def geojson_to_pmtiles(
         layer_name,
         f"--minimum-zoom={min_zoom}",
         f"--maximum-zoom={max_zoom}",
-        "--drop-densest-as-needed",
-        "--extend-zooms-if-still-dropping",
         "--force",
     ]
+    if drop_densest:
+        cmd.extend(["--drop-densest-as-needed", "--extend-zooms-if-still-dropping"])
+    if no_limits:
+        # Keep every feature at every zoom: disable the tile size / per-tile
+        # caps, the default below-basezoom thinning (--drop-rate=1), and the
+        # tiny-polygon reduction so nothing is dropped or merged away.
+        cmd.extend([
+            "--no-tile-size-limit",
+            "--no-feature-limit",
+            "--drop-rate=1",
+            "--no-tiny-polygon-reduction",
+        ])
     for prop in attribute_flags.split(","):
         prop = prop.strip()
         if prop:
@@ -96,7 +121,7 @@ def geojson_to_pmtiles(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build PMTiles from catalog GeoJSON layers")
     parser.add_argument("--region", "-r", required=True, choices=list_region_ids())
-    parser.add_argument("--layer", choices=["lines", "turbines", "towers"], help="Single layer (default: all pmtiles in catalog)")
+    parser.add_argument("--layer", choices=["lines", "turbines", "towers", "generators"], help="Single layer (default: all pmtiles in catalog)")
     parser.add_argument("--min-zoom", type=int, default=0)
     parser.add_argument("--max-zoom", type=int, default=14)
     return parser.parse_args()
@@ -138,14 +163,17 @@ def main() -> int:
         print(f"Building {layer_id}: {source} -> {output}")
         attrs = LAYER_PROPS.get(layer_id, TURBINE_PROPS)
         source_layer = layer.get("sourceLayer", layer_id)
+        opts = LAYER_TILE_OPTIONS.get(layer_id, {})
         try:
             geojson_to_pmtiles(
                 source,
                 output,
                 layer_name=source_layer,
-                min_zoom=args.min_zoom,
-                max_zoom=args.max_zoom,
+                min_zoom=opts.get("min_zoom", args.min_zoom),
+                max_zoom=opts.get("max_zoom", args.max_zoom),
                 attribute_flags=attrs,
+                drop_densest=opts.get("drop_densest", True),
+                no_limits=opts.get("no_limits", False),
             )
         except subprocess.CalledProcessError as exc:
             print(f"Failed to build {layer_id}: {exc}", file=sys.stderr)

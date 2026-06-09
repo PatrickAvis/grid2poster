@@ -2,10 +2,12 @@ import { LINE_TYPE_ORDER } from "./constants.js";
 import { buildLayerConfig } from "./layerDefs.js";
 import {
   buildEtysLegend,
+  buildGeneratorLegend,
   buildLineLegend,
   buildPlantLegend,
   compareEtysBoundaries,
   setEtysLegendVisible,
+  setGeneratorLegendVisible,
   setLineLegendVisible,
   setPlantLegendVisible,
 } from "./legends.js";
@@ -13,6 +15,7 @@ import { attachLazyPopup, plantPropsForPopup, popupRows, turbinePropsForPopup } 
 import { loadLayerData, createLayerFromData } from "./sources/index.js";
 import { fuelTypeOrder } from "./fuelTypes.js";
 import {
+  generatorSourceBucket,
   lineStyle,
   lineTypeBucket,
   plantMarkerStyle,
@@ -49,6 +52,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   const gatedRequested = {};
   const plantBucketGroups = {};
   const plantBucketVisibility = {};
+  const generatorBucketVisibility = {};
   const etysBucketGroups = {};
   const etysBucketVisibility = {};
   let searchHighlight = null;
@@ -274,6 +278,8 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     turbineMarkerStyle,
     lineBucketGroups,
     lineBucketVisibility,
+    generatorBucketVisibility,
+    generatorSourceBucket,
   };
 
   function lineLegendOptions() {
@@ -345,6 +351,48 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     } catch (error) {
       console.error("Failed to rebuild PMTiles line layer", error);
     }
+  }
+
+  async function rebuildPmtilesGeneratorLayer() {
+    const cache = layerCache.generators;
+    const layerConfig = LAYER_CONFIG.generators;
+    if (!cache?.loaded || layerConfig?.type !== "pmtiles") return;
+    try {
+      layerGroups.generators.clearLayers();
+      const geoLayer = await createLayerFromData(
+        "generators",
+        { type: "pmtiles", url: layerConfig.url, config: layerConfig },
+        layerConfig,
+        geoJsonHelpers,
+      );
+      layerGroups.generators.addLayer(geoLayer);
+      cache.geoLayer = geoLayer;
+      if (document.getElementById("toggle-generators")?.checked) {
+        syncZoomGatedLayerOnMap("generators");
+      }
+    } catch (error) {
+      console.error("Failed to rebuild PMTiles generator layer", error);
+    }
+  }
+
+  function setGeneratorBucketVisible(bucket, visible) {
+    generatorBucketVisibility[bucket] = visible;
+    rebuildPmtilesGeneratorLayer();
+  }
+
+  function setAllGeneratorBuckets(visible, setStatus) {
+    for (const bucket of fuelTypeOrder()) {
+      generatorBucketVisibility[bucket] = visible;
+    }
+    buildGeneratorLegend(generatorBucketVisibility, setGeneratorBucketVisible, generatorLegendOptions(setStatus));
+    rebuildPmtilesGeneratorLayer();
+  }
+
+  function generatorLegendOptions(setStatus) {
+    return {
+      onSelectAll: () => setAllGeneratorBuckets(true, setStatus),
+      onClearAll: () => setAllGeneratorBuckets(false, setStatus),
+    };
   }
 
   function syncPlantBucketLayers() {
@@ -446,16 +494,11 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   function syncTurbineCheckboxes(enabled) {
     gatedRequested.turbines = enabled;
     const main = document.getElementById("toggle-turbines");
-    const sub = document.getElementById("toggle-wind-turbines");
     if (main) main.checked = enabled;
-    if (sub) sub.checked = enabled;
   }
 
   function plantLegendOptions(setStatus) {
     return {
-      turbineMinZoom: config.turbineMinZoom,
-      turbinesEnabled: gatedRequested.turbines,
-      onTurbinesToggle: (enabled) => setLayerEnabled("turbines", enabled, setStatus),
       onClearAll: () => clearAllPlantBuckets(setStatus),
     };
   }
@@ -585,6 +628,10 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       if (layerKey === "etys_boundaries") {
         buildEtysLegend(etysBucketGroups, etysBucketVisibility, setEtysBucketVisible, etysLegendOptions(setStatus));
         setEtysLegendVisible(document.getElementById("toggle-etys_boundaries")?.checked, etysBucketGroups);
+      }
+      if (layerKey === "generators") {
+        buildGeneratorLegend(generatorBucketVisibility, setGeneratorBucketVisible, generatorLegendOptions(setStatus));
+        setGeneratorLegendVisible(document.getElementById("toggle-generators")?.checked);
       }
       return geoLayer;
     })();
@@ -771,11 +818,15 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
           syncEtysBucketLayers();
           setEtysLegendVisible(true, etysBucketGroups);
         }
+        if (layerKey === "generators") {
+          setGeneratorLegendVisible(true);
+        }
       } else {
         map.removeLayer(layerGroups[layerKey]);
         if (layerKey === "lines") setLineLegendVisible(false, lineBucketGroups);
         if (layerKey === "plants") setPlantLegendVisible(false, plantBucketGroups);
         if (layerKey === "etys_boundaries") setEtysLegendVisible(false, etysBucketGroups);
+        if (layerKey === "generators") setGeneratorLegendVisible(false);
       }
       if (layerKey === "turbines") {
         syncTurbineCheckboxes(enabled);

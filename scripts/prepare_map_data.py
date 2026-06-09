@@ -196,9 +196,21 @@ def build_substations_web(source: Path, output: Path) -> gpd.GeoDataFrame:
     return frame
 
 
-def build_generators_web(source: Path, output: Path) -> gpd.GeoDataFrame:
+def build_generators_web(
+    source: Path, output: Path, *, wind_source: Path | None = None
+) -> gpd.GeoDataFrame:
     print(f"Reading {source.name}…")
     frame = gpd.read_file(source)
+    # The OSM export keeps wind out of the generators raw file (it lives in the
+    # dedicated wind-turbines layer). Fold it back in here so the generators web
+    # layer covers every power=generator feature, coloured by fuel source.
+    if wind_source is not None and wind_source.exists():
+        print(f"Merging wind generators from {wind_source.name}…")
+        wind = gpd.read_file(wind_source)
+        frame = gpd.GeoDataFrame(
+            pd.concat([frame, wind], ignore_index=True),
+            crs=frame.crs,
+        )
     frame = trim_columns(frame, WEB_GENERATOR_COLS)
     frame = add_lat_lon_columns(frame)
     capacity_raw = frame.get("generator:output:electricity")
@@ -430,7 +442,11 @@ def main() -> int:
 
     if not args.skip_generators and "generators" in layers:
         if args.generators_source.exists():
-            build_generators_web(args.generators_source, args.generators_output)
+            build_generators_web(
+                args.generators_source,
+                args.generators_output,
+                wind_source=resolve_raw_source(args.region, "turbines"),
+            )
         else:
             print(f"Skipping generators: {args.generators_source} not found")
 

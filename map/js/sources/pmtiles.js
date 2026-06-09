@@ -137,6 +137,10 @@ export async function createPmtilesLayer(url, layerConfig, styleFn) {
     labelRules: [],
     label_rules: [],
     zIndex: 450,
+    // Archives are tiled to z14 (see scripts/build_tiles.py). Tell the renderer
+    // the real max data zoom so it overzooms the deepest tiles past z15 instead
+    // of requesting non-existent z15+ tiles (which made points vanish at z16+).
+    maxDataZoom: layerConfig.maxDataZoom ?? 14,
   });
 }
 

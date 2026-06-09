@@ -19,15 +19,33 @@ import { boundsFromGeoJson, pointInPolygonGeometry } from "./utils.js";
 import { loadFuelTypes } from "./fuelTypes.js";
 
 const statusEl = document.getElementById("status");
+const zoomEl = document.getElementById("zoom-indicator");
 let map;
 let layerManager;
 let zoneFilterState;
 let zonesController;
 let catalog;
+let regionConfigRef = null;
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
   statusEl.classList.toggle("error", isError);
+}
+
+function updateZoomIndicator() {
+  if (!map || !zoomEl) return;
+  const zoom = map.getZoom();
+  let gates = "";
+  const parts = [];
+  for (const [id, cfg] of Object.entries(regionConfigRef?.layers || {})) {
+    if (cfg.minZoom != null) {
+      parts.push(`${cfg.label || id} \u2265${cfg.minZoom}`);
+    }
+  }
+  if (parts.length) {
+    gates = `<span class="zoom-gates"> · shows at: ${parts.join(", ")}</span>`;
+  }
+  zoomEl.innerHTML = `Zoom: <b>${zoom}</b>${gates}`;
 }
 
 function createZoneState() {
@@ -43,6 +61,7 @@ function createZoneState() {
 
 async function initRegion(regionId) {
   const regionConfig = buildRegionConfig(catalog, regionId);
+  regionConfigRef = regionConfig;
   if (regionConfig.plantBmuMapUrl) {
     try {
       regionConfig.bmuLookup = await loadPlantBmuMap(regionConfig.plantBmuMapUrl);
@@ -75,6 +94,7 @@ async function initRegion(regionId) {
   );
 
   fitRegionBounds(map, regionConfig.bounds);
+  updateZoomIndicator();
 
   const defaultLayer = regionConfig.layerIds.find(
     (id) => regionConfig.layers[id]?.defaultOn,
@@ -124,10 +144,12 @@ async function main() {
     initRegion(newRegionId);
   });
 
+  map.on("zoom zoomend", updateZoomIndicator);
   map.on("zoomend", () => {
     layerManager?.syncZoomGatedLayers();
     layerManager?.updateStatusMessage(setStatus);
   });
+  updateZoomIndicator();
 
   await initRegion(regionId);
 }

@@ -51,13 +51,15 @@ export const LAYER_BEHAVIOR = {
   },
   generators: {
     label: "generators",
+    styleFn: generatorMarkerStyle,
     polygonStyleFn: generatorPolygonStyle,
     markerStyleFn: generatorMarkerStyle,
     popupPropsFn: generatorPropsForPopup,
     popupKeys: ["name", "capacity_mw", "generator:source", "generator:method", "generator:type", "generator:output:electricity", "operator", "latitude", "longitude"],
+    pointLayer: true,
     combinedLayer: true,
     filterable: true,
-    kind: "combined",
+    kind: "points",
   },
   converters: {
     label: "converter stations",

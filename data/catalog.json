@@ -28,7 +28,7 @@
           "path": "map/uk/turbines.pmtiles",
           "geojsonSource": "map/uk/uk_wind_turbines_web.geojson",
           "label": "Individual wind turbines",
-          "minZoom": 12,
+          "minZoom": 10,
           "sourceLayer": "turbines"
         },
         "substations": {
@@ -37,9 +37,12 @@
           "label": "Substations"
         },
         "generators": {
-          "type": "geojson",
-          "path": "map/uk/uk_generators_web.geojson",
-          "label": "Generators (non-wind)"
+          "type": "pmtiles",
+          "path": "map/uk/generators.pmtiles",
+          "geojsonSource": "map/uk/uk_generators_web.geojson",
+          "label": "Generators",
+          "minZoom": 7,
+          "sourceLayer": "generators"
         },
         "converters": {
           "type": "geojson",
@@ -50,14 +53,6 @@
           "type": "geojson",
           "path": "map/uk/uk_power_equipment_web.geojson",
           "label": "Power equipment"
-        },
-        "towers": {
-          "type": "pmtiles",
-          "path": "map/uk/towers.pmtiles",
-          "geojsonSource": "map/uk/uk_towers_web.geojson",
-          "label": "Transmission towers",
-          "minZoom": 12,
-          "sourceLayer": "towers"
         },
         "dno": {
           "type": "geojson",

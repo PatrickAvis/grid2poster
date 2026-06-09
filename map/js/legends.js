@@ -107,7 +107,6 @@ export function buildPlantLegend(
       .filter((bucket) => !fuelTypeOrder().includes(bucket))
       .sort(),
   ];
-  let turbineToggleAdded = false;
 
   for (const bucket of buckets) {
     const label = document.createElement("label");
@@ -128,27 +127,6 @@ export function buildPlantLegend(
 
     label.append(checkbox, swatch, text);
     listEl.appendChild(label);
-
-    if (bucket.startsWith("wind") && options.onTurbinesToggle && !turbineToggleAdded) {
-      turbineToggleAdded = true;
-      const subLabel = document.createElement("label");
-      subLabel.className = "plant-legend-item plant-legend-subitem";
-
-      const subCheckbox = document.createElement("input");
-      subCheckbox.type = "checkbox";
-      subCheckbox.id = "toggle-wind-turbines";
-      subCheckbox.checked = options.turbinesEnabled ?? false;
-      subCheckbox.addEventListener("change", (event) => {
-        options.onTurbinesToggle(event.target.checked);
-      });
-
-      const subText = document.createTextNode(
-        `Individual turbines (zoom ${options.turbineMinZoom ?? 9}+)`,
-      );
-
-      subLabel.append(subCheckbox, subText);
-      listEl.appendChild(subLabel);
-    }
   }
 
   let actionsEl = document.getElementById("plant-legend-actions");
@@ -175,6 +153,66 @@ export function setPlantLegendVisible(visible, plantBucketGroups) {
   const legendEl = document.getElementById("plant-legend");
   if (!legendEl) return;
   legendEl.hidden = !visible || Object.keys(plantBucketGroups).length === 0;
+}
+
+export function buildGeneratorLegend(visibility, setVisible, options = {}) {
+  const legendEl = document.getElementById("generator-legend");
+  const listEl = document.getElementById("generator-legend-list");
+  if (!legendEl || !listEl) return;
+  listEl.replaceChildren();
+
+  for (const bucket of fuelTypeOrder()) {
+    const label = document.createElement("label");
+    label.className = "plant-legend-item";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = visibility[bucket] !== false;
+    checkbox.addEventListener("change", (event) => {
+      setVisible(bucket, event.target.checked);
+    });
+
+    const swatch = document.createElement("span");
+    swatch.className = "plant-swatch";
+    swatch.style.background = fuelTypeColor(bucket);
+
+    const text = document.createTextNode(fuelTypeLabel(bucket));
+
+    label.append(checkbox, swatch, text);
+    listEl.appendChild(label);
+  }
+
+  let actionsEl = document.getElementById("generator-legend-actions");
+  if (!actionsEl) {
+    actionsEl = document.createElement("div");
+    actionsEl.id = "generator-legend-actions";
+    actionsEl.className = "legend-actions";
+    legendEl.appendChild(actionsEl);
+  }
+  actionsEl.replaceChildren();
+
+  if (options.onSelectAll) {
+    const selectBtn = document.createElement("button");
+    selectBtn.type = "button";
+    selectBtn.className = "clear-filter";
+    selectBtn.textContent = "Select all fuel types";
+    selectBtn.addEventListener("click", options.onSelectAll);
+    actionsEl.appendChild(selectBtn);
+  }
+  if (options.onClearAll) {
+    const clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.className = "clear-filter";
+    clearBtn.textContent = "Clear all fuel types";
+    clearBtn.addEventListener("click", options.onClearAll);
+    actionsEl.appendChild(clearBtn);
+  }
+}
+
+export function setGeneratorLegendVisible(visible) {
+  const legendEl = document.getElementById("generator-legend");
+  if (!legendEl) return;
+  legendEl.hidden = !visible;
 }
 
 export function buildEtysLegend(

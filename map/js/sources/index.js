@@ -38,6 +38,22 @@ export async function createLayerFromData(
         (props) => helpers.lineStyle(props || {}),
       );
     }
+    if (
+      layerKey === "generators"
+      && layerConfig.styleFn
+      && helpers.generatorBucketVisibility
+      && helpers.generatorSourceBucket
+    ) {
+      const styleFn = (props) => {
+        const bucket = helpers.generatorSourceBucket(props || {});
+        if (helpers.generatorBucketVisibility[bucket] === false) {
+          // Fully transparent => the point is skipped without being drawn.
+          return { radius: 0, opacity: 0, weight: 0, fillColor: "#000", color: "#000" };
+        }
+        return layerConfig.styleFn(props || {});
+      };
+      return createPmtilesLayer(payload.url, layerConfig, styleFn);
+    }
     const styleFn = layerConfig.styleFn
       ? (props) => layerConfig.styleFn(props || {})
       : (props) => helpers.lineStyle(props || {});

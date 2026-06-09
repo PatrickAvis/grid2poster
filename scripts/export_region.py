@@ -112,7 +112,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-generators", action="store_true")
     parser.add_argument("--skip-converters", action="store_true")
     parser.add_argument("--skip-equipment", action="store_true")
-    parser.add_argument("--skip-towers", action="store_true")
+    parser.add_argument(
+        "--include-towers",
+        action="store_true",
+        help="Export power=tower nodes (off by default; towers are not shown on the map)",
+    )
     return parser.parse_args()
 
 
@@ -150,7 +154,6 @@ def main() -> int:
         args.skip_generators = False
         args.skip_converters = False
         args.skip_equipment = False
-        args.skip_towers = False
 
     region = get_region(args.region)
     if region.get("children") and not args.country and not args.boundary_geojson:
@@ -353,7 +356,7 @@ def main() -> int:
         print(f"Equipment: {len(equipment):,}")
         write_exports(equipment, out / "power_equipment", geojson=args.geojson, csv=args.csv)
 
-    if not args.skip_towers:
+    if args.include_towers:
         print("Fetching transmission towers…")
         if use_pbf:
             towers = fetch_power_layer_from_pbf(args.osm_pbf, boundary_wgs84, "towers")
