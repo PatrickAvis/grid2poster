@@ -230,5 +230,8 @@ posters/
 # UK wind turbines (~250 MB); build locally with scripts/prepare_map_data.py
 data/map/uk/uk_wind_turbines_web.geojson
 
+# UK generators web layer (~270 MB); build locally with scripts/prepare_map_data.py
+data/map/uk/uk_generators_web.geojson
+
 # Generated vector-tile archives; deploy outside git.
 data/map/**/*.pmtiles
