@@ -220,14 +220,15 @@ __marimo__/
 
 # Full OSM exports (multi-GB); sync separately for deploy
 data/raw/
+data/osm/
 data/zones/*.raw.geojson
+data/zones/*.raw.zip
+
+# Legacy poster gallery renders (poster CLI removed)
+posters/
 
 # UK wind turbines (~250 MB); build locally with scripts/prepare_map_data.py
 data/map/uk/uk_wind_turbines_web.geojson
 
 # Generated vector-tile archives; deploy outside git.
 data/map/**/*.pmtiles
-
-# Poster renders (legacy CLI output) — not deployed with the interactive map.
-# Gallery images already in git remain tracked; new local PNG/SVG/PDF stay ignored.
-posters/

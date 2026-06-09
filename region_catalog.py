@@ -24,6 +24,10 @@ RAW_STEMS: dict[str, str] = {
     "plants": "plants",
     "substations": "substations",
     "turbines": "wind_turbines",
+    "generators": "generators",
+    "converters": "converters",
+    "equipment": "power_equipment",
+    "towers": "towers",
 }
 
 MAP_STEMS: dict[str, str] = {
@@ -31,6 +35,10 @@ MAP_STEMS: dict[str, str] = {
     "plants": "plants_web",
     "substations": "substations_web",
     "turbines": "turbines_web",
+    "generators": "generators_web",
+    "converters": "converters_web",
+    "equipment": "power_equipment_web",
+    "towers": "towers_web",
 }
 
 ZONE_STEMS: dict[str, str] = {
@@ -180,21 +188,28 @@ def raw_csv_path(region_id: str, layer: str) -> Path:
     return raw_dir(region_id) / f"{stem}.csv"
 
 
-def map_path(region_id: str, layer: str, *, legacy_uk: bool = True) -> Path:
+UK_MAP_FILENAMES: dict[str, str] = {
+    "lines": "uk_powerlines_transmission.geojson",
+    "plants": "uk_plants_web.geojson",
+    "substations": "uk_substations_web.geojson",
+    "turbines": "uk_wind_turbines_web.geojson",
+    "generators": "uk_generators_web.geojson",
+    "converters": "uk_converters_web.geojson",
+    "equipment": "uk_power_equipment_web.geojson",
+    "towers": "uk_towers_web.geojson",
+    "dno": "uk_dno_areas_web.geojson",
+    "gsp": "uk_gsp_areas_web.geojson",
+    "generation_zones": "uk_generation_charging_zones_web.geojson",
+    "etys_boundaries": "uk_etys_boundaries_web.geojson",
+}
+
+
+def map_path(region_id: str, layer: str) -> Path:
     web = map_dir(region_id)
-    if region_id == "uk" and legacy_uk:
-        legacy_names = {
-            "lines": "uk_powerlines_transmission.geojson",
-            "plants": "uk_plants_web.geojson",
-            "substations": "uk_substations_web.geojson",
-            "turbines": "uk_wind_turbines_web.geojson",
-            "dno": "uk_dno_areas_web.geojson",
-            "gsp": "uk_gsp_areas_web.geojson",
-            "generation_zones": "uk_generation_charging_zones_web.geojson",
-            "etys_boundaries": "uk_etys_boundaries_web.geojson",
-        }
-        if layer in legacy_names:
-            return web / legacy_names[layer]
+    if region_id == "uk":
+        uk_names = UK_MAP_FILENAMES
+        if layer in uk_names:
+            return web / uk_names[layer]
     if layer in MAP_STEMS:
         return web / f"{MAP_STEMS[layer]}.geojson"
     if layer in ZONE_WEB_STEMS:

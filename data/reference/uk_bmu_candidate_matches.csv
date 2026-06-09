@@ -1,2 +1,19 @@
 osm_id,plant_name,bmu_id,ngc_bmu_id,bmu_type,source,notes
-
+11343101,Hornsea 2 Offshore Wind Farm,T_HOWAO-1,HOWAO-1,T,manual,Candidate match: bmUnitName=HORNSEA_1A; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+11343101,Hornsea 2 Offshore Wind Farm,T_HOWAO-2,HOWAO-2,T,manual,Candidate match: bmUnitName=HORNSEA_1B; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+11343101,Hornsea 2 Offshore Wind Farm,T_HOWAO-3,HOWAO-3,T,manual,Candidate match: bmUnitName=HORNSEA_1C; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+11894296,Hornsea 1 Offshore Wind Farm,T_HOWAO-1,HOWAO-1,T,manual,Candidate match: bmUnitName=HORNSEA_1A; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+11894296,Hornsea 1 Offshore Wind Farm,T_HOWAO-2,HOWAO-2,T,manual,Candidate match: bmUnitName=HORNSEA_1B; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+11894296,Hornsea 1 Offshore Wind Farm,T_HOWAO-3,HOWAO-3,T,manual,Candidate match: bmUnitName=HORNSEA_1C; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386799,Galloper Wind Farm,T_GANW-11,GAOFO-1,T,manual,Candidate match: bmUnitName=Galloper OSP 11; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386799,Galloper Wind Farm,T_GANW-22,GAOFO-2,T,manual,Candidate match: bmUnitName=Galloper OSP 22; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386799,Galloper Wind Farm,T_GANW-13,GAOFO-3,T,manual,Candidate match: bmUnitName=Galloper OSP 13; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386799,Galloper Wind Farm,T_GANW-24,GAOFO-4,T,manual,Candidate match: bmUnitName=Galloper OSP 24; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386800,Greater Gabbard Wind Farm,T_GRGBW-1,GRGBW-1,T,manual,Candidate match: bmUnitName=Greater Gabbard Module 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386800,Greater Gabbard Wind Farm,T_GRGBW-2,GRGBW-2,T,manual,Candidate match: bmUnitName=Greater Gabbard Module 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+13386800,Greater Gabbard Wind Farm,T_GRGBW-3,GRGBW-3,T,manual,Candidate match: bmUnitName=Greater Gabbard Module 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+790946237,Triton Knoll Wind Farm,T_TKNWW-1,TKNWW-1,T,manual,Candidate match: bmUnitName=Triton Knoll OSP west 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+1254849361,Moray West Wind Farm,T_MOWWO-1,MOWWO-1,T,manual,Candidate match: bmUnitName=Moray West OWF1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+1254849361,Moray West Wind Farm,T_MOWWO-2,MOWWO-2,T,manual,Candidate match: bmUnitName=Moray West OWF2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+1254849361,Moray West Wind Farm,T_MOWWO-3,MOWWO-3,T,manual,Candidate match: bmUnitName=Moray West OWF3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+1254849361,Moray West Wind Farm,T_MOWWO-4,MOWWO-4,T,manual,Candidate match: bmUnitName=Moray West OWF4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True

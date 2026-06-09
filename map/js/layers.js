@@ -46,7 +46,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   const lineBucketGroups = {};
   const lineBucketVisibility = {};
   let lineWidthScale = 1;
-  let turbinesRequested = false;
+  const gatedRequested = {};
   const plantBucketGroups = {};
   const plantBucketVisibility = {};
   const etysBucketGroups = {};
@@ -412,8 +412,39 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     };
   }
 
+  function layerMinZoom(id) {
+    const mz = LAYER_CONFIG[id]?.minZoom;
+    if (Number.isFinite(mz)) return mz;
+    if (id === "turbines") return config.turbineMinZoom;
+    return null;
+  }
+
+  function isZoomGated(id) {
+    return layerMinZoom(id) != null;
+  }
+
+  function zoomOkFor(id) {
+    const mz = layerMinZoom(id);
+    return mz == null || map.getZoom() >= mz;
+  }
+
+  function syncZoomGatedLayerOnMap(id) {
+    if (!gatedRequested[id] || !layerCache[id]?.loaded) return;
+    if (zoomOkFor(id)) {
+      if (!map.hasLayer(layerGroups[id])) map.addLayer(layerGroups[id]);
+    } else if (map.hasLayer(layerGroups[id])) {
+      map.removeLayer(layerGroups[id]);
+    }
+  }
+
+  function syncZoomGatedLayers() {
+    for (const id of layerIds) {
+      if (isZoomGated(id)) syncZoomGatedLayerOnMap(id);
+    }
+  }
+
   function syncTurbineCheckboxes(enabled) {
-    turbinesRequested = enabled;
+    gatedRequested.turbines = enabled;
     const main = document.getElementById("toggle-turbines");
     const sub = document.getElementById("toggle-wind-turbines");
     if (main) main.checked = enabled;
@@ -423,23 +454,18 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   function plantLegendOptions(setStatus) {
     return {
       turbineMinZoom: config.turbineMinZoom,
-      turbinesEnabled: turbinesRequested,
+      turbinesEnabled: gatedRequested.turbines,
       onTurbinesToggle: (enabled) => setLayerEnabled("turbines", enabled, setStatus),
       onClearAll: () => clearAllPlantBuckets(setStatus),
     };
   }
 
   function turbineZoomOk() {
-    return map.getZoom() >= config.turbineMinZoom;
+    return zoomOkFor("turbines");
   }
 
   function syncTurbineLayerOnMap() {
-    if (!turbinesRequested || !layerCache.turbines?.loaded) return;
-    if (turbineZoomOk()) {
-      if (!map.hasLayer(layerGroups.turbines)) map.addLayer(layerGroups.turbines);
-    } else if (map.hasLayer(layerGroups.turbines)) {
-      map.removeLayer(layerGroups.turbines);
-    }
+    syncZoomGatedLayerOnMap("turbines");
   }
 
   function setStatusFromRebuild(message, isError = false) {
@@ -532,10 +558,8 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       const geoLayer = await createLayerFromData(layerKey, payload, layerConfig, geoJsonHelpers);
       layerGroups[layerKey].addLayer(geoLayer);
       if (document.getElementById(`toggle-${layerKey}`)?.checked) {
-        if (layerKey === "turbines") {
-          syncTurbineLayerOnMap();
-        } else if (!layerConfig.zoneLayer) {
-          map.addLayer(layerGroups[layerKey]);
+        if (isZoomGated(layerKey)) {
+          syncZoomGatedLayerOnMap(layerKey);
         } else {
           map.addLayer(layerGroups[layerKey]);
         }
@@ -585,6 +609,16 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       parts.push(lineCount);
     }
     if (layerCache.substations?.loaded) parts.push(`${layerCache.substations.count.toLocaleString()} substations`);
+    if (layerCache.generators?.loaded) parts.push(`${layerCache.generators.count.toLocaleString()} generators`);
+    if (layerCache.converters?.loaded) parts.push(`${layerCache.converters.count.toLocaleString()} converter stations`);
+    if (layerCache.equipment?.loaded) parts.push(`${layerCache.equipment.count.toLocaleString()} equipment`);
+    if (layerCache.towers?.loaded) {
+      const zoomNote = zoomOkFor("towers") ? "" : ` (zoom ${layerMinZoom("towers")}+ to show)`;
+      const towerCount = LAYER_CONFIG.towers?.type === "pmtiles"
+        ? "tiled towers"
+        : `${layerCache.towers.count.toLocaleString()} towers`;
+      parts.push(`${towerCount}${zoomNote}`);
+    }
     if (layerCache.dno?.loaded) parts.push(`${layerCache.dno.count.toLocaleString()} DNO areas`);
     if (layerCache.gsp?.loaded) parts.push(`${layerCache.gsp.count.toLocaleString()} GSP regions`);
     if (layerCache.generation_zones?.loaded) {
@@ -715,13 +749,13 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
   async function setLayerEnabled(layerKey, enabled, setStatus) {
     const checkbox = document.getElementById(`toggle-${layerKey}`);
     try {
-      if (layerKey === "turbines") {
-        turbinesRequested = enabled;
+      if (isZoomGated(layerKey)) {
+        gatedRequested[layerKey] = enabled;
       }
       if (enabled) {
         await loadLayer(layerKey, setStatus);
-        if (layerKey === "turbines") {
-          syncTurbineLayerOnMap();
+        if (isZoomGated(layerKey)) {
+          syncZoomGatedLayerOnMap(layerKey);
         } else {
           map.addLayer(layerGroups[layerKey]);
         }
@@ -770,6 +804,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     loadLayer,
     setLayerEnabled,
     syncTurbineLayerOnMap,
+    syncZoomGatedLayers,
     updateStatusMessage,
     searchFeatures,
     focusSearchResult,

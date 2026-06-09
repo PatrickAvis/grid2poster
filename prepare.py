@@ -16,7 +16,7 @@ from fuel_taxonomy import bucket_fuel_properties, bucket_fuel_source, fuel_type_
 
 
 def parse_voltage_to_kv(value: Any) -> float | None:
-    """Parse OSM voltage tags into kV, using pragmatic cleanup for poster styling."""
+    """Parse OSM voltage tags into kV, using pragmatic cleanup for display styling."""
     if value is None:
         return None
     if isinstance(value, float) and np.isnan(value):
@@ -158,9 +158,8 @@ def prepare_lines(
                     frame["geometry"] = new_geoms
                 return frame[~shapely.is_empty(frame.geometry.values)]
             except Exception:
-                # Clipping may fail with invalid upstream geometries. A poster can
-                # still be rendered without clipping because the Overpass polygon
-                # query already constrained the result set.
+                # Clipping may fail with invalid upstream geometries. The Overpass
+                # polygon query already constrained the result set, so return unclipped.
                 return frame
 
         bar.set_description("Clipping")
@@ -201,41 +200,6 @@ def prepare_lines(
         bar.update()
 
     return result
-
-
-def prepare_plants(
-    plants: gpd.GeoDataFrame,
-    boundary: gpd.GeoDataFrame,
-    output_crs: str,
-    min_capacity_mw: float = 0.0,
-) -> gpd.GeoDataFrame:
-    """Project plants, reduce them to marker points, clip, and parse tags."""
-    if plants.empty:
-        return plants
-
-    plants_projected = plants.to_crs(output_crs).copy()
-    boundary_projected = boundary.to_crs(output_crs)
-
-    # Plants are mapped as nodes or areas; representative_point() collapses
-    # both to a marker location guaranteed inside the plant footprint.
-    plants_projected["geometry"] = plants_projected.geometry.representative_point()
-
-    mask_geom = unary_union(boundary_projected.geometry)
-    shapely.prepare(mask_geom)
-    inside = shapely.contains(mask_geom, plants_projected.geometry.values)
-    plants_projected = plants_projected[inside]
-
-    capacity_raw = plants_projected.get("plant:output:electricity", pd.Series(index=plants_projected.index, dtype=object))
-    plants_projected["capacity_mw"] = capacity_raw.apply(parse_capacity_to_mw)
-    source_raw = plants_projected.get("plant:source", pd.Series(index=plants_projected.index, dtype=object))
-    plants_projected["source_bucket"] = source_raw.apply(bucket_plant_source)
-
-    if min_capacity_mw > 0:
-        # An explicit threshold is a de-clutter request, so unknown-capacity
-        # plants are dropped too rather than slipping through as fallback dots.
-        plants_projected = plants_projected[plants_projected["capacity_mw"] >= min_capacity_mw]
-
-    return plants_projected
 
 
 def parse_numeric_tag(value: Any) -> float | None:

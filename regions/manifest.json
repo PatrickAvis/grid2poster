@@ -1,5 +1,5 @@
 {
-  "description": "Predefined multi-country boundaries for posters and OSM export. Each entry maps to regions/{id}.geojson.",
+  "description": "Predefined multi-country boundaries for OSM export. Each entry maps to regions/{id}.geojson.",
   "regions": {
     "australia_mainland_tasmania": {
       "title": "Australia (mainland and Tasmania)",

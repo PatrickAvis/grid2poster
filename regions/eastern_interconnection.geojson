@@ -15,10 +15,10 @@
         "name": "Eastern Interconnection",
         "project": "grid2poster",
         "category": "north_american_power_grid_interconnection",
-        "geometry_purpose": "poster_cartographic_mask",
+        "geometry_purpose": "export_cartographic_mask",
         "accuracy": "approximate",
         "crs": "EPSG:4326 / OGC:CRS84 lon-lat coordinate order",
-        "description": "Approximate WGS84 GeoJSON polygon for the Eastern Interconnection. The internal electrical boundary is hand-generalized from public descriptions; coastlines are clipped to Basemap/GSHHS land polygons. Approximates central Canada to the Atlantic coast excluding Quebec, south to Florida, and west to the Great Plains excluding most of Texas. Designed for grid2poster/cartographic rendering, not for operational, regulatory, or reliability-boundary analysis.",
+        "description": "Approximate WGS84 GeoJSON polygon for the Eastern Interconnection. The internal electrical boundary is hand-generalized from public descriptions; coastlines are clipped to Basemap/GSHHS land polygons. Approximates central Canada to the Atlantic coast excluding Quebec, south to Florida, and west to the Great Plains excluding most of Texas. Designed for cartographic export and mapping, not for operational, regulatory, or reliability-boundary analysis.",
         "source_basis": [
           "Public descriptions of the Eastern Interconnection footprint",
           "Basemap packaged GSHHS coastline/land polygons for coastline clipping"

@@ -19,8 +19,6 @@ ELEXON_BMUNITS_URL = "https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/al
 BMU_REFERENCE_PATH = REPO_ROOT / "data" / "reference" / "uk_bmunits.json"
 PLANT_BMU_MAP_PATH = REPO_ROOT / "data" / "reference" / "uk_plant_bmu_map.csv"
 PLANT_BMU_MAP_JSON_PATH = REPO_ROOT / "data" / "reference" / "uk_plant_bmu_map.json"
-# Legacy alias; migrated into uk_plant_bmu_map.csv on first propose run
-BMU_OVERRIDES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_overrides.csv"
 BMU_UNMAPPED_DISPLAYABLE_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_unmapped_displayable.csv"
 BMU_CANDIDATE_MATCHES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_candidate_matches.csv"
 BMU_REFERENCE_ONLY_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_reference_only.csv"
@@ -494,34 +492,6 @@ def migrate_embedded_bmu_from_plants(plants: gpd.GeoDataFrame, frame: pd.DataFra
     return frame
 
 
-def migrate_legacy_overrides(frame: pd.DataFrame) -> pd.DataFrame:
-    if not BMU_OVERRIDES_PATH.exists():
-        return frame
-    legacy = pd.read_csv(BMU_OVERRIDES_PATH, comment="#")
-    if legacy.empty or "plant_name" not in legacy.columns:
-        return frame
-    added = 0
-    for _, row in legacy.iterrows():
-        if is_empty(row.get("plant_name")):
-            continue
-        before = len(frame)
-        frame = append_map_row(
-            frame,
-            osm_id=None,
-            plant_name=str(row["plant_name"]),
-            bmu_id=None if is_empty(row.get("bmu_id")) else str(row["bmu_id"]),
-            ngc_bmu_id=None if is_empty(row.get("ngc_bmu_id")) else str(row["ngc_bmu_id"]),
-            bmu_type=None if is_empty(row.get("bmu_type")) else str(row["bmu_type"]),
-            source="manual",
-            notes=None if is_empty(row.get("notes")) else str(row["notes"]),
-        )
-        if len(frame) > before:
-            added += 1
-    if added:
-        print(f"Imported {added:,} legacy override rows into map table")
-    return frame
-
-
 def propose_plant_bmu_map(
     plants: gpd.GeoDataFrame,
     *,
@@ -531,7 +501,6 @@ def propose_plant_bmu_map(
     auto_confidence: str = "high",
 ) -> pd.DataFrame:
     frame = load_plant_bmu_map(map_path)
-    frame = migrate_legacy_overrides(frame)
     if migrate_embedded:
         frame = migrate_embedded_bmu_from_plants(plants, frame)
 

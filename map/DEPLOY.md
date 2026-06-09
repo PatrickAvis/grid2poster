@@ -2,18 +2,16 @@
 
 The map is a static site: `map/` (HTML/JS) plus `data/catalog.json` and `data/map/` (and optional `data/zones/`). No application server is required.
 
-**Do not sync `posters/`** — that directory is for legacy print poster renders (PNG/SVG/PDF) only. The map does not read from it; exports live under `data/raw/` and web layers under `data/map/`.
-
 ## Recommended layout on server
 
 ```
 /var/www/power-map/
-  map/              # index.html, js/, config.json
+  map/              # index.html, js/
   data/map/uk/      # small GeoJSON + generated *.pmtiles
   data/zones/       # optional raw NESO files
 ```
 
-Serve from the repo root so `map/config.json` paths (`../data/map/uk/...`) resolve correctly:
+Serve from the repo root so catalog paths (`../data/map/uk/...`) resolve correctly:
 
 ```nginx
 server {
@@ -44,7 +42,6 @@ Enable **brotli** or **gzip** for `.geojson` — compressed payloads are often 5
 | `data/map/` | Yes |
 | `data/reference/uk_plant_bmu_map.json` | Yes (UK plant ↔ BMU join for popups) |
 | `data/zones/` | If used (e.g. UK NESO) |
-| `posters/` | **No** — poster gallery / CLI renders |
 | `data/raw/` | **No** — multi-GB OSM exports (prepare `data/map/` locally first) |
 | `cache/` | **No** |
 
@@ -72,7 +69,7 @@ Serve `map/` and `data/` from the **same origin** so browser fetches do not need
 
 ## Multi-region data sync
 
-Same rules: `data/catalog.json` + `data/map/` (+ zones if needed). Never rsync `posters/` or `data/raw/`.
+Same rules: `data/catalog.json` + `data/map/` (+ zones if needed). Never rsync `data/raw/`.
 
 After refreshing a region locally:
 

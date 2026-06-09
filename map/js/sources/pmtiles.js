@@ -120,15 +120,7 @@ export async function createPmtilesLayer(url, layerConfig, styleFn) {
     }];
   } else {
     const symbolizer = layerConfig.pointLayer
-      ? (leafletPm.CircleSymbolizer
-        ? new leafletPm.CircleSymbolizer({
-          radius: (zoom) => Math.max(2.5, Math.min(5, 2.5 + (zoom - 9) * 0.35)),
-          fill: "#0288d1",
-          stroke: "#263238",
-          width: 1,
-          opacity: 0.95,
-        })
-        : new PointStyleSymbolizer(styleFn))
+      ? new PointStyleSymbolizer(styleFn)
       : new LineStyleSymbolizer(styleFn);
     paintRules = [
       {

@@ -1,13 +1,20 @@
 import {
+  converterMarkerStyle,
+  converterPolygonStyle,
+  equipmentMarkerStyle,
+  equipmentPolygonStyle,
   etysBoundaryStyle,
+  generatorMarkerStyle,
+  generatorPolygonStyle,
   lineStyle,
   plantMarkerStyle,
   plantPolygonStyle,
   substationMarkerStyle,
   substationPolygonStyle,
+  towerMarkerStyle,
   turbineMarkerStyle,
 } from "./styles.js";
-import { plantPropsForPopup, turbinePropsForPopup } from "./popups.js";
+import { generatorPropsForPopup, plantPropsForPopup, turbinePropsForPopup } from "./popups.js";
 
 export const LAYER_BEHAVIOR = {
   lines: {
@@ -41,6 +48,39 @@ export const LAYER_BEHAVIOR = {
     popupKeys: ["name", "power", "substation", "voltage", "latitude", "longitude", "operator", "ref"],
     combinedLayer: true,
     kind: "combined",
+  },
+  generators: {
+    label: "generators",
+    polygonStyleFn: generatorPolygonStyle,
+    markerStyleFn: generatorMarkerStyle,
+    popupPropsFn: generatorPropsForPopup,
+    popupKeys: ["name", "capacity_mw", "generator:source", "generator:method", "generator:type", "generator:output:electricity", "operator", "latitude", "longitude"],
+    combinedLayer: true,
+    filterable: true,
+    kind: "combined",
+  },
+  converters: {
+    label: "converter stations",
+    polygonStyleFn: converterPolygonStyle,
+    markerStyleFn: converterMarkerStyle,
+    popupKeys: ["name", "power", "converter", "voltage", "frequency", "rating", "operator", "latitude", "longitude"],
+    combinedLayer: true,
+    kind: "combined",
+  },
+  equipment: {
+    label: "power equipment",
+    polygonStyleFn: equipmentPolygonStyle,
+    markerStyleFn: equipmentMarkerStyle,
+    popupKeys: ["name", "power", "voltage", "operator", "ref", "location", "latitude", "longitude"],
+    combinedLayer: true,
+    kind: "combined",
+  },
+  towers: {
+    label: "transmission towers",
+    styleFn: towerMarkerStyle,
+    popupKeys: ["name", "power", "ref", "operator", "height"],
+    pointLayer: true,
+    kind: "points",
   },
   dno: {
     label: "DNO licence areas",

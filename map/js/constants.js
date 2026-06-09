@@ -62,6 +62,23 @@ export const SUBSTATION_COLORS = {
   other: "#78909c",
 };
 
+export const CONVERTER_COLOR = "#6a1b9a";
+export const TOWER_COLOR = "#546e7a";
+
+export const POWER_EQUIPMENT_COLORS = {
+  transformer: "#d81b60",
+  switch: "#00897b",
+  switchgear: "#00897b",
+  busbar: "#fb8c00",
+  terminal: "#3949ab",
+  portal: "#7cb342",
+  bay: "#8e24aa",
+  connection: "#00acc1",
+  compensator: "#f4511e",
+  insulator: "#6d4c41",
+  other: "#78909c",
+};
+
 export const ZONE_COLORS = {
   dno: "#7e57c2",
   gsp: "#26a69a",

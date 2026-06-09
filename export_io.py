@@ -1,4 +1,4 @@
-"""Shared GeoJSON/CSV export helpers for poster and map ingest CLIs."""
+"""Shared GeoJSON/CSV export helpers for map data ingest."""
 
 from __future__ import annotations
 

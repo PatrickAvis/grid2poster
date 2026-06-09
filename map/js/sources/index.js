@@ -38,8 +38,8 @@ export async function createLayerFromData(
         (props) => helpers.lineStyle(props || {}),
       );
     }
-    const styleFn = layerKey === "turbines"
-      ? () => helpers.turbineMarkerStyle()
+    const styleFn = layerConfig.styleFn
+      ? (props) => layerConfig.styleFn(props || {})
       : (props) => helpers.lineStyle(props || {});
     return createPmtilesLayer(payload.url, layerConfig, styleFn);
   }

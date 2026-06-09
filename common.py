@@ -5,8 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import pickle
-import re
-import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -34,13 +32,10 @@ except ImportError:  # pragma: no cover - optional progress-bar dependency
 
 REPO_ROOT = Path(__file__).resolve().parent
 CACHE_DIR = REPO_ROOT / "cache"
-POSTERS_DIR = REPO_ROOT / "posters"
-THEMES_DIR = REPO_ROOT / "poster" / "themes"
 DATA_RAW_DIR = REPO_ROOT / "data" / "raw"
 DATA_MAP_DIR = REPO_ROOT / "data" / "map"
 DATA_ZONES_DIR = REPO_ROOT / "data" / "zones"
 FILE_ENCODING = "utf-8"
-MM_PER_INCH = 25.4
 
 
 def raw_dir(region_id: str) -> Path:
@@ -68,35 +63,10 @@ def uk_raw_dir() -> Path:
 def uk_map_dir() -> Path:
     return map_dir("uk")
 
-PAPER_SIZES: dict[str, tuple[float, float]] = {
-    # ISO 216 A-series (portrait, width × height in mm)
-    "a5": (148.0, 210.0),
-    "a4": (210.0, 297.0),
-    "a3": (297.0, 420.0),
-    "a2": (420.0, 594.0),
-    "a1": (594.0, 841.0),
-    "a0": (841.0, 1189.0),
-    # ANSI / North American sizes
-    "letter": (215.9, 279.4),
-    "legal": (215.9, 355.6),
-    "tabloid": (279.4, 431.8),
-}
-
-# Lower kV bound of each voltage tier (low, mid, high, extra). A line is placed
-# in the highest tier whose bound it meets; below the first bound it is treated
-# as unknown/sub-transmission. Overridable per-run via --voltage-tiers.
-DEFAULT_VOLTAGE_TIERS: tuple[float, float, float, float] = (60.0, 150.0, 300.0, 500.0)
-
-for _dir in (CACHE_DIR, POSTERS_DIR, THEMES_DIR, DATA_RAW_DIR, DATA_MAP_DIR, DATA_ZONES_DIR):
+for _dir in (CACHE_DIR, DATA_RAW_DIR, DATA_MAP_DIR, DATA_ZONES_DIR):
     _dir.mkdir(parents=True, exist_ok=True)
 uk_raw_dir().mkdir(parents=True, exist_ok=True)
 uk_map_dir().mkdir(parents=True, exist_ok=True)
-
-
-def slugify(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
-    normalized = re.sub(r"[^a-zA-Z0-9]+", "_", normalized).strip("_").lower()
-    return normalized or "poster"
 
 
 def cache_key(*parts: Any) -> str:

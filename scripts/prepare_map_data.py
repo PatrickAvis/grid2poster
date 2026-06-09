@@ -16,6 +16,7 @@ sys.path.insert(0, str(REPO_ROOT))
 from prepare import bucket_plant_source, parse_capacity_to_mw
 from plants_sync import sync_uk_plants
 from region_catalog import (
+    catalog_data_path,
     catalog_layer_path,
     get_region,
     list_region_ids,
@@ -58,6 +59,44 @@ WEB_SUBSTATION_COLS = [
     "frequency",
 ]
 
+WEB_GENERATOR_COLS = [
+    "osm_id",
+    "power",
+    "name",
+    "operator",
+    "generator:source",
+    "generator:method",
+    "generator:type",
+    "generator:output:electricity",
+]
+
+WEB_CONVERTER_COLS = [
+    "power",
+    "name",
+    "operator",
+    "converter",
+    "voltage",
+    "frequency",
+    "rating",
+]
+
+WEB_EQUIPMENT_COLS = [
+    "power",
+    "name",
+    "operator",
+    "voltage",
+    "location",
+    "ref",
+]
+
+WEB_TOWER_COLS = [
+    "power",
+    "ref",
+    "operator",
+    "name",
+    "height",
+]
+
 WEB_TURBINE_COLS = [
     "power",
     "name",
@@ -91,35 +130,12 @@ ZONE_KEEP_COLS = [
     "boundary_id",
 ]
 
-LEGACY_POSTERS = REPO_ROOT / "posters"
-
-
 def resolve_raw_source(region_id: str, layer: str) -> Path:
-    path = raw_path(region_id, layer)
-    if path.exists():
-        return path
-    if region_id == "uk":
-        legacy = {
-            "lines": "uk_powerlines.geojson",
-            "plants": "uk_plants.geojson",
-            "substations": "uk_substations.geojson",
-            "turbines": "uk_wind_turbines.geojson",
-        }
-        legacy_path = LEGACY_POSTERS / legacy[layer]
-        if legacy_path.exists():
-            return legacy_path
-    return path
+    return raw_path(region_id, layer)
 
 
 def resolve_turbine_csv(region_id: str) -> Path:
-    path = raw_csv_path(region_id, "turbines")
-    if path.exists():
-        return path
-    if region_id == "uk":
-        legacy = LEGACY_POSTERS / "uk_wind_turbines.csv"
-        if legacy.exists():
-            return legacy
-    return path
+    return raw_csv_path(region_id, "turbines")
 
 
 def trim_columns(frame: gpd.GeoDataFrame, keep: list[str]) -> gpd.GeoDataFrame:
@@ -180,6 +196,49 @@ def build_substations_web(source: Path, output: Path) -> gpd.GeoDataFrame:
     return frame
 
 
+def build_generators_web(source: Path, output: Path) -> gpd.GeoDataFrame:
+    print(f"Reading {source.name}…")
+    frame = gpd.read_file(source)
+    frame = trim_columns(frame, WEB_GENERATOR_COLS)
+    frame = add_lat_lon_columns(frame)
+    capacity_raw = frame.get("generator:output:electricity")
+    if capacity_raw is not None:
+        frame["capacity_mw"] = capacity_raw.apply(parse_capacity_to_mw)
+    source_raw = frame.get("generator:source")
+    if source_raw is not None:
+        frame["source_bucket"] = source_raw.apply(bucket_plant_source)
+    write_geojson(frame, output)
+    return frame
+
+
+def build_converters_web(source: Path, output: Path) -> gpd.GeoDataFrame:
+    print(f"Reading {source.name}…")
+    frame = gpd.read_file(source)
+    frame = trim_columns(frame, WEB_CONVERTER_COLS)
+    frame = add_lat_lon_columns(frame)
+    write_geojson(frame, output)
+    return frame
+
+
+def build_equipment_web(source: Path, output: Path) -> gpd.GeoDataFrame:
+    print(f"Reading {source.name}…")
+    frame = gpd.read_file(source)
+    frame = trim_columns(frame, WEB_EQUIPMENT_COLS)
+    frame = add_lat_lon_columns(frame)
+    write_geojson(frame, output)
+    return frame
+
+
+def build_towers_web(source: Path, output: Path) -> gpd.GeoDataFrame:
+    print(f"Reading {source.name}…")
+    frame = gpd.read_file(source)
+    points = frame[frame.geometry.type == "Point"].copy()
+    print(f"Keeping {len(points):,}/{len(frame):,} tower points")
+    points = trim_columns(points, WEB_TOWER_COLS)
+    write_geojson(points, output)
+    return points
+
+
 def build_turbines_web(source_csv: Path, output: Path) -> gpd.GeoDataFrame:
     print(f"Reading {source_csv.name}…")
     available = pd.read_csv(source_csv, nrows=0).columns.tolist()
@@ -237,6 +296,12 @@ def assign_gsp_parent_dno(gsp: gpd.GeoDataFrame, dno: gpd.GeoDataFrame) -> gpd.G
 
 
 def default_output(region_id: str, layer: str) -> Path:
+    # PMTiles layers carry a separate GeoJSON source that tippecanoe tiles from;
+    # the prep step must write that GeoJSON, not the .pmtiles archive path.
+    region = get_region(region_id)
+    layer_cfg = region.get("layers", {}).get(layer)
+    if layer_cfg and layer_cfg.get("type") == "pmtiles" and layer_cfg.get("geojsonSource"):
+        return catalog_data_path(layer_cfg["geojsonSource"])
     catalog_path = catalog_layer_path(region_id, layer)
     if catalog_path is not None:
         return catalog_path
@@ -260,6 +325,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--substations-output", type=Path, default=None)
     parser.add_argument("--turbines-source", type=Path, default=None)
     parser.add_argument("--turbines-output", type=Path, default=None)
+    parser.add_argument("--generators-source", type=Path, default=None)
+    parser.add_argument("--generators-output", type=Path, default=None)
+    parser.add_argument("--converters-source", type=Path, default=None)
+    parser.add_argument("--converters-output", type=Path, default=None)
+    parser.add_argument("--equipment-source", type=Path, default=None)
+    parser.add_argument("--equipment-output", type=Path, default=None)
+    parser.add_argument("--towers-source", type=Path, default=None)
+    parser.add_argument("--towers-output", type=Path, default=None)
     parser.add_argument("--dno-source", type=Path, default=None)
     parser.add_argument("--dno-output", type=Path, default=None)
     parser.add_argument("--gsp-source", type=Path, default=None)
@@ -272,6 +345,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-plants", action="store_true")
     parser.add_argument("--skip-substations", action="store_true")
     parser.add_argument("--skip-turbines", action="store_true")
+    parser.add_argument("--skip-generators", action="store_true")
+    parser.add_argument("--skip-converters", action="store_true")
+    parser.add_argument("--skip-equipment", action="store_true")
+    parser.add_argument("--skip-towers", action="store_true")
     parser.add_argument("--skip-zones", action="store_true")
     parser.add_argument(
         "--emit-pmtiles",
@@ -294,6 +371,14 @@ def main() -> int:
         args.substations_source = resolve_raw_source(args.region, "substations")
     if args.turbines_source is None:
         args.turbines_source = resolve_turbine_csv(args.region)
+    if args.generators_source is None:
+        args.generators_source = resolve_raw_source(args.region, "generators")
+    if args.converters_source is None:
+        args.converters_source = resolve_raw_source(args.region, "converters")
+    if args.equipment_source is None:
+        args.equipment_source = resolve_raw_source(args.region, "equipment")
+    if args.towers_source is None:
+        args.towers_source = resolve_raw_source(args.region, "towers")
 
     if args.lines_output is None and "lines" in layers:
         args.lines_output = default_output(args.region, "lines")
@@ -303,6 +388,14 @@ def main() -> int:
         args.substations_output = default_output(args.region, "substations")
     if args.turbines_output is None and "turbines" in layers:
         args.turbines_output = default_output(args.region, "turbines")
+    if args.generators_output is None and "generators" in layers:
+        args.generators_output = default_output(args.region, "generators")
+    if args.converters_output is None and "converters" in layers:
+        args.converters_output = default_output(args.region, "converters")
+    if args.equipment_output is None and "equipment" in layers:
+        args.equipment_output = default_output(args.region, "equipment")
+    if args.towers_output is None and "towers" in layers:
+        args.towers_output = default_output(args.region, "towers")
     if args.dno_output is None and "dno" in layers:
         args.dno_output = default_output(args.region, "dno")
     if args.gsp_output is None and "gsp" in layers:
@@ -334,6 +427,30 @@ def main() -> int:
             build_turbines_web(args.turbines_source, args.turbines_output)
         else:
             print(f"Skipping turbines: {args.turbines_source} not found")
+
+    if not args.skip_generators and "generators" in layers:
+        if args.generators_source.exists():
+            build_generators_web(args.generators_source, args.generators_output)
+        else:
+            print(f"Skipping generators: {args.generators_source} not found")
+
+    if not args.skip_converters and "converters" in layers:
+        if args.converters_source.exists():
+            build_converters_web(args.converters_source, args.converters_output)
+        else:
+            print(f"Skipping converters: {args.converters_source} not found")
+
+    if not args.skip_equipment and "equipment" in layers:
+        if args.equipment_source.exists():
+            build_equipment_web(args.equipment_source, args.equipment_output)
+        else:
+            print(f"Skipping equipment: {args.equipment_source} not found")
+
+    if not args.skip_towers and "towers" in layers:
+        if args.towers_source.exists():
+            build_towers_web(args.towers_source, args.towers_output)
+        else:
+            print(f"Skipping towers: {args.towers_source} not found")
 
     if not args.skip_zones:
         dno_frame = None

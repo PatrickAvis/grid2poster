@@ -12933,7 +12933,592 @@
     "notes": "Candidate match: bmUnitName=T_DRAXX-9G; fuelType=OCGT; confidence=medium; reason=exact_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
   },
   {
-    "osm_id": "way/449382367",
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-1",
+    "ngc_bmu_id": "DBAWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-2",
+    "ngc_bmu_id": "DBAWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-3",
+    "ngc_bmu_id": "DBAWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-4",
+    "ngc_bmu_id": "DBAWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-5",
+    "ngc_bmu_id": "DBAWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-1",
+    "ngc_bmu_id": "DBBWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-2",
+    "ngc_bmu_id": "DBBWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-3",
+    "ngc_bmu_id": "DBBWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-4",
+    "ngc_bmu_id": "DBBWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-5",
+    "ngc_bmu_id": "DBBWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_GORDW-2",
+    "ngc_bmu_id": "GORDW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Gordonbush WF Extension; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-1",
+    "ngc_bmu_id": "SGRWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-2",
+    "ngc_bmu_id": "SGRWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-3",
+    "ngc_bmu_id": "SGRWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-4",
+    "ngc_bmu_id": "SGRWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-5",
+    "ngc_bmu_id": "SGRWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616340682",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-6",
+    "ngc_bmu_id": "SGRWO-6",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 6; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/951797053",
+    "plant_name": "Hirwaun",
+    "bmu_id": "T_HIRWN-1",
+    "ngc_bmu_id": "HIRWN-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Hirwaun 1; fuelType=OCGT; confidence=medium; reason=site_name_bmUnitName;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-1",
+    "ngc_bmu_id": "DBAWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-2",
+    "ngc_bmu_id": "DBAWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-3",
+    "ngc_bmu_id": "DBAWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-4",
+    "ngc_bmu_id": "DBAWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBAWO-5",
+    "ngc_bmu_id": "DBAWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank A Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-1",
+    "ngc_bmu_id": "DBBWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-2",
+    "ngc_bmu_id": "DBBWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-3",
+    "ngc_bmu_id": "DBBWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-4",
+    "ngc_bmu_id": "DBBWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_DBBWO-5",
+    "ngc_bmu_id": "DBBWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Dogger Bank B Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_GORDW-2",
+    "ngc_bmu_id": "GORDW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Gordonbush WF Extension; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-1",
+    "ngc_bmu_id": "SGRWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-2",
+    "ngc_bmu_id": "SGRWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-3",
+    "ngc_bmu_id": "SGRWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-4",
+    "ngc_bmu_id": "SGRWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-5",
+    "ngc_bmu_id": "SGRWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/616339818",
+    "plant_name": "Wind Farm",
+    "bmu_id": "T_SGRWO-6",
+    "ngc_bmu_id": "SGRWO-6",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Seagreen1 Offshore WF 6; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/956007730",
+    "plant_name": "Broxburn Battery Storage",
+    "bmu_id": "E_BROXB-1",
+    "ngc_bmu_id": "BROXB-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=BroxburnBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/1122850401",
+    "plant_name": "Whitelee Wind Farm Battery Storage",
+    "bmu_id": "T_WHILW-1",
+    "ngc_bmu_id": "WHILW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_WHILW-1; fuelType=WIND; confidence=medium; reason=compact_site_name_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False"
+  },
+  {
+    "osm_id": "way/1421373804",
+    "plant_name": "Cathkin BESS",
+    "bmu_id": "E_CATHB-1",
+    "ngc_bmu_id": "CATHB-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=CathkinBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/1484246598",
+    "plant_name": "Broxburn BESS",
+    "bmu_id": "E_BROXB-1",
+    "ngc_bmu_id": "BROXB-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=BroxburnBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/143902275",
+    "plant_name": "Spalding Power Station",
+    "bmu_id": "T_SEEL-1",
+    "ngc_bmu_id": "SEEL-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Spalding Energy Expansion Ltd; fuelType=OCGT; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/208757000",
+    "plant_name": "Immingham Power Station",
+    "bmu_id": "T_HUMR-1",
+    "ngc_bmu_id": "HUMR-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HUMR-1; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/677933700",
+    "plant_name": "Grain CHP",
+    "bmu_id": "T_GRAI-6",
+    "ngc_bmu_id": "GRAI-6",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_GRAI-6; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/677933700",
+    "plant_name": "Grain CHP",
+    "bmu_id": "T_GRAI-7",
+    "ngc_bmu_id": "GRAI-7",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_GRAI-7; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/677933700",
+    "plant_name": "Grain CHP",
+    "bmu_id": "T_GRAI-8",
+    "ngc_bmu_id": "GRAI-8",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_GRAI-8; fuelType=CCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/677933700",
+    "plant_name": "Grain CHP",
+    "bmu_id": "T_GRAI1G",
+    "ngc_bmu_id": "GRAI1G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_GRAI1G; fuelType=OCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True"
+  },
+  {
+    "osm_id": "way/677933700",
+    "plant_name": "Grain CHP",
+    "bmu_id": "T_GRAI4G",
+    "ngc_bmu_id": "GRAI4G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=T_GRAI4G; fuelType=OCGT; confidence=medium; reason=site_name_contains_oc2_BMGROUP_NAME; fuel_compatible=True"
+  },
+  {
+    "osm_id": "relation/19293473",
+    "plant_name": "Tye Lane - Solar Power Station",
+    "bmu_id": "T_TYLNB-1",
+    "ngc_bmu_id": "TYLNB-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Tye Lane BESS; fuelType=; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=None"
+  },
+  {
+    "osm_id": "16075498",
+    "plant_name": "Pembroke Power Station",
+    "bmu_id": "T_PEMB-11",
+    "ngc_bmu_id": "PEMB-11",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "16075498",
+    "plant_name": "Pembroke Power Station",
+    "bmu_id": "T_PEMB-21",
+    "ngc_bmu_id": "PEMB-21",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "16075498",
+    "plant_name": "Pembroke Power Station",
+    "bmu_id": "T_PEMB-31",
+    "ngc_bmu_id": "PEMB-31",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "16075498",
+    "plant_name": "Pembroke Power Station",
+    "bmu_id": "T_PEMB-41",
+    "ngc_bmu_id": "PEMB-41",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "16075498",
+    "plant_name": "Pembroke Power Station",
+    "bmu_id": "T_PEMB-51",
+    "ngc_bmu_id": "PEMB-51",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "143791247",
+    "plant_name": "Indian Queens Power Station",
+    "bmu_id": "T_INDQ-1",
+    "ngc_bmu_id": "INDQ-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "178884128",
+    "plant_name": "Langage Power Station",
+    "bmu_id": "T_LAGA-1",
+    "ngc_bmu_id": "LAGA-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "8829625",
+    "plant_name": "Walney Wind Farm",
+    "bmu_id": "T_WLNYO-2",
+    "ngc_bmu_id": "WLNYO-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "8829625",
+    "plant_name": "Walney Wind Farm",
+    "bmu_id": "T_WLNYO-3",
+    "ngc_bmu_id": "WLNYO-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "8829625",
+    "plant_name": "Walney Wind Farm",
+    "bmu_id": "T_WLNYO-4",
+    "ngc_bmu_id": "WLNYO-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "8829625",
+    "plant_name": "Walney Wind Farm",
+    "bmu_id": "T_WLNYW-1",
+    "ngc_bmu_id": "WLNYW-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-1",
+    "ngc_bmu_id": "FFES-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-2",
+    "ngc_bmu_id": "FFES-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-3",
+    "ngc_bmu_id": "FFES-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "402796795",
+    "plant_name": "Ffestiniog Power Station",
+    "bmu_id": "T_FFES-4",
+    "ngc_bmu_id": "FFES-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "19454939",
+    "plant_name": "Windy Standard II",
+    "bmu_id": "T_WISTW-2",
+    "ngc_bmu_id": "WISTW-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "1210002953",
+    "plant_name": "Little Raith Battery Storage",
+    "bmu_id": "E_LITRB-1",
+    "ngc_bmu_id": "LITRB-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "207523493",
+    "plant_name": "Finlarig Power Station",
+    "bmu_id": "T_FINL-1",
+    "ngc_bmu_id": "FINL-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "449382367",
     "plant_name": "Cruachan Power Station",
     "bmu_id": "T_CRUA-1",
     "ngc_bmu_id": "CRUA-1",
@@ -12942,7 +13527,7 @@
     "notes": null
   },
   {
-    "osm_id": "way/449382367",
+    "osm_id": "449382367",
     "plant_name": "Cruachan Power Station",
     "bmu_id": "T_CRUA-2",
     "ngc_bmu_id": "CRUA-2",
@@ -12951,7 +13536,7 @@
     "notes": null
   },
   {
-    "osm_id": "way/449382367",
+    "osm_id": "449382367",
     "plant_name": "Cruachan Power Station",
     "bmu_id": "T_CRUA-3",
     "ngc_bmu_id": "CRUA-3",
@@ -12960,7 +13545,7 @@
     "notes": null
   },
   {
-    "osm_id": "way/449382367",
+    "osm_id": "449382367",
     "plant_name": "Cruachan Power Station",
     "bmu_id": "T_CRUA-4",
     "ngc_bmu_id": "CRUA-4",
@@ -12969,11 +13554,371 @@
     "notes": null
   },
   {
-    "osm_id": "relation/14425529",
-    "plant_name": "Markinch Biomass",
-    "bmu_id": "E_MARK-1",
-    "ngc_bmu_id": "MARK-1",
+    "osm_id": "570076477",
+    "plant_name": "Nant Power Station",
+    "bmu_id": "T_NANT-1",
+    "ngc_bmu_id": "NANT-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "55955507",
+    "plant_name": "Rye House Power Station",
+    "bmu_id": "T_RYHPS-1",
+    "ngc_bmu_id": "RYHPS-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "318841702",
+    "plant_name": "Taylors Lane Power Station",
+    "bmu_id": "E_TAYL2G",
+    "ngc_bmu_id": "TAYL2G",
     "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "318841702",
+    "plant_name": "Taylors Lane Power Station",
+    "bmu_id": "E_TAYL3G",
+    "ngc_bmu_id": "TAYL3G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "352871114",
+    "plant_name": "Shoreham Power Station",
+    "bmu_id": "E_SHOS-1",
+    "ngc_bmu_id": "SHOS-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "945296993",
+    "plant_name": "Didcot OCGT",
+    "bmu_id": "E_DIDC1G",
+    "ngc_bmu_id": "DIDC01G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "945296993",
+    "plant_name": "Didcot OCGT",
+    "bmu_id": "E_DIDC2G",
+    "ngc_bmu_id": "DIDC02G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "945296993",
+    "plant_name": "Didcot OCGT",
+    "bmu_id": "E_DIDC3G",
+    "ngc_bmu_id": "DIDC03G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "945296993",
+    "plant_name": "Didcot OCGT",
+    "bmu_id": "E_DIDC4G",
+    "ngc_bmu_id": "DIDC04G",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-1",
+    "ngc_bmu_id": "CNQPS-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-2",
+    "ngc_bmu_id": "CNQPS-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-3",
+    "ngc_bmu_id": "CNQPS-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "26427510",
+    "plant_name": "Connahs Quay Power Station",
+    "bmu_id": "T_CNQPS-4",
+    "ngc_bmu_id": "CNQPS-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "29083166",
+    "plant_name": "Rocksavage Power Station",
+    "bmu_id": "T_ROCK-1",
+    "ngc_bmu_id": "ROCK-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-1",
+    "ngc_bmu_id": "DRAXX-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-2",
+    "ngc_bmu_id": "DRAXX-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-3",
+    "ngc_bmu_id": "DRAXX-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-4",
+    "ngc_bmu_id": "DRAXX-4",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "143902275",
+    "plant_name": "Spalding Power Station",
+    "bmu_id": "T_SPLN-1",
+    "ngc_bmu_id": "SPLN-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "160279522",
+    "plant_name": "West Burton B Power Station",
+    "bmu_id": "T_WBURB-1",
+    "ngc_bmu_id": "WBURB-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "160279522",
+    "plant_name": "West Burton B Power Station",
+    "bmu_id": "T_WBURB-2",
+    "ngc_bmu_id": "WBURB-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "160279522",
+    "plant_name": "West Burton B Power Station",
+    "bmu_id": "T_WBURB-3",
+    "ngc_bmu_id": "WBURB-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "312992167",
+    "plant_name": "Saltend Power Station",
+    "bmu_id": "T_SCCL-1",
+    "ngc_bmu_id": "SCCL-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "312992167",
+    "plant_name": "Saltend Power Station",
+    "bmu_id": "T_SCCL-2",
+    "ngc_bmu_id": "SCCL-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "312992167",
+    "plant_name": "Saltend Power Station",
+    "bmu_id": "T_SCCL-3",
+    "ngc_bmu_id": "SCCL-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "341804043",
+    "plant_name": "Westermost Rough Wind Farm",
+    "bmu_id": "T_WTMSO-1",
+    "ngc_bmu_id": "WTMSO-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "402566315",
+    "plant_name": "Cottam Development Centre",
+    "bmu_id": "T_CDCL-1",
+    "ngc_bmu_id": "CDCL-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "711002156",
+    "plant_name": "Peterborough Power Station",
+    "bmu_id": "E_PETEM1",
+    "ngc_bmu_id": "PETEM1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "1149192582",
+    "plant_name": "Enderby Battery Storage",
+    "bmu_id": "T_ENDRB-1",
+    "ngc_bmu_id": "ENDRB-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "1149621575",
+    "plant_name": "Keadby Power Station",
+    "bmu_id": "T_KEAD-1",
+    "ngc_bmu_id": "KEAD-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "1149621575",
+    "plant_name": "Keadby Power Station",
+    "bmu_id": "T_KEADGT-3",
+    "ngc_bmu_id": "KEADGT-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "1473675659",
+    "plant_name": "Enderby Battery Storage",
+    "bmu_id": "T_ENDRB-1",
+    "ngc_bmu_id": "ENDRB-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "998559908",
+    "plant_name": "Kincardine Offshore Windfarm",
+    "bmu_id": "E_KINCW-1",
+    "ngc_bmu_id": "KINCW-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "1484128931",
+    "plant_name": "Overhill BESS",
+    "bmu_id": "E_OVRHB-1",
+    "ngc_bmu_id": "OVRHB-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "913945639",
+    "plant_name": "Coryton Power Station",
+    "bmu_id": "T_COSO-1",
+    "ngc_bmu_id": "COSO-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "28390306",
+    "plant_name": "King's Lynn Power Station",
+    "bmu_id": "E_KLYN-A-1",
+    "ngc_bmu_id": "KLYN-A-1",
+    "bmu_type": "E",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "20197356",
+    "plant_name": "Walney 3",
+    "bmu_id": "T_WLNYO-3",
+    "ngc_bmu_id": "WLNYO-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "415308338",
+    "plant_name": "Dudgeon Offshore Wind Farm",
+    "bmu_id": "T_DDGNO-1",
+    "ngc_bmu_id": "DDGNO-1",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "415308338",
+    "plant_name": "Dudgeon Offshore Wind Farm",
+    "bmu_id": "T_DDGNO-2",
+    "ngc_bmu_id": "DDGNO-2",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "415308338",
+    "plant_name": "Dudgeon Offshore Wind Farm",
+    "bmu_id": "T_DDGNO-3",
+    "ngc_bmu_id": "DDGNO-3",
+    "bmu_type": "T",
+    "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "415308338",
+    "plant_name": "Dudgeon Offshore Wind Farm",
+    "bmu_id": "T_DDGNO-4",
+    "ngc_bmu_id": "DDGNO-4",
+    "bmu_type": "T",
     "source": "auto",
     "notes": null
   }

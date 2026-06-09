@@ -1,1 +1,0 @@
-"""Legacy poster rendering package."""

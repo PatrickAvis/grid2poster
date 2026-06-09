@@ -1,10 +1,13 @@
 import {
+  CONVERTER_COLOR,
   LINE_TYPE_COLORS,
   PLANT_CAP_REF_MW,
   PLANT_MARKER_FALLBACK_RADIUS,
   PLANT_MARKER_MAX_RADIUS,
   PLANT_MARKER_MIN_RADIUS,
+  POWER_EQUIPMENT_COLORS,
   SUBSTATION_COLORS,
+  TOWER_COLOR,
 } from "./constants.js";
 import { bucketFuelProperties, bucketFuelSource, fuelTypeColor, hasFuelType } from "./fuelTypes.js";
 import { parseCapacityToMw, parseVoltageKv } from "./utils.js";
@@ -173,6 +176,98 @@ export function plantMarkerStyle(props) {
     weight: 1,
     opacity: 0.95,
     fillOpacity: 0.9,
+  };
+}
+
+export function generatorSourceBucket(props) {
+  const bucket = props.source_bucket || bucketFuelProperties(
+    props["generator:source"] || props["generator:method"] || props.source,
+    props.name,
+    props.operator,
+  );
+  return hasFuelType(bucket) ? bucket : "other";
+}
+
+export function generatorMarkerStyle(props) {
+  const color = fuelTypeColor(generatorSourceBucket(props));
+  return {
+    radius: 4,
+    fillColor: color,
+    color: "#263238",
+    weight: 1,
+    opacity: 0.9,
+    fillOpacity: 0.85,
+  };
+}
+
+export function generatorPolygonStyle(props) {
+  const color = fuelTypeColor(generatorSourceBucket(props));
+  return {
+    color: "#263238",
+    weight: 1,
+    opacity: 0.75,
+    fillColor: color,
+    fillOpacity: 0.35,
+  };
+}
+
+export function converterMarkerStyle() {
+  return {
+    radius: 5,
+    fillColor: CONVERTER_COLOR,
+    color: "#ffffff",
+    weight: 1,
+    opacity: 0.95,
+    fillOpacity: 0.95,
+  };
+}
+
+export function converterPolygonStyle() {
+  return {
+    color: CONVERTER_COLOR,
+    weight: 1.5,
+    opacity: 0.85,
+    fillColor: CONVERTER_COLOR,
+    fillOpacity: 0.25,
+  };
+}
+
+export function equipmentColor(props) {
+  const type = String(props.power || "other").toLowerCase();
+  return POWER_EQUIPMENT_COLORS[type] || POWER_EQUIPMENT_COLORS.other;
+}
+
+export function equipmentMarkerStyle(props) {
+  const color = equipmentColor(props);
+  return {
+    radius: 3.5,
+    fillColor: color,
+    color: "#ffffff",
+    weight: 0.75,
+    opacity: 0.9,
+    fillOpacity: 0.9,
+  };
+}
+
+export function equipmentPolygonStyle(props) {
+  const color = equipmentColor(props);
+  return {
+    color,
+    weight: 1.2,
+    opacity: 0.85,
+    fillColor: color,
+    fillOpacity: 0.25,
+  };
+}
+
+export function towerMarkerStyle() {
+  return {
+    radius: 2.5,
+    fillColor: TOWER_COLOR,
+    color: "#263238",
+    weight: 0.5,
+    opacity: 0.85,
+    fillOpacity: 0.8,
   };
 }
 

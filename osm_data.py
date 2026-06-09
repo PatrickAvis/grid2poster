@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+import re
 import time
 from pathlib import Path
 from typing import Any, Callable
@@ -56,7 +58,7 @@ def _continent_boundary(continent: str) -> gpd.GeoDataFrame:
 
     if key == "global":
         # Oceania is excluded from the aggregate above; pull in Australia, Papua
-        # New Guinea, and New Zealand explicitly so the poster covers them
+        # New Guinea, and New Zealand explicitly so the export covers them
         # without dragging in the wider Pacific.
         match = match | countries["ISO_A3"].isin(["AUS", "PNG", "NZL"])
 
@@ -267,7 +269,7 @@ def fetch_power_features_single(
         overpass_url,
         data={"data": query},
         timeout=timeout + 30,
-        headers={"User-Agent": "GridToPoster/1.0"},
+        headers={"User-Agent": "UKPowerMap/1.0"},
     )
     response.raise_for_status()
     data = response.json()
@@ -410,6 +412,82 @@ _WIND_TURBINE_TAG_QUERIES = (
     {"power": "generator", "generator:source": "wind"},
     {"power": "generator", "generator:method": "wind_turbine"},
 )
+
+# Schemas for the additional power layers (generators excluding wind, HVDC
+# converters, discrete equipment, and transmission towers). Each mirrors the
+# Overpass fetchers' "required columns" contract so downstream prep is stable.
+_REQUIRED_GENERATOR_COLS = [
+    "power",
+    "generator:source",
+    "generator:method",
+    "generator:type",
+    "generator:output:electricity",
+    "name",
+    "operator",
+    "geometry",
+]
+_REQUIRED_CONVERTER_COLS = [
+    "power",
+    "converter",
+    "voltage",
+    "frequency",
+    "rating",
+    "name",
+    "operator",
+    "geometry",
+]
+_REQUIRED_EQUIPMENT_COLS = [
+    "power",
+    "voltage",
+    "location",
+    "name",
+    "operator",
+    "ref",
+    "geometry",
+]
+_REQUIRED_TOWER_COLS = [
+    "power",
+    "ref",
+    "operator",
+    "name",
+    "height",
+    "geometry",
+]
+
+# power=* values rolled into the single "equipment" layer (converters get their
+# own layer, so they are intentionally excluded here).
+EQUIPMENT_POWER_VALUES = [
+    "transformer",
+    "switch",
+    "switchgear",
+    "busbar",
+    "terminal",
+    "portal",
+    "bay",
+    "connection",
+    "compensator",
+    "insulator",
+]
+
+
+def _generator_is_wind(frame: gpd.GeoDataFrame) -> pd.Series:
+    """Boolean mask of generators that represent wind (source or method)."""
+    source = frame.get("generator:source")
+    method = frame.get("generator:method")
+    is_wind = pd.Series(False, index=frame.index)
+    if source is not None:
+        is_wind = is_wind | source.astype("string").str.contains("wind", case=False, na=False)
+    if method is not None:
+        is_wind = is_wind | method.astype("string").str.contains("wind_turbine", case=False, na=False)
+    return is_wind
+
+
+def drop_wind_generators(frame: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Return only non-wind generators (wind is covered by the turbine layer)."""
+    if frame.empty:
+        return frame
+    keep = ~_generator_is_wind(frame)
+    return gpd.GeoDataFrame(frame[keep], geometry="geometry", crs="EPSG:4326").reset_index(drop=True)
 
 
 def _fetch_tiles(
@@ -638,7 +716,7 @@ def fetch_power_plants(
     )
 
     if not frames:
-        # Unlike lines, a region without mapped plants is a valid poster.
+        # Unlike lines, a region without mapped plants is a valid export.
         combined = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
         cache_set(key, combined)
         return combined
@@ -758,3 +836,351 @@ def fetch_wind_turbines(
     combined = _combine_tile_frames(frames, _REQUIRED_WIND_TURBINE_COLS)
     cache_set(key, combined)
     return combined
+
+
+def fetch_power_values(
+    country: str,
+    boundary: gpd.GeoDataFrame,
+    values: list[str],
+    geometry_types: list[str],
+    required_cols: list[str],
+    *,
+    cache_tag: str,
+    tile_size_km: float = 200,
+    render_crs: str = "EPSG:8857",
+    sea_buffer_km: float = 0.0,
+    use_cache: bool = True,
+    tile_delay: float = 0,
+) -> gpd.GeoDataFrame:
+    """Generic tiled Overpass fetch for arbitrary ``power=*`` values.
+
+    Backs the additional layers (generators, converters, equipment, towers)
+    when ``--osm-pbf`` is not used. An empty result is returned, not raised, so
+    a region without a given feature class simply yields an empty overlay.
+    """
+    key = cache_key(cache_tag, country, values, tile_size_km, render_crs, sea_buffer_km)
+    if use_cache:
+        cached = cache_get(key)
+        if cached is not None:
+            print(f"Using cached {cache_tag} for {country}")
+            return cached
+
+    tiles = make_query_tiles(
+        boundary,
+        tile_size_km=tile_size_km,
+        render_crs=render_crs,
+        sea_buffer_km=sea_buffer_km,
+    )
+    print(f"Downloading OSM power={values} across {len(tiles):,} tiles")
+
+    def tile_cache_key(tile_geom: Any) -> str:
+        return cache_key(f"{cache_tag}_tile", country, values, sea_buffer_km, tile_geom.wkb_hex)
+
+    frames = _fetch_tiles(
+        tiles,
+        tags={"power": values},
+        tile_cache_key=tile_cache_key,
+        geometry_types=geometry_types,
+        required_cols=_TILE_ID_COLS + required_cols,
+        use_cache=use_cache,
+        tile_delay=tile_delay,
+    )
+
+    if not frames:
+        combined = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+        cache_set(key, combined)
+        return combined
+
+    combined = _combine_tile_frames(frames, required_cols)
+    cache_set(key, combined)
+    return combined
+
+
+# ---------------------------------------------------------------------------
+# Local .osm.pbf fast path (GDAL OSM driver via pyogrio)
+#
+# Reading power features from a local country extract avoids Overpass entirely,
+# which is dramatically faster and immune to rate limits / read timeouts. We use
+# GDAL's built-in OSM driver (already shipped with geopandas/pyogrio) rather than
+# an extra dependency. A small osmconf.ini promotes the ``power`` tag to a real
+# field so GDAL can push the attribute filter down, while ``other_tags=yes``
+# preserves every remaining tag. Output mirrors the Overpass fetchers' schema
+# (all OSM tags as columns, required columns present, EPSG:4326) so the rest of
+# the export/prepare pipeline is unchanged.
+# ---------------------------------------------------------------------------
+
+PBF_LAYERS = (
+    "lines",
+    "plants",
+    "substations",
+    "turbines",
+    "generators",
+    "converters",
+    "equipment",
+    "towers",
+)
+
+# GDAL OSM driver layers that hold each geometry kind. Power lines are ways
+# (lines layer); plants/substations/turbines are nodes (points) or areas
+# (multipolygons, built from closed ways and multipolygon relations).
+# ``power`` is appended to closed_ways_are_polygons so that power=plant /
+# power=substation closed ways are emitted as polygons (multipolygons layer)
+# rather than closed lines; the rest of the list is GDAL's default.
+_OSM_CONFIG_INI = """[general]
+attribute_name_laundering=no
+closed_ways_are_polygons=aeroway,amenity,boundary,building,craft,geological,historic,landuse,leisure,military,natural,office,place,shop,sport,tourism,power
+
+[points]
+osm_id=yes
+report_all_nodes=no
+attributes=power
+other_tags=yes
+
+[lines]
+osm_id=yes
+attributes=power
+other_tags=yes
+
+[multipolygons]
+osm_id=yes
+osm_way_id=yes
+attributes=power
+other_tags=yes
+
+[multilinestrings]
+osm_id=yes
+other_tags=yes
+
+[other_relations]
+osm_id=yes
+other_tags=yes
+"""
+
+# GDAL serializes unpromoted tags as an HSTORE-like string:
+#   "voltage"=>"400000","cables"=>"3"
+_HSTORE_RE = re.compile(r'"((?:[^"\\]|\\.)*)"\s*=>\s*"((?:[^"\\]|\\.)*)"')
+
+
+def _osm_config_path() -> Path:
+    path = CACHE_DIR / "osmconf_power.ini"
+    if not path.exists():
+        path.write_text(_OSM_CONFIG_INI, encoding="utf-8")
+    return path
+
+
+def _unescape_hstore(value: str) -> str:
+    return value.replace('\\"', '"').replace("\\\\", "\\")
+
+
+def _parse_other_tags(value: Any) -> dict[str, str]:
+    if not isinstance(value, str) or not value:
+        return {}
+    return {
+        _unescape_hstore(key): _unescape_hstore(val)
+        for key, val in _HSTORE_RE.findall(value)
+    }
+
+
+def _pbf_boundary_geom(boundary: gpd.GeoDataFrame, sea_buffer_km: float):
+    """Return a WGS84 (multi)polygon mask, optionally inflated by a sea margin."""
+    if sea_buffer_km > 0:
+        projected = boundary.to_crs("EPSG:3857")
+        buffered = unary_union(projected.geometry).buffer(sea_buffer_km * 1000)
+        return gpd.GeoSeries([buffered], crs="EPSG:3857").to_crs("EPSG:4326").iloc[0]
+    return unary_union(boundary.to_crs("EPSG:4326").geometry)
+
+
+def _read_osm_layer(pbf_path: Path, gdal_layer: str, where: str) -> gpd.GeoDataFrame:
+    """Read one GDAL OSM layer, filtering on the promoted ``power`` attribute.
+
+    No spatial (bbox) filter is used: pyogrio's bbox filter does not work with
+    the OSM driver, and the ``where`` clause already limits the result to power
+    features. Final clipping to the exact boundary happens in pandas.
+    """
+    import pyogrio
+
+    # GDAL reads OSM_CONFIG_FILE as a config option; set it through pyogrio so
+    # its GDAL instance honours it reliably (a plain os.environ change is not
+    # always picked up). NOTE: do NOT enable OGR_INTERLEAVED_READING — in that
+    # mode the OSM driver yields zero features for a single-layer read.
+    config_path = str(_osm_config_path())
+    os.environ["OSM_CONFIG_FILE"] = config_path
+    pyogrio.set_gdal_config_options(
+        {"OSM_CONFIG_FILE": config_path, "OGR_INTERLEAVED_READING": "NO"}
+    )
+    try:
+        frame = pyogrio.read_dataframe(str(pbf_path), layer=gdal_layer, where=where)
+    except Exception as exc:  # pragma: no cover - surfaced to caller
+        raise RuntimeError(
+            f"Failed to read layer {gdal_layer!r} from {pbf_path.name}: {exc}"
+        ) from exc
+    if frame.crs is None:
+        frame.set_crs("EPSG:4326", inplace=True)
+    return frame
+
+
+def _expand_other_tags(frame: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Promote GDAL's catch-all ``other_tags`` HSTORE into individual columns."""
+    if "other_tags" not in frame.columns:
+        return frame
+    parsed = frame["other_tags"].apply(_parse_other_tags)
+    extra = pd.json_normalize(parsed)
+    extra.index = frame.index
+    for col in extra.columns:
+        if col not in frame.columns:
+            frame[col] = extra[col]
+    return frame.drop(columns=["other_tags"])
+
+
+def _normalize_pbf_frame(
+    frames: list[gpd.GeoDataFrame],
+    *,
+    geometry_types: list[str],
+    required_cols: list[str],
+    mask_geom: Any,
+) -> gpd.GeoDataFrame:
+    """Coerce raw GDAL OSM frames into the Overpass fetchers' output schema."""
+    frames = [f for f in frames if f is not None and len(f) > 0]
+    if not frames:
+        empty = gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+        for col in required_cols:
+            empty[col] = None
+        return empty
+
+    frame = gpd.GeoDataFrame(
+        pd.concat(frames, ignore_index=True), geometry="geometry", crs="EPSG:4326"
+    )
+    frame = _expand_other_tags(frame)
+
+    # Identity columns matching the Overpass schema (used for dedup downstream).
+    if "osm_way_id" in frame.columns:
+        frame["osmid"] = frame["osm_way_id"].fillna(frame.get("osm_id"))
+    elif "osm_id" in frame.columns:
+        frame["osmid"] = frame["osm_id"]
+    if "osm_id" in frame.columns:
+        frame["id"] = frame["osm_id"]
+
+    frame = frame[frame.geometry.notna() & frame.geometry.type.isin(geometry_types)]
+    if not frame.empty and mask_geom is not None:
+        frame = frame[frame.geometry.intersects(mask_geom)]
+
+    frame = gpd.GeoDataFrame(frame, geometry="geometry", crs="EPSG:4326")
+    if "osmid" in frame.columns:
+        frame = frame.drop_duplicates(subset=["osmid", *(["power"] if "power" in frame.columns else [])])
+    for col in required_cols:
+        if col not in frame.columns:
+            frame[col] = None
+    return frame.reset_index(drop=True)
+
+
+def _sql_in(values: list[str]) -> str:
+    quoted = ", ".join(f"'{v}'" for v in values)
+    return f"power IN ({quoted})"
+
+
+def _read_point_and_polygon(
+    pbf_path: Path,
+    where: str,
+    mask_geom: Any,
+    required_cols: list[str],
+) -> gpd.GeoDataFrame:
+    """Read node (points) and area (multipolygons) power features for one filter."""
+    frames = [
+        _read_osm_layer(pbf_path, "points", where),
+        _read_osm_layer(pbf_path, "multipolygons", where),
+    ]
+    return _normalize_pbf_frame(
+        frames,
+        geometry_types=["Point", "Polygon", "MultiPolygon"],
+        required_cols=required_cols,
+        mask_geom=mask_geom,
+    )
+
+
+def fetch_power_layer_from_pbf(
+    pbf_path: Path,
+    boundary: gpd.GeoDataFrame,
+    layer: str,
+    *,
+    include_minor_lines: bool = False,
+    include_cables: bool = False,
+    sea_buffer_km: float = 0.0,
+) -> gpd.GeoDataFrame:
+    """Read a single power layer from a local ``.osm.pbf`` (GDAL OSM driver).
+
+    ``layer`` is one of :data:`PBF_LAYERS`. Output matches the corresponding
+    ``fetch_power_*`` Overpass function so downstream preparation is identical.
+    """
+    if layer not in PBF_LAYERS:
+        raise ValueError(f"Unknown PBF layer {layer!r}; expected one of {PBF_LAYERS}")
+
+    pbf_path = Path(pbf_path)
+    if not pbf_path.exists():
+        raise FileNotFoundError(f"OSM PBF not found: {pbf_path}")
+
+    mask_geom = _pbf_boundary_geom(boundary, sea_buffer_km)
+
+    buffer_note = f" (including {sea_buffer_km:g} km sea buffer)" if sea_buffer_km > 0 else ""
+    print(f"Reading power {layer} from local PBF {pbf_path.name}{buffer_note}")
+
+    if layer == "lines":
+        values = power_tag_values(include_minor_lines, include_cables)
+        frames = [_read_osm_layer(pbf_path, "lines", _sql_in(values))]
+        result = _normalize_pbf_frame(
+            frames,
+            geometry_types=["LineString", "MultiLineString"],
+            required_cols=_REQUIRED_LINE_COLS,
+            mask_geom=mask_geom,
+        )
+        if result.empty:
+            raise RuntimeError(
+                f"No power={values} lines found in {pbf_path.name} within the boundary."
+            )
+        return result
+
+    if layer == "plants":
+        return _read_point_and_polygon(
+            pbf_path, "power = 'plant'", mask_geom, _REQUIRED_PLANT_COLS
+        )
+
+    if layer == "substations":
+        return _read_point_and_polygon(
+            pbf_path, "power = 'substation'", mask_geom, _REQUIRED_SUBSTATION_COLS
+        )
+
+    if layer == "converters":
+        return _read_point_and_polygon(
+            pbf_path, "power = 'converter'", mask_geom, _REQUIRED_CONVERTER_COLS
+        )
+
+    if layer == "equipment":
+        return _read_point_and_polygon(
+            pbf_path, _sql_in(EQUIPMENT_POWER_VALUES), mask_geom, _REQUIRED_EQUIPMENT_COLS
+        )
+
+    if layer == "towers":
+        # Towers are nodes only; reading just the points layer keeps it fast.
+        frames = [_read_osm_layer(pbf_path, "points", "power = 'tower'")]
+        return _normalize_pbf_frame(
+            frames,
+            geometry_types=["Point"],
+            required_cols=_REQUIRED_TOWER_COLS,
+            mask_geom=mask_geom,
+        )
+
+    if layer == "generators":
+        # All power=generator except wind, which the dedicated turbine layer
+        # already renders.
+        frame = _read_point_and_polygon(
+            pbf_path, "power = 'generator'", mask_geom, _REQUIRED_GENERATOR_COLS
+        )
+        return drop_wind_generators(frame)
+
+    # turbines: power=generator filtered to wind (source or method)
+    frame = _read_point_and_polygon(
+        pbf_path, "power = 'generator'", mask_geom, _REQUIRED_WIND_TURBINE_COLS
+    )
+    if frame.empty:
+        return frame
+    is_wind = _generator_is_wind(frame)
+    return gpd.GeoDataFrame(frame[is_wind], geometry="geometry", crs="EPSG:4326").reset_index(drop=True)

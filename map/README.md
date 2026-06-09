@@ -10,10 +10,10 @@ UK and Europe catalog entries already point at `regions/uk_no_shetland.geojson` 
 ## Quick start
 
 ```powershell
-python -m http.server 8000
+python scripts/serve_map.py
 ```
 
-Open [http://localhost:8000/map/](http://localhost:8000/map/) or deep-link a region: [http://localhost:8000/map/?region=uk](http://localhost:8000/map/?region=uk).
+Open [http://localhost:8000/map/](http://localhost:8000/map/) or deep-link a region: [http://localhost:8000/map/?region=uk](http://localhost:8000/map/?region=uk). Use `serve_map.py` instead of `python -m http.server` when testing PMTiles — it supports HTTP range requests.
 
 Use the **region** dropdown to switch between countries (UK, France, …) or the continent view (Europe, when PMTiles are built).
 

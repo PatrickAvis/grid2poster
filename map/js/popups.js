@@ -51,6 +51,16 @@ export function turbinePropsForPopup(props) {
   };
 }
 
+export function generatorPropsForPopup(props) {
+  const mw = props.capacity_mw != null && props.capacity_mw !== ""
+    ? Number(props.capacity_mw)
+    : parseCapacityToMw(props["generator:output:electricity"]);
+  return {
+    ...props,
+    capacity_mw: mw != null && !Number.isNaN(mw) ? `${mw.toFixed(2)} MW` : undefined,
+  };
+}
+
 export function popupRows(props, preferredKeys) {
   const rows = [];
   const seen = new Set();

@@ -36,6 +36,29 @@
           "path": "map/uk/uk_substations_web.geojson",
           "label": "Substations"
         },
+        "generators": {
+          "type": "geojson",
+          "path": "map/uk/uk_generators_web.geojson",
+          "label": "Generators (non-wind)"
+        },
+        "converters": {
+          "type": "geojson",
+          "path": "map/uk/uk_converters_web.geojson",
+          "label": "HVDC converter stations"
+        },
+        "equipment": {
+          "type": "geojson",
+          "path": "map/uk/uk_power_equipment_web.geojson",
+          "label": "Power equipment"
+        },
+        "towers": {
+          "type": "pmtiles",
+          "path": "map/uk/towers.pmtiles",
+          "geojsonSource": "map/uk/uk_towers_web.geojson",
+          "label": "Transmission towers",
+          "minZoom": 12,
+          "sourceLayer": "towers"
+        },
         "dno": {
           "type": "geojson",
           "path": "map/uk/uk_dno_areas_web.geojson",

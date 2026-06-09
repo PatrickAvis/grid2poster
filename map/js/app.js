@@ -125,7 +125,7 @@ async function main() {
   });
 
   map.on("zoomend", () => {
-    layerManager?.syncTurbineLayerOnMap();
+    layerManager?.syncZoomGatedLayers();
     layerManager?.updateStatusMessage(setStatus);
   });
 

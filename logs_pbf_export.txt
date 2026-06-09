@@ -1,0 +1,38 @@
+Local OSM source: data\osm\great-britain-latest.osm.pbf (Overpass disabled)
+Loading boundary from C:\Users\Patrick\CursorProjects\grid2poster\regions\uk_no_shetland.geojson
+Fetching power linesà
+Reading power lines from local PBF great-britain-latest.osm.pbf (including 600 km sea buffer)
+
+Preparing lines:   0%|          | 0/5 [00:00<?, ?step/s]
+Reprojecting:   0%|          | 0/5 [00:00<?, ?step/s]   
+Reprojecting:  20%|\u2588\u2588        | 1/5 [00:00<00:00,  7.31step/s]
+Clipping:  20%|\u2588\u2588        | 1/5 [00:00<00:00,  7.31step/s]    
+Clipping:  40%|\u2588\u2588\u2588\u2588      | 2/5 [00:00<00:00,  3.96step/s]
+Exploding:  40%|\u2588\u2588\u2588\u2588      | 2/5 [00:00<00:00,  3.96step/s]
+Exploding:  60%|\u2588\u2588\u2588\u2588\u2588\u2588    | 3/5 [00:00<00:00,  3.60step/s]
+Parsing voltages:  60%|\u2588\u2588\u2588\u2588\u2588\u2588    | 3/5 [00:00<00:00,  3.60step/s]
+Parsing voltages:  80%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588  | 4/5 [00:00<00:00,  4.38step/s]
+Sorting:  80%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588  | 4/5 [00:00<00:00,  4.38step/s]         
+Sorting: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:01<00:00,  5.44step/s]
+Sorting: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:01<00:00,  4.83step/s]
+C:\Users\Patrick\CursorProjects\grid2poster\.venv\Lib\site-packages\pyogrio\raw.py:200: RuntimeWarning: Non closed ring detected. To avoid accepting it, set the OGR_GEOMETRY_ACCEPT_UNCLOSED_RING configuration option to NO
+  return ogr_read(
+C:\Users\Patrick\CursorProjects\grid2poster\.venv\Lib\site-packages\pyogrio\raw.py:200: RuntimeWarning: Non closed ring detected. To avoid accepting it, set the OGR_GEOMETRY_ACCEPT_UNCLOSED_RING configuration option to NO
+  return ogr_read(
+C:\Users\Patrick\CursorProjects\grid2poster\.venv\Lib\site-packages\pyogrio\raw.py:200: RuntimeWarning: Non closed ring detected. To avoid accepting it, set the OGR_GEOMETRY_ACCEPT_UNCLOSED_RING configuration option to NO
+  return ogr_read(
+Saved GeoJSON: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\powerlines.geojson
+Saved CSV: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\powerlines.csv
+Fetching power plantsà
+Reading power plants from local PBF great-britain-latest.osm.pbf (including 250 km sea buffer)
+Saved GeoJSON: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\plants.geojson
+Saved CSV: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\plants.csv
+Fetching substationsà
+Reading power substations from local PBF great-britain-latest.osm.pbf
+Saved GeoJSON: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\substations.geojson
+Saved CSV: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\substations.csv
+Fetching wind turbinesà
+Reading power turbines from local PBF great-britain-latest.osm.pbf (including 250 km sea buffer)
+Wind turbines fetched: 13,706
+Saved GeoJSON: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\wind_turbines.geojson
+Saved CSV: C:\Users\Patrick\CursorProjects\grid2poster\data\raw\uk\wind_turbines.csv

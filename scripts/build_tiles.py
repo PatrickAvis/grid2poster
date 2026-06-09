@@ -17,6 +17,13 @@ from region_catalog import catalog_data_path, get_region, list_region_ids
 
 LINE_PROPS = "power,voltage,voltage_kv,name,operator,circuits,cables,frequency,location"
 TURBINE_PROPS = "name,capacity_mw,height_m,rotor_diameter_m,operator,manufacturer,model,generator:output:electricity"
+TOWER_PROPS = "power,ref,operator,name,height"
+
+LAYER_PROPS = {
+    "lines": LINE_PROPS,
+    "turbines": TURBINE_PROPS,
+    "towers": TOWER_PROPS,
+}
 
 
 def find_tool(name: str) -> str | None:
@@ -89,7 +96,7 @@ def geojson_to_pmtiles(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build PMTiles from catalog GeoJSON layers")
     parser.add_argument("--region", "-r", required=True, choices=list_region_ids())
-    parser.add_argument("--layer", choices=["lines", "turbines"], help="Single layer (default: all pmtiles in catalog)")
+    parser.add_argument("--layer", choices=["lines", "turbines", "towers"], help="Single layer (default: all pmtiles in catalog)")
     parser.add_argument("--min-zoom", type=int, default=0)
     parser.add_argument("--max-zoom", type=int, default=14)
     return parser.parse_args()
@@ -129,7 +136,7 @@ def main() -> int:
 
         output = catalog_data_path(layer["path"])
         print(f"Building {layer_id}: {source} -> {output}")
-        attrs = LINE_PROPS if layer_id == "lines" else TURBINE_PROPS
+        attrs = LAYER_PROPS.get(layer_id, TURBINE_PROPS)
         source_layer = layer.get("sourceLayer", layer_id)
         try:
             geojson_to_pmtiles(
