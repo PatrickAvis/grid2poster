@@ -17,7 +17,7 @@ from region_catalog import catalog_layer_path, map_path, raw_path
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Update data/map/uk/uk_plants_web.geojson (OSM ground truth). "
+            "Update data/regions/uk/map/bmu_sites_web.geojson (OSM power=plant site layer). "
             "Existing property values are kept; only blank fields are filled from OSM export."
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
         "--ground-truth",
         type=Path,
         default=None,
-        help="Editable plants GeoJSON (default: data/map/uk/uk_plants_web.geojson)",
+        help="Editable BMU-mapped sites GeoJSON (default: data/regions/uk/map/bmu_sites_web.geojson)",
     )
     parser.add_argument(
         "--raw-source",

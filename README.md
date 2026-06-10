@@ -13,7 +13,7 @@ python scripts/refresh_uk.py
 python scripts/serve_map.py
 ```
 
-`refresh_uk.py` auto-detects an extract under `data/osm/` (or pass `--osm-pbf PATH`); without one it reuses the existing `data/raw/` exports. Any step can be skipped (`--skip-osm`, `--skip-elexon`, `--skip-zones`, `--skip-bmu-match`, `--skip-tiles`). The PMTiles step needs Tippecanoe on `PATH` (use WSL/Linux). To run the stages individually instead:
+`refresh_uk.py` auto-detects an extract under `data/regions/uk/source/` (or pass `--osm-pbf PATH`); without one it reuses the existing `data/regions/uk/raw/` exports. Any step can be skipped (`--skip-osm`, `--skip-elexon`, `--skip-zones`, `--skip-bmu-match`, `--skip-tiles`). The PMTiles step needs Tippecanoe on `PATH` (use WSL/Linux). To run the stages individually instead:
 
 ```powershell
 python scripts/export_region.py --region uk --all
@@ -26,7 +26,17 @@ python scripts/serve_map.py
 
 Open [http://localhost:8000/map/](http://localhost:8000/map/) (or `?region=fr` after exporting another country). Use `serve_map.py` instead of plain `http.server` when testing PMTiles — it supports HTTP range requests. Regions and layers are defined in [`data/catalog.json`](data/catalog.json). See [`map/README.md`](map/README.md) and [`map/DEPLOY.md`](map/DEPLOY.md).
 
-UK plant popups show BMU ids from a separate mapping table ([procedure below](#uk-plant-bmu-mapping)); OSM plant geometry lives in `data/map/uk/uk_plants_web.geojson`.
+UK **BMU-mapped sites** show BMU ids from a separate mapping table ([procedure below](#uk-plant-bmu-mapping)); OSM `power=plant` geometry lives in `data/regions/uk/map/bmu_sites_web.geojson`.
+
+All computed data for a region lives under one portable folder, `data/regions/{id}/` (e.g. `data/regions/uk/` for the UK), so a fully built region can be copied between machines as a single tree. Cross-region assets like the fuel taxonomy live in `data/shared/`, and the export clip masks live in `boundaries/`.
+
+Layer naming keeps the BMU workflow separate from the full OSM generator inventory:
+
+| Catalog id | UI label | Meaning |
+| --- | --- | --- |
+| `plants` | BMU-mapped sites | Grid-scale OSM `power=plant` sites; BMU links appear here. |
+| `generators` | All generators | Complete OSM `power=generator` inventory, from grid assets down to domestic rooftop solar. |
+| `turbines` | Wind turbines | Wind-only generator subset for turbine-level detail. |
 
 ## Installation
 
@@ -40,7 +50,7 @@ pip install -r requirements.txt
 
 ## Exporting data
 
-OSM power infrastructure is downloaded with `scripts/export_region.py` and written to `data/raw/{region}/` as WGS84 GeoJSON and CSV. The interactive map loads smaller prepared files from `data/map/{region}/`.
+OSM power infrastructure is downloaded with `scripts/export_region.py` and written to `data/regions/{region}/raw/` as WGS84 GeoJSON and CSV. The interactive map loads smaller prepared files from `data/regions/{region}/map/`.
 
 ```powershell
 # Full UK export (lines, plants, substations, turbines)
@@ -49,8 +59,8 @@ python scripts/export_region.py --region uk --all
 # France with custom Overpass mirror
 python scripts/export_region.py --region fr --all --overpass-endpoint https://overpass.kumi.systems/api/interpreter
 
-# Custom boundary from regions/
-python scripts/export_region.py --region europe --all --boundary-geojson ./regions/europe.geojson --tile-size-km 800
+# Custom boundary from boundaries/
+python scripts/export_region.py --region europe --all --boundary-geojson ./boundaries/europe.geojson --tile-size-km 800
 ```
 
 ### Local .osm.pbf fast path (recommended for the UK)
@@ -58,10 +68,10 @@ python scripts/export_region.py --region europe --all --boundary-geojson ./regio
 Overpass tiling is slow and prone to read timeouts for large exports. If you have a local country extract (e.g. `great-britain-latest.osm.pbf` from [Geofabrik](https://download.geofabrik.de/)), pass `--osm-pbf` to read every layer directly from it instead of Overpass:
 
 ```powershell
-python scripts/export_region.py --region uk --all --osm-pbf data/osm/great-britain-latest.osm.pbf
+python scripts/export_region.py --region uk --all --osm-pbf data/regions/uk/source/great-britain-latest.osm.pbf
 ```
 
-This is dramatically faster and immune to Overpass rate limits/timeouts. It uses GDAL's built-in OSM driver (via `pyogrio`, already a dependency) — no extra install. Place extracts under `data/osm/` (gitignored). The output schema is identical to the Overpass path, so `prepare_map_data.py` and the rest of the pipeline are unchanged.
+This is dramatically faster and immune to Overpass rate limits/timeouts. It uses GDAL's built-in OSM driver (via `pyogrio`, already a dependency) — no extra install. Place extracts under `data/regions/{region}/source/` (gitignored). The output schema is identical to the Overpass path, so `prepare_map_data.py` and the rest of the pipeline are unchanged.
 
 After exporting, prepare web layers and serve the map:
 
@@ -75,7 +85,7 @@ python scripts/serve_map.py
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `--region` | — | Region id from `data/catalog.json` or `regions/*.geojson` |
+| `--region` | — | Region id from `data/catalog.json` or `boundaries/*.geojson` |
 | `--country` | catalog default | Override Nominatim country name |
 | `--boundary-geojson` | catalog default | Path to boundary GeoJSON |
 | `--all` | off | Export lines, plants, substations, and turbines |
@@ -100,13 +110,13 @@ Coverage and quality in your country can be improved by mapping transmission inf
 
 ### Predefined regions
 
-The `regions/` directory ships with multi-country boundaries for common power-system groupings. Pass any of them via `--boundary-geojson` when exporting:
+The `boundaries/` directory ships with multi-country boundaries for common power-system groupings. Pass any of them via `--boundary-geojson` when exporting:
 
 ```powershell
-python scripts/export_region.py --region europe --all --boundary-geojson ./regions/europe.geojson --tile-size-km 300
+python scripts/export_region.py --region europe --all --boundary-geojson ./boundaries/europe.geojson --tile-size-km 300
 ```
 
-See [`regions/manifest.json`](regions/manifest.json) for the full list and descriptions.
+See [`boundaries/manifest.json`](boundaries/manifest.json) for the full list and descriptions.
 
 ## Data sources
 
@@ -118,8 +128,8 @@ These define the area queried from Overpass. All boundary outputs use WGS84 (`EP
 | --- | --- | --- | --- |
 | [Nominatim](https://nominatim.org/) | Default country lookup | Administrative polygons for countries, states, and provinces | Downloaded via OSMnx and cached in `cache/`. |
 | [Natural Earth](https://www.naturalearthdata.com/) admin-0 | Continent names or `Global` | Continent-scale polygons | Cached on first use. |
-| Local GeoJSON in `regions/` | `--boundary-geojson ./regions/....geojson` | Custom or multi-country masks | All polygon features are dissolved into one boundary. |
-| User-supplied GeoJSON | `--boundary-geojson path/to/file.geojson` | Any custom clipping polygon | Same dissolve behaviour as bundled `regions/` files. |
+| Local GeoJSON in `boundaries/` | `--boundary-geojson ./boundaries/....geojson` | Custom or multi-country masks | All polygon features are dissolved into one boundary. |
+| User-supplied GeoJSON | `--boundary-geojson path/to/file.geojson` | Any custom clipping polygon | Same dissolve behaviour as bundled `boundaries/` files. |
 
 ### Grid infrastructure (OpenStreetMap)
 
@@ -132,38 +142,39 @@ Downloaded from the [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_
 | `power=cable` | `--include-cables` (+ optional `--cable-sea-buffer-km`) | Lines | Underground and submarine cables |
 | `power=plant` | Exported unless `--skip-plants` | Point, Polygon, MultiPolygon | Power stations and wind/solar farms |
 | `power=substation` | Exported unless `--skip-substations` | Point, Polygon, MultiPolygon | Transmission and distribution substations |
-| `power=generator` + wind tags | Exported unless `--skip-turbines` | Point (mostly) | Individual wind turbines |
+| `power=generator` + wind tags | Exported unless `--skip-turbines` | Point (mostly) | Wind turbines |
 
 **Great Britain tagging context:** see the [OSM Power networks/Great Britain](https://wiki.openstreetmap.org/wiki/Power_networks/Great_Britain) wiki page.
 
 **Licence:** OpenStreetMap data is © OpenStreetMap contributors, available under the [ODbL](https://www.openstreetmap.org/copyright).
 
-### UK full exports (`data/raw/uk/`)
+### UK full exports (`data/regions/uk/raw/`)
 
-Use `python scripts/export_uk.py --all` (alias for `export_region.py --region uk --all`) to write full exports (gitignored under `data/raw/uk/`).
+Use `python scripts/export_uk.py --all` (alias for `export_region.py --region uk --all`) to write full exports (gitignored under `data/regions/uk/raw/`).
 
 | File | Source | Contents |
 | --- | --- | --- |
 | `powerlines.geojson` / `.csv` | OSM lines, minor lines, cables | Full UK grid export with all OSM tags |
-| `plants.geojson` / `.csv` | OSM `power=plant` | Generation sites with footprints and capacity tags |
+| `plants.geojson` / `.csv` | OSM `power=plant` | Grid-scale site footprints and capacity tags |
 | `substations.geojson` / `.csv` | OSM `power=substation` | Substation footprints and attributes |
 | `wind_turbines.geojson` / `.csv` | OSM `power=generator` (wind) | Individual turbine points; parsed `capacity_mw`, `height_m`, `rotor_diameter_m` when tags exist |
 
 ### Map web layers (`scripts/prepare_map_data.py`)
 
-The [interactive map](map/) does not load multi-gigabyte full exports directly. Regions are listed in [`data/catalog.json`](data/catalog.json). Run `python scripts/prepare_map_data.py --region {id}` after `python scripts/export_region.py --region {id}` to build smaller files under `data/map/{id}/`:
+The [interactive map](map/) does not load multi-gigabyte full exports directly. Regions are listed in [`data/catalog.json`](data/catalog.json). Run `python scripts/prepare_map_data.py --region {id}` after `python scripts/export_region.py --region {id}` to build smaller files under `data/regions/{id}/map/`:
 
 | File | Derived from | What changes |
 | --- | --- | --- |
-| `uk_powerlines_transmission.geojson` | `powerlines.geojson` | Drops `power=minor_line`; keeps transmission and cables; source for `lines.pmtiles` |
-| `uk_plants_web.geojson` | `plants.geojson` | OSM ground truth: geometry and plant tags. BMU fields are joined at popup time — see [UK plant BMU mapping](#uk-plant-bmu-mapping). |
-| `uk_substations_web.geojson` | `substations.geojson` | Trims columns; adds `latitude`, `longitude` |
-| `uk_wind_turbines_web.geojson` | `wind_turbines.csv` | Point-only tile-build source (~250 MB; ignored by git) |
-| `lines.pmtiles` / `turbines.pmtiles` | prepared UK GeoJSON | Fast browser layers from `scripts/build_tiles.py` |
-| `uk_dno_areas_web.geojson` | NESO DNO boundaries | WGS84 polygons; click to filter plants/turbines |
-| `uk_gsp_areas_web.geojson` | NESO GSP boundaries | WGS84 polygons; click to filter plants/turbines |
-| `uk_generation_charging_zones_web.geojson` | NESO TNUoS generation charging zones | WGS84 polygons; click to filter plants/turbines |
-| `uk_etys_boundaries_web.geojson` | NESO ETYS transmission boundaries | WGS84 lines (B6, B9, B2, …) |
+| `lines_transmission.geojson` | `powerlines.geojson` | Drops `power=minor_line`; keeps transmission and cables; source for `lines.pmtiles` |
+| `bmu_sites_web.geojson` | `plants.geojson` | OSM `power=plant` site ground truth: geometry and tags. BMU fields are joined at popup time — see [UK plant BMU mapping](#uk-plant-bmu-mapping). |
+| `substations_web.geojson` | `substations.geojson` | Trims columns; adds `latitude`, `longitude` |
+| `all_generators_web.geojson` | `generators.geojson` + `wind_turbines.geojson` | Complete OSM `power=generator` inventory; source for `all_generators.pmtiles` |
+| `turbines_web.geojson` | `wind_turbines.csv` | Point-only tile-build source (~250 MB; ignored by git) |
+| `lines.pmtiles` / `all_generators.pmtiles` / `turbines.pmtiles` | prepared UK GeoJSON | Fast browser layers from `scripts/build_tiles.py` |
+| `dno_areas_web.geojson` | NESO DNO boundaries | WGS84 polygons; click to filter plants/turbines |
+| `gsp_areas_web.geojson` | NESO GSP boundaries | WGS84 polygons; click to filter plants/turbines |
+| `generation_charging_zones_web.geojson` | NESO TNUoS generation charging zones | WGS84 polygons; click to filter plants/turbines |
+| `etys_boundaries_web.geojson` | NESO ETYS transmission boundaries | WGS84 lines (B6, B9, B2, …) |
 
 **Basemap:** the map uses standard [OpenStreetMap raster tiles](https://www.openstreetmap.org/copyright) via Leaflet, with an adjustable **Map backdrop** intensity in the UI.
 
@@ -178,7 +189,7 @@ python scripts/build_tiles.py --region uk
 
 ### Fuel type taxonomy
 
-Plant generation types are defined in [`data/reference/fuel_types.json`](data/reference/fuel_types.json). Each entry controls the map legend order, label, marker colour, and keyword-based classification of OSM `plant:source` tags. Python prep uses the same taxonomy via `fuel_taxonomy.py`, and the browser loads it at startup.
+Plant generation types are defined in [`data/shared/fuel_types.json`](data/shared/fuel_types.json). Each entry controls the map legend order, label, marker colour, and keyword-based classification of OSM `plant:source` tags. Python prep uses the same taxonomy via `fuel_taxonomy.py`, and the browser loads it at startup.
 
 After editing fuel types, refresh the plant web layer:
 
@@ -192,10 +203,10 @@ UK balancing-mechanism unit (BMU) ids are kept **separate** from OSM plant geome
 
 | File | Role |
 | --- | --- |
-| `data/map/uk/uk_plants_web.geojson` | **OSM ground truth** — edit plant names, geometry, capacity, etc. |
-| `data/reference/uk_plant_bmu_map.csv` | **Your join table** — one row per plant↔BMU link (`osm_id` primary key) |
-| `data/reference/uk_bmunits.json` | Elexon BMU registry (~3k units; auto-fetched) |
-| `data/reference/uk_plant_bmu_map.json` | Generated from the CSV; loaded by the map |
+| `data/regions/uk/map/bmu_sites_web.geojson` | **OSM site ground truth** — edit plant names, geometry, capacity, etc. |
+| `data/regions/uk/reference/editable/plant_bmu_links.csv` | **Your join table** — one row per plant↔BMU link (`osm_id` primary key) |
+| `data/regions/uk/reference/source/elexon_bmu_units.json` | Elexon BMU registry (~3k units; auto-fetched) |
+| `data/regions/uk/reference/generated/plant_bmu_links.json` | Generated from the CSV; loaded by the map |
 
 **Mapping table columns:** `osm_id`, `plant_name`, `bmu_id` (Elexon, e.g. `E_ABERDARE`), `ngc_bmu_id` (e.g. `ABERU-1`), `bmu_type` (e.g. `E`), `source` (`auto` / `manual` / `migrated`), `notes`.
 
@@ -218,19 +229,19 @@ python scripts/prepare_map_data.py --region uk --skip-plants
 
 #### Manual BMU corrections
 
-1. Open `data/reference/uk_plant_bmu_map.csv`.
+1. Open `data/regions/uk/reference/editable/plant_bmu_links.csv`.
 2. Add or edit rows (set `source` to `manual`).
 3. Regenerate: `python scripts/propose_plant_bmu_map.py`
 
 #### Deploy
 
-Sync `data/reference/uk_plant_bmu_map.json` with the map (see [`map/DEPLOY.md`](map/DEPLOY.md)).
+Sync `data/regions/uk/reference/generated/plant_bmu_links.json` with the map (see [`map/DEPLOY.md`](map/DEPLOY.md)).
 
 **Licence:** BMU standing data is published by [Elexon](https://www.elexon.co.uk/) via the [Insights API](https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all).
 
 ### NESO zone boundaries (`scripts/fetch_neso_zones.py`)
 
-DNO, GSP, TNUoS generation charging zone, and ETYS boundary data are fetched from NESO into `data/zones/`:
+DNO, GSP, TNUoS generation charging zone, and ETYS boundary data are fetched from NESO into `data/regions/uk/zones/`:
 
 ```powershell
 python scripts/fetch_neso_zones.py
@@ -240,10 +251,10 @@ python scripts/prepare_map_data.py --region uk --skip-lines --skip-plants --skip
 
 | Source | Output | Map layer |
 | --- | --- | --- |
-| [NESO — GB DNO licence areas](https://www.neso.energy/data-portal/gis-boundaries-gb-dno-license-areas) | `data/zones/uk_dno_areas.geojson` | DNO licence areas |
-| [NESO — GB GSP boundaries](https://www.neso.energy/data-portal/gis-boundaries-gb-grid-supply-points) | `data/zones/uk_gsp_areas.geojson` | GSP regions |
-| [NESO — GB generation charging zones](https://www.neso.energy/data-portal/gis-boundaries-gb-generation-charging-zones) | `data/zones/uk_generation_charging_zones.geojson` | TNUoS generation zones |
-| [NESO — ETYS GB transmission system boundaries](https://www.neso.energy/data-portal/etys-gb-transmission-system-boundaries) | `data/zones/uk_etys_boundaries.geojson` | ETYS transmission boundaries |
+| [NESO — GB DNO licence areas](https://www.neso.energy/data-portal/gis-boundaries-gb-dno-license-areas) | `data/regions/uk/zones/dno_areas.geojson` | DNO licence areas |
+| [NESO — GB GSP boundaries](https://www.neso.energy/data-portal/gis-boundaries-gb-grid-supply-points) | `data/regions/uk/zones/gsp_areas.geojson` | GSP regions |
+| [NESO — GB generation charging zones](https://www.neso.energy/data-portal/gis-boundaries-gb-generation-charging-zones) | `data/regions/uk/zones/generation_charging_zones.geojson` | TNUoS generation zones |
+| [NESO — ETYS GB transmission system boundaries](https://www.neso.energy/data-portal/etys-gb-transmission-system-boundaries) | `data/regions/uk/zones/etys_boundaries.geojson` | ETYS transmission boundaries |
 
 ### Derived and parsed fields
 

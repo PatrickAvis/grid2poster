@@ -1,83 +1,86 @@
 {
   "defaultRegion": "uk",
-  "boundariesSource": "regions",
+  "boundariesSource": "boundaries",
   "regions": {
     "uk": {
       "title": "United Kingdom",
       "parent": "europe",
       "country": "United Kingdom",
       "bounds": [[49.5, -11.0], [61.0, 2.5]],
-      "boundary": "regions/uk_no_shetland.geojson",
-      "plantBmuMap": "reference/uk_plant_bmu_map.json",
+      "boundary": "data/regions/uk/boundary.geojson",
+      "plantBmuMap": "regions/uk/reference/generated/plant_bmu_links.json",
       "layers": {
         "lines": {
           "type": "pmtiles",
-          "path": "map/uk/lines.pmtiles",
-          "geojsonSource": "map/uk/uk_powerlines_transmission.geojson",
+          "path": "regions/uk/map/lines.pmtiles",
+          "geojsonSource": "regions/uk/map/lines_transmission.geojson",
           "label": "Transmission lines",
           "sourceLayer": "lines"
         },
         "plants": {
           "type": "geojson",
-          "path": "map/uk/uk_plants_web.geojson",
-          "label": "Power plants",
+          "path": "regions/uk/map/bmu_sites_web.geojson",
+          "label": "BMU-mapped sites",
+          "hint": "Grid-scale stations & farms; Elexon BMU links (OSM power=plant)",
           "defaultOn": true
         },
         "turbines": {
           "type": "pmtiles",
-          "path": "map/uk/turbines.pmtiles",
-          "geojsonSource": "map/uk/uk_wind_turbines_web.geojson",
-          "label": "Individual wind turbines",
+          "path": "regions/uk/map/turbines.pmtiles",
+          "geojsonSource": "regions/uk/map/turbines_web.geojson",
+          "label": "Wind turbines",
+          "hint": "Individual wind generators only (OSM power=generator, wind)",
           "minZoom": 10,
           "sourceLayer": "turbines"
         },
         "substations": {
           "type": "geojson",
-          "path": "map/uk/uk_substations_web.geojson",
+          "path": "regions/uk/map/substations_web.geojson",
           "label": "Substations"
         },
         "generators": {
           "type": "pmtiles",
-          "path": "map/uk/generators.pmtiles",
-          "geojsonSource": "map/uk/uk_generators_web.geojson",
-          "label": "Generators",
+          "path": "regions/uk/map/all_generators.pmtiles",
+          "geojsonSource": "regions/uk/map/all_generators_web.geojson",
+          "label": "All generators",
+          "hint": "Grid to domestic; every OSM power=generator feature",
           "minZoom": 7,
           "sourceLayer": "generators"
         },
         "converters": {
           "type": "geojson",
-          "path": "map/uk/uk_converters_web.geojson",
+          "path": "regions/uk/map/converters_web.geojson",
           "label": "HVDC converter stations"
         },
         "equipment": {
           "type": "geojson",
-          "path": "map/uk/uk_power_equipment_web.geojson",
+          "path": "regions/uk/map/power_equipment_web.geojson",
           "label": "Power equipment"
         },
         "dno": {
           "type": "geojson",
-          "path": "map/uk/uk_dno_areas_web.geojson",
+          "path": "regions/uk/map/dno_areas_web.geojson",
           "label": "DNO licence areas",
           "zone": true,
           "zoneKind": "dno"
         },
         "gsp": {
           "type": "geojson",
-          "path": "map/uk/uk_gsp_areas_web.geojson",
+          "path": "regions/uk/map/gsp_areas_web.geojson",
           "label": "GSP regions",
           "zone": true,
           "zoneKind": "gsp"
         },
         "generation_zones": {
           "type": "geojson",
-          "path": "map/uk/uk_generation_charging_zones_web.geojson",
+          "path": "regions/uk/map/generation_charging_zones_web.geojson",
           "label": "TNUoS generation zones",
           "zone": true,
           "zoneKind": "generation"
         },
         "etys_boundaries": {
           "type": "geojson",
-          "path": "map/uk/uk_etys_boundaries_web.geojson",
+          "path": "regions/uk/map/etys_boundaries_web.geojson",
           "label": "ETYS transmission boundaries"
         }
       }
@@ -90,24 +93,26 @@
       "layers": {
         "lines": {
           "type": "geojson",
-          "path": "map/fr/lines_transmission.geojson",
+          "path": "regions/fr/map/lines_transmission.geojson",
           "label": "Transmission lines"
         },
         "plants": {
           "type": "geojson",
-          "path": "map/fr/plants_web.geojson",
-          "label": "Power plants",
+          "path": "regions/fr/map/plants_web.geojson",
+          "label": "Grid-scale sites",
+          "hint": "Stations & farms mapped as OSM power=plant",
           "defaultOn": true
         },
         "turbines": {
           "type": "geojson",
-          "path": "map/fr/turbines_web.geojson",
-          "label": "Individual wind turbines",
+          "path": "regions/fr/map/turbines_web.geojson",
+          "label": "Wind turbines",
+          "hint": "Individual wind generators only (OSM power=generator, wind)",
           "minZoom": 9
         },
         "substations": {
           "type": "geojson",
-          "path": "map/fr/substations_web.geojson",
+          "path": "regions/fr/map/substations_web.geojson",
           "label": "Substations"
         }
       }
@@ -115,27 +120,29 @@
     "europe": {
       "title": "Europe",
       "bounds": [[34.0, -25.0], [72.0, 45.0]],
-      "boundary": "regions/europe.geojson",
+      "boundary": "boundaries/europe.geojson",
       "children": ["uk", "fr", "de"],
       "layers": {
         "lines": {
           "type": "pmtiles",
-          "path": "map/europe/lines.pmtiles",
-          "geojsonSource": "map/europe/lines_transmission.geojson",
+          "path": "regions/europe/map/lines.pmtiles",
+          "geojsonSource": "regions/europe/map/lines_transmission.geojson",
           "label": "Transmission lines",
           "sourceLayer": "lines"
         },
         "plants": {
           "type": "geojson",
-          "path": "map/europe/plants_web.geojson",
-          "label": "Power plants",
+          "path": "regions/europe/map/plants_web.geojson",
+          "label": "Grid-scale sites",
+          "hint": "Stations & farms mapped as OSM power=plant",
           "defaultOn": true
         },
         "turbines": {
           "type": "pmtiles",
-          "path": "map/europe/turbines.pmtiles",
-          "geojsonSource": "map/europe/turbines_web.geojson",
-          "label": "Individual wind turbines",
+          "path": "regions/europe/map/turbines.pmtiles",
+          "geojsonSource": "regions/europe/map/turbines_web.geojson",
+          "label": "Wind turbines",
+          "hint": "Individual wind generators only (OSM power=generator, wind)",
           "minZoom": 9,
           "sourceLayer": "turbines"
         }

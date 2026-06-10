@@ -641,7 +641,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
 
   function updateStatusMessage(setStatus) {
     const parts = [];
-    if (layerCache.plants?.loaded) parts.push(`${layerCache.plants.count.toLocaleString()} plants`);
+    if (layerCache.plants?.loaded) parts.push(`${layerCache.plants.count.toLocaleString()} BMU-mapped sites`);
     if (layerCache.turbines?.loaded) {
       const zoomNote = turbineZoomOk() ? "" : ` (zoom ${config.turbineMinZoom}+ to show)`;
       const turbineCount = LAYER_CONFIG.turbines?.type === "pmtiles"
@@ -656,7 +656,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
       parts.push(lineCount);
     }
     if (layerCache.substations?.loaded) parts.push(`${layerCache.substations.count.toLocaleString()} substations`);
-    if (layerCache.generators?.loaded) parts.push(`${layerCache.generators.count.toLocaleString()} generators`);
+    if (layerCache.generators?.loaded) parts.push(`${layerCache.generators.count.toLocaleString()} generators (all scales)`);
     if (layerCache.converters?.loaded) parts.push(`${layerCache.converters.count.toLocaleString()} converter stations`);
     if (layerCache.equipment?.loaded) parts.push(`${layerCache.equipment.count.toLocaleString()} equipment`);
     if (layerCache.towers?.loaded) {

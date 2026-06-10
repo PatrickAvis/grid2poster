@@ -13,7 +13,23 @@ export function buildLayerPanel(regionConfig, onToggle) {
     checkbox.addEventListener("change", (event) => {
       onToggle(layerId, event.target.checked);
     });
-    label.append(checkbox, document.createTextNode(layer.label || layerId));
+    const text = document.createElement("span");
+    text.className = "layer-label-text";
+
+    const title = document.createElement("span");
+    title.className = "layer-label-title";
+    title.textContent = layer.label || layerId;
+    text.appendChild(title);
+
+    if (layer.hint) {
+      const hint = document.createElement("span");
+      hint.className = "layer-label-hint";
+      hint.textContent = layer.hint;
+      text.appendChild(hint);
+      label.title = layer.hint;
+    }
+
+    label.append(checkbox, text);
     container.appendChild(label);
   }
 

@@ -16,13 +16,22 @@ import requests
 from common import FILE_ENCODING, REPO_ROOT
 
 ELEXON_BMUNITS_URL = "https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all?format=json"
-BMU_REFERENCE_PATH = REPO_ROOT / "data" / "reference" / "uk_bmunits.json"
-PLANT_BMU_MAP_PATH = REPO_ROOT / "data" / "reference" / "uk_plant_bmu_map.csv"
-PLANT_BMU_MAP_JSON_PATH = REPO_ROOT / "data" / "reference" / "uk_plant_bmu_map.json"
-BMU_UNMAPPED_DISPLAYABLE_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_unmapped_displayable.csv"
-BMU_CANDIDATE_MATCHES_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_candidate_matches.csv"
-BMU_REFERENCE_ONLY_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_reference_only.csv"
-BMU_OC2_MAP_PATH = REPO_ROOT / "data" / "reference" / "uk_bmu_oc2_map.csv"
+# UK BMU reference data lives inside the portable per-region folder.
+UK_REFERENCE_DIR = REPO_ROOT / "data" / "regions" / "uk" / "reference"
+UK_REFERENCE_SOURCE_DIR = UK_REFERENCE_DIR / "source"
+UK_REFERENCE_EDITABLE_DIR = UK_REFERENCE_DIR / "editable"
+UK_REFERENCE_GENERATED_DIR = UK_REFERENCE_DIR / "generated"
+UK_REFERENCE_OPERATIONAL_DIR = UK_REFERENCE_DIR / "operational"
+
+BMU_REFERENCE_PATH = UK_REFERENCE_SOURCE_DIR / "elexon_bmu_units.json"
+BMU_FUEL_TYPES_PATH = UK_REFERENCE_SOURCE_DIR / "elexon_bmu_fuel_types.csv"
+BMU_OC2_MAP_PATH = UK_REFERENCE_SOURCE_DIR / "elexon_bmu_oc2_aliases.csv"
+PLANT_BMU_MAP_PATH = UK_REFERENCE_EDITABLE_DIR / "plant_bmu_links.csv"
+PLANT_BMU_MAP_JSON_PATH = UK_REFERENCE_GENERATED_DIR / "plant_bmu_links.json"
+BMU_UNMAPPED_DISPLAYABLE_PATH = UK_REFERENCE_GENERATED_DIR / "bmu_unmapped_displayable.csv"
+BMU_CANDIDATE_MATCHES_PATH = UK_REFERENCE_GENERATED_DIR / "plant_bmu_link_candidates.csv"
+BMU_REFERENCE_ONLY_PATH = UK_REFERENCE_GENERATED_DIR / "bmu_reference_only.csv"
+PLANTS_MISSING_BMU_PATH = UK_REFERENCE_GENERATED_DIR / "plants_without_bmu_links.csv"
 
 MAP_COLUMNS = ("osm_id", "plant_name", "bmu_id", "ngc_bmu_id", "bmu_type", "source", "notes")
 BMU_FIELDS = ("bmu_id", "ngc_bmu_id", "bmu_type")

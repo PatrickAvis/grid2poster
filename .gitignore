@@ -218,20 +218,22 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Full OSM exports (multi-GB); sync separately for deploy
-data/raw/
-data/osm/
-data/zones/*.raw.geojson
-data/zones/*.raw.zip
+# Per-region computed data lives under data/regions/{id}/. Large/raw artefacts
+# are rebuilt locally and synced separately for deploy.
+# Raw OSM exports (multi-GB) and the source .osm.pbf extracts.
+data/regions/*/raw/
+data/regions/*/source/
+# Intermediate NESO zone downloads.
+data/regions/*/zones/*.raw.geojson
+data/regions/*/zones/*.raw.zip
+data/regions/*/zones/*.raw.gpkg
+# Large web layers built by scripts/prepare_map_data.py.
+data/regions/*/map/turbines_web.geojson
+data/regions/*/map/all_generators_web.geojson
+# Legacy name kept ignored for local trees that have not been renamed yet.
+data/regions/*/map/generators_web.geojson
+# Generated vector-tile archives; deploy outside git.
+data/regions/*/map/*.pmtiles
 
 # Legacy poster gallery renders (poster CLI removed)
 posters/
-
-# UK wind turbines (~250 MB); build locally with scripts/prepare_map_data.py
-data/map/uk/uk_wind_turbines_web.geojson
-
-# UK generators web layer (~270 MB); build locally with scripts/prepare_map_data.py
-data/map/uk/uk_generators_web.geojson
-
-# Generated vector-tile archives; deploy outside git.
-data/map/**/*.pmtiles

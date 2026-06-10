@@ -1,4 +1,4 @@
-"""Load and resolve paths from data/catalog.json and regions/."""
+"""Load and resolve paths from data/catalog.json and boundaries/."""
 
 from __future__ import annotations
 
@@ -8,13 +8,26 @@ from typing import Any
 
 import geopandas as gpd
 
-from common import DATA_MAP_DIR, DATA_RAW_DIR, DATA_ZONES_DIR, FILE_ENCODING, REPO_ROOT
+from common import (
+    FILE_ENCODING,
+    REGION_DATA_DIR,
+    REPO_ROOT,
+    map_dir,
+    raw_dir,
+    zones_dir,
+)
 
 CATALOG_PATH = REPO_ROOT / "data" / "catalog.json"
-REGIONS_DIR = REPO_ROOT / "regions"
-REGIONS_MANIFEST_PATH = REGIONS_DIR / "manifest.json"
+# Shared export masks (continent/country clipping polygons). These are inputs,
+# not computed data, so they live at the repo root rather than under data/.
+BOUNDARIES_DIR = REPO_ROOT / "boundaries"
+BOUNDARIES_MANIFEST_PATH = BOUNDARIES_DIR / "manifest.json"
 
-# Catalog region id -> boundary filename stem under regions/
+# Backwards-compatible aliases (older code/imports referenced these names).
+REGIONS_DIR = BOUNDARIES_DIR
+REGIONS_MANIFEST_PATH = BOUNDARIES_MANIFEST_PATH
+
+# Catalog region id -> boundary filename stem under boundaries/
 BOUNDARY_ALIASES: dict[str, str] = {
     "uk": "uk_no_shetland",
 }
@@ -32,10 +45,10 @@ RAW_STEMS: dict[str, str] = {
 
 MAP_STEMS: dict[str, str] = {
     "lines": "lines_transmission",
-    "plants": "plants_web",
+    "plants": "bmu_sites_web",
     "substations": "substations_web",
     "turbines": "turbines_web",
-    "generators": "generators_web",
+    "generators": "all_generators_web",
     "converters": "converters_web",
     "equipment": "power_equipment_web",
     "towers": "towers_web",
@@ -61,11 +74,15 @@ def load_catalog() -> dict[str, Any]:
         return json.load(handle)
 
 
-def load_regions_manifest() -> dict[str, Any]:
-    if not REGIONS_MANIFEST_PATH.exists():
+def load_boundaries_manifest() -> dict[str, Any]:
+    if not BOUNDARIES_MANIFEST_PATH.exists():
         return {"regions": {}}
-    with REGIONS_MANIFEST_PATH.open(encoding=FILE_ENCODING) as handle:
+    with BOUNDARIES_MANIFEST_PATH.open(encoding=FILE_ENCODING) as handle:
         return json.load(handle)
+
+
+# Backwards-compatible alias.
+load_regions_manifest = load_boundaries_manifest
 
 
 def boundary_stem_for(region_id: str) -> str:
@@ -73,15 +90,15 @@ def boundary_stem_for(region_id: str) -> str:
 
 
 def boundary_rel_path(stem: str) -> str:
-    return f"regions/{stem}.geojson"
+    return f"boundaries/{stem}.geojson"
 
 
 def list_boundary_stems() -> list[str]:
     """Boundary filename stems from manifest and on-disk GeoJSON."""
     stems: set[str] = set()
-    manifest = load_regions_manifest().get("regions", {})
+    manifest = load_boundaries_manifest().get("regions", {})
     stems.update(manifest.keys())
-    for path in REGIONS_DIR.glob("*.geojson"):
+    for path in BOUNDARIES_DIR.glob("*.geojson"):
         stems.add(path.stem)
     return sorted(stems)
 
@@ -160,24 +177,6 @@ def get_region(region_id: str) -> dict[str, Any]:
     raise KeyError(f"Unknown region: {region_id!r}")
 
 
-def raw_dir(region_id: str) -> Path:
-    path = DATA_RAW_DIR / region_id
-    path.mkdir(parents=True, exist_ok=True)
-    return path
-
-
-def map_dir(region_id: str) -> Path:
-    path = DATA_MAP_DIR / region_id
-    path.mkdir(parents=True, exist_ok=True)
-    return path
-
-
-def zones_dir(region_id: str) -> Path:
-    path = DATA_ZONES_DIR / region_id
-    path.mkdir(parents=True, exist_ok=True)
-    return path
-
-
 def raw_path(region_id: str, layer: str) -> Path:
     stem = RAW_STEMS[layer]
     return raw_dir(region_id) / f"{stem}.geojson"
@@ -188,41 +187,33 @@ def raw_csv_path(region_id: str, layer: str) -> Path:
     return raw_dir(region_id) / f"{stem}.csv"
 
 
-UK_MAP_FILENAMES: dict[str, str] = {
-    "lines": "uk_powerlines_transmission.geojson",
-    "plants": "uk_plants_web.geojson",
-    "substations": "uk_substations_web.geojson",
-    "turbines": "uk_wind_turbines_web.geojson",
-    "generators": "uk_generators_web.geojson",
-    "converters": "uk_converters_web.geojson",
-    "equipment": "uk_power_equipment_web.geojson",
-    "towers": "uk_towers_web.geojson",
-    "dno": "uk_dno_areas_web.geojson",
-    "gsp": "uk_gsp_areas_web.geojson",
-    "generation_zones": "uk_generation_charging_zones_web.geojson",
-    "etys_boundaries": "uk_etys_boundaries_web.geojson",
+# Catalog layer ids for boundary/zone web layers that do not appear in MAP_STEMS.
+ZONE_LAYER_WEB_STEMS: dict[str, str] = {
+    "dno": ZONE_WEB_STEMS["dno"],
+    "gsp": ZONE_WEB_STEMS["gsp"],
+    "generation_zones": ZONE_WEB_STEMS["generation"],
+    "etys_boundaries": ZONE_WEB_STEMS["etys"],
 }
 
 
 def map_path(region_id: str, layer: str) -> Path:
+    """Default web-layer path for a region under data/regions/{id}/map/.
+
+    Catalog ``path`` values drive the real filenames; this is the fallback used
+    when a layer is not declared in the catalog.
+    """
     web = map_dir(region_id)
-    if region_id == "uk":
-        uk_names = UK_MAP_FILENAMES
-        if layer in uk_names:
-            return web / uk_names[layer]
     if layer in MAP_STEMS:
         return web / f"{MAP_STEMS[layer]}.geojson"
+    if layer in ZONE_LAYER_WEB_STEMS:
+        return web / f"{ZONE_LAYER_WEB_STEMS[layer]}.geojson"
     if layer in ZONE_WEB_STEMS:
         return web / f"{ZONE_WEB_STEMS[layer]}.geojson"
     raise KeyError(layer)
 
 
 def zone_raw_path(region_id: str, zone_kind: str) -> Path:
-    flat = DATA_ZONES_DIR / f"{region_id}_{ZONE_STEMS[zone_kind]}.geojson"
-    nested = zones_dir(region_id) / f"{ZONE_STEMS[zone_kind]}.geojson"
-    if flat.exists():
-        return flat
-    return nested
+    return zones_dir(region_id) / f"{ZONE_STEMS[zone_kind]}.geojson"
 
 
 def catalog_data_path(rel_path: str) -> Path:
@@ -246,6 +237,22 @@ def region_country(region_id: str) -> str:
 
 
 def region_boundary_path(region_id: str) -> Path | None:
+    """Absolute boundary path for a region.
+
+    Resolution order:
+      1. Explicit catalog ``boundary`` field (resolved relative to repo root).
+      2. Per-region copy at data/regions/{id}/boundary.geojson.
+      3. Shared export mask at boundaries/{stem}.geojson.
+    """
+    catalog = load_catalog()
+    catalog_region = catalog.get("regions", {}).get(region_id)
+    if catalog_region and catalog_region.get("boundary"):
+        return REPO_ROOT / catalog_region["boundary"]
+
+    per_region = REGION_DATA_DIR / region_id / "boundary.geojson"
+    if per_region.exists():
+        return per_region
+
     rel = resolve_boundary_rel_path(region_id)
     if not rel:
         return None

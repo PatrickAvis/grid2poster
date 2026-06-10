@@ -56,7 +56,7 @@ DEFAULT_OFFSHORE_BUFFER_KM = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Export OSM power layers for a catalog region to data/raw/{region}/.",
+        description="Export OSM power layers for a catalog region to data/regions/{region}/raw/.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(

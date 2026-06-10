@@ -10,7 +10,8 @@ from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parent
-FUEL_TYPES_PATH = REPO_ROOT / "data" / "reference" / "fuel_types.json"
+# Fuel taxonomy is shared across all regions (and the browser legend).
+FUEL_TYPES_PATH = REPO_ROOT / "data" / "shared" / "fuel_types.json"
 
 
 @lru_cache(maxsize=1)

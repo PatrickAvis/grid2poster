@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Maintain uk_plant_bmu_map.csv: migrate embedded BMU, propose auto matches, export JSON for map."""
+"""Maintain plant_bmu_links.csv and export plant_bmu_links.json for the map."""
 
 from __future__ import annotations
 
@@ -29,20 +29,23 @@ from region_catalog import catalog_layer_path, map_path, raw_path
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Update the OSM plant ↔ BMU mapping table (uk_plant_bmu_map.csv).",
+        description=(
+            "Update editable plant ↔ BMU links (reference/editable/plant_bmu_links.csv) "
+            "and export map runtime JSON (reference/generated/plant_bmu_links.json)."
+        ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
         "--plants",
         type=Path,
         default=None,
-        help="Plants ground-truth GeoJSON (default: data/map/uk/uk_plants_web.geojson)",
+        help="BMU-mapped sites GeoJSON (default: data/regions/uk/map/bmu_sites_web.geojson)",
     )
     parser.add_argument(
         "--map",
         type=Path,
         default=PLANT_BMU_MAP_PATH,
-        help="Editable mapping table CSV",
+        help="Editable plant ↔ BMU links CSV (default: reference/editable/plant_bmu_links.csv)",
     )
     parser.add_argument(
         "--fetch",

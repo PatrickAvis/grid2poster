@@ -1,17 +1,20 @@
 # Deploying the power map
 
-The map is a static site: `map/` (HTML/JS) plus `data/catalog.json` and `data/map/` (and optional `data/zones/`). No application server is required.
+The map is a static site: `map/` (HTML/JS) plus `data/catalog.json`, `data/shared/`, and the per-region `data/regions/{id}/map/` (and optional `zones/`). No application server is required.
 
 ## Recommended layout on server
 
 ```
 /var/www/power-map/
-  map/              # index.html, js/
-  data/map/uk/      # small GeoJSON + generated *.pmtiles
-  data/zones/       # optional raw NESO files
+  map/                          # index.html, js/
+  data/catalog.json
+  data/shared/                  # fuel_types.json
+  data/regions/uk/map/          # small GeoJSON + generated *.pmtiles
+  data/regions/uk/zones/        # optional zone overlays
+  data/regions/uk/reference/generated/  # plant_bmu_links.json (UK popups)
 ```
 
-Serve from the repo root so catalog paths (`../data/map/uk/...`) resolve correctly:
+Serve from the repo root so catalog paths (`../data/regions/uk/map/...`) resolve correctly:
 
 ```nginx
 server {
@@ -39,20 +42,23 @@ Enable **brotli** or **gzip** for `.geojson` — compressed payloads are often 5
 |------|---------|
 | `map/` | Yes |
 | `data/catalog.json` | Yes |
-| `data/map/` | Yes |
-| `data/reference/uk_plant_bmu_map.json` | Yes (UK plant ↔ BMU join for popups) |
-| `data/zones/` | If used (e.g. UK NESO) |
-| `data/raw/` | **No** — multi-GB OSM exports (prepare `data/map/` locally first) |
+| `data/shared/` | Yes (fuel taxonomy) |
+| `data/regions/{id}/map/` | Yes |
+| `data/regions/uk/reference/generated/plant_bmu_links.json` | Yes (UK plant ↔ BMU join for popups) |
+| `data/regions/{id}/zones/` | If used (e.g. UK NESO) |
+| `data/regions/{id}/raw/` | **No** — multi-GB OSM exports (prepare `map/` locally first) |
+| `data/regions/{id}/source/` | **No** — local `.osm.pbf` extracts |
 | `cache/` | **No** |
 
-Sync app code via git; sync generated data with rsync or object storage:
+Sync app code via git; sync generated data with rsync or object storage. Because
+each region is self-contained, you can rsync one region folder at a time:
 
 ```bash
 rsync -avz map/ user@server:/var/www/power-map/map/
 rsync -avz data/catalog.json user@server:/var/www/power-map/data/
-rsync -avz data/map/ user@server:/var/www/power-map/data/map/
-rsync -avz data/reference/uk_plant_bmu_map.json user@server:/var/www/power-map/data/reference/
-rsync -avz data/zones/ user@server:/var/www/power-map/data/zones/
+rsync -avz data/shared/ user@server:/var/www/power-map/data/shared/
+rsync -avz --exclude raw/ --exclude source/ \
+  data/regions/uk/ user@server:/var/www/power-map/data/regions/uk/
 ```
 
 After refreshing OSM data locally:
@@ -69,7 +75,7 @@ Serve `map/` and `data/` from the **same origin** so browser fetches do not need
 
 ## Multi-region data sync
 
-Same rules: `data/catalog.json` + `data/map/` (+ zones if needed). Never rsync `data/raw/`.
+Same rules: `data/catalog.json` + `data/shared/` + each `data/regions/{id}/` (excluding `raw/` and `source/`). Never rsync the multi-GB `raw/` or `source/` folders.
 
 After refreshing a region locally:
 
@@ -93,7 +99,7 @@ Ensure `Content-Type: application/octet-stream` (or `application/vnd.pmtiles`) a
 
 ## Turbines at scale
 
-`uk_wind_turbines_web.geojson` (~250 MB) is only a tile-build source. The deployed map should serve `turbines.pmtiles` instead so users stream only the tiles they need. Alternatives:
+`turbines_web.geojson` (~250 MB) is only a tile-build source. The deployed map should serve `turbines.pmtiles` instead so users stream only the tiles they need. Alternatives:
 
 - **FlatGeobuf** for range-request access
 - **PostGIS + pg_tileserv / Martin** for server-side vector tiles

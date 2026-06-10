@@ -12,8 +12,9 @@ dataset end to end:
   6. PMTiles archives                (scripts/build_tiles.py)
 
 The OSM export only runs when a local ``.osm.pbf`` is found (auto-detected under
-``data/osm/`` or given with ``--osm-pbf``); otherwise the existing ``data/raw/``
-exports are reused. Each step can be skipped with the matching ``--skip-*`` flag.
+``data/regions/{region}/source/`` or given with ``--osm-pbf``); otherwise the
+existing ``data/regions/{region}/raw/`` exports are reused. Each step can be
+skipped with the matching ``--skip-*`` flag.
 Network/optional steps that fail are reported but do not abort the run; the OSM
 export and the prepare step are treated as critical.
 """
@@ -30,20 +31,28 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 SCRIPTS = REPO_ROOT / "scripts"
-DEFAULT_OSM_DIR = REPO_ROOT / "data" / "osm"
+# Legacy location kept as a fallback for extracts that predate the per-region layout.
+LEGACY_OSM_DIR = REPO_ROOT / "data" / "osm"
 
 
-def find_pbf(explicit: Path | None) -> Path | None:
+def source_dirs(region_id: str) -> list[Path]:
+    from common import source_dir
+
+    return [source_dir(region_id), LEGACY_OSM_DIR]
+
+
+def find_pbf(explicit: Path | None, region_id: str) -> Path | None:
     """Resolve the OSM extract to export from, if any."""
     if explicit is not None:
         return explicit if explicit.exists() else None
-    preferred = DEFAULT_OSM_DIR / "great-britain-latest.osm.pbf"
-    if preferred.exists():
-        return preferred
-    if DEFAULT_OSM_DIR.exists():
-        candidates = sorted(DEFAULT_OSM_DIR.glob("*.osm.pbf"))
-        if candidates:
-            return candidates[0]
+    for directory in source_dirs(region_id):
+        preferred = directory / "great-britain-latest.osm.pbf"
+        if preferred.exists():
+            return preferred
+        if directory.exists():
+            candidates = sorted(directory.glob("*.osm.pbf"))
+            if candidates:
+                return candidates[0]
     return None
 
 
@@ -57,7 +66,7 @@ def parse_args() -> argparse.Namespace:
         "--osm-pbf",
         type=Path,
         default=None,
-        help="Local .osm.pbf to export from (default: auto-detect under data/osm/)",
+        help="Local .osm.pbf to export from (default: auto-detect under data/regions/{region}/source/)",
     )
     parser.add_argument("--skip-osm", action="store_true", help="Skip OSM export even if a PBF is present")
     parser.add_argument("--skip-elexon", action="store_true", help="Skip Elexon BMU reference download")
@@ -127,7 +136,7 @@ def main() -> int:
         )
 
     # 3. OSM power export from a local PBF, when available.
-    pbf = None if args.skip_osm else find_pbf(args.osm_pbf)
+    pbf = None if args.skip_osm else find_pbf(args.osm_pbf, args.region)
     if args.osm_pbf is not None and not args.skip_osm and pbf is None:
         print(f"Requested PBF not found: {args.osm_pbf}", file=sys.stderr)
         return 2
@@ -145,8 +154,8 @@ def main() -> int:
         if not run_step(f"OSM export from {pbf.name}", export_argv, critical=True, results=results):
             return 1
     else:
-        reason = "--skip-osm set" if args.skip_osm else "no .osm.pbf under data/osm/"
-        print(f"\nSkipping OSM export ({reason}); reusing existing data/raw/ exports.")
+        reason = "--skip-osm set" if args.skip_osm else "no .osm.pbf under data/regions/{region}/source/"
+        print(f"\nSkipping OSM export ({reason}); reusing existing data/regions/{args.region}/raw/ exports.")
         results.append(("OSM export", "skipped"))
 
     # 4. Build the lightweight web GeoJSON layers (and prepared zones).

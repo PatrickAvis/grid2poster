@@ -269,7 +269,7 @@ def sync_uk_plants(
         print(f"Loading ground truth {ground_truth_path.name}…")
         existing = gpd.read_file(ground_truth_path)
         if any(col in existing.columns for col in BMU_FIELDS):
-            print("Migrating legacy bmu_* fields from plants GeoJSON into uk_plant_bmu_map.csv…")
+            print("Migrating legacy bmu_* fields from plants GeoJSON into plant_bmu_links.csv…")
             map_frame = propose_plant_bmu_map(existing, migrate_embedded=True)
             save_plant_bmu_map(map_frame)
             export_plant_bmu_map_json(map_frame)

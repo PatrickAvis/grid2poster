@@ -11,7 +11,9 @@ from shapely.geometry import Point
 from common import FILE_ENCODING, REPO_ROOT
 from prepare import bucket_plant_row
 
-MANUAL_PLANTS_PATH = REPO_ROOT / "data" / "reference" / "uk_manual_plants.csv"
+MANUAL_PLANTS_PATH = (
+    REPO_ROOT / "data" / "regions" / "uk" / "reference" / "editable" / "manual_plants.csv"
+)
 
 MANUAL_PLANT_COLUMNS = (
     "osm_id",

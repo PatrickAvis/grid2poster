@@ -96,10 +96,25 @@
     .layer-list { display: grid; gap: 6px; margin-bottom: 10px; }
     .layer-list label {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
       font-size: 0.85rem;
       cursor: pointer;
+    }
+    .layer-list input[type="checkbox"] {
+      margin-top: 2px;
+    }
+    .layer-label-text {
+      display: grid;
+      gap: 1px;
+    }
+    .layer-label-title {
+      color: #222;
+    }
+    .layer-label-hint {
+      color: #666;
+      font-size: 0.72rem;
+      line-height: 1.25;
     }
     .status {
       font-size: 0.78rem;

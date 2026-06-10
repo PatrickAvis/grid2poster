@@ -13921,5 +13921,167 @@
     "bmu_type": "T",
     "source": "auto",
     "notes": null
+  },
+  {
+    "osm_id": "11343101",
+    "plant_name": "Hornsea 2 Offshore Wind Farm",
+    "bmu_id": "T_HOWAO-1",
+    "ngc_bmu_id": "HOWAO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HORNSEA_1A; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "11343101",
+    "plant_name": "Hornsea 2 Offshore Wind Farm",
+    "bmu_id": "T_HOWAO-2",
+    "ngc_bmu_id": "HOWAO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HORNSEA_1B; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "11343101",
+    "plant_name": "Hornsea 2 Offshore Wind Farm",
+    "bmu_id": "T_HOWAO-3",
+    "ngc_bmu_id": "HOWAO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HORNSEA_1C; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "11894296",
+    "plant_name": "Hornsea 1 Offshore Wind Farm",
+    "bmu_id": "T_HOWAO-1",
+    "ngc_bmu_id": "HOWAO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HORNSEA_1A; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "11894296",
+    "plant_name": "Hornsea 1 Offshore Wind Farm",
+    "bmu_id": "T_HOWAO-2",
+    "ngc_bmu_id": "HOWAO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HORNSEA_1B; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "11894296",
+    "plant_name": "Hornsea 1 Offshore Wind Farm",
+    "bmu_id": "T_HOWAO-3",
+    "ngc_bmu_id": "HOWAO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=HORNSEA_1C; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386799",
+    "plant_name": "Galloper Wind Farm",
+    "bmu_id": "T_GANW-11",
+    "ngc_bmu_id": "GAOFO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Galloper OSP 11; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386799",
+    "plant_name": "Galloper Wind Farm",
+    "bmu_id": "T_GANW-22",
+    "ngc_bmu_id": "GAOFO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Galloper OSP 22; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386799",
+    "plant_name": "Galloper Wind Farm",
+    "bmu_id": "T_GANW-13",
+    "ngc_bmu_id": "GAOFO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Galloper OSP 13; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386799",
+    "plant_name": "Galloper Wind Farm",
+    "bmu_id": "T_GANW-24",
+    "ngc_bmu_id": "GAOFO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Galloper OSP 24; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386800",
+    "plant_name": "Greater Gabbard Wind Farm",
+    "bmu_id": "T_GRGBW-1",
+    "ngc_bmu_id": "GRGBW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Greater Gabbard Module 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386800",
+    "plant_name": "Greater Gabbard Wind Farm",
+    "bmu_id": "T_GRGBW-2",
+    "ngc_bmu_id": "GRGBW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Greater Gabbard Module 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "13386800",
+    "plant_name": "Greater Gabbard Wind Farm",
+    "bmu_id": "T_GRGBW-3",
+    "ngc_bmu_id": "GRGBW-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Greater Gabbard Module 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "790946237",
+    "plant_name": "Triton Knoll Wind Farm",
+    "bmu_id": "T_TKNWW-1",
+    "ngc_bmu_id": "TKNWW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Triton Knoll OSP west 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "1254849361",
+    "plant_name": "Moray West Wind Farm",
+    "bmu_id": "T_MOWWO-1",
+    "ngc_bmu_id": "MOWWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Moray West OWF1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "1254849361",
+    "plant_name": "Moray West Wind Farm",
+    "bmu_id": "T_MOWWO-2",
+    "ngc_bmu_id": "MOWWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Moray West OWF2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "1254849361",
+    "plant_name": "Moray West Wind Farm",
+    "bmu_id": "T_MOWWO-3",
+    "ngc_bmu_id": "MOWWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Moray West OWF3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "1254849361",
+    "plant_name": "Moray West Wind Farm",
+    "bmu_id": "T_MOWWO-4",
+    "ngc_bmu_id": "MOWWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Moray West OWF4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
   }
 ]
