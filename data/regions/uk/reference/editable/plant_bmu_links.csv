@@ -755,6 +755,8 @@ way/160279522,West Burton B Power Station,T_WBURB-41,WBURB-41,T,auto,
 way/160279522,West Burton B Power Station,T_WBURB-43,WBURB-43,T,auto,
 way/204918278,South Humber Bank Power Station,T_SHBA-1,SHBA-1,T,manual,South Humber Bank Power Station
 way/204918278,South Humber Bank Power Station,T_SHBA-2,SHBA-2,T,manual,South Humber Bank Power Station
+way/205132626,Killingholme B Power Station,T_KILLPG-1,KILLPG-1,T,manual,Killingholme B
+way/205132626,Killingholme B Power Station,T_KILLPG-2,KILLPG-2,T,manual,Killingholme B
 way/205132626,Killingholme B Power Station,T_KILLSC-1,KILLSC-1,T,auto,
 way/205132626,Killingholme B Power Station,T_KILLSC-2,KILLSC-2,T,auto,
 way/205132626,Killingholme B Power Station,T_KILNS-1,KILNS,T,auto,
@@ -1577,3 +1579,19 @@ way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-1,PINFB-1,T,manual,Cape
 way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-2,PINFB-2,T,manual,Capenhurst Battery Energy Storage 2
 way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-3,PINFB-3,T,manual,Capenhurst Battery Energy Storage 3
 way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-4,PINFB-4,T,manual,Capenhurst Battery Energy Storage 4
+manual/hunterston-b-power-station,Hunterston B Power Station,T_HUNB-7,HUNB-7,T,manual,Hunterston B Generator 7
+manual/hunterston-b-power-station,Hunterston B Power Station,T_HUNB-8,HUNB-8,T,manual,Hunterston B Generator 8
+manual/bad-a-cheo-wind-farm,Bad a Cheo Wind Farm,T_BDCHW-1,BDCHW-1,T,manual,Bad a Cheo Wind Farm
+way/130870162,Lochay Power Station,M_CAS-KIL01,CAS-KIL01,T,manual,Killin Cascade
+manual/dalquhandy-wind-farm,Dalquhandy Wind Farm,T_DALQW-1,DALQW-1,T,manual,Dalquhandy Wind Farm
+manual/fallago-rig-wind-farm,Fallago Rig Wind Farm,T_FALGW-1,FALGW-1,T,manual,Fallago Rig Wind Farm
+manual/freasdail-wind-farm,Freasdail Wind Farm,T_FSDLW-1,FSDLW-1,T,manual,Freasdail Wind Farm
+manual/galawhistle-wind-farm,Galawhistle Wind Farm,T_GLWSW-1,GLWSW-1,T,manual,Galawhistle Wind Farm
+manual/halsary-wind-farm,Halsary Wind Farm,T_HALSW-1,HALSW-1,T,manual,Halsary Wind Farm
+manual/harburnhead-wind-farm,Harburnhead Wind Farm,E_HBHDW-1,HBHDW-1,E,manual,Harburnhead Wind Farm
+manual/kennoxhead-wind-farm,Kennoxhead Wind Farm,T_KENNW-1,KENNW-1,T,manual,Kennoxhead Wind Farm
+manual/arecleoch-wind-farm,Arecleoch Wind Farm,T_ARCHW-1,ARCHW-1,T,manual,Arecleoch Wind Farm
+manual/benbrack-wind-farm,Benbrack Wind Farm,T_BENBW-1,BENBW-1,T,manual,Benbrack Wind Farm
+manual/kype-wind-farm,Kype Wind Farm,T_KPMRW-1,KPMRW-1,T,manual,Kype Wind Farm
+manual/kype-muir-wind-farm-extension,Kype Muir Wind Farm Extension,T_KYPEW-1,KYPEW-1,T,manual,Kype Muir Wind Farm Extension
+manual/twentyshilling-hill-wind-farm,Twentyshilling Hill Wind Farm,T_TWSHW-1,TWSHW-1,T,manual,Twentyshilling Hill Wind Farm

@@ -683,6 +683,7 @@ I_I2D-HELI1,I2D-HELI1,HELIOS IFA2 DEM,,I,C,0.000,Helios Power Trading A/S,,IFA2,
 I_I2D-IBES1,I2D-IBES1,IBES_IFA2_DEM,,I,C,0.000,Iberdrola Energia Espana S.AU.,,IFA2,reference_only,False
 I_I2D-IDCT1,I2D-IDCT1,Induct_UKIFA2,,I,C,0.000,Inductive Energy A/S,,IFA2,reference_only,False
 I_I2D-IMPT1,I2D-IMPT1,Flow from UK,,I,C,0.000,Impact Energy Trading A/S,,IFA2,reference_only,False
+I_I2D-IMTC1,I2D-IMTC1,I_I2D-IMTC1,,I,C,0.000,IMC Trading BV NL Denmark,,IFA2,reference_only,False
 I_I2D-INCM1,I2D-INCM1,IFA2INCOMASC,,I,C,0.000,IN COMMODITIES A/S,,IFA2,reference_only,False
 I_I2D-JWME1,I2D-JWME1,I_I2D-JWME1,,I,C,0.000,JWM Energia,,IFA2,reference_only,False
 I_I2D-KVAS1,I2D-KVAS1,I_I2D-KVAS1,,I,C,0.000,Kvasir Technologies,,IFA2,reference_only,False
@@ -793,6 +794,7 @@ I_I2G-HELI1,I2G-HELI1,HELIOS IFA2 GEN,,I,P,1000.000,Helios Power Trading A/S,,IF
 I_I2G-IBES1,I2G-IBES1,IBES_IFA2_GEN,,I,P,1000.000,Iberdrola Energia Espana S.AU.,,IFA2,reference_only,False
 I_I2G-IDCT1,I2G-IDCT1,Induct_IFA2UK,,I,P,1000.000,Inductive Energy A/S,,IFA2,reference_only,False
 I_I2G-IMPT1,I2G-IMPT1,Flow into UK,,I,P,1000.000,Impact Energy Trading A/S,,IFA2,reference_only,False
+I_I2G-IMTC1,I2G-IMTC1,I_I2G-IMTC1,,I,P,2000.000,IMC Trading BV NL Denmark,,IFA2,reference_only,False
 I_I2G-INCM1,I2G-INCM1,IFA2INCOMASP,,I,P,1000.000,IN COMMODITIES A/S,,IFA2,reference_only,False
 I_I2G-JWME1,I2G-JWME1,I_I2G-JWME1,,I,P,1000.000,JWM Energia,,IFA2,reference_only,False
 I_I2G-KVAS1,I2G-KVAS1,I_I2G-KVAS1,,I,P,50.000,Kvasir Technologies,,IFA2,reference_only,False
@@ -1147,6 +1149,7 @@ I_IFD-HELI1,IFD-HELI1,HELIOS FRANCE DEM,,I,C,0.000,Helios Power Trading A/S,,FRA
 I_IFD-IBES1,IFD-IBES1,IFD_FRANCE_DEM,,I,C,0.000,Iberdrola Energia Espana S.AU.,,FRANCE,reference_only,False
 I_IFD-IDCT1,IFD-IDCT1,Induct_UKIFA1,,I,C,0.000,Inductive Energy A/S,,FRANCE,reference_only,False
 I_IFD-IMPT1,IFD-IMPT1,Flow from UK,,I,C,0.000,Impact Energy Trading A/S,,FRANCE,reference_only,False
+I_IFD-IMTC1,IFD-IMTC1,I_IFD-IMTC1,,I,C,0.000,IMC Trading BV NL Denmark,,FRANCE,reference_only,False
 I_IFD-INCM1,IFD-INCM1,IFAINCOMASC,,I,C,0.000,IN COMMODITIES A/S,,FRANCE,reference_only,False
 I_IFD-JWME1,IFD-JWME1,I_IFD-JWME1,,I,C,0.000,JWM Energia,,FRANCE,reference_only,False
 I_IFD-KCST1,IFD-KCST1,IFA_DEM,,I,C,0.000,KOCH SUPPLY & TRADING SARL,,FRANCE,reference_only,False
@@ -1270,6 +1273,7 @@ I_IFG-HELI1,IFG-HELI1,HELIOS FRANCE GEN,,I,P,1000.000,Helios Power Trading A/S,,
 I_IFG-IBES1,IFG-IBES1,IFG_FRANCE_GEN,,I,P,1000.000,Iberdrola Energia Espana S.AU.,,FRANCE,reference_only,False
 I_IFG-IDCT1,IFG-IDCT1,Induct_IFA1UK,,I,P,2000.000,Inductive Energy A/S,,FRANCE,reference_only,False
 I_IFG-IMPT1,IFG-IMPT1,Flow into UK,,I,P,2000.000,Impact Energy Trading A/S,,FRANCE,reference_only,False
+I_IFG-IMTC1,IFG-IMTC1,I_IFG-IMTC1,,I,P,2000.000,IMC Trading BV NL Denmark,,FRANCE,reference_only,False
 I_IFG-INCM1,IFG-INCM1,IFAINCOMASP,,I,P,1000.000,IN COMMODITIES A/S,,FRANCE,reference_only,False
 I_IFG-JWME1,IFG-JWME1,I_IFG-JWME1,,I,P,1000.000,JWM Energia,,FRANCE,reference_only,False
 I_IFG-KCST1,IFG-KCST1,IFA_GEN,,I,P,2000.000,KOCH SUPPLY & TRADING SARL,,FRANCE,reference_only,False
@@ -1404,6 +1408,7 @@ I_ILD-GRMC1,ILD-GRMC1,Flows out of  the UK,,I,C,0.000,A/S Global Risk Management
 I_ILD-HART1,ILD-HART1,I_ILD-HART1,,I,C,0.000,HAPPGCO,,ELECLINK,reference_only,False
 I_ILD-HELI1,ILD-HELI1,HELIOS ELECLINK DEM,,I,C,0.000,Helios Power Trading A/S,,ELECLINK,reference_only,False
 I_ILD-IMPT1,ILD-IMPT1,Flow from UK,,I,C,0.000,Impact Energy Trading A/S,,ELECLINK,reference_only,False
+I_ILD-IMTC1,ILD-IMTC1,I_ILD-IMTC1,,I,C,0.000,IMC Trading BV NL Denmark,,ELECLINK,reference_only,False
 I_ILD-INCM1,ILD-INCM1,ELECINCOMASC,,I,C,0.000,IN COMMODITIES A/S,,ELECLINK,reference_only,False
 I_ILD-JWME1,ILD-JWME1,I_ILD-JWME1,,I,C,0.000,JWM Energia,,ELECLINK,reference_only,False
 I_ILD-MCRA1,ILD-MCRA1,Mercuria flow from UK,,I,C,0.000,Mercuria Energy Trading SA,,ELECLINK,reference_only,False
@@ -1485,6 +1490,7 @@ I_ILG-GRMC1,ILG-GRMC1,Flows into the  UK,,I,P,1000.000,A/S Global Risk Managemen
 I_ILG-HART1,ILG-HART1,I_ILG-HART1,,I,P,1000.000,HAPPGCO,,ELECLINK,reference_only,False
 I_ILG-HELI1,ILG-HELI1,HELIOS ELECLINK GEN,,I,P,1000.000,Helios Power Trading A/S,,ELECLINK,reference_only,False
 I_ILG-IMPT1,ILG-IMPT1,Flow into UK,,I,P,1000.000,Impact Energy Trading A/S,,ELECLINK,reference_only,False
+I_ILG-IMTC1,ILG-IMTC1,I_ILG-IMTC1,,I,P,2000.000,IMC Trading BV NL Denmark,,ELECLINK,reference_only,False
 I_ILG-INCM1,ILG-INCM1,ELECINCOMASP,,I,P,750.000,IN COMMODITIES A/S,,ELECLINK,reference_only,False
 I_ILG-JWME1,ILG-JWME1,I_ILG-JWME1,,I,P,1000.000,JWM Energia,,ELECLINK,reference_only,False
 I_ILG-MCRA1,ILG-MCRA1,Mercuria flow into UK,,I,P,1000.000,Mercuria Energy Trading SA,,ELECLINK,reference_only,False

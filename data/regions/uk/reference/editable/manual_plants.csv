@@ -19,3 +19,17 @@ manual/edinbane-wind-farm,Edinbane Windfarm,Vattenfall Wind Power Ltd,wind,41.4 
 manual/coire-na-cloiche-wind-farm,Coire Na Cloiche Wind Farm,Statkraft Markets Gmbh,wind,30.52 MW,57.79054,-4.37826,30.52,wind_onshore,Absent from OSM plant export; coords from operator data
 manual/conon-cascade,Conon Cascade,SSE Generation Ltd,hydro,95.226 MW,57.554,-4.598,95.226,hydro_non_pumped,Absent from OSM plant export; coords from operator data
 manual/garry-cascade,Garry Cascade,SSE Generation Ltd,hydro,40 MW,57.07297,-4.77719,40,hydro_non_pumped,Absent from OSM plant export; coords from operator data
+manual/hunterston-b-power-station,Hunterston B Power Station,EDF Energy Nuclear Generation,nuclear,1020 MW,55.7221,-4.8901,1020,nuclear,Absent from OSM plant export; T_HUNB-7 and T_HUNB-8
+manual/bad-a-cheo-wind-farm,Bad a Cheo Wind Farm,RWE Generation UK plc,wind,270 MW,58.41728,-3.42371,270,wind_onshore,Absent from OSM plant export; T_BDCHW-1
+manual/dalquhandy-wind-farm,Dalquhandy Wind Farm,Statkraft Markets Gmbh,wind,42.846 MW,55.57726,-3.91699,42.846,wind_onshore,Absent from OSM plant export; T_DALQW-1
+manual/fallago-rig-wind-farm,Fallago Rig Wind Farm,Fallago Rig Wind Farm Limited,wind,144 MW,55.82923,-2.66838,144,wind_onshore,Absent from OSM plant export; T_FALGW-1
+manual/freasdail-wind-farm,Freasdail Wind Farm,Freasdail Energy Limited,wind,22.2 MW,55.76942,-5.46335,22.2,wind_onshore,Absent from OSM plant export; T_FSDLW-1
+manual/galawhistle-wind-farm,Galawhistle Wind Farm,GALAWHISTLE WIND FARM,wind,55.2 MW,55.54637,-3.94644,55.2,wind_onshore,Absent from OSM plant export; T_GLWSW-1
+manual/halsary-wind-farm,Halsary Wind Farm,SP Renewables (UK) Limited,wind,30 MW,58.43556,-3.40356,30,wind_onshore,Absent from OSM plant export; T_HALSW-1
+manual/harburnhead-wind-farm,Harburnhead Wind Farm,LDV Harburnhead Ltd,wind,51.7 MW,55.80362,-3.53772,51.7,wind_onshore,Absent from OSM plant export; E_HBHDW-1
+manual/kennoxhead-wind-farm,Kennoxhead Wind Farm,Kennoxhead Wind Farm Limited,wind,60 MW,55.49444,-3.96765,60,wind_onshore,Absent from OSM plant export; T_KENNW-1
+manual/arecleoch-wind-farm,Arecleoch Wind Farm,SP Renewables (UK) Limited,wind,114 MW,55.06963,-4.86773,114,wind_onshore,Absent from OSM plant export; T_ARCHW-1
+manual/benbrack-wind-farm,Benbrack Wind Farm,Benbrack Wind Farm Limited,wind,67 MW,55.28131,-4.30733,67,wind_onshore,Absent from OSM plant export; T_BENBW-1
+manual/kype-wind-farm,Kype Wind Farm,OnPath Energy Limited,wind,89 MW,55.62006,-4.04213,89,wind_onshore,Absent from OSM plant export; T_KPMRW-1
+manual/kype-muir-wind-farm-extension,Kype Muir Wind Farm Extension,Kype Extension Wind Farm Ltd,wind,67 MW,55.60799,-4.05796,67,wind_onshore,Absent from OSM plant export; T_KYPEW-1
+manual/twentyshilling-hill-wind-farm,Twentyshilling Hill Wind Farm,Twentyshilling Limited,wind,37.8 MW,55.31262,-3.91574,37.8,wind_onshore,Absent from OSM plant export; T_TWSHW-1

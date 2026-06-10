@@ -2,38 +2,11 @@
   "type": "FeatureCollection",
   "metadata": {
     "settlement_date": "2026-06-10",
-    "settlement_period": 43,
-    "fetched_at": "2026-06-10T21:01:11Z",
-    "feature_count": 20
+    "settlement_period": 47,
+    "fetched_at": "2026-06-10T23:08:35Z",
+    "feature_count": 19
   },
   "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -0.888607,
-          51.749146
-        ]
-      },
-      "properties": {
-        "osm_id": "manual/thame-road-bess",
-        "plant_name": "Thame Road BESS",
-        "operator": "Tesla Motors Limited",
-        "bmu_id": "E_THMRB-1",
-        "ngc_bmu_id": "THMRB-1",
-        "side": "bid",
-        "volume_mwh": -17.342,
-        "abs_volume_mwh": 17.342,
-        "action_count": 11,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 104.34,
-        "bid_offer_pair_id": "-1; -2"
-      }
-    },
     {
       "type": "Feature",
       "geometry": {
@@ -50,41 +23,14 @@
         "bmu_id": "E_LITRB-1",
         "ngc_bmu_id": "LITRB-1",
         "side": "bid",
-        "volume_mwh": -14.583,
-        "abs_volume_mwh": 14.583,
-        "action_count": 6,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 98.77,
-        "bid_offer_pair_id": "-1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -0.7963413471571887,
-          53.36418755
-        ]
-      },
-      "properties": {
-        "osm_id": "160279522",
-        "plant_name": "West Burton B Power Station",
-        "operator": "TotalEnergies",
-        "bmu_id": "T_WBURB-2",
-        "ngc_bmu_id": "WBURB-2",
-        "side": "bid",
-        "volume_mwh": -32.803,
-        "abs_volume_mwh": 32.803,
+        "volume_mwh": -4.667,
+        "abs_volume_mwh": 4.667,
         "action_count": 2,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 90.1,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 92.01,
         "bid_offer_pair_id": "-1"
       }
     },
@@ -93,25 +39,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -0.7963413471571887,
-          53.36418755
+          -4.46746,
+          55.578171
         ]
       },
       "properties": {
-        "osm_id": "160279522",
-        "plant_name": "West Burton B Power Station",
-        "operator": "TotalEnergies",
-        "bmu_id": "T_WBURB-1",
-        "ngc_bmu_id": "WBURB-1",
+        "osm_id": "way/1342452259",
+        "plant_name": "Kilmarnock South BESS",
+        "operator": "ZENOBE KILMARNOCK SOUTH LTD",
+        "bmu_id": "T_KILSB-3",
+        "ngc_bmu_id": "KILSB-3",
         "side": "bid",
-        "volume_mwh": -31.367,
-        "abs_volume_mwh": 31.367,
+        "volume_mwh": -0.55,
+        "abs_volume_mwh": 0.55,
         "action_count": 1,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 90.1,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 89.51,
         "bid_offer_pair_id": "-1"
       }
     },
@@ -120,160 +66,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -0.14501,
-          53.60142
+          -0.888607,
+          51.749146
         ]
       },
       "properties": {
-        "osm_id": "way/204918278",
-        "plant_name": "South Humber Bank Power Station",
-        "operator": "EP UK Investments Limited",
-        "bmu_id": "T_SHBA-2",
-        "ngc_bmu_id": "SHBA-2",
+        "osm_id": "manual/thame-road-bess",
+        "plant_name": "Thame Road BESS",
+        "operator": "Tesla Motors Limited",
+        "bmu_id": "E_THMRB-1",
+        "ngc_bmu_id": "THMRB-1",
         "side": "bid",
-        "volume_mwh": -37.0,
-        "abs_volume_mwh": 37.0,
+        "volume_mwh": -0.083,
+        "abs_volume_mwh": 0.083,
         "action_count": 1,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 90.1,
-        "bid_offer_pair_id": "-1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -0.24281775265653072,
-          53.7335706
-        ]
-      },
-      "properties": {
-        "osm_id": "312992167",
-        "plant_name": "Saltend Power Station",
-        "operator": null,
-        "bmu_id": "T_SCCL-3",
-        "ngc_bmu_id": "SCCL-3",
-        "side": "bid",
-        "volume_mwh": -21.667,
-        "abs_volume_mwh": 21.667,
-        "action_count": 1,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 87.4,
-        "bid_offer_pair_id": "-1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -0.24281775265653072,
-          53.7335706
-        ]
-      },
-      "properties": {
-        "osm_id": "312992167",
-        "plant_name": "Saltend Power Station",
-        "operator": null,
-        "bmu_id": "T_SCCL-1",
-        "ngc_bmu_id": "SCCL-1",
-        "side": "bid",
-        "volume_mwh": -4.75,
-        "abs_volume_mwh": 4.75,
-        "action_count": 1,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 86.9,
-        "bid_offer_pair_id": "-1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.943292,
-          57.516478
-        ]
-      },
-      "properties": {
-        "osm_id": "1152542223",
-        "plant_name": "Blackhillock BESS",
-        "operator": "ZENOBE BLACKHILLOCK LIMITED",
-        "bmu_id": "T_BLHLB-2",
-        "ngc_bmu_id": "BLHLB-2",
-        "side": "bid",
-        "volume_mwh": -15.517,
-        "abs_volume_mwh": 15.517,
-        "action_count": 2,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 86.17,
-        "bid_offer_pair_id": "-1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.943292,
-          57.516478
-        ]
-      },
-      "properties": {
-        "osm_id": "1152542223",
-        "plant_name": "Blackhillock BESS",
-        "operator": "ZENOBE BLACKHILLOCK LIMITED",
-        "bmu_id": "T_BLHLB-4",
-        "ngc_bmu_id": "BLHLB-4",
-        "side": "bid",
-        "volume_mwh": -10.883,
-        "abs_volume_mwh": 10.883,
-        "action_count": 4,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 85.87,
-        "bid_offer_pair_id": "-1; -2; -3"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.943292,
-          57.516478
-        ]
-      },
-      "properties": {
-        "osm_id": "1152542223",
-        "plant_name": "Blackhillock BESS",
-        "operator": "ZENOBE BLACKHILLOCK LIMITED",
-        "bmu_id": "T_BLHLB-3",
-        "ngc_bmu_id": "BLHLB-3",
-        "side": "bid",
-        "volume_mwh": -0.642,
-        "abs_volume_mwh": 0.642,
-        "action_count": 1,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 86.15,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 88.68,
         "bid_offer_pair_id": "-1"
       }
     },
@@ -293,14 +104,41 @@
         "bmu_id": "T_BLHLB-1",
         "ngc_bmu_id": "BLHLB-1",
         "side": "bid",
-        "volume_mwh": -14.617,
-        "abs_volume_mwh": 14.617,
-        "action_count": 4,
+        "volume_mwh": -0.067,
+        "abs_volume_mwh": 0.067,
+        "action_count": 1,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 86.12,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 88.35,
+        "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.943292,
+          57.516478
+        ]
+      },
+      "properties": {
+        "osm_id": "1152542223",
+        "plant_name": "Blackhillock BESS",
+        "operator": "ZENOBE BLACKHILLOCK LIMITED",
+        "bmu_id": "T_BLHLB-2",
+        "ngc_bmu_id": "BLHLB-2",
+        "side": "bid",
+        "volume_mwh": -11.417,
+        "abs_volume_mwh": 11.417,
+        "action_count": 3,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 88.1,
         "bid_offer_pair_id": "-1; -2"
       }
     },
@@ -309,25 +147,106 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -4.11389,
-          53.11861
+          -2.943292,
+          57.516478
         ]
       },
       "properties": {
-        "osm_id": "manual/dinorwig",
-        "plant_name": "Dinorwig Power Station",
-        "operator": "First Hydro Company",
-        "bmu_id": "T_DINO-3",
-        "ngc_bmu_id": "DINO-3",
+        "osm_id": "1152542223",
+        "plant_name": "Blackhillock BESS",
+        "operator": "ZENOBE BLACKHILLOCK LIMITED",
+        "bmu_id": "T_BLHLB-3",
+        "ngc_bmu_id": "BLHLB-3",
         "side": "bid",
-        "volume_mwh": -2.5,
-        "abs_volume_mwh": 2.5,
+        "volume_mwh": -0.083,
+        "abs_volume_mwh": 0.083,
         "action_count": 1,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 77.0,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 88.35,
+        "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.943292,
+          57.516478
+        ]
+      },
+      "properties": {
+        "osm_id": "1152542223",
+        "plant_name": "Blackhillock BESS",
+        "operator": "ZENOBE BLACKHILLOCK LIMITED",
+        "bmu_id": "T_BLHLB-4",
+        "ngc_bmu_id": "BLHLB-4",
+        "side": "bid",
+        "volume_mwh": -1.1,
+        "abs_volume_mwh": 1.1,
+        "action_count": 4,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 88.32,
+        "bid_offer_pair_id": "-1; -2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.46746,
+          55.578171
+        ]
+      },
+      "properties": {
+        "osm_id": "way/1342452259",
+        "plant_name": "Kilmarnock South BESS",
+        "operator": "ZENOBE KILMARNOCK SOUTH LTD",
+        "bmu_id": "T_KILSB-4",
+        "ngc_bmu_id": "KILSB-4",
+        "side": "bid",
+        "volume_mwh": -0.083,
+        "abs_volume_mwh": 0.083,
+        "action_count": 1,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 86.45,
+        "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.46746,
+          55.578171
+        ]
+      },
+      "properties": {
+        "osm_id": "way/1342452259",
+        "plant_name": "Kilmarnock South BESS",
+        "operator": "ZENOBE KILMARNOCK SOUTH LTD",
+        "bmu_id": "T_KILSB-5",
+        "ngc_bmu_id": "KILSB-5",
+        "side": "bid",
+        "volume_mwh": -0.05,
+        "abs_volume_mwh": 0.05,
+        "action_count": 1,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 86.37,
         "bid_offer_pair_id": "-1"
       }
     },
@@ -351,10 +270,10 @@
         "abs_volume_mwh": 8.5,
         "action_count": 2,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 49.23,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 47.25,
         "bid_offer_pair_id": "-1"
       }
     },
@@ -374,14 +293,14 @@
         "bmu_id": "M_CAS-CON01",
         "ngc_bmu_id": "CAS-CON01",
         "side": "bid",
-        "volume_mwh": -9.0,
-        "abs_volume_mwh": 9.0,
-        "action_count": 2,
+        "volume_mwh": -8.592,
+        "abs_volume_mwh": 8.592,
+        "action_count": 4,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 39.42,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 37.94,
         "bid_offer_pair_id": "-1"
       }
     },
@@ -390,26 +309,161 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -5.113640040605065,
-          56.3937909
+          -1.740447605657715,
+          56.61361485
         ]
       },
       "properties": {
-        "osm_id": "449382367",
-        "plant_name": "Cruachan Power Station",
-        "operator": "Drax",
-        "bmu_id": "T_CRUA-1",
-        "ngc_bmu_id": "CRUA-1",
+        "osm_id": "19268061",
+        "plant_name": "Seagreen Offshore Wind Farm",
+        "operator": "SSE Renewables",
+        "bmu_id": "T_SGRWO-6",
+        "ngc_bmu_id": "SGRWO-6",
         "side": "bid",
-        "volume_mwh": -22.367,
-        "abs_volume_mwh": 22.367,
+        "volume_mwh": -21.675,
+        "abs_volume_mwh": 21.675,
+        "action_count": 2,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": -14.1,
+        "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.740447605657715,
+          56.61361485
+        ]
+      },
+      "properties": {
+        "osm_id": "19268061",
+        "plant_name": "Seagreen Offshore Wind Farm",
+        "operator": "SSE Renewables",
+        "bmu_id": "T_SGRWO-1",
+        "ngc_bmu_id": "SGRWO-1",
+        "side": "bid",
+        "volume_mwh": -29.725,
+        "abs_volume_mwh": 29.725,
         "action_count": 3,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": -11.98,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": -14.1,
         "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.2392,
+          60.2727
+        ]
+      },
+      "properties": {
+        "osm_id": "manual/viking-energy",
+        "plant_name": "Viking Energy Windfarm",
+        "operator": "Viking Energy Wind Farm LLP",
+        "bmu_id": "T_VKNGW-1",
+        "ngc_bmu_id": "VKNGW-1",
+        "side": "bid",
+        "volume_mwh": -15.058,
+        "abs_volume_mwh": 15.058,
+        "action_count": 2,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": -14.7,
+        "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.2392,
+          60.2727
+        ]
+      },
+      "properties": {
+        "osm_id": "manual/viking-energy",
+        "plant_name": "Viking Energy Windfarm",
+        "operator": "Viking Energy Wind Farm LLP",
+        "bmu_id": "T_VKNGW-2",
+        "ngc_bmu_id": "VKNGW-2",
+        "side": "bid",
+        "volume_mwh": -6.717,
+        "abs_volume_mwh": 6.717,
+        "action_count": 1,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": -14.7,
+        "bid_offer_pair_id": "-1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.943292,
+          57.516478
+        ]
+      },
+      "properties": {
+        "osm_id": "1152542223",
+        "plant_name": "Blackhillock BESS",
+        "operator": "ZENOBE BLACKHILLOCK LIMITED",
+        "bmu_id": "T_BLHLB-4",
+        "ngc_bmu_id": "BLHLB-4",
+        "side": "offer",
+        "volume_mwh": 0.0,
+        "abs_volume_mwh": 0.0,
+        "action_count": 1,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 132.42,
+        "bid_offer_pair_id": "-2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.46746,
+          55.578171
+        ]
+      },
+      "properties": {
+        "osm_id": "way/1342452259",
+        "plant_name": "Kilmarnock South BESS",
+        "operator": "ZENOBE KILMARNOCK SOUTH LTD",
+        "bmu_id": "T_KILSB-2",
+        "ngc_bmu_id": "KILSB-2",
+        "side": "offer",
+        "volume_mwh": 3.733,
+        "abs_volume_mwh": 3.733,
+        "action_count": 3,
+        "settlement_date": "2026-06-10",
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 132.94,
+        "bid_offer_pair_id": "1; 2"
       }
     },
     {
@@ -428,42 +482,15 @@
         "bmu_id": "E_THMRB-1",
         "ngc_bmu_id": "THMRB-1",
         "side": "offer",
-        "volume_mwh": 2.283,
-        "abs_volume_mwh": 2.283,
-        "action_count": 4,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 122.9,
-        "bid_offer_pair_id": "-1; -2"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.943292,
-          57.516478
-        ]
-      },
-      "properties": {
-        "osm_id": "1152542223",
-        "plant_name": "Blackhillock BESS",
-        "operator": "ZENOBE BLACKHILLOCK LIMITED",
-        "bmu_id": "T_BLHLB-1",
-        "ngc_bmu_id": "BLHLB-1",
-        "side": "offer",
-        "volume_mwh": 0.0,
-        "abs_volume_mwh": 0.0,
+        "volume_mwh": 0.45,
+        "abs_volume_mwh": 0.45,
         "action_count": 1,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 158.2,
-        "bid_offer_pair_id": "-2"
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 137.98,
+        "bid_offer_pair_id": "1"
       }
     },
     {
@@ -486,64 +513,10 @@
         "abs_volume_mwh": 12.5,
         "action_count": 1,
         "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 172.5,
-        "bid_offer_pair_id": "1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -3.0831460831608393,
-          53.2327995
-        ]
-      },
-      "properties": {
-        "osm_id": "26427510",
-        "plant_name": "Connahs Quay Power Station",
-        "operator": "Uniper",
-        "bmu_id": "T_CNQPS-3",
-        "ngc_bmu_id": "CNQPS-3",
-        "side": "offer",
-        "volume_mwh": 115.0,
-        "abs_volume_mwh": 115.0,
-        "action_count": 2,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 172.9,
-        "bid_offer_pair_id": "1"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.723591113743753,
-          53.31523525
-        ]
-      },
-      "properties": {
-        "osm_id": "29083166",
-        "plant_name": "Rocksavage Power Station",
-        "operator": "InterGen",
-        "bmu_id": "T_ROCK-1",
-        "ngc_bmu_id": "ROCK-1",
-        "side": "offer",
-        "volume_mwh": 210.0,
-        "abs_volume_mwh": 210.0,
-        "action_count": 2,
-        "settlement_date": "2026-06-10",
-        "settlement_period": 43,
-        "start_time": "2026-06-10T20:00:00Z",
-        "created_datetime": "2026-06-10T20:48:33Z",
-        "price_gbp_mwh": 180.0,
+        "settlement_period": 47,
+        "start_time": "2026-06-10T22:00:00Z",
+        "created_datetime": "2026-06-10T22:48:36Z",
+        "price_gbp_mwh": 170.0,
         "bid_offer_pair_id": "1"
       }
     }

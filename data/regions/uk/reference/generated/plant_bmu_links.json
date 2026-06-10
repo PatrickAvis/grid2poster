@@ -6806,6 +6806,24 @@
   {
     "osm_id": "way/205132626",
     "plant_name": "Killingholme B Power Station",
+    "bmu_id": "T_KILLPG-1",
+    "ngc_bmu_id": "KILLPG-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Killingholme B"
+  },
+  {
+    "osm_id": "way/205132626",
+    "plant_name": "Killingholme B Power Station",
+    "bmu_id": "T_KILLPG-2",
+    "ngc_bmu_id": "KILLPG-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Killingholme B"
+  },
+  {
+    "osm_id": "way/205132626",
+    "plant_name": "Killingholme B Power Station",
     "bmu_id": "T_KILLSC-1",
     "ngc_bmu_id": "KILLSC-1",
     "bmu_type": "T",
@@ -14200,5 +14218,149 @@
     "bmu_type": "T",
     "source": "manual",
     "notes": "Capenhurst Battery Energy Storage 4"
+  },
+  {
+    "osm_id": "manual/hunterston-b-power-station",
+    "plant_name": "Hunterston B Power Station",
+    "bmu_id": "T_HUNB-7",
+    "ngc_bmu_id": "HUNB-7",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Hunterston B Generator 7"
+  },
+  {
+    "osm_id": "manual/hunterston-b-power-station",
+    "plant_name": "Hunterston B Power Station",
+    "bmu_id": "T_HUNB-8",
+    "ngc_bmu_id": "HUNB-8",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Hunterston B Generator 8"
+  },
+  {
+    "osm_id": "manual/bad-a-cheo-wind-farm",
+    "plant_name": "Bad a Cheo Wind Farm",
+    "bmu_id": "T_BDCHW-1",
+    "ngc_bmu_id": "BDCHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Bad a Cheo Wind Farm"
+  },
+  {
+    "osm_id": "way/130870162",
+    "plant_name": "Lochay Power Station",
+    "bmu_id": "M_CAS-KIL01",
+    "ngc_bmu_id": "CAS-KIL01",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Killin Cascade"
+  },
+  {
+    "osm_id": "manual/dalquhandy-wind-farm",
+    "plant_name": "Dalquhandy Wind Farm",
+    "bmu_id": "T_DALQW-1",
+    "ngc_bmu_id": "DALQW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Dalquhandy Wind Farm"
+  },
+  {
+    "osm_id": "manual/fallago-rig-wind-farm",
+    "plant_name": "Fallago Rig Wind Farm",
+    "bmu_id": "T_FALGW-1",
+    "ngc_bmu_id": "FALGW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Fallago Rig Wind Farm"
+  },
+  {
+    "osm_id": "manual/freasdail-wind-farm",
+    "plant_name": "Freasdail Wind Farm",
+    "bmu_id": "T_FSDLW-1",
+    "ngc_bmu_id": "FSDLW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Freasdail Wind Farm"
+  },
+  {
+    "osm_id": "manual/galawhistle-wind-farm",
+    "plant_name": "Galawhistle Wind Farm",
+    "bmu_id": "T_GLWSW-1",
+    "ngc_bmu_id": "GLWSW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Galawhistle Wind Farm"
+  },
+  {
+    "osm_id": "manual/halsary-wind-farm",
+    "plant_name": "Halsary Wind Farm",
+    "bmu_id": "T_HALSW-1",
+    "ngc_bmu_id": "HALSW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Halsary Wind Farm"
+  },
+  {
+    "osm_id": "manual/harburnhead-wind-farm",
+    "plant_name": "Harburnhead Wind Farm",
+    "bmu_id": "E_HBHDW-1",
+    "ngc_bmu_id": "HBHDW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Harburnhead Wind Farm"
+  },
+  {
+    "osm_id": "manual/kennoxhead-wind-farm",
+    "plant_name": "Kennoxhead Wind Farm",
+    "bmu_id": "T_KENNW-1",
+    "ngc_bmu_id": "KENNW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Kennoxhead Wind Farm"
+  },
+  {
+    "osm_id": "manual/arecleoch-wind-farm",
+    "plant_name": "Arecleoch Wind Farm",
+    "bmu_id": "T_ARCHW-1",
+    "ngc_bmu_id": "ARCHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Arecleoch Wind Farm"
+  },
+  {
+    "osm_id": "manual/benbrack-wind-farm",
+    "plant_name": "Benbrack Wind Farm",
+    "bmu_id": "T_BENBW-1",
+    "ngc_bmu_id": "BENBW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Benbrack Wind Farm"
+  },
+  {
+    "osm_id": "manual/kype-wind-farm",
+    "plant_name": "Kype Wind Farm",
+    "bmu_id": "T_KPMRW-1",
+    "ngc_bmu_id": "KPMRW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Kype Wind Farm"
+  },
+  {
+    "osm_id": "manual/kype-muir-wind-farm-extension",
+    "plant_name": "Kype Muir Wind Farm Extension",
+    "bmu_id": "T_KYPEW-1",
+    "ngc_bmu_id": "KYPEW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Kype Muir Wind Farm Extension"
+  },
+  {
+    "osm_id": "manual/twentyshilling-hill-wind-farm",
+    "plant_name": "Twentyshilling Hill Wind Farm",
+    "bmu_id": "T_TWSHW-1",
+    "ngc_bmu_id": "TWSHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Twentyshilling Hill Wind Farm"
   }
 ]
