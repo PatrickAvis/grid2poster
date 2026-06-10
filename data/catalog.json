@@ -24,6 +24,18 @@
           "hint": "Grid-scale stations & farms; Elexon BMU links (OSM power=plant)",
           "defaultOn": true
         },
+        "bm_activity_bid": {
+          "type": "geojson",
+          "path": "regions/uk/reference/operational/bmu_activity_latest.json",
+          "label": "BM bids",
+          "hint": "Accepted bids (reduce generation) from latest ISPSTACK period"
+        },
+        "bm_activity_offer": {
+          "type": "geojson",
+          "path": "regions/uk/reference/operational/bmu_activity_latest.json",
+          "label": "BM offers",
+          "hint": "Accepted offers (increase generation) from latest ISPSTACK period"
+        },
         "turbines": {
           "type": "pmtiles",
           "path": "regions/uk/map/turbines.pmtiles",

@@ -5,6 +5,17 @@ const POPUP_KEY_LABELS = {
   bmu_id: "BMU",
   ngc_bmu_id: "NGC BMU ID",
   bmu_type: "BMU type",
+  plant_name: "Plant",
+  side: "Side",
+  volume_mwh: "Volume (MWh)",
+  abs_volume_mwh: "Abs volume (MWh)",
+  price_gbp_mwh: "Price (£/MWh)",
+  bid_offer_pair_id: "Bid-offer pair",
+  action_count: "Actions",
+  settlement_date: "Settlement date",
+  settlement_period: "Settlement period",
+  start_time: "Start time",
+  created_datetime: "Published",
 };
 
 function esriWorldImageryPreview(lat, lon) {

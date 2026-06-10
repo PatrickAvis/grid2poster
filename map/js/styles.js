@@ -211,6 +211,33 @@ export function generatorPolygonStyle(props) {
   };
 }
 
+function bmActivityRadius(props) {
+  const volume = Number(props.abs_volume_mwh ?? Math.abs(Number(props.volume_mwh) || 0));
+  return Math.max(5, Math.min(18, 4 + Math.sqrt(Math.max(volume, 0)) * 1.5));
+}
+
+export function bmActivityBidMarkerStyle(props) {
+  return {
+    radius: bmActivityRadius(props),
+    fillColor: "#c62828",
+    color: "#ffffff",
+    weight: 1.5,
+    opacity: 0.95,
+    fillOpacity: 0.88,
+  };
+}
+
+export function bmActivityOfferMarkerStyle(props) {
+  return {
+    radius: bmActivityRadius(props),
+    fillColor: "#2e7d32",
+    color: "#ffffff",
+    weight: 1.5,
+    opacity: 0.95,
+    fillOpacity: 0.88,
+  };
+}
+
 export function converterMarkerStyle() {
   return {
     radius: 5,

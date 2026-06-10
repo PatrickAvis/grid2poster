@@ -45,6 +45,7 @@ Enable **brotli** or **gzip** for `.geojson` — compressed payloads are often 5
 | `data/shared/` | Yes (fuel taxonomy) |
 | `data/regions/{id}/map/` | Yes |
 | `data/regions/uk/reference/generated/plant_bmu_links.json` | Yes (UK plant ↔ BMU join for popups) |
+| `data/regions/uk/reference/operational/bmu_activity_latest.json` | Yes, if serving the BM bids/offers snapshot |
 | `data/regions/{id}/zones/` | If used (e.g. UK NESO) |
 | `data/regions/{id}/raw/` | **No** — multi-GB OSM exports (prepare `map/` locally first) |
 | `data/regions/{id}/source/` | **No** — local `.osm.pbf` extracts |

@@ -90,7 +90,6 @@ way/723603986,Sutton Mawr Farm,T_SUTB-1,SUTB-1,T,auto,
 way/723603986,Sutton Mawr Farm,T_SUTBS-1,SUTBS-1,T,auto,
 way/725688488,Barton Close Farm,E_BTNHL-1,BTNHL-1,E,auto,
 way/728888402,Middle Treworder Solar Farm,T_MIDMW-1,MIDMW-1,T,auto,
-way/729739568,Baglan Bay Solar Farm - Phase 1,T_BAGED-1,BAGED-1,T,auto,
 way/738926636,Pen y Cymoedd Energy Storage,T_PNYCB-1,PNYCB-1,T,auto,
 way/745132276,North Tenement,V__GWELS001,AG-WSP04G,V,auto,
 way/745132276,North Tenement,2__PSTAT001,CAIRW-2,S,auto,
@@ -206,8 +205,6 @@ way/681690951,South Antrim Phase 11,V__KWELS001,AG-WSP01K,V,auto,
 way/681690951,South Antrim Phase 11,V__KWELS002,AG-WSP02K,V,auto,
 way/681690951,South Antrim Phase 11,T_CLDSW-1,CLDSW-1,T,auto,
 way/681690951,South Antrim Phase 11,2__JEDFE000,SEE-EDF01,G,auto,
-way/681690951,South Antrim Phase 11,T_SHBA-1,SHBA-1,T,auto,
-way/681690951,South Antrim Phase 11,T_SHBA-2,SHBA-2,T,auto,
 way/681690951,South Antrim Phase 11,T_SOKYW-1,SOKYW-1,T,auto,
 way/681690951,South Antrim Phase 11,2__NIMPO000,SSC-ATL01,G,auto,
 way/681690951,South Antrim Phase 11,2__NEDFE000,SSC-EDF01,G,auto,
@@ -231,8 +228,6 @@ way/840181785,South Cathkin Landfill Site,V__KWELS001,AG-WSP01K,V,auto,
 way/840181785,South Cathkin Landfill Site,V__KWELS002,AG-WSP02K,V,auto,
 way/840181785,South Cathkin Landfill Site,T_CLDSW-1,CLDSW-1,T,auto,
 way/840181785,South Cathkin Landfill Site,2__JEDFE000,SEE-EDF01,G,auto,
-way/840181785,South Cathkin Landfill Site,T_SHBA-1,SHBA-1,T,auto,
-way/840181785,South Cathkin Landfill Site,T_SHBA-2,SHBA-2,T,auto,
 way/840181785,South Cathkin Landfill Site,T_SOKYW-1,SOKYW-1,T,auto,
 way/840181785,South Cathkin Landfill Site,2__NIMPO000,SSC-ATL01,G,auto,
 way/840181785,South Cathkin Landfill Site,2__NEDFE000,SSC-EDF01,G,auto,
@@ -325,7 +320,6 @@ way/461434781,Battery Point Power Station,T_WBURB-43,WBURB-43,T,auto,
 way/461434781,Battery Point Power Station,T_WHLWB-1,WHLWB-1,T,auto,
 relation/7868829,Chapel Lane Solar Farm,E_CHAPB-1,CHAPB-1,E,auto,
 relation/7873194,Park Wood,V__BGAZP001,AG-GZP06B,V,auto,
-relation/7873194,Park Wood,T_BAGED-1,BAGED-1,T,auto,
 relation/7873194,Park Wood,T_COYLB-1,COYLB-1,T,auto,
 relation/7873194,Park Wood,T_RICHB-1,RICHB-1,T,auto,
 relation/7873194,Park Wood,T_RICHB-2,RICHB-2,T,auto,
@@ -345,7 +339,6 @@ relation/9455566,Ferry Farm I,T_FIDL-4,FIDL-4,T,auto,
 relation/9455566,Ferry Farm I,T_FIDLST1,FIDLST1,T,auto,
 relation/9539129,Brook Hall Farm Solar Farm,E_BROFB-1,BROFB-1,E,auto,
 relation/9580854,Park House Corner Solar Farm,V__BGAZP001,AG-GZP06B,V,auto,
-relation/9580854,Park House Corner Solar Farm,T_BAGED-1,BAGED-1,T,auto,
 relation/9580854,Park House Corner Solar Farm,T_COYLB-1,COYLB-1,T,auto,
 relation/9580854,Park House Corner Solar Farm,T_RICHB-1,RICHB-1,T,auto,
 relation/9580854,Park House Corner Solar Farm,T_RICHB-2,RICHB-2,T,auto,
@@ -415,8 +408,6 @@ relation/20672496,South Farm Solar Park,V__KWELS001,AG-WSP01K,V,auto,
 relation/20672496,South Farm Solar Park,V__KWELS002,AG-WSP02K,V,auto,
 relation/20672496,South Farm Solar Park,T_CLDSW-1,CLDSW-1,T,auto,
 relation/20672496,South Farm Solar Park,2__JEDFE000,SEE-EDF01,G,auto,
-relation/20672496,South Farm Solar Park,T_SHBA-1,SHBA-1,T,auto,
-relation/20672496,South Farm Solar Park,T_SHBA-2,SHBA-2,T,auto,
 relation/20672496,South Farm Solar Park,T_SOKYW-1,SOKYW-1,T,auto,
 relation/20672496,South Farm Solar Park,2__NIMPO000,SSC-ATL01,G,auto,
 relation/20672496,South Farm Solar Park,2__NEDFE000,SSC-EDF01,G,auto,
@@ -463,7 +454,6 @@ way/521080754,Solar Farm,T_CLVHS-2,CLVHS-2,T,auto,
 way/521080754,Solar Farm,T_LARKS-1,LARKS-1,T,auto,
 way/521080754,Solar Farm,T_TYLNS-1,TYLNS-1,T,auto,
 way/538582328,Park Farm Solar Park,V__BGAZP001,AG-GZP06B,V,auto,
-way/538582328,Park Farm Solar Park,T_BAGED-1,BAGED-1,T,auto,
 way/538582328,Park Farm Solar Park,T_COYLB-1,COYLB-1,T,auto,
 way/538582328,Park Farm Solar Park,T_RICHB-1,RICHB-1,T,auto,
 way/538582328,Park Farm Solar Park,T_RICHB-2,RICHB-2,T,auto,
@@ -532,7 +522,6 @@ way/685751585,Roundponds Farm Solar Park,V__HHABI001,AG-HEL01H,V,auto,
 way/687444711,Lakeside Energy from Waste,T_LKSDB-1,LKSDB-1,T,auto,
 way/687448641,Tilbury Green Power,E_TGP1,TIBG-1,E,auto,
 way/687462872,Park Farm,V__BGAZP001,AG-GZP06B,V,auto,
-way/687462872,Park Farm,T_BAGED-1,BAGED-1,T,auto,
 way/687462872,Park Farm,T_COYLB-1,COYLB-1,T,auto,
 way/687462872,Park Farm,T_RICHB-1,RICHB-1,T,auto,
 way/687462872,Park Farm,T_RICHB-2,RICHB-2,T,auto,
@@ -561,8 +550,6 @@ way/689361309,South Newton Solar Farm,V__KWELS001,AG-WSP01K,V,auto,
 way/689361309,South Newton Solar Farm,V__KWELS002,AG-WSP02K,V,auto,
 way/689361309,South Newton Solar Farm,T_CLDSW-1,CLDSW-1,T,auto,
 way/689361309,South Newton Solar Farm,2__JEDFE000,SEE-EDF01,G,auto,
-way/689361309,South Newton Solar Farm,T_SHBA-1,SHBA-1,T,auto,
-way/689361309,South Newton Solar Farm,T_SHBA-2,SHBA-2,T,auto,
 way/689361309,South Newton Solar Farm,T_SOKYW-1,SOKYW-1,T,auto,
 way/689361309,South Newton Solar Farm,2__NIMPO000,SSC-ATL01,G,auto,
 way/689361309,South Newton Solar Farm,2__NEDFE000,SSC-EDF01,G,auto,
@@ -766,8 +753,8 @@ way/160279522,West Burton B Power Station,T_WBURB-2,WBURB-2,T,auto,
 way/160279522,West Burton B Power Station,T_WBURB-3,WBURB-3,T,auto,
 way/160279522,West Burton B Power Station,T_WBURB-41,WBURB-41,T,auto,
 way/160279522,West Burton B Power Station,T_WBURB-43,WBURB-43,T,auto,
-way/204918278,South Humber Bank Power Station,T_SHBA-1,SHBA-1,T,auto,
-way/204918278,South Humber Bank Power Station,T_SHBA-2,SHBA-2,T,auto,
+way/204918278,South Humber Bank Power Station,T_SHBA-1,SHBA-1,T,manual,South Humber Bank Power Station
+way/204918278,South Humber Bank Power Station,T_SHBA-2,SHBA-2,T,manual,South Humber Bank Power Station
 way/205132626,Killingholme B Power Station,T_KILLSC-1,KILLSC-1,T,auto,
 way/205132626,Killingholme B Power Station,T_KILLSC-2,KILLSC-2,T,auto,
 way/205132626,Killingholme B Power Station,T_KILNS-1,KILNS,T,auto,
@@ -785,8 +772,6 @@ way/310488542,Heysham Nuclear Power Station,T_HEYM28,HEYM28,T,auto,
 way/310488542,Heysham Nuclear Power Station,T_HEYM2-D,HEYM2D-1,T,auto,
 way/331863739,Humber Gateway Wind Farm,T_HMGTO-1,HMGTO-1,T,auto,
 way/331863739,Humber Gateway Wind Farm,T_HMGTO-2,HMGTO-2,T,auto,
-way/331863739,Humber Gateway Wind Farm,T_SHBA-1,SHBA-1,T,auto,
-way/331863739,Humber Gateway Wind Farm,T_SHBA-2,SHBA-2,T,auto,
 way/332532014,Thornton Greener Grid Park,T_BLWNB-1,BLWNB-1,T,auto,
 way/341804043,Westermost Rough Wind Farm,T_WTMSO-1,WTMSO-1,T,auto,
 way/376597488,Little Morton Solar Farm,T_LBAR-1,LBAR-1,T,auto,
@@ -829,8 +814,6 @@ way/695816783,South Kirby Business Park,V__KWELS001,AG-WSP01K,V,auto,
 way/695816783,South Kirby Business Park,V__KWELS002,AG-WSP02K,V,auto,
 way/695816783,South Kirby Business Park,T_CLDSW-1,CLDSW-1,T,auto,
 way/695816783,South Kirby Business Park,2__JEDFE000,SEE-EDF01,G,auto,
-way/695816783,South Kirby Business Park,T_SHBA-1,SHBA-1,T,auto,
-way/695816783,South Kirby Business Park,T_SHBA-2,SHBA-2,T,auto,
 way/695816783,South Kirby Business Park,T_SOKYW-1,SOKYW-1,T,auto,
 way/695816783,South Kirby Business Park,2__NIMPO000,SSC-ATL01,G,auto,
 way/695816783,South Kirby Business Park,2__NEDFE000,SSC-EDF01,G,auto,
@@ -878,8 +861,6 @@ way/730017652,South of Henley Hall,V__KWELS001,AG-WSP01K,V,auto,
 way/730017652,South of Henley Hall,V__KWELS002,AG-WSP02K,V,auto,
 way/730017652,South of Henley Hall,T_CLDSW-1,CLDSW-1,T,auto,
 way/730017652,South of Henley Hall,2__JEDFE000,SEE-EDF01,G,auto,
-way/730017652,South of Henley Hall,T_SHBA-1,SHBA-1,T,auto,
-way/730017652,South of Henley Hall,T_SHBA-2,SHBA-2,T,auto,
 way/730017652,South of Henley Hall,T_SOKYW-1,SOKYW-1,T,auto,
 way/730017652,South of Henley Hall,2__NIMPO000,SSC-ATL01,G,auto,
 way/730017652,South of Henley Hall,2__NEDFE000,SSC-EDF01,G,auto,
@@ -896,7 +877,6 @@ way/743116558,Fell View Farm Phase 1 & 2,E_FELL-1,FELL-1,E,auto,
 way/745490210,Bury Green Farm Solar Park,E_TGP1,TIBG-1,E,auto,
 way/745490226,High Dyke (Mill Farm),T_JGPR-1,JGPR-1,T,auto,
 way/746246315,Park Lane,V__BGAZP001,AG-GZP06B,V,auto,
-way/746246315,Park Lane,T_BAGED-1,BAGED-1,T,auto,
 way/746246315,Park Lane,T_COYLB-1,COYLB-1,T,auto,
 way/746246315,Park Lane,T_RICHB-1,RICHB-1,T,auto,
 way/746246315,Park Lane,T_RICHB-2,RICHB-2,T,auto,
@@ -1012,8 +992,6 @@ way/956548272,South Manchester Resource Recovery Centre,V__KWELS001,AG-WSP01K,V,
 way/956548272,South Manchester Resource Recovery Centre,V__KWELS002,AG-WSP02K,V,auto,
 way/956548272,South Manchester Resource Recovery Centre,T_CLDSW-1,CLDSW-1,T,auto,
 way/956548272,South Manchester Resource Recovery Centre,2__JEDFE000,SEE-EDF01,G,auto,
-way/956548272,South Manchester Resource Recovery Centre,T_SHBA-1,SHBA-1,T,auto,
-way/956548272,South Manchester Resource Recovery Centre,T_SHBA-2,SHBA-2,T,auto,
 way/956548272,South Manchester Resource Recovery Centre,T_SOKYW-1,SOKYW-1,T,auto,
 way/956548272,South Manchester Resource Recovery Centre,2__NIMPO000,SSC-ATL01,G,auto,
 way/956548272,South Manchester Resource Recovery Centre,2__NEDFE000,SSC-EDF01,G,auto,
@@ -1063,7 +1041,6 @@ way/1168910658,Burwell Solar Farm,E_BURWB-1,BURWB-1,E,auto,
 way/1168910658,Burwell Solar Farm,E_BURWB-2,BURWB-2,E,auto,
 way/1168910658,Burwell Solar Farm,E_BURWB-3,BURWB-3,E,auto,
 way/1187840776,High Woods Solar Farm,T_JGPR-1,JGPR-1,T,auto,
-way/1189809901,Capenhurst Battery Energy Storage,T_CAPNB-1,CAPNB-1,T,auto,
 way/1233495394,Peterborough STOR,E_PETEM1,PETEM1,E,auto,
 way/1233495394,Peterborough STOR,E_PETEM3,PETEM3,E,auto,
 way/1233495808,Brigg STOR,V__MCEND001,AG-CBS08M,V,auto,
@@ -1090,7 +1067,7 @@ way/1355411460,Hyde BESS,2__NHYDE000,SSC-SSE01,G,auto,
 way/1364038290,Lakeside Energy Park,T_LKSDB-1,LKSDB-1,T,auto,
 way/1409249776,Stairfoot Battery Storage & 33kV substation,E_BARNB-1,BARNB-1,E,auto,
 way/1419346810,Monk Fryston Battery Storage,T_MKFRB-1,MKFRB-1,T,auto,
-way/1419408503,Capenhurst Lane BESS,T_CAPNB-1,CAPNB-1,T,auto,
+way/1419408503,Capenhurst Lane BESS,T_CAPNB-1,CAPNB-1,T,manual,Capenhurst Lane BESS
 way/1419436615,Native River BESS,T_NTRVB-1,NTRVB-1,T,auto,
 way/1465335629,Solar Farm,T_BLPFS-1,BLPFS-1,T,auto,
 way/1465335629,Solar Farm,T_CLVHS-1,CLVHS-1,T,auto,
@@ -1123,8 +1100,6 @@ relation/20683940,South Lowfield Farm,V__KWELS001,AG-WSP01K,V,auto,
 relation/20683940,South Lowfield Farm,V__KWELS002,AG-WSP02K,V,auto,
 relation/20683940,South Lowfield Farm,T_CLDSW-1,CLDSW-1,T,auto,
 relation/20683940,South Lowfield Farm,2__JEDFE000,SEE-EDF01,G,auto,
-relation/20683940,South Lowfield Farm,T_SHBA-1,SHBA-1,T,auto,
-relation/20683940,South Lowfield Farm,T_SHBA-2,SHBA-2,T,auto,
 relation/20683940,South Lowfield Farm,T_SOKYW-1,SOKYW-1,T,auto,
 relation/20683940,South Lowfield Farm,2__NIMPO000,SSC-ATL01,G,auto,
 relation/20683940,South Lowfield Farm,2__NEDFE000,SSC-EDF01,G,auto,
@@ -1221,8 +1196,6 @@ relation/19310205,South Fambridge Hall - Solar farm,V__KWELS001,AG-WSP01K,V,auto
 relation/19310205,South Fambridge Hall - Solar farm,V__KWELS002,AG-WSP02K,V,auto,
 relation/19310205,South Fambridge Hall - Solar farm,T_CLDSW-1,CLDSW-1,T,auto,
 relation/19310205,South Fambridge Hall - Solar farm,2__JEDFE000,SEE-EDF01,G,auto,
-relation/19310205,South Fambridge Hall - Solar farm,T_SHBA-1,SHBA-1,T,auto,
-relation/19310205,South Fambridge Hall - Solar farm,T_SHBA-2,SHBA-2,T,auto,
 relation/19310205,South Fambridge Hall - Solar farm,T_SOKYW-1,SOKYW-1,T,auto,
 relation/19310205,South Fambridge Hall - Solar farm,2__NIMPO000,SSC-ATL01,G,auto,
 relation/19310205,South Fambridge Hall - Solar farm,2__NEDFE000,SSC-EDF01,G,auto,
@@ -1284,8 +1257,6 @@ way/675355861,South Lees Farm,V__KWELS001,AG-WSP01K,V,auto,
 way/675355861,South Lees Farm,V__KWELS002,AG-WSP02K,V,auto,
 way/675355861,South Lees Farm,T_CLDSW-1,CLDSW-1,T,auto,
 way/675355861,South Lees Farm,2__JEDFE000,SEE-EDF01,G,auto,
-way/675355861,South Lees Farm,T_SHBA-1,SHBA-1,T,auto,
-way/675355861,South Lees Farm,T_SHBA-2,SHBA-2,T,auto,
 way/675355861,South Lees Farm,T_SOKYW-1,SOKYW-1,T,auto,
 way/675355861,South Lees Farm,2__NIMPO000,SSC-ATL01,G,auto,
 way/675355861,South Lees Farm,2__NEDFE000,SSC-EDF01,G,auto,
@@ -1339,8 +1310,6 @@ way/681746420,South Creake Solar Power Station,V__KWELS001,AG-WSP01K,V,auto,
 way/681746420,South Creake Solar Power Station,V__KWELS002,AG-WSP02K,V,auto,
 way/681746420,South Creake Solar Power Station,T_CLDSW-1,CLDSW-1,T,auto,
 way/681746420,South Creake Solar Power Station,2__JEDFE000,SEE-EDF01,G,auto,
-way/681746420,South Creake Solar Power Station,T_SHBA-1,SHBA-1,T,auto,
-way/681746420,South Creake Solar Power Station,T_SHBA-2,SHBA-2,T,auto,
 way/681746420,South Creake Solar Power Station,T_SOKYW-1,SOKYW-1,T,auto,
 way/681746420,South Creake Solar Power Station,2__NIMPO000,SSC-ATL01,G,auto,
 way/681746420,South Creake Solar Power Station,2__NEDFE000,SSC-EDF01,G,auto,
@@ -1447,12 +1416,6 @@ way/616340682,Wind Farm,T_DBBWO-3,DBBWO-3,T,manual,Candidate match: bmUnitName=D
 way/616340682,Wind Farm,T_DBBWO-4,DBBWO-4,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/616340682,Wind Farm,T_DBBWO-5,DBBWO-5,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/616340682,Wind Farm,T_GORDW-2,GORDW-2,T,manual,Candidate match: bmUnitName=Gordonbush WF Extension; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616340682,Wind Farm,T_SGRWO-1,SGRWO-1,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616340682,Wind Farm,T_SGRWO-2,SGRWO-2,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616340682,Wind Farm,T_SGRWO-3,SGRWO-3,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616340682,Wind Farm,T_SGRWO-4,SGRWO-4,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616340682,Wind Farm,T_SGRWO-5,SGRWO-5,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616340682,Wind Farm,T_SGRWO-6,SGRWO-6,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 6; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/951797053,Hirwaun,T_HIRWN-1,HIRWN-1,T,manual,Candidate match: bmUnitName=Hirwaun 1; fuelType=OCGT; confidence=medium; reason=site_name_bmUnitName;fuel_mismatch; fuel_compatible=False
 way/616339818,Wind Farm,T_DBAWO-1,DBAWO-1,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/616339818,Wind Farm,T_DBAWO-2,DBAWO-2,T,manual,Candidate match: bmUnitName=Dogger Bank A Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
@@ -1465,12 +1428,6 @@ way/616339818,Wind Farm,T_DBBWO-3,DBBWO-3,T,manual,Candidate match: bmUnitName=D
 way/616339818,Wind Farm,T_DBBWO-4,DBBWO-4,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/616339818,Wind Farm,T_DBBWO-5,DBBWO-5,T,manual,Candidate match: bmUnitName=Dogger Bank B Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/616339818,Wind Farm,T_GORDW-2,GORDW-2,T,manual,Candidate match: bmUnitName=Gordonbush WF Extension; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616339818,Wind Farm,T_SGRWO-1,SGRWO-1,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 1; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616339818,Wind Farm,T_SGRWO-2,SGRWO-2,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616339818,Wind Farm,T_SGRWO-3,SGRWO-3,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616339818,Wind Farm,T_SGRWO-4,SGRWO-4,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616339818,Wind Farm,T_SGRWO-5,SGRWO-5,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 5; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-way/616339818,Wind Farm,T_SGRWO-6,SGRWO-6,T,manual,Candidate match: bmUnitName=Seagreen1 Offshore WF 6; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/956007730,Broxburn Battery Storage,E_BROXB-1,BROXB-1,E,manual,Candidate match: bmUnitName=BroxburnBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 way/1122850401,Whitelee Wind Farm Battery Storage,T_WHILW-1,WHILW-1,T,manual,Candidate match: bmUnitName=T_WHILW-1; fuelType=WIND; confidence=medium; reason=compact_site_name_oc2_BMGROUP_NAME;fuel_mismatch; fuel_compatible=False
 way/1421373804,Cathkin BESS,E_CATHB-1,CATHB-1,E,manual,Candidate match: bmUnitName=CathkinBattery; fuelType=OTHER; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
@@ -1564,3 +1521,59 @@ relation/19293473,Tye Lane - Solar Power Station,T_TYLNB-1,TYLNB-1,T,manual,Cand
 1254849361,Moray West Wind Farm,T_MOWWO-2,MOWWO-2,T,manual,Candidate match: bmUnitName=Moray West OWF2; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 1254849361,Moray West Wind Farm,T_MOWWO-3,MOWWO-3,T,manual,Candidate match: bmUnitName=Moray West OWF3; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
 1254849361,Moray West Wind Farm,T_MOWWO-4,MOWWO-4,T,manual,Candidate match: bmUnitName=Moray West OWF4; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
+manual/baglan-bay,Baglan Bay CCGT Power Station,T_BAGE-1,BAGE-1,T,manual,Baglan Bay CCGT unit 1
+manual/baglan-bay,Baglan Bay CCGT Power Station,T_BAGE-2,BAGE-2,T,manual,Baglan Bay CCGT unit 2
+manual/baglan-bay,Baglan Bay CCGT Power Station,T_BAGED-1,BAGED-1,T,manual,Baglan Energy Park demand unit; same site
+manual/viking-energy,Viking Energy Windfarm,T_VKNGW-1,VKNGW-1,T,manual,Viking Energy Windfarm BMU-1
+manual/viking-energy,Viking Energy Windfarm,T_VKNGW-2,VKNGW-2,T,manual,Viking Energy Windfarm BMU-2
+manual/viking-energy,Viking Energy Windfarm,T_VKNGW-3,VKNGW-3,T,manual,Viking Energy Windfarm BMU-3
+manual/viking-energy,Viking Energy Windfarm,T_VKNGW-4,VKNGW-4,T,manual,Viking Energy Windfarm BMU-4
+manual/stronelairg,Stronelairg Windfarm,T_STLGW-1,STLGW-1,T,manual,Stronelairg Windfarm 1
+manual/stronelairg,Stronelairg Windfarm,T_STLGW-2,STLGW-2,T,manual,Stronelairg Windfarm 2
+manual/stronelairg,Stronelairg Windfarm,T_STLGW-3,STLGW-3,T,manual,Stronelairg Windfarm 3
+19268061,Seagreen Offshore Wind Farm,T_SGRWO-1,SGRWO-1,T,manual,Seagreen1 Offshore WF 1
+19268061,Seagreen Offshore Wind Farm,T_SGRWO-2,SGRWO-2,T,manual,Seagreen1 Offshore WF 2
+19268061,Seagreen Offshore Wind Farm,T_SGRWO-3,SGRWO-3,T,manual,Seagreen1 Offshore WF 3
+19268061,Seagreen Offshore Wind Farm,T_SGRWO-4,SGRWO-4,T,manual,Seagreen1 Offshore WF 4
+19268061,Seagreen Offshore Wind Farm,T_SGRWO-5,SGRWO-5,T,manual,Seagreen1 Offshore WF 5
+19268061,Seagreen Offshore Wind Farm,T_SGRWO-6,SGRWO-6,T,manual,Seagreen1 Offshore WF 6
+manual/thame-road-bess,Thame Road BESS,E_THMRB-1,THMRB-1,E,manual,Thame Road BESS
+1152542223,Blackhillock BESS,T_BLHLB-1,BLHLB-1,T,manual,Blackhillock BESS 1
+1152542223,Blackhillock BESS,T_BLHLB-2,BLHLB-2,T,manual,Blackhillock BESS 2
+1152542223,Blackhillock BESS,T_BLHLB-3,BLHLB-3,T,manual,Blackhillock BESS 3
+1152542223,Blackhillock BESS,T_BLHLB-4,BLHLB-4,T,manual,Blackhillock BESS 4
+1152542223,Blackhillock BESS,T_BLHLD-1,BLHLD-1,T,manual,Blackhillock BESS demand 1
+1152542223,Blackhillock BESS,T_BLHLD-2,BLHLD-2,T,manual,Blackhillock BESS demand 2
+1152542223,Blackhillock BESS,T_BLHLD-3,BLHLD-3,T,manual,Blackhillock BESS demand 3
+way/1342452259,Kilmarnock South BESS,T_KILSB-1,KILSB-1,T,manual,Kilmarnock South BESS 1
+way/1342452259,Kilmarnock South BESS,T_KILSB-2,KILSB-2,T,manual,Kilmarnock South BESS 2
+way/1342452259,Kilmarnock South BESS,T_KILSB-3,KILSB-3,T,manual,Kilmarnock South BESS 3
+way/1342452259,Kilmarnock South BESS,T_KILSB-4,KILSB-4,T,manual,Kilmarnock South BESS 4
+way/1342452259,Kilmarnock South BESS,T_KILSB-5,KILSB-5,T,manual,Kilmarnock South BESS 5
+way/1342452259,Kilmarnock South BESS,T_KILSB-6,KILSB-6,T,manual,Kilmarnock South BESS 6
+manual/andershaw-wind-farm,Andershaw Wind Farm,E_ASHWW-1,ASHWW-1,E,manual,Andershaw Wind Farm
+manual/achruach-wind-farm,AChruach Wind Farm,T_ACHRW-1,ACHRW-1,T,manual,AChruach Wind Farm
+manual/afton-wind-farm,Afton Wind Farm,T_AFTOW-1,AFTOW-1,T,manual,Afton Wind Farm
+manual/baillie-wind-farm,Baillie Wind Farm,E_BABAW-1,BABAW-1,E,manual,Baillie Wind Farm
+manual/baillie-wind-farm,Baillie Wind Farm,T_BEINW-1,BEINW-1,T,manual,Baillie Wind Farm
+manual/blackcraig-wind-farm,Blackcraig Wind Farm,T_BLKWW-1,BLKWW-1,T,manual,Blackcraig Wind Farm
+way/1176283907,Clay Tye BESS,E_CLAYB-1,CLAYB-1,E,manual,Clay Tye BESS 1
+way/1176283907,Clay Tye BESS,E_CLAYB-2,CLAYB-2,E,manual,Clay Tye BESS 2
+manual/pines-burn-wind-farm,Pines Burn Wind Farm,E_PIBUW-1,PIBUW-1,E,manual,Pines Burn Wind Farm
+manual/toddleburn-wind-farm,Toddleburn,T_TDBNW-1,TDBNW-1,T,manual,Toddleburn
+manual/minnygap-wind-farm,Minnygap Wind Farm,T_MYGPW-1,MYGPW-1,T,manual,Minnygap Wind Farm
+manual/limekiln-wind-farm,Limekiln Wind Farm,T_LIMKW-1,LIMKW-1,T,manual,Limekiln Wind Farm
+manual/rampion-wind-farm,Rampion Wind Farm,T_RMPNO-1,RMPNO-1,T,manual,Rampion Wind Farm 1
+manual/rampion-wind-farm,Rampion Wind Farm,T_RMPNO-2,RMPNO-2,T,manual,Rampion Wind Farm 2
+manual/kilgallioch-wind-farm,Kilgallioch Wind Farm,T_KLGLW-1,KLGLW-1,T,manual,Kilgallioch Wind Farm
+manual/creag-riabhach-wind-farm,Creag Riabhach Wind Farm,T_CREAW-1,CREAW-1,T,manual,Creag Riabhach Wind Farm
+manual/edinbane-wind-farm,Edinbane Windfarm,T_EDINW-1,EDINW-1,T,manual,Edinbane Windfarm
+manual/coire-na-cloiche-wind-farm,Coire Na Cloiche Wind Farm,E_CNCLW-1,CNCLW-1,E,manual,Coire Na Cloiche Wind Farm
+manual/conon-cascade,Conon Cascade,M_CAS-CON01,CAS-CON01,T,manual,Conon Cascade
+manual/garry-cascade,Garry Cascade,M_CAS-GAR01,CAS-GAR01,T,manual,Garry Cascade
+100549593,Aigas-Beauly Power Station,M_CAS-BEU01,CAS-BEU01,T,manual,Aigas-Beauly Power Station
+562892205,Glenmoriston Power Station,M_CAS-MOR01,CAS-MOR01,T,manual,Glenmoriston Power Station
+way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-1,PINFB-1,T,manual,Capenhurst Battery Energy Storage 1
+way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-2,PINFB-2,T,manual,Capenhurst Battery Energy Storage 2
+way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-3,PINFB-3,T,manual,Capenhurst Battery Energy Storage 3
+way/1189809901,Capenhurst Battery Energy Storage,T_PINFB-4,PINFB-4,T,manual,Capenhurst Battery Energy Storage 4

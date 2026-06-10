@@ -220,6 +220,28 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     return container;
   }
 
+  function filterLayerFeatures(features, layerConfig) {
+    const sideFilter = layerConfig.sideFilter;
+    return features.filter((feature) => {
+      const props = feature.properties || {};
+      if (sideFilter && String(props.side || "").toLowerCase() !== sideFilter) {
+        return false;
+      }
+      if (zoneFilter.geometry && layerConfig.filterable) {
+        const latlon = getLatLon(props, feature);
+        return latlon && zoneFilter.pointInside(latlon[0], latlon[1], zoneFilter.geometry);
+      }
+      return true;
+    });
+  }
+
+  function createPointMarker(latlng, feature, layerConfig) {
+    const [latOffset = 0, lngOffset = 0] = layerConfig.markerOffset || [];
+    const position = L.latLng(latlng.lat + latOffset, latlng.lng + lngOffset);
+    const props = feature.properties || {};
+    return L.circleMarker(position, layerConfig.styleFn(props));
+  }
+
   function buildGeoJsonLayer(layerKey, data, layerConfig) {
     if (layerKey === "lines") {
       return createLineLayer(data, layerConfig);
@@ -236,13 +258,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     if (layerConfig.zoneLayer) {
       return zoneFilter.createZoneLayer(data, layerConfig.zoneLayer);
     }
-    const features = zoneFilter.geometry && layerConfig.filterable
-      ? (data.features || []).filter((feature) => {
-        const props = feature.properties || {};
-        const latlon = getLatLon(props, feature);
-        return latlon && zoneFilter.pointInside(latlon[0], latlon[1], zoneFilter.geometry);
-      })
-      : (data.features || []);
+    const features = filterLayerFeatures(data.features || [], layerConfig);
     return L.geoJSON(
       { type: "FeatureCollection", features },
       {
@@ -250,7 +266,7 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
           ? (feature) => layerConfig.styleFn(feature.properties || {})
           : undefined,
         pointToLayer: layerConfig.pointLayer
-          ? (feature, latlng) => L.circleMarker(latlng, layerConfig.styleFn(feature.properties || {}))
+          ? (feature, latlng) => createPointMarker(latlng, feature, layerConfig)
           : undefined,
         onEachFeature: (feature, layer) => {
           const props = feature.properties || {};
@@ -673,6 +689,12 @@ export function createLayerManager(map, regionConfig, zoneFilter) {
     }
     if (layerCache.etys_boundaries?.loaded) {
       parts.push(`${layerCache.etys_boundaries.count.toLocaleString()} ETYS boundaries`);
+    }
+    if (layerCache.bm_activity_bid?.loaded) {
+      parts.push(`${layerCache.bm_activity_bid.count.toLocaleString()} BM bids`);
+    }
+    if (layerCache.bm_activity_offer?.loaded) {
+      parts.push(`${layerCache.bm_activity_offer.count.toLocaleString()} BM offers`);
     }
     if (zoneFilter.label) parts.push(`filter: ${zoneFilter.label}`);
     if (!parts.length) {

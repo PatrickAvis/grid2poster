@@ -1,1 +1,21 @@
 osm_id,name,operator,plant:source,plant:output:electricity,latitude,longitude,capacity_mw,source_bucket,notes
+manual/baglan-bay,Baglan Bay CCGT Power Station,Baglan Operations Ltd,gas,532 MW,51.614526,-3.835173,532,gas_ccgt,Absent from OSM plant export; coords from operator data
+manual/viking-energy,Viking Energy Windfarm,Viking Energy Wind Farm LLP,wind,487 MW,60.2727,-1.2392,487.2,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/stronelairg,Stronelairg Windfarm,Stronelairg Windfarm Limited,wind,324 MW,57.09853,-4.44068,324,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/thame-road-bess,Thame Road BESS,Tesla Motors Limited,battery,49.5 MW,51.749146,-0.888607,49.5,battery,Absent from OSM plant export; coords from operator data
+manual/andershaw-wind-farm,Andershaw Wind Farm,Statkraft Markets Gmbh,wind,35 MW,55.5093,-3.8463,35,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/achruach-wind-farm,AChruach Wind Farm,Mobius Renewables Gen. (GB2),wind,42.6 MW,56.12748,-5.34365,42.6,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/afton-wind-farm,Afton Wind Farm,Afton Wind Farm Limited,wind,50 MW,55.31161,-4.16848,50,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/baillie-wind-farm,Baillie Wind Farm,Statkraft Markets Gmbh,wind,52.5 MW,54.602733,-3.503099,52.5,wind_onshore,Absent from OSM plant export; E_BABAW-1 and T_BEINW-1
+manual/blackcraig-wind-farm,Blackcraig Wind Farm,Blackcraig Wind Farm Limited,wind,56.2 MW,55.128768,-4.056825,56.216,wind_onshore,Absent from OSM plant export; coords from Blackcraig Substation
+manual/pines-burn-wind-farm,Pines Burn Wind Farm,Npower Commercial Gas Limited,wind,36 MW,55.34217,-2.72556,36,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/toddleburn-wind-farm,Toddleburn,SSE Generation Ltd,wind,31.6 MW,55.76837,-2.87283,31.6,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/minnygap-wind-farm,Minnygap Wind Farm,Minnygap Energy Limited,wind,25 MW,55.25205,-3.53209,25,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/limekiln-wind-farm,Limekiln Wind Farm,Limekiln Extension Ltd,wind,106 MW,58.52329,-3.7423,106,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/rampion-wind-farm,Rampion Wind Farm,Rampion Offshore Windfarm Ltd,wind,400 MW,50.6651,-0.2071,400.2,wind,Absent from OSM plant export; T_RMPNO-1 and T_RMPNO-2
+manual/kilgallioch-wind-farm,Kilgallioch Wind Farm,SP Renewables (UK) Limited,wind,228 MW,55.01749,-4.7754,228,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/creag-riabhach-wind-farm,Creag Riabhach Wind Farm,Creag Riabhach Wind Farm Ltd,wind,93 MW,58.22001,-4.51092,93,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/edinbane-wind-farm,Edinbane Windfarm,Vattenfall Wind Power Ltd,wind,41.4 MW,57.43091,-6.41947,41.4,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/coire-na-cloiche-wind-farm,Coire Na Cloiche Wind Farm,Statkraft Markets Gmbh,wind,30.52 MW,57.79054,-4.37826,30.52,wind_onshore,Absent from OSM plant export; coords from operator data
+manual/conon-cascade,Conon Cascade,SSE Generation Ltd,hydro,95.226 MW,57.554,-4.598,95.226,hydro_non_pumped,Absent from OSM plant export; coords from operator data
+manual/garry-cascade,Garry Cascade,SSE Generation Ltd,hydro,40 MW,57.07297,-4.77719,40,hydro_non_pumped,Absent from OSM plant export; coords from operator data

@@ -227,17 +227,72 @@ python scripts/propose_plant_bmu_map.py --fetch
 python scripts/prepare_map_data.py --region uk --skip-plants
 ```
 
-#### Manual BMU corrections
+#### Updating BMU
 
-1. Open `data/regions/uk/reference/editable/plant_bmu_links.csv`.
-2. Add or edit rows (set `source` to `manual`).
-3. Regenerate: `python scripts/propose_plant_bmu_map.py`
+Most BMU files are **generated reports** or **reference lookups**. You usually only edit two files:
+
+| File | When |
+| --- | --- |
+| `data/regions/uk/reference/editable/plant_bmu_links.csv` | Link a BMU to an OSM site (almost always) |
+| `data/regions/uk/reference/editable/manual_plants.csv` | Site is missing from OSM entirely (rare) |
+
+Everything else is produced by scripts or used for lookup only:
+
+```
+Elexon BMUs          OSM plant sites
+     │                      │
+     │    plant_bmu_links.csv  ← you edit this
+     └──────────┬─────────────┘
+                ▼
+         plant_bmu_links.json  ← script writes; map reads
+```
+
+**Workflow (three steps)**
+
+1. **Pick a BMU to fix** — use any unmapped review list as a to-do (they overlap):
+   - `reference/generated/bmu_unmapped_displayable.csv` — displayable Elexon BMUs not yet linked
+   - `reference/operational/bmu_unmapped_ispstack.csv` — cumulative review queue of BMUs seen in ISPSTACK but not linked (`active_latest` marks the latest snapshot)
+   - `reference/generated/plants_without_bmu_links.csv` — OSM sites with no BMU row yet
+2. **Find the OSM site** — search the map (BMU-mapped sites layer), or grep `map/bmu_sites_web.geojson` for name/operator. Note the `osm_id` (e.g. `way/1419408503`). Elexon fields (`bmu_id`, `ngc_bmu_id`, `bmUnitType`) come from the review CSV.
+3. **Add a row and regenerate** — one row per BMU; multi-unit stations share the same `osm_id`:
+
+```csv
+osm_id,plant_name,bmu_id,ngc_bmu_id,bmu_type,source,notes
+way/1419408503,Capenhurst Lane BESS,T_PINFB-1,PINFB-1,T,manual,
+```
+
+```powershell
+python scripts/propose_plant_bmu_map.py
+```
+
+If you use BM activity, refresh the snapshot afterwards: `python scripts/fetch_bm_activity.py`.
+
+**Files you can ignore day to day**
+
+| File | Role |
+| --- | --- |
+| `reference/generated/plant_bmu_links.json` | Auto-generated — do not edit |
+| `reference/generated/bmu_unmapped_*.csv` | Auto-generated to-do lists |
+| `reference/generated/plant_bmu_link_candidates.csv` | Optional auto-suggestions |
+| `reference/generated/bmu_reference_only.csv` | Supplier/virtual BMUs — usually not one map pin |
+| `reference/source/elexon_bmu_units.json` | Elexon download — lookup only |
+| `map/bmu_sites_web.geojson` | OSM geometry — edit only if the site itself is wrong or missing |
 
 #### Deploy
 
 Sync `data/regions/uk/reference/generated/plant_bmu_links.json` with the map (see [`map/DEPLOY.md`](map/DEPLOY.md)).
 
 **Licence:** BMU standing data is published by [Elexon](https://www.elexon.co.uk/) via the [Insights API](https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all).
+
+### UK BM activity snapshot
+
+Fetch the latest available Elexon ISPSTACK settlement period and export a refreshable static map layer:
+
+```powershell
+python scripts/fetch_bm_activity.py
+```
+
+This writes `data/regions/uk/reference/operational/bmu_activity_latest.json` for the **BM bids** and **BM offers** map layers, plus merges `data/regions/uk/reference/operational/bmu_unmapped_ispstack.csv` — a growing review queue of BMUs seen in ISPSTACK but not yet linked. Rows are removed automatically once you map the BMU in `plant_bmu_links.csv`. Use `--reset-unmapped-ispstack` to replace the queue from scratch.
 
 ### NESO zone boundaries (`scripts/fetch_neso_zones.py`)
 

@@ -394,13 +394,13 @@ E_BERKB-2,BERKB-2,Berkeley BESS,,E,C,52.000,EDF Energy Customers Limited,Midland
 2__BCMRO002,BFSE03,2__BCMRO002,,S,C,0.000,BGI Trading Limited,East Midlands,,reference_only,False
 2__BJERE000,BJERE000,2__BJERE000,,G,C,0.000,Shell Energy UK Limited,East Midlands,,reference_only,False
 E_BLARW-1,BLARW-1,E_BLARW-1,WIND,E,C,35.000,Erova Energy Limited,North Scotland,,reference_only,False
-T_BLHLB-1,BLHLB-1,T_BLHLB-1,OTHER,T,C,50.000,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
-T_BLHLB-2,BLHLB-2,T_BLHLB-2,OTHER,T,C,50.420,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
-T_BLHLB-3,BLHLB-3,T_BLHLB-3,OTHER,T,C,54.000,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
-T_BLHLB-4,BLHLB-4,T_BLHLB-4,OTHER,T,C,54.420,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
-T_BLHLD-1,BLHLD-1,T_BLHLD-1,,T,C,0.423,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
-T_BLHLD-2,BLHLD-2,T_BLHLD-2,,T,C,0.363,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
-T_BLHLD-3,BLHLD-3,T_BLHLD-3,,T,C,0.367,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,False
+T_BLHLB-1,BLHLB-1,T_BLHLB-1,OTHER,T,C,50.000,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
+T_BLHLB-2,BLHLB-2,T_BLHLB-2,OTHER,T,C,50.420,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
+T_BLHLB-3,BLHLB-3,T_BLHLB-3,OTHER,T,C,54.000,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
+T_BLHLB-4,BLHLB-4,T_BLHLB-4,OTHER,T,C,54.420,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
+T_BLHLD-1,BLHLD-1,T_BLHLD-1,,T,C,0.423,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
+T_BLHLD-2,BLHLD-2,T_BLHLD-2,,T,C,0.363,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
+T_BLHLD-3,BLHLD-3,T_BLHLD-3,,T,C,0.367,ZENOBE BLACKHILLOCK LIMITED,,,reference_only,True
 E_BLKPB-1,BLKPB-1,Blackpool,,E,C,25.300,Conrad Energy (Trading) Ltd,North Western,,reference_only,True
 T_BLWNB-1,BLWNB-1,Thornton Battery,OTHER,T,C,200.000,Statkraft Markets Gmbh,,,reference_only,True
 V__GFORS002,BNCRG-1,V__GFORS002,,V,P,20.000,Forsa Trading Limited,North Western,,reference_only,False
@@ -1879,12 +1879,12 @@ E_KHLLW-1,KHLLW-1,Kirk Hill WF,WIND,E,C,18.800,Unify Energy Limited,South Scotla
 T_KILLSC-1,KILLSC-1,Killingholme Synch Comp 1,,T,C,0.000,Uniper UK Limited,,,reference_only,True
 T_KILLSC-2,KILLSC-2,Killingholme Synch Comp 2,,T,C,0.000,Uniper UK Limited,,,reference_only,True
 T_KILNS-1,KILNS,Centrica Killingholme,,T,,,Centrica KPS Limited,,,reference_only,True
-T_KILSB-1,KILSB-1,T_KILSB-1,,T,C,52.952,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,False
-T_KILSB-2,KILSB-2,T_KILSB-2,,T,C,51.894,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,False
-T_KILSB-3,KILSB-3,T_KILSB-3,,T,C,53.734,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,False
-T_KILSB-4,KILSB-4,T_KILSB-4,,T,C,51.904,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,False
-T_KILSB-5,KILSB-5,T_KILSB-5,,T,C,50.856,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,False
-T_KILSB-6,KILSB-6,T_KILSB-6,,T,C,51.226,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,False
+T_KILSB-1,KILSB-1,T_KILSB-1,,T,C,52.952,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
+T_KILSB-2,KILSB-2,T_KILSB-2,,T,C,51.894,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
+T_KILSB-3,KILSB-3,T_KILSB-3,,T,C,53.734,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
+T_KILSB-4,KILSB-4,T_KILSB-4,,T,C,51.904,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
+T_KILSB-5,KILSB-5,T_KILSB-5,,T,C,50.856,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
+T_KILSB-6,KILSB-6,T_KILSB-6,,T,C,51.226,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
 2__KJERE000,KJERE000,2__KJERE000,,G,C,0.000,Shell Energy UK Limited,South Wales,,reference_only,False
 V__FCEND001,KNAPB-1,V__FCEND001,,V,C,0.000,Centrica Business Solutions UK,Northern,,reference_only,False
 2__PMARB002,KNLCV-1,Kinlochleven Hydro,,S,C,0.000,Marble Power Limited,NORTH of SCOTLAND GSP,,reference_only,True
@@ -2160,10 +2160,10 @@ T_PEHE-2,PEHE-2,Peterhead Unit 2,,T,C,0.000,SSE Thermal Generation,,,reference_o
 T_PEHED-1,PEHED-1,Peterhead Stn Txs,,T,C,0.000,SSE Thermal Generation,,,reference_only,True
 E_PETEM3,PETEM3,Peterborough Power 3,OTHER,E,C,49.227,River Nene Power Limited,Eastern,,reference_only,True
 T_PGBIW-1,PGBIW-1,Pogbie WF,WIND,T,C,10.000,EDF Energy Customers Limited,,,reference_only,False
-T_PINFB-1,PINFB-1,T_PINFB-1,OTHER,T,C,27.080,Zenobe Capenhurst Limited,,,reference_only,False
-T_PINFB-2,PINFB-2,T_PINFB-2,OTHER,T,C,26.000,Zenobe Capenhurst Limited,,,reference_only,False
-T_PINFB-3,PINFB-3,T_PINFB-3,OTHER,T,C,26.000,Zenobe Capenhurst Limited,,,reference_only,False
-T_PINFB-4,PINFB-4,T_PINFB-4,OTHER,T,C,26.000,Zenobe Capenhurst Limited,,,reference_only,False
+T_PINFB-1,PINFB-1,T_PINFB-1,OTHER,T,C,27.080,Zenobe Capenhurst Limited,,,reference_only,True
+T_PINFB-2,PINFB-2,T_PINFB-2,OTHER,T,C,26.000,Zenobe Capenhurst Limited,,,reference_only,True
+T_PINFB-3,PINFB-3,T_PINFB-3,OTHER,T,C,26.000,Zenobe Capenhurst Limited,,,reference_only,True
+T_PINFB-4,PINFB-4,T_PINFB-4,OTHER,T,C,26.000,Zenobe Capenhurst Limited,,,reference_only,True
 T_PINFD-5,PINFD-5,T_PINFD-5,,T,C,0.000,Zenobe Capenhurst Limited,,,reference_only,False
 T_PINFD-6,PINFD-6,T_PINFD-6,,T,C,0.000,Zenobe Capenhurst Limited,,,reference_only,False
 2__PJERE000,PJERE000,2__PJERE000,,G,C,0.000,Shell Energy UK Limited,NORTH of SCOTLAND GSP,,reference_only,False

@@ -78,7 +78,7 @@ python scripts/propose_plant_bmu_map.py --fetch
 | Path | Role |
 |------|------|
 | `reference/source/elexon_bmu_units.json` | Elexon BMU registry (auto-fetched) |
-| `reference/source/elexon_bmu_fuel_types.csv` | Flat BMU standing data export |
+| `reference/source/elexon_bmu_fuel_types.csv` | Flat BMU standing data export (same family as [Elexon BMU fuel type XLS](https://www.elexon.co.uk/documents/data/operational-data/bmu-fuel-type/)) |
 | `reference/source/elexon_bmu_oc2_aliases.csv` | NGC ↔ settlement ↔ OC2 site aliases |
 | `reference/editable/plant_bmu_links.csv` | **Your join table** — edit this |
 | `reference/editable/manual_plants.csv` | Manual plant assets absent from OSM |
@@ -133,28 +133,34 @@ Elexon Insights ISPSTACK / detailed system price stack:
 
 - BMU ID, buy/sell side, settlement date/period, volume, price, bid-offer pair ID
 
-### Pipeline (planned)
+### Pipeline
 
 1. Fetch latest settlement date and period.
 2. Fetch ISPSTACK buy and sell stacks.
-3. Normalize into `operational/ispstack_actions` (or SQLite table).
+3. Normalize and aggregate actions by mapped site/BMU.
 4. Join to `plant_bmu_links`.
 5. Export `operational/bmu_activity_latest.json` for the map.
 6. Export `operational/bmu_unmapped_ispstack.csv` for review.
 
-### Map behaviour (planned)
+### Map behaviour
 
-- Highlight plants with current BM actions.
-- Colour by buy/sell; size by volume.
-- Popup: BMU ID, side, price, volume, settlement period.
+- Separate optional layers for bids (reduce generation) and offers (increase generation).
+- Marker size by absolute volume; small offset when both sides are shown at one site.
+- Popup: BMU ID, price, volume, settlement period.
+
+Refresh the static snapshot:
+
+```powershell
+python scripts/fetch_bm_activity.py
+```
 
 ## Active But Unmapped BMUs
 
 Use ISPSTACK to identify BMUs active in balancing but not linked to any mapped plant.
 
-Output: `reference/operational/bmu_unmapped_ispstack.csv`
+Output: `reference/operational/bmu_unmapped_ispstack.csv` — cumulative review queue enriched from `elexon_bmu_units.json`; merges each fetch, drops mapped BMUs, sets `active_latest` for the current snapshot.
 
-Priority sorting: repeated appearances, total volume, high price, operational fuel type.
+[Elexon BMU fuel type spreadsheet](https://www.elexon.co.uk/documents/data/operational-data/bmu-fuel-type/) is a useful manual cross-check when identifying unmapped active BMUs; refresh standing data with `python scripts/fetch_bmu_reference.py` or `python scripts/propose_plant_bmu_map.py --fetch`.
 
 Workflow: fetch ISPSTACK → compare with `plant_bmu_links` → enrich from `elexon_bmu_units` → write review CSV → update editable tables → regenerate JSON.
 
@@ -176,13 +182,3 @@ Keep browser outputs as static JSON; do not make the frontend read SQLite direct
 
 SQLite matches the portable per-region folder model. PostgreSQL/PostGIS becomes worthwhile for multi-user editing, large historical ISPSTACK archives, and server-backed live dashboards.
 
-## Readable Names (Planned)
-
-Enrich plant-BMU exports and popups with:
-
-- `asset_name` (OSM/manual plant name)
-- `bmu_name` (Elexon `bmUnitName`)
-- `bmu_site_name` (OC2 alias)
-- `bmu_fuel_type`
-
-Popup label priority for BMUs: OC2 site alias → Elexon name → NGC ID → BMU ID.

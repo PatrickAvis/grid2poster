@@ -88,6 +88,17 @@ Add manual BMU links in `plant_bmu_links.csv` (one row per BMU unit; use `source
 
 `prepare_map_data.py --region uk` uses the same OSM merge for plants. To rebuild plants from OSM and discard edits: `python scripts/sync_uk_plants.py --force`.
 
+### UK BM activity snapshot
+
+```powershell
+python scripts/fetch_bm_activity.py
+```
+
+This fetches the latest available Elexon ISPSTACK settlement period and writes:
+
+- `data/regions/uk/reference/operational/bmu_activity_latest.json` for the **BM bids** and **BM offers** layers.
+- `data/regions/uk/reference/operational/bmu_unmapped_ispstack.csv` for active BMUs that still need mapping.
+
 ```powershell
 # Any catalog region
 python scripts/export_region.py --region fr --all

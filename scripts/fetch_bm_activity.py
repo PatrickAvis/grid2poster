@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""Fetch latest Elexon ISPSTACK activity and export map-ready BM activity files."""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
+from bmu_operational import (  # noqa: E402
+    BM_ACTIVITY_LATEST_PATH,
+    BM_UNMAPPED_ISPSTACK_PATH,
+    fetch_ispstack_sides,
+    latest_available_period,
+    write_activity_outputs,
+)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Fetch Elexon ISPSTACK bid/offer activity, join mapped BMUs to "
+            "BMU-mapped sites, and write reference/operational outputs."
+        ),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument("--settlement-date", default=None, help="Settlement date YYYY-MM-DD")
+    parser.add_argument("--settlement-period", type=int, default=None, help="Settlement period")
+    parser.add_argument(
+        "--bid-offer",
+        choices=["all", "bid", "offer"],
+        default="all",
+        help="'all' fetches both Elexon bid and offer stacks",
+    )
+    parser.add_argument("--plants", type=Path, default=None, help="BMU-mapped sites GeoJSON")
+    parser.add_argument("--output", type=Path, default=BM_ACTIVITY_LATEST_PATH)
+    parser.add_argument("--unmapped-output", type=Path, default=BM_UNMAPPED_ISPSTACK_PATH)
+    parser.add_argument("--timeout", type=int, default=60, help="HTTP timeout in seconds")
+    parser.add_argument(
+        "--reset-unmapped-ispstack",
+        action="store_true",
+        help="Replace the cumulative unmapped ISPSTACK queue instead of merging",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    if args.settlement_date and args.settlement_period:
+        settlement_date = args.settlement_date
+        settlement_period = args.settlement_period
+    elif args.settlement_date or args.settlement_period:
+        print(
+            "--settlement-date and --settlement-period must be supplied together",
+            file=sys.stderr,
+        )
+        return 2
+    else:
+        settlement_date, settlement_period = latest_available_period(timeout=args.timeout)
+
+    rows = fetch_ispstack_sides(
+        bid_offer=args.bid_offer,
+        settlement_date=settlement_date,
+        settlement_period=settlement_period,
+        timeout=args.timeout,
+    )
+    activity_path, unmapped_path, counts = write_activity_outputs(
+        rows,
+        settlement_date=settlement_date,
+        settlement_period=settlement_period,
+        plants_path=args.plants,
+        activity_path=args.output,
+        unmapped_path=args.unmapped_output,
+        reset_unmapped_ispstack=args.reset_unmapped_ispstack,
+    )
+
+    print(
+        f"Fetched {counts['input_rows']:,} ISPSTACK rows for "
+        f"{settlement_date} SP{settlement_period}",
+    )
+    print(f"Wrote {counts['mapped_actions']:,} mapped actions to {activity_path.relative_to(REPO_ROOT)}")
+    print(
+        f"Unmapped ISPSTACK queue: {counts['unmapped_actions']:,} total "
+        f"({counts['snapshot_unmapped']:,} this snapshot, "
+        f"{counts['queue_added']:,} new, {counts['queue_updated']:,} updated, "
+        f"{counts['queue_active_latest']:,} active latest) -> "
+        f"{unmapped_path.relative_to(REPO_ROOT)}",
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
