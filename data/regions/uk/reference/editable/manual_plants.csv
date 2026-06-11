@@ -38,3 +38,5 @@ manual/cour-wind-farm,Cour Wind Farm,Cour Wind farm (Scotland) Ltd,wind,20.5 MW,
 manual/carraig-gheal-wind-farm,Carraig Gheal Wind Farm,Statkraft Markets Gmbh,wind,46 MW,56.33713,-5.27363,46,wind_onshore,Absent from OSM plant export; T_CRGHW-1
 manual/corriegarth-wind-farm,Corriegarth Wind Farm,Corriegarth Wind Energy LTD,wind,69 MW,57.18805,-4.36074,69,wind_onshore,Absent from OSM plant export; T_CGTHW-1
 manual/burn-of-whilk-wind-farm,Burn of Whilk Wind Farm,Eneco Energy Trade,wind,22.5 MW,58.35491,-3.2142,22.5,wind_onshore,Absent from OSM plant export; E_BNWKW-1
+manual/brentwood-bess,Brentwood BESS,EDF Energy Customers Limited,battery,52 MW,51.6405,0.362,52,battery,Absent from OSM plant export; E_BRETB-1/2; east of Shenfield substation
+manual/green-knowes-wind-farm,Green Knowes Wind Farm,ScottishPower Renewables,wind,27 MW,56.24726,-3.66553,27,wind_onshore,Absent from OSM plant export; V__PHABI006 Glendevon

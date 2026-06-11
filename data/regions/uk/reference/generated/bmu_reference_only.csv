@@ -11,8 +11,8 @@ V__HADEL002,AG-ADL05H,V__HADEL002,,V,P,0.000,Adela Energy Ltd,Southern,,referenc
 2__AECOT003,AG-AECO01,ECOT_VPP_10,,S,C,0.000,ECOTRICITY LIMITED,Eastern,,reference_only,False
 2__ALOND001,AG-AEDF01,EDFE Aggregate Eastern 01,,S,C,0.000,EDF Energy Customers Limited,Eastern,,reference_only,False
 2__ALOND002,AG-AEDF02,EDFE Aggregate Eastern 02,,S,C,0.000,EDF Energy Customers Limited,Eastern GSP Group,,reference_only,False
-2__ALOND003,AG-AEDF03,EDFE Aggregate East Eng 3,,S,C,0.000,EDF Energy Customers Limited,Eastern,,reference_only,True
-2__ALOND004,AG-AEDF04,EDFE Aggregate East Eng 4,,S,C,0.000,EDF Energy Customers Limited,Eastern,,reference_only,True
+2__ALOND003,AG-AEDF03,EDFE Aggregate East Eng 3,,S,C,0.000,EDF Energy Customers Limited,Eastern,,reference_only,False
+2__ALOND004,AG-AEDF04,EDFE Aggregate East Eng 4,,S,C,0.000,EDF Energy Customers Limited,Eastern,,reference_only,False
 2__AFLEX001,AG-AFLX01,2__AFLEX001,,S,C,49.000,Flexitricity Limited,Eastern GSP Group,,reference_only,False
 2__AFLEX002,AG-AFLX02,2__AFLEX002,,S,C,49.000,Flexitricity Limited,Eastern GSP Group,,reference_only,False
 2__AFLEX003,AG-AFLX03,2__AFLEX003,,S,C,49.000,Flexitricity Limited,Eastern,,reference_only,False
@@ -34,7 +34,7 @@ V__HADEL002,AG-ADL05H,V__HADEL002,,V,P,0.000,Adela Energy Ltd,Southern,,referenc
 2__ASTAT008,AG-ASTK08,STAT_A9,,S,C,16.000,Statkraft Markets Gmbh,Eastern,,reference_only,False
 2__ASTAT009,AG-ASTK09,STAT_A10,,S,C,12.000,Statkraft Markets Gmbh,Eastern,,reference_only,False
 2__ASTAT099,AG-ASTK99,STAT_A99,,S,C,8.000,Statkraft Markets Gmbh,Eastern,,reference_only,False
-2__AUKPR001,AG-AUKP01,UKPR East,,S,C,20.000,UK Power Reserve Limited,Eastern,,reference_only,True
+2__AUKPR001,AG-AUKP01,UKPR East,,S,C,20.000,UK Power Reserve Limited,Eastern,,reference_only,False
 2__AUKPR002,AG-AUKP02,2__AUKPR002,,S,C,20.000,UK Power Reserve Limited,Eastern,,reference_only,False
 2__AUKPR003,AG-AUKP03,2__AUKPR003,,S,C,20.000,UK Power Reserve Limited,Eastern,,reference_only,False
 V__KAXLE001,AG-AXL00K,V__KAXLE001,,V,C,0.000,Axle Energy Limited,South Wales,,reference_only,False
@@ -60,14 +60,14 @@ V__KAXLE001,AG-AXL00K,V__KAXLE001,,V,C,0.000,Axle Energy Limited,South Wales,,re
 2__BSTAT003,AG-BSTK03,STAT_B4,,S,C,16.000,Statkraft Markets Gmbh,East Midlands,,reference_only,False
 2__BSTAT004,AG-BSTK04,STAT_B5,,S,C,10.000,Statkraft Markets Gmbh,East Midlands,,reference_only,False
 2__BSTAT099,AG-BSTK99,STAT_B99,,S,C,8.000,Statkraft Markets Gmbh,East Midlands,,reference_only,False
-2__BUKPR001,AG-BUKP01,UKPR East Mids,,S,C,10.359,UK Power Reserve Limited,East Midlands,,reference_only,True
+2__BUKPR001,AG-BUKP01,UKPR East Mids,,S,C,10.359,UK Power Reserve Limited,East Midlands,,reference_only,False
 2__BUKPR002,AG-BUKP02,2__BUKPR002,,S,C,20.000,UK Power Reserve Limited,East Midlands,,reference_only,False
 2__BUKPR003,AG-BUKP03,2__BUKPR003,,S,C,20.000,UK Power Reserve Limited,East Midlands,,reference_only,False
 V__LCEND001,AG-CBS02L,Wavehub,,V,P,0.000,Centrica Business Solutions UK,South Western,,reference_only,False
 V__LCEND005,AG-CBS05L,V__LCEND005,,V,P,0.000,Centrica Business Solutions UK,South Western,,reference_only,False
 V__BCEND004,AG-CBS06B,V__BCEND004,,V,P,0.000,Centrica Business Solutions UK,East Midlands,,reference_only,False
 V__ECEND007,AG-CBS07B,V__ECEND007,,V,P,0.000,Centrica Business Solutions UK,Midlands,,reference_only,False
-V__MCEND001,AG-CBS08M,Brigg Battery,,V,P,0.000,Centrica Business Solutions UK,Yorkshire,,reference_only,True
+V__MCEND001,AG-CBS08M,Brigg Battery,,V,P,0.000,Centrica Business Solutions UK,Yorkshire,,reference_only,False
 2__CMRCY001,AG-COCT00,2__CMRCY001,,S,C,2.300,Octopus Energy Limited,London,,reference_only,False
 2__CMRCY002,AG-COCT01,AG-COCT01,,S,C,0.000,Octopus Energy Limited,London,,reference_only,False
 2__CPADD001,AG-CPAD01,Padd_DSR,,S,C,0.000,Fuse Energy Supply Limited,London,,reference_only,False
@@ -215,14 +215,14 @@ V__EGBLO025,AG-GBL0PE,V__EGBLO025,,V,C,0.000,GridBeyond Limited,Midlands,,refere
 2__GSTAT099,AG-GSTK99,STAT_G99,,S,C,6.000,Statkraft Markets Gmbh,North Western,,reference_only,False
 2__GUKPR001,AG-GUKP01,UKPR NW,,S,C,20.000,UK Power Reserve Limited,North Western,,reference_only,False
 V__KGAZP001,AG-GZP03K,Rhymney,,V,C,0.000,SEFE Marketing & Trading LTD,South Wales,,reference_only,False
-V__KGAZP002,AG-GZP04K,Brecon,,V,C,0.000,SEFE Marketing & Trading LTD,South Wales,,reference_only,True
+V__KGAZP002,AG-GZP04K,Brecon,,V,C,0.000,SEFE Marketing & Trading LTD,South Wales,,reference_only,False
 V__EGAZP001,AG-GZP05E,Hem Heath,,V,C,0.000,SEFE Marketing & Trading LTD,Midlands,,reference_only,False
-V__BGAZP001,AG-GZP06B,Staveley Energy Park,,V,C,0.000,SEFE Marketing & Trading LTD,East Midlands,,reference_only,True
+V__BGAZP001,AG-GZP06B,Staveley Energy Park,,V,C,0.000,SEFE Marketing & Trading LTD,East Midlands,,reference_only,False
 V__GGAZP001,AG-GZP07G,Haydock,,V,C,0.000,SEFE Marketing & Trading LTD,North Western,,reference_only,False
 V__MGAZP001,AG-GZP08M,Houghton,,V,C,0.000,SEFE Marketing & Trading LTD,Yorkshire Electricity,,reference_only,False
-V__BHABI013,AG-HAB01B,Willoughby,,V,C,0.000,Habitat Energy Limited,East Midlands,,reference_only,True
+V__BHABI013,AG-HAB01B,Willoughby,,V,C,0.000,Habitat Energy Limited,East Midlands,,reference_only,False
 V__GHABI016,AG-HAB01D,Gipsy Lane,,V,C,0.000,Habitat Energy Limited,North Western,,reference_only,False
-V__FHABI014,AG-HAB01F,Flatworth,,V,C,0.000,Habitat Energy Limited,Northern,,reference_only,True
+V__FHABI014,AG-HAB01F,Flatworth,,V,C,0.000,Habitat Energy Limited,Northern,,reference_only,False
 V__JHABI009,AG-HAB01J,Potmans Lane,,V,C,0.000,Habitat Energy Limited,South Eastern,,reference_only,False
 V__PHABI010,AG-HAB01P,Boat of Garten,OTHER,V,C,0.000,Habitat Energy Limited,North Scotland,,reference_only,False
 V__BHABI012,AG-HAB02B,Grendon,,V,C,0.000,Habitat Energy Limited,East Midlands,,reference_only,False
@@ -231,14 +231,14 @@ V__PHABI011,AG-HAB02P,Braco,,V,C,0.000,Habitat Energy Limited,North Scotland,,re
 V__PHABI015,AG-HAB03P,Orchardbank,,V,C,0.000,Habitat Energy Limited,North Scotland,,reference_only,False
 2__HLOND001,AG-HEDF01,EDFE Aggregate S E 01,,S,C,29.782,EDF Energy Customers Limited,Southern,,reference_only,False
 2__HLOND002,AG-HEDF02,EDFE Aggregate S Eng 02,,S,C,52.000,EDF Energy Customers Limited,Southern,,reference_only,False
-2__HLOND003,AG-HEDF03,EDF Aggregate South England 3,,S,C,8.000,EDF Energy Customers Limited,Southern,,reference_only,True
-V__GHABI001,AG-HEL00G,Red Scar,,V,C,0.000,Habitat Energy Limited,North Western,,reference_only,True
-V__HHABI001,AG-HEL01H,Roundponds,,V,C,0.000,Habitat Energy Limited,Southern,,reference_only,True
+2__HLOND003,AG-HEDF03,EDF Aggregate South England 3,,S,C,8.000,EDF Energy Customers Limited,Southern,,reference_only,False
+V__GHABI001,AG-HEL00G,Red Scar,,V,C,0.000,Habitat Energy Limited,North Western,,reference_only,False
+V__HHABI001,AG-HEL01H,Roundponds,,V,C,0.000,Habitat Energy Limited,Southern,,reference_only,False
 V__GHABI002,AG-HEL0AG,Gipsy Lane,,V,P,0.000,Habitat Energy Limited,North Western,,reference_only,False
-V__AHABI003,AG-HEL0BA,Wickham,,V,C,0.000,Habitat Energy Limited,Eastern GSP Group,,reference_only,True
+V__AHABI003,AG-HEL0BA,Wickham,,V,C,0.000,Habitat Energy Limited,Eastern GSP Group,,reference_only,False
 V__PHABI004,AG-HEL0CP,Fordtown,OTHER,V,C,0.000,Habitat Energy Limited,North Scotland,,reference_only,True
-V__NHABI005,AG-HEL0DN,Camilla,OTHER,V,C,0.000,Habitat Energy Limited,South Scotland,,reference_only,True
-V__PHABI006,AG-HEL0EP,Glendevon,OTHER,V,C,0.000,Habitat Energy Limited,North Scotland,,reference_only,False
+V__NHABI005,AG-HEL0DN,Camilla,OTHER,V,C,0.000,Habitat Energy Limited,South Scotland,,reference_only,False
+V__PHABI006,AG-HEL0EP,Glendevon,OTHER,V,C,0.000,Habitat Energy Limited,North Scotland,,reference_only,True
 2__HFLEX001,AG-HFLX01,2__HFLEX001,,S,C,49.000,Flexitricity Limited,Southern,,reference_only,False
 2__HFLEX002,AG-HFLX02,2__HFLEX002,,S,C,49.000,Flexitricity Limited,Southern,,reference_only,False
 2__HANGE001,AG-HLIM01,2__HANGE001,,S,C,50.000,Limejump Energy Limited,Southern,,reference_only,False
@@ -269,7 +269,7 @@ V__PHABI006,AG-HEL0EP,Glendevon,OTHER,V,C,0.000,Habitat Energy Limited,North Sco
 2__JSTAT002,AG-JSTK02,STAT_J3,,S,C,6.305,Statkraft Markets Gmbh,South Eastern,,reference_only,False
 2__JSTAT003,AG-JSTK03,STAT_J4,,S,C,22.000,Statkraft Markets Gmbh,South Eastern,,reference_only,False
 2__JSTAT099,AG-JSTK99,STAT_J99,,S,C,4.000,Statkraft Markets Gmbh,South Eastern,,reference_only,False
-2__JUKPR001,AG-JUKP01,UKPR S East,,S,C,50.000,UK Power Reserve Limited,South Eastern,,reference_only,True
+2__JUKPR001,AG-JUKP01,UKPR S East,,S,C,50.000,UK Power Reserve Limited,South Eastern,,reference_only,False
 2__KFLEX001,AG-KFLX01,2__KFLEX001,,S,C,49.000,Flexitricity Limited,South Wales,,reference_only,False
 2__KFLEX002,AG-KFLX02,2__KFLEX002,,S,C,49.000,Flexitricity Limited,South Wales,,reference_only,False
 2__KANGE001,AG-KLIM01,2__KANGE001,,S,C,50.000,Limejump Energy Limited,South Wales,,reference_only,False
@@ -302,7 +302,7 @@ C__LSTAT020,AG-LSTK05,C__LSTAT020-AR4-LSF-700,,S,C,62.000,Statkraft Markets Gmbh
 2__LSTAT099,AG-LSTK99,STAT_L99,,S,C,6.000,Statkraft Markets Gmbh,South Western,,reference_only,False
 2__LUKPR001,AG-LUKP01,UKPR S West,,S,C,10.200,UK Power Reserve Limited,South Western,,reference_only,False
 2__MCMRO002,AG-MCAM01,2__MCMRO002,,S,C,36.844,BGI Trading Limited,Yorkshire,,reference_only,False
-2__MCNDL002,AG-MCET01,Brigg DG-2,,S,C,48.528,NEAS Energy Ltd.,Yorkshire,,reference_only,True
+2__MCNDL002,AG-MCET01,Brigg DG-2,,S,C,48.528,NEAS Energy Ltd.,Yorkshire,,reference_only,False
 2__MECOT003,AG-MECO01,2__MECOT003,,S,C,0.000,ECOTRICITY LIMITED,Yorkshire Electricity,,reference_only,False
 2__MFLEX001,AG-MFLX01,2__MFLEX001,,S,C,49.000,Flexitricity Limited,Yorkshire,,reference_only,False
 2__MFLEX002,AG-MFLX02,2__MFLEX002,,S,C,49.000,Flexitricity Limited,Yorkshire,,reference_only,False
@@ -364,11 +364,11 @@ V__BJOUL001,AG-POW01B,V__BJOUL001,,V,C,1.500,Joulen,East Midlands,,reference_onl
 2__PSTAT003,AG-PSTK01,STAT_P4,,S,C,6.000,Statkraft Markets Gmbh,North Scotland,,reference_only,False
 2__LECOT003,AG-REC05L,ECOT_VPP_22,,S,C,10.000,ECOTRICITY LIMITED,South Western,,reference_only,False
 2__BECOT003,AG-REC06B,ECOT_VPP_11,,S,C,16.000,ECOTRICITY LIMITED,East Midlands,,reference_only,False
-V__HWELS001,AG-WSP00H,Welsh Power Southern 1,,V,P,0.000,Welsh Power Group Limited,Southern,,reference_only,True
-V__KWELS001,AG-WSP01K,Welsh Power South Wales 1,,V,P,0.000,Welsh Power Group Limited,South Wales,,reference_only,True
-V__KWELS002,AG-WSP02K,Welsh Power South Wales 2,,V,P,0.000,Welsh Power Group Limited,South Wales,,reference_only,True
-V__HWELS002,AG-WSP03H,Welsh Power Southern 2,,V,P,0.000,Welsh Power Group Limited,Southern,,reference_only,True
-V__GWELS001,AG-WSP04G,Welsh Power North West 1,,V,P,0.000,Welsh Power Group Limited,North Western,,reference_only,True
+V__HWELS001,AG-WSP00H,Welsh Power Southern 1,,V,P,0.000,Welsh Power Group Limited,Southern,,reference_only,False
+V__KWELS001,AG-WSP01K,Welsh Power South Wales 1,,V,P,0.000,Welsh Power Group Limited,South Wales,,reference_only,False
+V__KWELS002,AG-WSP02K,Welsh Power South Wales 2,,V,P,0.000,Welsh Power Group Limited,South Wales,,reference_only,False
+V__HWELS002,AG-WSP03H,Welsh Power Southern 2,,V,P,0.000,Welsh Power Group Limited,Southern,,reference_only,False
+V__GWELS001,AG-WSP04G,Welsh Power North West 1,,V,P,0.000,Welsh Power Group Limited,North Western,,reference_only,False
 V__DWELS001,AG-WSP05D,MANWEB 1,,V,P,0.000,Welsh Power Group Limited,Merseyside and North Wales,,reference_only,False
 V__DWELS002,AG-WSP06D,MANWEB 2,,V,P,0.000,Welsh Power Group Limited,Merseyside and North Wales,,reference_only,False
 V__JZENO001,AG-ZEN03J,V__JZENO001,OTHER,V,C,0.000,BESS Holdco 2 Limited,South Eastern,,reference_only,False
@@ -409,9 +409,9 @@ T_BPGRD-2,BPGRD-2,T_BPGRD-2,,T,C,0.000,Smartestenergy Limited,,,reference_only,F
 T_BRCHS-1,BRCHS-1,T_BRCHS-1,OTHER,T,C,50.000,Burwell 11 Solar Ltd,,,reference_only,False
 E_BRDUW-1,BRDUW-1,Braes of Doune,WIND,E,C,74.000,Erova Energy Limited,North Scotland,,reference_only,False
 T_BREDB-1,BREDB-1,BREDBURY BESS,,T,C,49.900,Pivoted Power LLP,,,reference_only,True
-E_BRETB-1,BRETB-1,Brentwood BESS,,E,C,52.000,EDF Energy Customers Limited,Eastern,,reference_only,False
-E_BRETB-2,BRETB-2,Brentwood BESS,,E,C,52.000,EDF Energy Customers Limited,Eastern,,reference_only,False
-2__MCNDL001,BRGDG-1,Brigg DG,,S,C,51.433,NEAS Energy Ltd.,Yorkshire,,reference_only,True
+E_BRETB-1,BRETB-1,Brentwood BESS,,E,C,52.000,EDF Energy Customers Limited,Eastern,,reference_only,True
+E_BRETB-2,BRETB-2,Brentwood BESS,,E,C,52.000,EDF Energy Customers Limited,Eastern,,reference_only,True
+2__MCNDL001,BRGDG-1,Brigg DG,,S,C,51.433,NEAS Energy Ltd.,Yorkshire,,reference_only,False
 E_BRGG-1,BRGG-1,Glanford Brigg,CCGT,E,C,50.000,CBS ENERGY STORAGE ASSETS LTD,Yorkshire,,reference_only,True
 E_BRIDGWTR,BRIDU-1,Bridgwater Power Station,,E,C,10.180,UK Power Reserve Limited,South Western,,reference_only,False
 E_BRNLW-1,BRNLW-1,Brownieleys,WIND,E,C,7.500,ENGIE Power Limited,North Scotland,,reference_only,False
@@ -426,8 +426,8 @@ E_BURWB-3,BURWB-3,Burwell 2,,E,C,30.000,EDF Energy Customers Limited,Eastern,,re
 T_BURWS-1,BURWS-1,Beechgreen Energy Farm,OTHER,T,C,49.952,EDF Energy Customers Limited,,,reference_only,True
 T_BUSTB-1,BUSTB-1,Pivot Power Bustleholme,,T,C,52.237,Pivoted Power LLP,,,reference_only,True
 2__GCMRO001,BUXTB-1,2__GCMRO001,,S,C,16.379,BGI Trading Limited,North Western,,reference_only,False
-2__NCPPR001,BYBRB-1,Byers Brae,,S,C,30.000,Octopus Energy Trading Limited,South Scotland,,reference_only,True
-2__PSTAT001,CAIRW-2,STAT P2 North Scotland,WIND,S,C,42.000,Statkraft Markets Gmbh,North Scotland,,reference_only,True
+2__NCPPR001,BYBRB-1,Byers Brae,,S,C,30.000,Octopus Energy Trading Limited,South Scotland,,reference_only,False
+2__PSTAT001,CAIRW-2,STAT P2 North Scotland,WIND,S,C,42.000,Statkraft Markets Gmbh,North Scotland,,reference_only,False
 2__MBPGM001,CAMFB-1,Camblesforth BESS,,S,C,10.000,BP Gas Marketing Limited,Yorkshire,,reference_only,False
 2__PSMAE001,CAUSW-1,2__PSMAE001,WIND,S,C,0.000,Smartestenergy Limited,North Scotland,,reference_only,False
 V__MCEND002,CBSDIS03M,Allen Diesels,,V,P,0.000,Centrica Business Solutions UK,Yorkshire,,reference_only,False
@@ -457,7 +457,7 @@ T_DEAND-1,DEAND-1,Deanie Station Demand,,T,C,0.000,SSE Generation Ltd,,,referenc
 2__NSMAE001,DNBAR-1,2__NSMAE001,BIOMASS,S,C,33.386,Smartestenergy Limited,South Scotland,,reference_only,False
 T_DNGB21,DNGB21,Dungeness B Generator 21,NUCLEAR,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
 T_DNGB22,DNGB22,Dungeness B Generator 22,NUCLEAR,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
-T_DNGB-D,DNGBD-1,Dungeness B Station Demand,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,True
+T_DNGB-D,DNGBD-1,Dungeness B Station Demand,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
 E_DOWL-1,DOWL-1,Dowlais II,OTHER,E,C,21.020,Conrad Energy (Trading) Ltd,South Wales,,reference_only,True
 E__MDRX002,DRAXD-2,Drax FGD Load,,E,P,0.000,Drax Power Ltd,Yorkshire,,reference_only,True
 I_EAD-BRTN1,EAD-BRTN1,BritNed ND Dem Account,,I,C,0.000,NESO,,BRITNED,reference_only,False
@@ -530,7 +530,7 @@ T_ELVAD-1,ELVAD-1,T_ELVAD-1,,T,C,2.000,EDF Energy Customers Limited,,,reference_
 2__BBIZZ000,EMD-BIZ01,2__BBIZZ000,,G,C,0.000,British Gas Trading Ltd,East Midlands,,reference_only,False
 2__BBULN000,EMD-BRT01,2__BBULN000,,G,C,0.000,Bryt Energy Limited,East Midlands,,reference_only,False
 2__BEELC000,EMD-EAS01,2__BEELC000,,G,C,0.000,E.ON Energy Solutions Limited,East Midlands,,reference_only,False
-2__BEDFE000,EMD-EDF01,EDFE_East Midlands,,G,C,0.000,EDF Energy Customers Limited,East Midlands,,reference_only,True
+2__BEDFE000,EMD-EDF01,EDFE_East Midlands,,G,C,0.000,EDF Energy Customers Limited,East Midlands,,reference_only,False
 2__BEDIR000,EMD-EDR01,2__BEDIR000,,G,C,0.000,British Gas Trading Ltd,East Midlands,,reference_only,False
 2__BENRD000,EMD-ENR01,2__BENRD000,,G,C,8.000,British Gas Trading Ltd,East Midlands,,reference_only,False
 2__BEOND000,EMD-EON01,2__BEOND000,,G,C,14.000,E.ON Next Energy Ltd,East Midlands,,reference_only,False
@@ -538,13 +538,13 @@ T_ELVAD-1,ELVAD-1,T_ELVAD-1,,T,C,2.000,EDF Energy Customers Limited,,,reference_
 2__BRWED000,EMD-GDF01,2__BRWED000,,G,C,10.000,ENGIE Power Limited,East Midlands,,reference_only,False
 2__BHPOW000,EMD-HPW01,2__BHPOW000,,G,C,1.000,Drax Energy Solutions Limited,East Midlands,,reference_only,False
 2__BHAVE000,EMD-HVN01,2__BHAVE000,,G,C,78.800,Drax Energy Solutions Limited,East Midlands,,reference_only,False
-2__BINDE000,EMD-INE01,INDE EAST MIDLANDS,,G,C,0.000,npower limited,East Midlands,,reference_only,True
+2__BINDE000,EMD-INE01,INDE EAST MIDLANDS,,G,C,0.000,npower limited,East Midlands,,reference_only,False
 2__BLOND000,EMD-LON01,LE Default BMUid EMEB,,G,C,100.000,EDF Energy Customers Limited,East Midlands,,reference_only,False
 2__BNUCE000,EMD-MEC01,2__BNUCE000,,G,C,0.000,NDA,East Midlands,,reference_only,False
-2__BMIDE000,EMD-MID01,NPEC East Mid Area MIDE,,G,C,0.000,Npower Limited,East Midlands,,reference_only,True
+2__BMIDE000,EMD-MID01,NPEC East Mid Area MIDE,,G,C,0.000,Npower Limited,East Midlands,,reference_only,False
 2__BMANW000,EMD-MNW01,2__BMANW000,,G,C,0.000,ScottishPower Energy Retail,East Midlands,,reference_only,False
 2__BNEEB000,EMD-NEE01,2__BNEEB000,,G,C,0.000,npower limited,East Midlands,,reference_only,False
-2__BNATP000,EMD-NPE01,NPEC East Mid Area NATP,,G,C,44.000,Npower Commercial Gas Limited,East Midlands,,reference_only,True
+2__BNATP000,EMD-NPE01,NPEC East Mid Area NATP,,G,C,44.000,Npower Commercial Gas Limited,East Midlands,,reference_only,False
 2__BNORW000,EMD-NWP01,2__BNORW000,,G,C,0.000,E.ON Energy Solutions Limited,East Midlands,,reference_only,False
 2__BMRCY000,EMD-OCT01,2__BMRCY000,,G,C,644.280,Octopus Energy Limited,East Midlands,,reference_only,False
 2__BOGAS000,EMD-OGA01,2__BOGAS000,,G,C,0.000,British Gas Trading Ltd,East Midlands,,reference_only,False
@@ -555,22 +555,22 @@ T_ELVAD-1,ELVAD-1,T_ELVAD-1,,T,C,2.000,EDF Energy Customers Limited,,,reference_
 2__BSEEB000,EMD-SEE01,2__BSEEB000,,G,C,0.000,EDF Energy Customers Limited,East Midlands,,reference_only,False
 2__BSMAR000,EMD-SEL01,2__BSMAR000,,G,C,0.000,Smartestenergy Limited,East Midlands,,reference_only,False
 2__BSPOW000,EMD-SPC01,2__BSPOW000,,G,C,0.000,ScottishPower Energy Retail,East Midlands,,reference_only,False
-2__BHYDE000,EMD-SSE01,SSE SBMU1 - East Mid GSPG,,G,C,0.000,OVO Electricity Ltd,East Midlands,,reference_only,True
-2__BSOUT000,EMD-STH01,SE SBMU1 - East Mid GSPG,,G,C,0.000,OVO Electricity Ltd,East Midlands,,reference_only,True
-2__BSWAE000,EMD-SWA01,SWA SBMU1 - East Mid GSPG,,G,C,0.000,OVO Electricity Ltd,East Midlands,,reference_only,True
+2__BHYDE000,EMD-SSE01,SSE SBMU1 - East Mid GSPG,,G,C,0.000,OVO Electricity Ltd,East Midlands,,reference_only,False
+2__BSOUT000,EMD-STH01,SE SBMU1 - East Mid GSPG,,G,C,0.000,OVO Electricity Ltd,East Midlands,,reference_only,False
+2__BSWAE000,EMD-SWA01,SWA SBMU1 - East Mid GSPG,,G,C,0.000,OVO Electricity Ltd,East Midlands,,reference_only,False
 2__BSWEB000,EMD-SWT01,SWEB Default BMUid EMEB,,G,C,0.000,EDF Energy Customers Limited,East Midlands,,reference_only,False
 2__BSYMB000,EMD-SYM01,2__BSYMB000,,G,C,0.000,E.ON Next Energy Ltd,East Midlands,,reference_only,False
 2__BTGPL000,EMD-TFE01,2__BTGPL000,,G,C,163.502,TotalEnergies Gas & Power Ltd,East Midlands,,reference_only,False
 2__BTILL000,EMD-TIL01,2__BTILL000,,G,C,0.000,British Gas Trading Ltd,East Midlands,,reference_only,False
-2__BYELG000,EMD-YEP01,_B  Default BM East Midlands,,G,C,0.000,npower limited,East Midlands,,reference_only,True
+2__BYELG000,EMD-YEP01,_B  Default BM East Midlands,,G,C,0.000,npower limited,East Midlands,,reference_only,False
 V__BEROV001,ERV00B,V__BEROV001,,V,C,0.000,Erova Energy Limited,East Midlands,,reference_only,False
 2__EIMPO002,ESSE01,2__EIMPO002,,S,C,1.900,SSE Energy Supply Limited,Midlands,,reference_only,False
 T_FARR-1,FAARW-1,Farr Unit 1,WIND,T,C,92.000,Smartestenergy Limited,,,reference_only,False
 T_FARR-2,FAARW-2,Farr Unit 2,WIND,T,C,92.000,Smartestenergy Limited,,,reference_only,False
 T_FALGD-1,FALGD-1,Fallago Rig Demand,,T,C,0.000,Fallago Rig Wind Farm Limited,,,reference_only,False
 E_FAWN-1,FAWN-1,Fawley Cogen,CCGT,E,C,155.000,ESSO Petroleum Company Ltd,Southern,,reference_only,True
-2__FBPGM001,FBPG01,Wormald Green BESS,,S,C,40.000,BP Gas Marketing Limited,Northern,,reference_only,True
-2__FBPGM002,FBPG02,Hawthorn Pit BESS,,S,C,60.000,BP Gas Marketing Limited,Northern,,reference_only,True
+2__FBPGM001,FBPG01,Wormald Green BESS,,S,C,40.000,BP Gas Marketing Limited,Northern,,reference_only,False
+2__FBPGM002,FBPG02,Hawthorn Pit BESS,,S,C,60.000,BP Gas Marketing Limited,Northern,,reference_only,False
 E_FDUN-1,FDUNT-1,Fort Dunlop,,E,C,99.000,Whitetower Energy Limited,Midlands,,reference_only,True
 2__FCMRO002,FFSE01,2__FCMRO002,,S,C,0.000,BGI Trading Limited,Northern,,reference_only,False
 2__FCMRO003,FFSE02,2__FCMRO003,,S,C,0.000,BGI Trading Limited,Northern,,reference_only,False
@@ -588,11 +588,11 @@ E_GFLDW-1,GFLDW-1,Goole Fields Wind Farm,,E,C,32.800,Edgware Energy Limited,York
 2__GFSEN006,GFSE02,2__GFSENOK6,,S,C,46.138,F & S Energy Ltd,North Western,,reference_only,False
 2__GJERE000,GJERE000,2__GJERE000,,G,C,0.000,Shell Energy UK Limited,North Western,,reference_only,False
 E_GLCHW-1,GLCHW-1,Glenchamber,WIND,E,C,27.440,ENGIE Power Limited,South Scotland,,reference_only,False
-T_GLEND-1,GLEND-1,Dundreggan Station Demand,,T,C,0.100,SSE Generation Ltd,,,reference_only,True
+T_GLEND-1,GLEND-1,Dundreggan Station Demand,,T,C,0.100,SSE Generation Ltd,,,reference_only,False
 T_GLNDOD1,GLNDOD1,Glendoe Earthing Tx Stn Dem,,T,C,0.000,SSE Generation Ltd,,,reference_only,True
 T_GLNKW-1,GLNKW-1,GLEN KYLLACHY WINDFARM,WIND,T,C,52.000,EDF Energy Customers Limited,,,reference_only,True
 E_GLOFW-1,GLOFW-1,Glens of Foudland,WIND,E,C,26.700,Glens of Foudland Ltd,North Scotland,,reference_only,False
-2__JCPPR002,GLSBB-1,Glassenbury B,,S,C,10.000,Octopus Energy Trading Limited,South Eastern,,reference_only,True
+2__JCPPR002,GLSBB-1,Glassenbury B,,S,C,10.000,Octopus Energy Trading Limited,South Eastern,,reference_only,False
 T_GORDD-1,GORDD-1,Gordonbush Demand,,T,C,0.000,SSE Generation Ltd,,,reference_only,False
 E_GOSHS-1,GOSHS-1,Goose House Lane,,E,C,20.000,Conrad Energy (Trading) Ltd,North Western,,reference_only,True
 T_GOWKD-1,GOWKD-1,T_GOWKD-1,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
@@ -612,15 +612,15 @@ T_HEYM2-D,HEYM2D-1,Heysham 2 Station Demand,,T,P,0.000,EDF Energy Nuclear Genera
 2__HCMRO002,HFSE02,2__HCMRO002,,S,C,0.000,BGI Trading Limited,Southern,,reference_only,False
 T_HINB-7,HINB-7,Hinkley Point B Generator 7,NUCLEAR,T,C,0.000,EDF Energy Nuclear Generation,,,reference_only,False
 T_HINB-8,HINB-8,Hinkley Point B Generator 8,NUCLEAR,T,C,0.000,EDF Energy Nuclear Generation,,,reference_only,False
-T_HINB-D,HINBD-1,Hinkley Point B Station Demand,,T,C,4.000,EDF Energy Customers Limited,,,reference_only,True
-V__KHABI007,HIRWB-1,Hirwaun,,V,C,0.000,Habitat Energy Limited,South Wales,,reference_only,True
+T_HINB-D,HINBD-1,Hinkley Point B Station Demand,,T,C,4.000,EDF Energy Customers Limited,,,reference_only,False
+V__KHABI007,HIRWB-1,Hirwaun,,V,C,0.000,Habitat Energy Limited,South Wales,,reference_only,False
 2__HJERE000,HJERE000,2__HJERE000,,G,C,0.000,Shell Energy UK Limited,Southern,,reference_only,False
 E_HLGLW-1,HLGLW-1,Hill of Glaschyle,WIND,E,C,28.000,ENGIE Power Limited,North Scotland,,reference_only,True
 V__GFORS004,HLLHG-1,V__GFORS004,,V,P,20.000,Forsa Trading Limited,North Western,,reference_only,False
 T_HRSTB-1,HRSTB-1,T_HRSTB-1,,T,C,52.000,SP Renewables (UK) Limited,,,reference_only,False
 V__FFORS001,HRTMG-1,V__FFORS001,,V,P,50.000,Forsa Trading Limited,Northern,,reference_only,False
 2__HIMPO002,HSSE01,2__HIMPO002,,S,C,52.564,SSE Energy Supply Limited,Southern,,reference_only,False
-T_HUNB-D,HUNBD-1,Hunterston B Station Demand,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,True
+T_HUNB-D,HUNBD-1,Hunterston B Station Demand,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
 I_I2D-ALEU1,I2D-ALEU1,ATX_IFA2_DEM,,I,C,0.000,Alphataraxia Europium BV,,IFA2,reference_only,False
 I_I2D-ALIP1,I2D-ALIP1,Flow from UK,,I,C,0.000,Energetick ApS,,IFA2,reference_only,False
 I_I2D-ALPE1,I2D-ALPE1,IFA2 Demand,,I,C,0.000,Alpha Energy ApS,,IFA2,reference_only,False
@@ -1331,15 +1331,15 @@ I_IID-BGSE1,IID-BGSE1,IID-BGSE1,,I,C,0.000,Bord Gais Energy Limited,,EWIC,refere
 I_IID-BRKF1,IID-BRKF1,Brookfield E,,I,C,0.000,Orsted Renewable Supply 2 Ltd,,EWIC,reference_only,False
 I_IID-DSKC1,IID-DSKC1,DANSKEDE - EWIC,,I,C,0.000,Danske Commodities A/S,,EWIC,reference_only,False
 I_IID-ELTR1,IID-ELTR1,EETL EWIC Exports BMU,,I,C,0.000,ElectroRoute Energy Trading,,EWIC,reference_only,False
-I_IID-ENGI1,IID-ENGI1,East_west_uk_export,,I,C,0.000,Mind Energy A/S,,EWIC,reference_only,True
+I_IID-ENGI1,IID-ENGI1,East_west_uk_export,,I,C,0.000,Mind Energy A/S,,EWIC,reference_only,False
 I_IID-ERVA1,IID-ERVA1,EROVA_D_EWIC,,I,C,0.000,Erova Energy Limited,,EWIC,reference_only,False
 I_IID-ESBI1,IID-ESBI1,ESBIGT-D-EWIC,,I,C,0.000,ESBIG Trading Ltd,,EWIC,reference_only,False
 I_IID-ESBI2,IID-ESBI2,ESBIGT-D-EWIC2,,I,C,0.000,ESBIG Trading Ltd,,EWIC,reference_only,False
 I_IID-INCM1,IID-INCM1,EWICINCOMASC,,I,C,0.000,IN COMMODITIES A/S,,EWIC,reference_only,False
 I_IID-LTFD1,IID-LTFD1,LIGHTFLD_EWIC_FROM_UK,,I,C,0.000,LIGHTFIELD LTD,,EWIC,reference_only,False
 I_IID-NSEN1,IID-NSEN1,IIDNEASDEM,,I,C,0.000,Centrica Energy Trading A/S,,EWIC,reference_only,False
-I_IID-RWES1,IID-RWES1,RWEST East West Export,,I,C,0.000,RWE Supply and Trading GmbH,,EWIC,reference_only,True
-I_IID-SEEL1,IID-SEEL1,SEEL East West Export,,I,C,0.000,Shell Energy Europe Limited,,EWIC,reference_only,True
+I_IID-RWES1,IID-RWES1,RWEST East West Export,,I,C,0.000,RWE Supply and Trading GmbH,,EWIC,reference_only,False
+I_IID-SEEL1,IID-SEEL1,SEEL East West Export,,I,C,0.000,Shell Energy Europe Limited,,EWIC,reference_only,False
 I_IID-STAT1,IID-STAT1,STATKRAFT EWIC EXPORT,,I,C,0.000,Statkraft Markets Gmbh,,EWIC,reference_only,False
 I_IID-VAYU1,IID-VAYU1,VAYU EWIC,,I,C,0.000,Naturgy Limited,,EWIC,reference_only,False
 I_IID-VESL1,IID-VESL1,EWIC Dem BM Unit VESL,,I,C,0.000,Energia Customer Solutions Ltd,,EWIC,reference_only,False
@@ -1348,15 +1348,15 @@ I_IIG-BGSE1,IIG-BGSE1,IIG-BGSE1,,I,P,2000.000,Bord Gais Energy Limited,,EWIC,ref
 I_IIG-BRKF1,IIG-BRKF1,Brookfield E,,I,P,500.000,Orsted Renewable Supply 2 Ltd,,EWIC,reference_only,False
 I_IIG-DSKC1,IIG-DSKC1,DANSKEGE - EWIC,,I,P,500.000,Danske Commodities A/S,,EWIC,reference_only,False
 I_IIG-ELTR1,IIG-ELTR1,EETL EWIC Imports BMU,,I,P,3000.000,ElectroRoute Energy Trading,,EWIC,reference_only,False
-I_IIG-ENGI1,IIG-ENGI1,East_west_uk_import,,I,P,500.000,Mind Energy A/S,,EWIC,reference_only,True
+I_IIG-ENGI1,IIG-ENGI1,East_west_uk_import,,I,P,500.000,Mind Energy A/S,,EWIC,reference_only,False
 I_IIG-ERVA1,IIG-ERVA1,EROVA_G_EWIC,,I,P,2000.000,Erova Energy Limited,,EWIC,reference_only,False
 I_IIG-ESBI1,IIG-ESBI1,ESBIGT-G-EWIC,,I,P,500.000,ESBIG Trading Ltd,,EWIC,reference_only,False
 I_IIG-ESBI2,IIG-ESBI2,ESBIGT-G-EWIC2,,I,P,530.000,ESBIG Trading Ltd,,EWIC,reference_only,False
 I_IIG-INCM1,IIG-INCM1,EWICINCOMASP,,I,P,75.000,IN COMMODITIES A/S,,EWIC,reference_only,False
 I_IIG-LTFD1,IIG-LTFD1,LIGHTFLD_EWIC_INTO_UK,,I,P,500.000,LIGHTFIELD LTD,,EWIC,reference_only,False
 I_IIG-NSEN1,IIG-NSEN1,IIGNEASGEN,,I,P,500.000,Centrica Energy Trading A/S,,EWIC,reference_only,False
-I_IIG-RWES1,IIG-RWES1,RWEST East West Import,,I,P,500.000,RWE Supply and Trading GmbH,,EWIC,reference_only,True
-I_IIG-SEEL1,IIG-SEEL1,SEEL East West Import,,I,P,500.000,Shell Energy Europe Limited,,EWIC,reference_only,True
+I_IIG-RWES1,IIG-RWES1,RWEST East West Import,,I,P,500.000,RWE Supply and Trading GmbH,,EWIC,reference_only,False
+I_IIG-SEEL1,IIG-SEEL1,SEEL East West Import,,I,P,500.000,Shell Energy Europe Limited,,EWIC,reference_only,False
 I_IIG-STAT1,IIG-STAT1,STATKRAFT EWIC IMPORT,,I,P,1030.000,Statkraft Markets Gmbh,,EWIC,reference_only,False
 I_IIG-VAYU1,IIG-VAYU1,VAYU EWIC,,I,P,500.000,Naturgy Limited,,EWIC,reference_only,False
 I_IIG-VESL1,IIG-VESL1,EWIC Gen BM Unit VESL,,I,P,500.000,Energia Customer Solutions Ltd,,EWIC,reference_only,False
@@ -1893,14 +1893,14 @@ T_KILSB-5,KILSB-5,T_KILSB-5,,T,C,50.856,ZENOBE KILMARNOCK SOUTH LTD,,,reference_
 T_KILSB-6,KILSB-6,T_KILSB-6,,T,C,51.226,ZENOBE KILMARNOCK SOUTH LTD,,,reference_only,True
 2__KJERE000,KJERE000,2__KJERE000,,G,C,0.000,Shell Energy UK Limited,South Wales,,reference_only,False
 V__FCEND001,KNAPB-1,V__FCEND001,,V,C,0.000,Centrica Business Solutions UK,Northern,,reference_only,False
-2__PMARB002,KNLCV-1,Kinlochleven Hydro,,S,C,0.000,Marble Power Limited,NORTH of SCOTLAND GSP,,reference_only,True
+2__PMARB002,KNLCV-1,Kinlochleven Hydro,,S,C,0.000,Marble Power Limited,NORTH of SCOTLAND GSP,,reference_only,False
 T_KTHRS-1,KTHRS-1,Keith Storage 1,,T,C,0.000,Statkraft Markets Gmbh,,,reference_only,False
 T_KTHRS-2,KTHRS-2,Keith Storage 2,,T,C,0.000,Statkraft Markets Gmbh,,,reference_only,False
 T_LARKB-1,LARKB-1,Larks Green Battery Storage,OTHER,T,C,52.000,EDF Energy Customers Limited,,,reference_only,True
 E_LCHWT-1,LCHWT-1,Letchworth,,E,C,15.000,Conrad Energy (Trading) Ltd,Eastern,,reference_only,True
 2__LRWED001,LCKLB-1,2__LRWED001,,S,C,15.300,ENGIE Power Limited,South Western,,reference_only,False
 T_LCLTW-1,LCLTW-1,Lochluichart Windfarm,WIND,T,C,69.000,Eneco Energy Trade,,,reference_only,False
-2__PMARB001,LCSMH-1,Lochaber Hydro,NPSHYD,S,C,80.000,Marble Power Limited,North Scotland,,reference_only,True
+2__PMARB001,LCSMH-1,Lochaber Hydro,NPSHYD,S,C,80.000,Marble Power Limited,North Scotland,,reference_only,False
 V__NFORS002,LEVNG-1,V__NFORS002,,V,P,20.000,Forsa Trading Limited,South Scotland,,reference_only,False
 2__LFSEN200,LFSE01,2__LFSENIN200,,S,C,3.041,F & S Energy Ltd,South Western,,reference_only,False
 T_LIONB-1,LionB-1,Wilton BESS,,T,C,50.000,Sembcorp (Wilton BESS) Ltd,,,reference_only,True
@@ -1914,7 +1914,7 @@ T_LLWSD-1,LLWSD-1,T_LLWSD-1,,T,C,0.000,Npower Commercial Gas Limited,,,reference
 2__CBGAS000,LON-BGS01,2__CBGAS000,,G,C,0.000,British Gas Trading Ltd,London,,reference_only,False
 2__CBIZZ000,LON-BIZ01,2__CBIZZ000,,G,C,0.000,British Gas Trading Ltd,London,,reference_only,False
 2__CEELC000,LON-EAS01,2__CEELC000,,G,C,0.000,E.ON Energy Solutions Limited,LE Distribution,,reference_only,False
-2__CEDFE000,LON-EDF01,EDFE_London,,G,C,0.000,EDF Energy Customers Limited,London,,reference_only,True
+2__CEDFE000,LON-EDF01,EDFE_London,,G,C,0.000,EDF Energy Customers Limited,London,,reference_only,False
 2__CEDIR000,LON-EDR01,2__CEDIR000,,G,C,0.000,British Gas Trading Ltd,London,,reference_only,False
 2__CENRD000,LON-ENR01,2__CENRD000,,G,C,0.000,British Gas Trading Ltd,London,,reference_only,False
 2__CEOND000,LON-EON01,2__CEOND000,,G,C,2.000,E.ON Next Energy Ltd,London,,reference_only,False
@@ -1922,13 +1922,13 @@ T_LLWSD-1,LLWSD-1,T_LLWSD-1,,T,C,0.000,Npower Commercial Gas Limited,,,reference
 2__CRWED000,LON-GDF01,2__CRWED000,,G,C,4.000,ENGIE Power Limited,London,,reference_only,False
 2__CHPOW000,LON-HPW01,2__CHPOW000,,G,C,0.000,Drax Energy Solutions Limited,London,,reference_only,False
 2__CHAVE000,LON-HVN01,2__CHAVE000,,G,C,0.000,Drax Energy Solutions Limited,London,,reference_only,False
-2__CINDE000,LON-INE01,INDE LONDON,,G,C,0.000,npower limited,LE Distribution,,reference_only,True
+2__CINDE000,LON-INE01,INDE LONDON,,G,C,0.000,npower limited,LE Distribution,,reference_only,False
 2__CLOND000,LON-LON01,LE Default BMUid LOND,,G,C,0.000,EDF Energy Customers Limited,London,,reference_only,False
 2__CNUCE000,LON-MEC01,2__CNUCE000,,G,C,0.000,NDA,London,,reference_only,False
-2__CMIDE000,LON-MID01,NPEC London Area MIDE,,G,C,0.000,Npower Limited,LE Distribution,,reference_only,True
+2__CMIDE000,LON-MID01,NPEC London Area MIDE,,G,C,0.000,Npower Limited,LE Distribution,,reference_only,False
 2__CMANW000,LON-MNW01,2__CMANW000,,G,C,0.000,ScottishPower Energy Retail,London,,reference_only,False
 2__CNEEB000,LON-NEE01,2__CNEEB000,,G,C,0.000,npower limited,LE Distribution,,reference_only,False
-2__CNATP000,LON-NPE01,NPEC London Area NATP,,G,C,10.000,Npower Commercial Gas Limited,London,,reference_only,True
+2__CNATP000,LON-NPE01,NPEC London Area NATP,,G,C,10.000,Npower Commercial Gas Limited,London,,reference_only,False
 2__CNORW000,LON-NWP01,2__CNORW000,,G,C,0.000,E.ON Energy Solutions Limited,LE Distribution,,reference_only,False
 2__CMRCY000,LON-OCT01,2__CMRCY000,,G,C,515.760,Octopus Energy Limited,London,,reference_only,False
 2__COGAS000,LON-OGA01,2__COGAS000,,G,C,0.000,British Gas Trading Ltd,London,,reference_only,False
@@ -1939,14 +1939,14 @@ T_LLWSD-1,LLWSD-1,T_LLWSD-1,,T,C,0.000,Npower Commercial Gas Limited,,,reference
 2__CSEEB000,LON-SEE01,2__CSEEB000,,G,C,0.000,EDF Energy Customers Limited,London,,reference_only,False
 2__CSMAR000,LON-SEL01,2__CSMAR000,,G,C,0.000,Smartestenergy Limited,London,,reference_only,False
 2__CSPOW000,LON-SPC01,2__CSPOW000,,G,C,0.000,ScottishPower Energy Retail,London,,reference_only,False
-2__CHYDE000,LON-SSE01,SSE SBMU1 - London GSPG,,G,C,0.000,OVO Electricity Ltd,London,,reference_only,True
-2__CSOUT000,LON-STH01,SE SBMU1 - London GSPG,,G,C,0.000,OVO Electricity Ltd,London,,reference_only,True
-2__CSWAE000,LON-SWA01,SWA SBMU1 - London GSPG,,G,C,0.000,OVO Electricity Ltd,London,,reference_only,True
+2__CHYDE000,LON-SSE01,SSE SBMU1 - London GSPG,,G,C,0.000,OVO Electricity Ltd,London,,reference_only,False
+2__CSOUT000,LON-STH01,SE SBMU1 - London GSPG,,G,C,0.000,OVO Electricity Ltd,London,,reference_only,False
+2__CSWAE000,LON-SWA01,SWA SBMU1 - London GSPG,,G,C,0.000,OVO Electricity Ltd,London,,reference_only,False
 2__CSWEB000,LON-SWT01,SWEB Default BMUid LOND,,G,C,0.000,EDF Energy Customers Limited,London,,reference_only,False
 2__CSYMB000,LON-SYM01,2__CSYMB000,,G,C,0.000,E.ON Next Energy Ltd,LE Distribution,,reference_only,False
 2__CTGPL000,LON-TFE01,2__CTGPL000,,G,C,8.000,TotalEnergies Gas & Power Ltd,London,,reference_only,False
 2__CTILL000,LON-TIL01,2__CTILL000,,G,C,0.000,British Gas Trading Ltd,London,,reference_only,False
-2__CYELG000,LON-YEP01,_C  Default BM London,,G,C,0.000,npower limited,LE Distribution,,reference_only,True
+2__CYELG000,LON-YEP01,_C  Default BM London,,G,C,0.000,npower limited,LE Distribution,,reference_only,False
 T_LRDSC-1,LRDSC-1,Lister Storage 1,OTHER,T,C,1.003,Statkraft Markets Gmbh,,,reference_only,False
 T_LRDSC-2,LRDSC-2,Lister Storage 2,OTHER,T,C,0.792,Statkraft Markets Gmbh,,,reference_only,False
 E_LSTWY-1,LSTWY-1,Lester Way,,E,C,12.720,Conrad Energy (Trading) Ltd,Southern,,reference_only,True
@@ -1955,10 +1955,10 @@ V__HFEEL002,MANNB-1,V__HFEEL002,,V,C,46.330,EDF Energy Limited,Southern,,referen
 E_MANXENR-1,MANXENR-1,ENRON MANX,,E,C,63.740,Smartestenergy Limited,North Western,,reference_only,False
 E_MARK-1,MARK-1,Rothes Bio-Plant CHP1,BIOMASS,E,C,86.139,Edgware Energy Limited,South Scotland,,reference_only,True
 T_MARMD-1,MARMD-1,T_MARMD-1,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
-2__PSTAT002,MDHLW-1,STAT P3 North Scotland,WIND,S,C,76.000,Statkraft Markets Gmbh,North Scotland,,reference_only,True
+2__PSTAT002,MDHLW-1,STAT P3 North Scotland,WIND,S,C,76.000,Statkraft Markets Gmbh,North Scotland,,reference_only,False
 E_MDLWH-1,MDLWH-1,Middlewich,,E,C,20.000,Conrad Energy (Trading) Ltd,Merseyside North Wales,,reference_only,True
 T_MEADD-1,MEADD-1,Caledonian Paper,,T,C,22.000,ENGIE Power Limited,,,reference_only,True
-V__HHABI008,MELKB-1,Melksham,,V,C,0.000,Habitat Energy Limited,Southern,,reference_only,True
+V__HHABI008,MELKB-1,Melksham,,V,C,0.000,Habitat Energy Limited,Southern,,reference_only,False
 2__EIMPO000,MID-ATL01,2__EIMPO000,,G,C,0.000,SSE Energy Supply Limited,Midlands,,reference_only,False
 2__EAXPO000,MID-AXPO1,2__EAXPO000,,G,C,35.000,AXPO UK LIMITED,Midlands,,reference_only,False
 2__EBGAS000,MID-BGS01,2__EBGAS000,,G,C,0.000,British Gas Trading Ltd,Midlands,,reference_only,False
@@ -2084,12 +2084,12 @@ E_NEWTB-1,NEWTB-1,Newton wood BESS,,E,C,52.000,EDF Energy Customers Limited,East
 2__NJERE000,NJERE000,2__NJERE000,,G,C,0.000,Shell Energy UK Limited,SOUTH of SCOTLAND GSP,,reference_only,False
 T_NLSTB-1,NLSTB-1,Neilston Battery 1,OTHER,T,C,50.000,Statkraft Markets Gmbh,,,reference_only,True
 2__NNATP001,NNPW01,2__NNATP001,WIND,S,C,50.000,Npower Commercial Gas Limited,SOUTH of SCOTLAND GSP,,reference_only,False
-2__PIMPO000,NSC-ATL01,IMPO North Scotland,,G,C,308.400,SSE Energy Supply Limited,North Scotland,,reference_only,True
+2__PIMPO000,NSC-ATL01,IMPO North Scotland,,G,C,308.400,SSE Energy Supply Limited,North Scotland,,reference_only,False
 2__PAXPO000,NSC-AXPO1,2__PAXPO000,,G,C,85.000,AXPO UK LIMITED,North Scotland,,reference_only,False
 2__PBGAS000,NSC-BGS01,2__PBGAS000,,G,C,0.000,British Gas Trading Ltd,North Scotland,,reference_only,False
 2__PBIZZ000,NSC-BIZ01,2__PBIZZ000,,G,C,2.000,British Gas Trading Ltd,North Scotland,,reference_only,False
 2__PECON000,NSC-ECO01,2__PECON000,,G,C,0.000,E.ON Energy Solutions Limited,NORTH of SCOTLAND GSP,,reference_only,False
-2__PEDFE000,NSC-EDF01,EDFE_North Scotland,,G,C,4.000,EDF Energy Customers Limited,North Scotland,,reference_only,True
+2__PEDFE000,NSC-EDF01,EDFE_North Scotland,,G,C,4.000,EDF Energy Customers Limited,North Scotland,,reference_only,False
 2__PEDIR000,NSC-EDR01,2__PEDIR000,,G,C,0.000,British Gas Trading Ltd,North Scotland,,reference_only,False
 2__PENRD000,NSC-ENR01,2__PENRD000,,G,C,12.000,British Gas Trading Ltd,North Scotland,,reference_only,False
 2__PEOND000,NSC-EON01,2__PEOND000,,G,C,14.000,E.ON Next Energy Ltd,North Scotland,,reference_only,False
@@ -2097,12 +2097,12 @@ T_NLSTB-1,NLSTB-1,Neilston Battery 1,OTHER,T,C,50.000,Statkraft Markets Gmbh,,,r
 2__PRWED000,NSC-GDF01,2__PRWED000,,G,C,64.000,ENGIE Power Limited,North Scotland,,reference_only,False
 2__PHPOW000,NSC-HPW01,2__PHPOW000,,G,C,9.460,Drax Energy Solutions Limited,North Scotland,,reference_only,False
 2__PHAVE000,NSC-HVN01,2__PHAVE000,,G,C,35.500,Drax Energy Solutions Limited,North Scotland,,reference_only,False
-2__PINDE000,NSC-INE01,INDE Scottish Hydro,,G,C,0.000,npower limited,NORTH of SCOTLAND GSP,,reference_only,True
+2__PINDE000,NSC-INE01,INDE Scottish Hydro,,G,C,0.000,npower limited,NORTH of SCOTLAND GSP,,reference_only,False
 2__PLOND000,NSC-LON01,Default LOND BMU for _P,,G,C,20.000,EDF Energy Customers Limited,North Scotland,,reference_only,False
-2__PMIDE000,NSC-MID01,NPEC Scottish Hydro Area MIDE,,G,C,0.000,Npower Limited,NORTH of SCOTLAND GSP,,reference_only,True
+2__PMIDE000,NSC-MID01,NPEC Scottish Hydro Area MIDE,,G,C,0.000,Npower Limited,NORTH of SCOTLAND GSP,,reference_only,False
 2__PMANW000,NSC-MNW01,2__PMANW000,,G,C,0.000,ScottishPower Energy Retail,North Scotland,,reference_only,False
-2__PNEEB000,NSC-NEE01,Scottish Hydro,,G,C,0.000,npower limited,NORTH of SCOTLAND GSP,,reference_only,True
-2__PNATP000,NSC-NPE01,NPEC Scottish Hydro Area NATP,,G,C,56.000,Npower Commercial Gas Limited,North Scotland,,reference_only,True
+2__PNEEB000,NSC-NEE01,Scottish Hydro,,G,C,0.000,npower limited,NORTH of SCOTLAND GSP,,reference_only,False
+2__PNATP000,NSC-NPE01,NPEC Scottish Hydro Area NATP,,G,C,56.000,Npower Commercial Gas Limited,North Scotland,,reference_only,False
 2__PMRCY000,NSC-OCT01,2__PMRCY000,,G,C,164.920,Octopus Energy Limited,North Scotland,,reference_only,False
 2__POGAS000,NSC-OGA01,2__POGAS000,,G,C,0.000,British Gas Trading Ltd,North Scotland,,reference_only,False
 2__POVOE000,NSC-OVO01,2__POVOE000,,G,C,230.204,OVO Electricity Ltd,North Scotland,,reference_only,False
@@ -2111,14 +2111,14 @@ T_NLSTB-1,NLSTB-1,Neilston Battery 1,OTHER,T,C,50.000,Statkraft Markets Gmbh,,,r
 2__PSEEB000,NSC-SEE01,Default SEEB BMU for _P,,G,C,0.000,EDF Energy Customers Limited,North Scotland,,reference_only,False
 2__PSMAR000,NSC-SEL01,2__PSMAR000,,G,C,0.000,Smartestenergy Limited,North Scotland,,reference_only,False
 2__PSPOW000,NSC-SPC01,2__PSPOW000,,G,C,43.400,ScottishPower Energy Retail,North Scotland,,reference_only,False
-2__PHYDE000,NSC-SSE01,HYDE North Scotland,,G,C,0.000,OVO Electricity Ltd,North Scotland,,reference_only,True
-2__PSOUT000,NSC-STH01,SOUT North Scotland,,G,C,0.000,OVO Electricity Ltd,North Scotland,,reference_only,True
-2__PSWAE000,NSC-SWA01,SWAE North Scotland,,G,C,0.000,OVO Electricity Ltd,North Scotland,,reference_only,True
+2__PHYDE000,NSC-SSE01,HYDE North Scotland,,G,C,0.000,OVO Electricity Ltd,North Scotland,,reference_only,False
+2__PSOUT000,NSC-STH01,SOUT North Scotland,,G,C,0.000,OVO Electricity Ltd,North Scotland,,reference_only,False
+2__PSWAE000,NSC-SWA01,SWAE North Scotland,,G,C,0.000,OVO Electricity Ltd,North Scotland,,reference_only,False
 2__PSWEB000,NSC-SWT01,Default SWEB BMU for _P,,G,C,0.000,EDF Energy Customers Limited,North Scotland,,reference_only,False
 2__PSYMB000,NSC-SYM01,2__PSYMB000,,G,C,0.000,E.ON Next Energy Ltd,NORTH of SCOTLAND GSP,,reference_only,False
 2__PTGPL000,NSC-TFE01,2__PTGPL000,,G,C,4.133,TotalEnergies Gas & Power Ltd,North Scotland,,reference_only,False
 2__PTILL000,NSC-TIL01,2__PTILL000,,G,C,0.000,British Gas Trading Ltd,North Scotland,,reference_only,False
-2__PYELG000,NSC-YEP01,_P Default BM Scottish Hydro,,G,C,0.000,npower limited,NORTH of SCOTLAND GSP,,reference_only,True
+2__PYELG000,NSC-YEP01,_P Default BM Scottish Hydro,,G,C,0.000,npower limited,NORTH of SCOTLAND GSP,,reference_only,False
 E_NTAWB-1,NTAWB-1,North Tawton BESS,,E,C,32.000,EDF Energy Customers Limited,South Western,,reference_only,True
 T_NTRVB-1,NTRVB-1,Native River,,T,C,57.000,Arenko Cleantech Limited,,,reference_only,True
 T_NURSB-1,NURSB-1,Nursling Battery Storage,,T,C,48.000,EDF Energy Customers Limited,,,reference_only,True
@@ -2127,7 +2127,7 @@ T_NURSB-1,NURSB-1,Nursling Battery Storage,,T,C,48.000,EDF Energy Customers Limi
 2__GBGAS000,NWP-BGS01,2__GBGAS000,,G,C,0.000,British Gas Trading Ltd,North Western,,reference_only,False
 2__GBIZZ000,NWP-BIZ01,2__GBIZZ000,,G,C,0.000,British Gas Trading Ltd,North Western,,reference_only,False
 2__GEELC000,NWP-EAS01,2__GEELC000,,G,C,0.000,E.ON Energy Solutions Limited,North Western,,reference_only,False
-2__GEDFE000,NWP-EDF01,EDFE_North West,,G,C,0.000,EDF Energy Customers Limited,North Western,,reference_only,True
+2__GEDFE000,NWP-EDF01,EDFE_North West,,G,C,0.000,EDF Energy Customers Limited,North Western,,reference_only,False
 2__GEDIR000,NWP-EDR01,2__GEDIR000,,G,C,0.000,British Gas Trading Ltd,North Western,,reference_only,False
 2__GENRD000,NWP-ENR01,2__GENRD000,,G,C,0.000,British Gas Trading Ltd,North Western,,reference_only,False
 2__GEOND000,NWP-EON01,2__GEOND000,,G,C,2.000,E.ON Next Energy Ltd,North Western,,reference_only,False
@@ -2161,7 +2161,7 @@ T_NURSB-1,NURSB-1,Nursling Battery Storage,,T,C,48.000,EDF Energy Customers Limi
 2__GTILL000,NWP-TIL01,2__GTILL000,,G,C,0.000,British Gas Trading Ltd,North Western,,reference_only,False
 2__GYELG000,NWP-YEP01,_G  Default BM NORWEB,,G,C,0.000,npower limited,North Western,,reference_only,False
 T_PARHD-1,PARHD-1,T_PARHD-1,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
-2__PENEC002,PAUHW-1,Pauls Hill Windfarm,WIND,S,C,70.167,Eneco Energy Trade,North Scotland,,reference_only,True
+2__PENEC002,PAUHW-1,Pauls Hill Windfarm,WIND,S,C,70.167,Eneco Energy Trade,North Scotland,,reference_only,False
 T_PEHE-2,PEHE-2,Peterhead Unit 2,,T,C,0.000,SSE Thermal Generation,,,reference_only,True
 T_PEHED-1,PEHED-1,Peterhead Stn Txs,,T,C,0.000,SSE Thermal Generation,,,reference_only,True
 E_PETEM3,PETEM3,Peterborough Power 3,OTHER,E,C,49.227,River Nene Power Limited,Eastern,,reference_only,True
@@ -2203,7 +2203,7 @@ T_RUGGT-6,RUGGT-6,Rugeley B GT 06,,T,C,0.000,Rugeley Power Generation Ltd,,,refe
 T_RUGGT-7,RUGGT-7,Rugeley B GT 07,,T,C,0.000,Rugeley Power Generation Ltd,,,reference_only,False
 T_RUGPS-6,RUGPS-6,Rugeley B Unit 06,,T,C,0.000,Rugeley Power Generation Ltd,,,reference_only,False
 T_RUGPS-7,RUGPS-7,Rugeley B Unit 07,,T,C,0.000,Rugeley Power Generation Ltd,,,reference_only,False
-E_RUGPS-STX,RUGPS-STX,Rugeley B Station Load,,E,C,0.000,Rugeley Power Generation Ltd,Midlands,,reference_only,True
+E_RUGPS-STX,RUGPS-STX,Rugeley B Station Load,,E,C,0.000,Rugeley Power Generation Ltd,Midlands,,reference_only,False
 T_SACOD-1,SACOD-1,T_SACOD-1,,T,C,0.000,EDF Energy Customers Limited,,,reference_only,False
 T_SCCL-4,SCCLD-1,BP Load,,T,P,0.000,SCCL,,,reference_only,False
 2__JIMPO000,SEE-ATL01,2__JIMPO000,,G,C,0.000,SSE Energy Supply Limited,South Eastern,,reference_only,False
@@ -2211,7 +2211,7 @@ T_SCCL-4,SCCLD-1,BP Load,,T,P,0.000,SCCL,,,reference_only,False
 2__JBGAS000,SEE-BGS01,2__JBGAS000,,G,C,0.000,British Gas Trading Ltd,South Eastern,,reference_only,False
 2__JBIZZ000,SEE-BIZ01,2__JBIZZ000,,G,C,0.000,British Gas Trading Ltd,South Eastern,,reference_only,False
 2__JEELC000,SEE-EAS01,2__JEELC000,,G,C,0.000,E.ON Energy Solutions Limited,South Eastern,,reference_only,False
-2__JEDFE000,SEE-EDF01,EDFE_South East,,G,C,0.000,EDF Energy Customers Limited,South Eastern,,reference_only,True
+2__JEDFE000,SEE-EDF01,EDFE_South East,,G,C,0.000,EDF Energy Customers Limited,South Eastern,,reference_only,False
 2__JEDIR000,SEE-EDR01,2__JEDIR000,,G,C,0.000,British Gas Trading Ltd,South Eastern,,reference_only,False
 2__JENRD000,SEE-ENR01,2__JENRD000,,G,C,28.000,British Gas Trading Ltd,South Eastern,,reference_only,False
 2__JEOND000,SEE-EON01,2__JEOND000,,G,C,2.000,E.ON Next Energy Ltd,South Eastern,,reference_only,False
@@ -2253,12 +2253,12 @@ T_SFILD-1,SFILD-1,St. Fillans Station Demand,,T,C,0.000,SSE Generation Ltd,,,ref
 E_SHILB-1,SHILB-1,Shilton Lane BESS,OTHER,E,C,40.000,Octopus Energy Trading Limited,South Scotland,,reference_only,True
 T_SLOYD-1,SLOYD-1,Sloy Station Demand,,T,C,0.000,SSE Generation Ltd,,,reference_only,True
 E_SOLUTIA,SOLUU-1,Solutia Power Station,,E,C,15.800,UK Power Reserve Limited,South Wales,,reference_only,False
-2__NIMPO000,SSC-ATL01,IMPO South Scotland,,G,C,81.000,SSE Energy Supply Limited,South Scotland,,reference_only,True
+2__NIMPO000,SSC-ATL01,IMPO South Scotland,,G,C,81.000,SSE Energy Supply Limited,South Scotland,,reference_only,False
 2__NAXPO000,SSC-AXPO1,2__NAXPO000,,G,C,90.000,AXPO UK LIMITED,South Scotland,,reference_only,False
 2__NBGAS000,SSC-BGS01,2__NBGAS000,,G,C,0.000,British Gas Trading Ltd,South Scotland,,reference_only,False
 2__NBIZZ000,SSC-BIZ01,2__NBIZZ000,,G,C,0.000,British Gas Trading Ltd,South Scotland,,reference_only,False
 2__NECON000,SSC-ECO01,2__NECON000,,G,C,0.000,E.ON Energy Solutions Limited,SOUTH of SCOTLAND GSP,,reference_only,False
-2__NEDFE000,SSC-EDF01,EDFE_South Scotland,,G,C,0.000,EDF Energy Customers Limited,South Scotland,,reference_only,True
+2__NEDFE000,SSC-EDF01,EDFE_South Scotland,,G,C,0.000,EDF Energy Customers Limited,South Scotland,,reference_only,False
 2__NEDIR000,SSC-EDR01,2__NEDIR000,,G,C,0.000,British Gas Trading Ltd,South Scotland,,reference_only,False
 2__NENRD000,SSC-ENR01,2__NENRD000,,G,C,60.000,British Gas Trading Ltd,South Scotland,,reference_only,False
 2__NEOND000,SSC-EON01,2__NEOND000,,G,C,2.000,E.ON Next Energy Ltd,South Scotland,,reference_only,False
@@ -2280,9 +2280,9 @@ E_SOLUTIA,SOLUU-1,Solutia Power Station,,E,C,15.800,UK Power Reserve Limited,Sou
 2__NSEEB000,SSC-SEE01,Default SEEB BMU for _N,,G,C,0.000,EDF Energy Customers Limited,South Scotland,,reference_only,False
 2__NSMAR000,SSC-SEL01,2__NSMAR000,,G,C,0.000,Smartestenergy Limited,South Scotland,,reference_only,False
 2__NSPOW000,SSC-SPC01,2__NSPOW000,,G,C,51.400,ScottishPower Energy Retail,South Scotland,,reference_only,False
-2__NHYDE000,SSC-SSE01,HYDE South Scotland,,G,C,0.000,OVO Electricity Ltd,South Scotland,,reference_only,True
-2__NSOUT000,SSC-STH01,SOUT South Scotland,,G,C,0.000,OVO Electricity Ltd,South Scotland,,reference_only,True
-2__NSWAE000,SSC-SWA01,SWAE South Scotland,,G,C,0.000,OVO Electricity Ltd,South Scotland,,reference_only,True
+2__NHYDE000,SSC-SSE01,HYDE South Scotland,,G,C,0.000,OVO Electricity Ltd,South Scotland,,reference_only,False
+2__NSOUT000,SSC-STH01,SOUT South Scotland,,G,C,0.000,OVO Electricity Ltd,South Scotland,,reference_only,False
+2__NSWAE000,SSC-SWA01,SWAE South Scotland,,G,C,0.000,OVO Electricity Ltd,South Scotland,,reference_only,False
 2__NSWEB000,SSC-SWT01,Default SWEB BMU for _N,,G,C,0.000,EDF Energy Customers Limited,South Scotland,,reference_only,False
 2__NSYMB000,SSC-SYM01,2__NSYMB000,,G,C,0.000,E.ON Next Energy Ltd,SOUTH of SCOTLAND GSP,,reference_only,False
 2__NTGPL000,SSC-TFE01,2__NTGPL000,,G,C,4.000,TotalEnergies Gas & Power Ltd,South Scotland,,reference_only,False
@@ -2336,7 +2336,7 @@ T_SUTBS-1,SUTBS-1,Sutton Bridge Solar Farm,OTHER,T,C,49.419,EDF Energy Customers
 2__KBGAS000,SWA-BGS01,2__KBGAS000,,G,C,0.000,British Gas Trading Ltd,South Wales,,reference_only,False
 2__KBIZZ000,SWA-BIZ01,2__KBIZZ000,,G,C,0.000,British Gas Trading Ltd,South Wales,,reference_only,False
 2__KEELC000,SWA-EAS01,2__KEELC000,,G,C,0.000,E.ON Energy Solutions Limited,South Wales,,reference_only,False
-2__KEDFE000,SWA-EDF01,EDFE_South Wales,,G,C,0.000,EDF Energy Customers Limited,South Wales,,reference_only,True
+2__KEDFE000,SWA-EDF01,EDFE_South Wales,,G,C,0.000,EDF Energy Customers Limited,South Wales,,reference_only,False
 2__KEDIR000,SWA-EDR01,2__KEDIR000,,G,C,0.000,British Gas Trading Ltd,South Wales,,reference_only,False
 2__KENRD000,SWA-ENR01,2__KENRD000,,G,C,36.000,British Gas Trading Ltd,South Wales,,reference_only,False
 2__KEOND000,SWA-EON01,2__KEOND000,,G,C,26.000,E.ON Next Energy Ltd,South Wales,,reference_only,False
@@ -2347,10 +2347,10 @@ T_SUTBS-1,SUTBS-1,Sutton Bridge Solar Farm,OTHER,T,C,49.419,EDF Energy Customers
 2__KINDE000,SWA-INE01,INDE SWALEC,,G,C,0.000,npower limited,South Wales,,reference_only,False
 2__KLOND000,SWA-LON01,LE Default BMUid SWAE,,G,C,36.000,EDF Energy Customers Limited,South Wales,,reference_only,False
 2__KNUCE000,SWA-MEC01,2__KNUCE000,,G,C,0.000,NDA,South Wales,,reference_only,False
-2__KMIDE000,SWA-MID01,NPEC South Wales Area MIDE,,G,C,0.000,Npower Limited,South Wales,,reference_only,True
+2__KMIDE000,SWA-MID01,NPEC South Wales Area MIDE,,G,C,0.000,Npower Limited,South Wales,,reference_only,False
 2__KMANW000,SWA-MNW01,2__KMANW000,,G,C,0.000,ScottishPower Energy Retail,South Wales,,reference_only,False
 2__KNEEB000,SWA-NEE01,2__KNEEB000,,G,C,0.000,npower limited,South Wales,,reference_only,False
-2__KNATP000,SWA-NPE01,NPEC South Wales Area NATP,,G,C,34.000,Npower Commercial Gas Limited,South Wales,,reference_only,True
+2__KNATP000,SWA-NPE01,NPEC South Wales Area NATP,,G,C,34.000,Npower Commercial Gas Limited,South Wales,,reference_only,False
 2__KNORW000,SWA-NWP01,2__KNORW000,,G,C,0.000,E.ON Energy Solutions Limited,South Wales,,reference_only,False
 2__KMRCY000,SWA-OCT01,2__KMRCY000,,G,C,205.800,Octopus Energy Limited,South Wales,,reference_only,False
 2__KOGAS000,SWA-OGA01,2__KOGAS000,,G,C,0.000,British Gas Trading Ltd,South Wales,,reference_only,False
@@ -2378,7 +2378,7 @@ E_SWDNB-1,SWDNB-1,Swindon,,E,C,19.000,Conrad Energy (Trading) Ltd,Southern,,refe
 2__LBGAS000,SWT-BGS01,2__LBGAS000,,G,C,0.000,British Gas Trading Ltd,South Western,,reference_only,False
 2__LBIZZ000,SWT-BIZ01,2__LBIZZ000,,G,C,0.000,British Gas Trading Ltd,South Western,,reference_only,False
 2__LEELC000,SWT-EAS01,2__LEELC000,,G,C,0.000,E.ON Energy Solutions Limited,South Western,,reference_only,False
-2__LEDFE000,SWT-EDF01,EDFE_South West,,G,C,0.000,EDF Energy Customers Limited,South Western,,reference_only,True
+2__LEDFE000,SWT-EDF01,EDFE_South West,,G,C,0.000,EDF Energy Customers Limited,South Western,,reference_only,False
 2__LEDIR000,SWT-EDR01,2__LEDIR000,,G,C,0.000,British Gas Trading Ltd,South Western,,reference_only,False
 2__LENRD000,SWT-ENR01,2__LENRD000,,G,C,24.000,British Gas Trading Ltd,South Western,,reference_only,False
 2__LEOND000,SWT-EON01,2__LEOND000,,G,C,2.000,E.ON Next Energy Ltd,South Western,,reference_only,False
@@ -2389,10 +2389,10 @@ E_SWDNB-1,SWDNB-1,Swindon,,E,C,19.000,Conrad Energy (Trading) Ltd,Southern,,refe
 2__LINDE000,SWT-INE01,INDE SWEB,,G,C,0.000,npower limited,South Western,,reference_only,False
 2__LLOND000,SWT-LON01,LE Default BMUid SWEB,,G,C,90.000,EDF Energy Customers Limited,South Western,,reference_only,False
 2__LNUCE000,SWT-MEC01,2__LNUCE000,,G,C,0.000,NDA,South Western,,reference_only,False
-2__LMIDE000,SWT-MID01,NPEC South Western Area MIDE,,G,C,0.000,Npower Limited,South Western,,reference_only,True
+2__LMIDE000,SWT-MID01,NPEC South Western Area MIDE,,G,C,0.000,Npower Limited,South Western,,reference_only,False
 2__LMANW000,SWT-MNW01,2__LMANW000,,G,C,0.000,ScottishPower Energy Retail,South Western,,reference_only,False
 2__LNEEB000,SWT-NEE01,2__LNEEB000,,G,C,0.000,npower limited,South Western,,reference_only,False
-2__LNATP000,SWT-NPE01,NPEC South Western Area NATP,,G,C,32.000,Npower Commercial Gas Limited,South Western,,reference_only,True
+2__LNATP000,SWT-NPE01,NPEC South Western Area NATP,,G,C,32.000,Npower Commercial Gas Limited,South Western,,reference_only,False
 2__LNORW000,SWT-NWP01,2__LNORW000,,G,C,0.000,E.ON Energy Solutions Limited,South Western,,reference_only,False
 2__LMRCY000,SWT-OCT01,2__LMRCY000,,G,C,387.520,Octopus Energy Limited,South Western,,reference_only,False
 2__LOGAS000,SWT-OGA01,2__LOGAS000,,G,C,0.000,British Gas Trading Ltd,South Western,,reference_only,False

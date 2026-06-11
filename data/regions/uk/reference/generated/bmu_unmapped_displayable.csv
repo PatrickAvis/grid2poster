@@ -3,34 +3,83 @@ T_ABRBO-1,ABRBO-1,ABRBO-1,WIND,T,P,99.000,Aberdeen Offshore Wind Farm,,,displaya
 T_AKGLW-2,AKGLW-2,AIKENGALL II,WIND,T,P,63.840,Aikengall 2 CWCL,,,displayable,False
 T_AKGLW-3,AKGLW-3,AIKENGALL2A-W,WIND,T,P,163.400,AIK2A Sustainable Energy Ltd,,,displayable,False
 T_ANSUW-1,ANSUW-1,An Suidhe 1,WIND,T,P,19.360,Statkraft Markets Gmbh,,,displayable,False
+T_BEINW-1,BEINW-1,Beinneun Wind farm,WIND,T,P,108.800,Beinneun Wind Farm Ltd,,,displayable,False
 E_BETHW-1,BETHW-1,BETHW-1,WIND,E,P,29.750,SP Renewables (UK) Limited,North Scotland,,displayable,False
 T_BHLAW-1,BHLAW-1,Bhlaraidh Windfarm 1,WIND,T,P,108.000,SSE Generation Ltd,,,displayable,False
 T_BLLA-1,BLLA-1,T_BLLA-1,WIND,T,P,118.000,SP Renewables (UK) Limited,,,displayable,False
+T_BLLA-2,BLLA-2,Black Law Windfarm Extension,WIND,T,P,69.000,SP Renewables (UK) Limited,,,displayable,False
 E_BTUIW-2,BTUIW-2,Beinn An Tuirc 2,WIND,E,P,43.700,SP Renewables (UK) Limited,North Scotland,,displayable,False
 E_BTUIW-3,BTUIW-3,Beinn an Tuirc III Windfarm,WIND,E,P,52.000,SP Renewables (UK) Limited,North Scotland,,displayable,False
 T_CLDCW-1,CLDCW-1,Clyde Central,WIND,T,P,200.000,Clyde Windfarm (Scotland) Ltd,,,displayable,False
+T_CLDNW-1,CLDNW-1,Clyde North,WIND,T,P,200.000,Clyde Windfarm (Scotland) Ltd,,,displayable,False
+T_CLDSW-1,CLDSW-1,Clyde South,WIND,T,P,150.000,Clyde Windfarm (Scotland) Ltd,,,displayable,False
+E_CRGTW-1,CRGTW-1,Craig 2 Wind Farm,WIND,E,P,4.700,British Gas Trading Ltd,South Scotland,,displayable,False
 T_CRYRW-2,CRYRW-2,Crystal Rig II Windfarm,WIND,T,P,150.620,Eneco Energy Trade,,,displayable,False
 T_CRYRW-3,CRYRW-3,Crystal Rig III,WIND,T,P,13.800,Eneco Energy Trade,,,displayable,False
 T_CRYRW-4,CRYRW-4,Crystal Rig IV Wind Farm,WIND,T,P,48.200,Erova Energy Limited,,,displayable,False
 T_CUMHW-2,CUMHW-2,T_CUMHW-2,WIND,T,P,126.000,CUMBERHEAD WEST WIND FARM LTD,,,displayable,False
+T_DBAWO-1,DBAWO-1,Dogger Bank A Offshore WF 1,WIND,T,P,302.400,Doggerbank OWF Project 1,,,displayable,False
+T_DBAWO-2,DBAWO-2,Dogger Bank A Offshore WF 2,WIND,T,P,304.000,Doggerbank OWF Project 1,,,displayable,False
+T_DBAWO-3,DBAWO-3,Dogger Bank A Offshore WF 3,WIND,T,P,302.800,Doggerbank OWF Project 1,,,displayable,False
+T_DBAWO-4,DBAWO-4,Dogger Bank A Offshore WF 4,WIND,T,P,152.600,Doggerbank OWF Project 1,,,displayable,False
+T_DBAWO-5,DBAWO-5,Dogger Bank A Offshore WF 5,WIND,T,P,138.200,Doggerbank OWF Project 1,,,displayable,False
+T_DBBWO-1,DBBWO-1,Dogger Bank B Offshore WF 1,WIND,T,P,302.400,Doggerbank OWF Project 2,,,displayable,False
+T_DBBWO-2,DBBWO-2,Dogger Bank B Offshore WF 2,WIND,T,P,304.400,Doggerbank OWF Project 2,,,displayable,False
+T_DBBWO-3,DBBWO-3,Dogger Bank B Offshore WF 3,WIND,T,P,302.300,Doggerbank OWF Project 2,,,displayable,False
+T_DBBWO-4,DBBWO-4,Dogger Bank B Offshore WF 4,WIND,T,P,152.200,Doggerbank OWF Project 2,,,displayable,False
+T_DBBWO-5,DBBWO-5,Dogger Bank B Offshore WF 5,WIND,T,P,138.700,Doggerbank OWF Project 2,,,displayable,False
 T_DNLWW-1,DNLWW-1,Dunlaw Extension,WIND,T,P,29.750,SP Renewables (UK) Limited,,,displayable,False
+T_DOREW-1,DOREW-1,Dorenell Wind Farm One,WIND,T,P,156.920,Dorenell Windfarm Limited,,,displayable,False
+T_DOREW-2,DOREW-2,Dorenell Wind Farm Two,WIND,T,P,156.920,Dorenell Windfarm Limited,,,displayable,False
 T_DOUGW-1,DOUGW-1,T-DOUGW-1,WIND,T,P,45.000,Erova Energy Limited,,,displayable,False
+T_DRAXX-10G,DRAXX-10G,T_DRAXX-10G,OCGT,T,P,33.152,Drax Power Ltd,,,displayable,False
+T_DRAXX-12G,DRAXX-12G,T_DRAXX-12G,OCGT,T,P,32.000,Drax Power Ltd,,,displayable,False
+T_DRAXX-5,DRAXX-5,T_DRAXX-5,COAL,T,P,645.000,Drax Power Ltd,,,displayable,False
+T_DRAXX-6,DRAXX-6,T_DRAXX-6,COAL,T,P,645.000,Drax Power Ltd,,,displayable,False
+T_DRAXX-9G,DRAXX-9G,T_DRAXX-9G,OCGT,T,P,32.454,Drax Power Ltd,,,displayable,False
 T_DRSLW-1,DRSLW-1,Dersalloch Windfarm,WIND,T,P,70.900,SP Renewables (UK) Limited,,,displayable,False
 T_DUNGW-1,DUNGW-1,Dunmglass Windfarm 1,WIND,T,P,100.000,Dunmaglass Wind Farm Limited,,,displayable,False
+T_EAAO-1,EAAO-1,East Anglia One Offshore 1,WIND,T,P,358.000,East Anglia One Limited,,,displayable,False
+T_EAAO-2,EAAO-2,East Anglia One Offshore 2,WIND,T,P,367.000,East Anglia One Limited,,,displayable,False
+T_ENHLW-1,ENHLW-1,Enoch Hill Wind Farm,WIND,T,P,70.000,RWE Generation UK plc,,,displayable,False
+T_EWHLW-1,EWHLW-1,Ewe Hill II Windfarm,WIND,T,P,38.000,SP Renewables (UK) Limited,,,displayable,False
 T_GORDW-1,GORDW-1,Gordon Bush,WIND,T,P,86.764,SSE Generation Ltd,,,displayable,False
+T_GORDW-2,GORDW-2,Gordonbush WF Extension,WIND,T,P,58.733,SSE Generation Ltd,,,displayable,False
+E_GRGRW-1,GRGRW-1,Greengairs East WF-1,WIND,E,P,37.649,Greengairs East Wind Farm Ltd,South Scotland,,displayable,False
+T_GRIFW-1,GRIFW-1,Griffin Wind Farm 1,WIND,T,P,102.000,Griffin Wind Farm Ltd,,,displayable,False
+T_GRIFW-2,GRIFW-2,Griffin Wind Farm 2,WIND,T,P,104.000,Griffin Wind Farm Ltd,,,displayable,False
 T_GYMR-15,GYMRO-15,GyM OSPE 15,WIND,T,P,148.000,Gwynt y Mor Offshore Wind Farm,,,displayable,False
 T_GYMR-17,GYMRO-17,GyM OSPE 17,WIND,T,P,148.000,Gwynt y Mor Offshore Wind Farm,,,displayable,False
 T_GYMR-26,GYMRO-26,GyM OSPW 26,WIND,T,P,148.000,Gwynt y Mor Offshore Wind Farm,,,displayable,False
 T_GYMR-28,GYMRO-28,GyM OSPW 28,WIND,T,P,148.000,Gwynt y Mor Offshore Wind Farm,,,displayable,False
-T_HOWBO-1,HOWBO-1,HORNSEA_WF_2A,WIND,T,P,440.000,Breesea Limited,,,displayable,False
-T_HOWBO-2,HOWBO-2,HORNSEA_WF_2B,WIND,T,P,440.000,Sonningmay Wind Limited,,,displayable,False
-T_HOWBO-3,HOWBO-3,HORNSEA_WF_2C,WIND,T,P,440.000,Soundmark Wind Limited,,,displayable,False
+T_HADHW-1,HADHW-1,Hadyard Hill Wind Farm,WIND,T,P,130.000,SSE Renewables Wind Farms,,,displayable,False
+T_HAHAW-1,HAHAW-1,Hagshaw Repower 1,WIND,T,P,30.258,HAGSHAW HILL REPOWERING LTD,,,displayable,False
+T_HEYM11,HEYM11,Heysham 1 Generator 1,NUCLEAR,T,P,610.000,EDF Energy Nuclear Generation,,,displayable,False
+T_HEYM12,HEYM12,Heysham 1 Generator 2,NUCLEAR,T,P,585.000,EDF Energy Nuclear Generation,,,displayable,False
+T_HEYM27,HEYM27,Heysham 2 Generator 7,NUCLEAR,T,P,660.000,EDF Energy Nuclear Generation,,,displayable,False
+T_HEYM28,HEYM28,Heysham 2 Generator 8,NUCLEAR,T,P,676.152,EDF Energy Nuclear Generation,,,displayable,False
+E_HLTWW-1,HLTWW-1,Hill of Towie,WIND,E,P,48.000,ScottishPower Energy Retail,North Scotland,,displayable,False
+E_HRHLW-1,HRHLW-1,Hare Hill Extension Windfarm,WIND,E,P,30.000,SP Renewables (UK) Limited,South Scotland,,displayable,False
+T_JGPR-1,JGPR-1,High Marnham JGPEARS,BIOMASS,T,P,13.000,JG Pears Power Ltd,,,displayable,False
 T_KILBW-1,KILBW-1,KILBW,WIND,T,P,68.510,Kilbraur Wind Energy Ltd,,,displayable,False
+T_KTHLW-1,KTHLW-1,KEITH HILL WINDFARM,WIND,T,P,4.540,Statkraft Markets Gmbh,,,displayable,False
+T_MIDMW-1,MIDMW-1,MIDDLE MUIR WIND FARM,WIND,T,P,51.000,OnPath Energy Limited,,,displayable,False
 T_MILWW-1,MILWW-1,MILWW,WIND,T,P,65.000,Millennium Wind Energy Ltd,,,displayable,False
+T_MKHLW-1,MKHLW-1,Mark Hill,WIND,T,P,53.000,SP Renewables (UK) Limited,,,displayable,False
+T_NOKYW-1,NOKYW-1,North Kyle Wind Farm-1,WIND,T,P,106.000,North Kyle Wind farm Ltd,,,displayable,False
+T_NOKYW-2,NOKYW-2,North Kyle Wind Farm-2,WIND,T,P,106.000,North Kyle Wind farm Ltd,,,displayable,False
 T_PNYCW-1,PNYCW-1,PNYCW-1 Export,WIND,T,P,228.000,Pen y Cymoedd Wind Farm LTD,,,displayable,False
 T_RREW-1,RREW-1,T_RREW-1,WIND,T,P,114.293,RWE Renewables UK Robin Rigg,,,displayable,False
 T_RRWW-1,RRWW-1,T_RRWW-1,WIND,T,P,90.838,RWE Renewables UK Robin Rigg,,,displayable,False
+T_SAKNW-1,SAKNW-1,Sandy Knowe Wind Farm,WIND,T,P,87.000,Sandy Knowe Wind Farm Ltd,,,displayable,False
 T_SANQW-1,SANQW-1,SANQUHAR,WIND,T,P,32.080,SANQUHAR CWCL,,,displayable,False
+T_SOKYW-1,SOKYW-1,South Kyle Wind Farm,WIND,T,P,426.916,South Kyle Wind Farm Limited,,,displayable,False
+T_STRNW-1,STRNW-1,Strathy North Wind Farm 1,WIND,T,P,70.000,Strathy Wind Farm Limited,,,displayable,False
+T_SUTB-1,SUTB-1,BMUid for Sutton Bridge Power,CCGT,T,P,850.000,SUTTON BRIDGE POWER GENERATION,,,displayable,False
 T_THUPG-1,THUPG-1,T_THUPG-1,OTHER,T,P,180.000,THURROCK POWER LIMITED,,,displayable,False
+T_TKNEW-1,TKNEW-1,Triton Knoll OSP East 1,WIND,T,P,412.000,Triton Knoll Offshore Wind,,,displayable,False
+T_TSREP-1,TSREP-1,MGT TEESIDE TEESREP MAIN,BIOMASS,T,P,285.000,MGT TEESSIDE LTD.,,,displayable,False
 T_USKMB-2,USKMB-2,UES Asset 1 limited BMU1 BESS1,OTHER,T,P,57.500,UES Asset 1 Limited,,,displayable,False
 T_USKMB-3,USKMB-3,UES Asset 1 limited BMU1 BESS2,OTHER,T,P,57.500,UES Asset 1 Limited,,,displayable,False
+T_WDRGW-1,WDRGW-1,Windy Rig Wind Farm,WIND,T,P,42.800,Windy Rig Wind Farm Limited,,,displayable,False
+T_WHIHW-1,WHIHW-1,Whiteside Hill WF,WIND,T,P,27.520,Whiteside Hill,,,displayable,False

@@ -118,6 +118,29 @@ def compact_site_name(name: str | None) -> str:
     return normalize_site_name(name).replace(" ", "")
 
 
+# OSM plant names too generic for reliable auto BMU matching.
+GENERIC_PLANT_NAMES: frozenset[str] = frozenset(
+    normalize_site_name(name)
+    for name in (
+        "Wind Farm",
+        "Solar Plant",
+        "Solar Farm",
+        "Solar Panels",
+        "Solar Light",
+    )
+)
+
+
+def is_generic_plant_name(name: str | None) -> bool:
+    return normalize_site_name(name) in GENERIC_PLANT_NAMES
+
+
+def is_supplier_or_virtual_bmu(bmu: dict[str, Any]) -> bool:
+    bmu_type = str(bmu.get("bmUnitType") or "").strip().upper()
+    elexon = str(bmu.get("elexonBmUnit") or "").strip().upper()
+    return bmu_type in REFERENCE_ONLY_BMU_TYPES or elexon.startswith("2__")
+
+
 def normalize_bmu_site_name(name: str | None) -> str:
     """Strip unit numbers from BMU names like 'Dinorwig 1' -> 'dinorwig'."""
     text = normalize_site_name(name)
@@ -353,6 +376,26 @@ def mapped_bmu_ids(map_frame: pd.DataFrame) -> set[str]:
     }
 
 
+def dedupe_bare_osm_map_rows(frame: pd.DataFrame) -> pd.DataFrame:
+    """Drop bare numeric osm_id rows when a prefixed row exists for the same BMU."""
+    prefixed: set[tuple[str, str]] = set()
+    for _, row in frame.iterrows():
+        osm_id = "" if is_empty(row.get("osm_id")) else str(row["osm_id"]).strip()
+        bmu_id = _key_part(row.get("bmu_id"))
+        if "/" in osm_id:
+            prefixed.add((osm_id.split("/", 1)[1], bmu_id))
+
+    drop_idx = []
+    for idx, row in frame.iterrows():
+        osm_id = "" if is_empty(row.get("osm_id")) else str(row["osm_id"]).strip()
+        bmu_id = _key_part(row.get("bmu_id"))
+        if "/" not in osm_id and osm_id.isdigit() and (osm_id, bmu_id) in prefixed:
+            drop_idx.append(idx)
+    if drop_idx:
+        frame = frame.drop(index=drop_idx).reset_index(drop=True)
+    return frame
+
+
 def _index_bmunits(bmunits: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     by_elexon: dict[str, dict[str, Any]] = {}
     by_ngc: dict[str, dict[str, Any]] = {}
@@ -518,16 +561,23 @@ def propose_plant_bmu_map(
         return frame
 
     bmunits = load_bmunits(reference_path)
+    already_mapped = mapped_bmu_ids(frame)
     proposed = 0
     for _, plant in plants.iterrows():
         if is_empty(plant.get("name")):
             continue
-        osm_id = None if is_empty(plant.get("osm_id")) else str(plant["osm_id"])
         plant_name = str(plant["name"])
+        if is_generic_plant_name(plant_name):
+            continue
+        osm_id = None if is_empty(plant.get("osm_id")) else str(plant["osm_id"])
         for candidate in propose_match_candidates_for_plant(plant, bmunits):
             if candidate["confidence"] != auto_confidence:
                 continue
+            if is_supplier_or_virtual_bmu(candidate["bmu"]):
+                continue
             fields = bmu_row_to_map_fields(candidate["bmu"])
+            if _key_part(fields["bmu_id"]) in already_mapped:
+                continue
             before = len(frame)
             frame = append_map_row(
                 frame,
@@ -540,7 +590,9 @@ def propose_plant_bmu_map(
             )
             if len(frame) > before:
                 proposed += 1
+                already_mapped.add(_key_part(fields["bmu_id"]))
 
+    frame = dedupe_bare_osm_map_rows(frame)
     print(f"BMU map: {len(frame):,} rows ({proposed:,} new high-confidence auto proposals)")
     return frame
 
