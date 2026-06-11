@@ -506,33 +506,6 @@
   {
     "osm_id": "way/551286861",
     "plant_name": "East Langford Farm",
-    "bmu_id": "T_MOWEO-1",
-    "ngc_bmu_id": "MOWEO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/551286861",
-    "plant_name": "East Langford Farm",
-    "bmu_id": "T_MOWEO-2",
-    "ngc_bmu_id": "MOWEO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/551286861",
-    "plant_name": "East Langford Farm",
-    "bmu_id": "T_MOWEO-3",
-    "ngc_bmu_id": "MOWEO-3",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/551286861",
-    "plant_name": "East Langford Farm",
     "bmu_id": "2__JEDFE000",
     "ngc_bmu_id": "SEE-EDF01",
     "bmu_type": "G",
@@ -3314,33 +3287,6 @@
   {
     "osm_id": "relation/11895884",
     "plant_name": "East Farm",
-    "bmu_id": "T_MOWEO-1",
-    "ngc_bmu_id": "MOWEO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/11895884",
-    "plant_name": "East Farm",
-    "bmu_id": "T_MOWEO-2",
-    "ngc_bmu_id": "MOWEO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/11895884",
-    "plant_name": "East Farm",
-    "bmu_id": "T_MOWEO-3",
-    "ngc_bmu_id": "MOWEO-3",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/11895884",
-    "plant_name": "East Farm",
     "bmu_id": "2__JEDFE000",
     "ngc_bmu_id": "SEE-EDF01",
     "bmu_type": "G",
@@ -3551,33 +3497,6 @@
     "bmu_id": "I_IIG-SEEL1",
     "ngc_bmu_id": "IIG-SEEL1",
     "bmu_type": "I",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/17988618",
-    "plant_name": "East Codford Solar Farm",
-    "bmu_id": "T_MOWEO-1",
-    "ngc_bmu_id": "MOWEO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/17988618",
-    "plant_name": "East Codford Solar Farm",
-    "bmu_id": "T_MOWEO-2",
-    "ngc_bmu_id": "MOWEO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/17988618",
-    "plant_name": "East Codford Solar Farm",
-    "bmu_id": "T_MOWEO-3",
-    "ngc_bmu_id": "MOWEO-3",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -4469,33 +4388,6 @@
     "bmu_id": "I_IIG-SEEL1",
     "ngc_bmu_id": "IIG-SEEL1",
     "bmu_type": "I",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681573457",
-    "plant_name": "East Fairlee Solar Farm",
-    "bmu_id": "T_MOWEO-1",
-    "ngc_bmu_id": "MOWEO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681573457",
-    "plant_name": "East Fairlee Solar Farm",
-    "bmu_id": "T_MOWEO-2",
-    "ngc_bmu_id": "MOWEO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681573457",
-    "plant_name": "East Fairlee Solar Farm",
-    "bmu_id": "T_MOWEO-3",
-    "ngc_bmu_id": "MOWEO-3",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -5531,33 +5423,6 @@
     "bmu_id": "I_IIG-SEEL1",
     "ngc_bmu_id": "IIG-SEEL1",
     "bmu_type": "I",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/741850779",
-    "plant_name": "East Dagenham Docks AD (AD)",
-    "bmu_id": "T_MOWEO-1",
-    "ngc_bmu_id": "MOWEO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/741850779",
-    "plant_name": "East Dagenham Docks AD (AD)",
-    "bmu_id": "T_MOWEO-2",
-    "ngc_bmu_id": "MOWEO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/741850779",
-    "plant_name": "East Dagenham Docks AD (AD)",
-    "bmu_id": "T_MOWEO-3",
-    "ngc_bmu_id": "MOWEO-3",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -11252,33 +11117,6 @@
   {
     "osm_id": "way/628225156",
     "plant_name": "East Lenham Solar Farm",
-    "bmu_id": "T_MOWEO-1",
-    "ngc_bmu_id": "MOWEO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/628225156",
-    "plant_name": "East Lenham Solar Farm",
-    "bmu_id": "T_MOWEO-2",
-    "ngc_bmu_id": "MOWEO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/628225156",
-    "plant_name": "East Lenham Solar Farm",
-    "bmu_id": "T_MOWEO-3",
-    "ngc_bmu_id": "MOWEO-3",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/628225156",
-    "plant_name": "East Lenham Solar Farm",
     "bmu_id": "2__JEDFE000",
     "ngc_bmu_id": "SEE-EDF01",
     "bmu_type": "G",
@@ -14362,5 +14200,86 @@
     "bmu_type": "T",
     "source": "manual",
     "notes": "Twentyshilling Hill Wind Farm"
+  },
+  {
+    "osm_id": "manual/tullo-wind-farm",
+    "plant_name": "Tullo Wind Farm",
+    "bmu_id": "E_TULWW-1",
+    "ngc_bmu_id": "TULWW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Tullo Wind Farm"
+  },
+  {
+    "osm_id": "manual/cour-wind-farm",
+    "plant_name": "Cour Wind Farm",
+    "bmu_id": "T_COUWW-1",
+    "ngc_bmu_id": "COUWW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Cour Wind Farm"
+  },
+  {
+    "osm_id": "manual/carraig-gheal-wind-farm",
+    "plant_name": "Carraig Gheal Wind Farm",
+    "bmu_id": "T_CRGHW-1",
+    "ngc_bmu_id": "CRGHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Carraig Gheal Wind Farm"
+  },
+  {
+    "osm_id": "manual/corriegarth-wind-farm",
+    "plant_name": "Corriegarth Wind Farm",
+    "bmu_id": "T_CGTHW-1",
+    "ngc_bmu_id": "CGTHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Corriegarth Wind Farm"
+  },
+  {
+    "osm_id": "895177754",
+    "plant_name": "Moray East Wind Farm",
+    "bmu_id": "T_MOWEO-1",
+    "ngc_bmu_id": "MOWEO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Moray East Wind Farm"
+  },
+  {
+    "osm_id": "895177754",
+    "plant_name": "Moray East Wind Farm",
+    "bmu_id": "T_MOWEO-2",
+    "ngc_bmu_id": "MOWEO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Moray East Wind Farm"
+  },
+  {
+    "osm_id": "895177754",
+    "plant_name": "Moray East Wind Farm",
+    "bmu_id": "T_MOWEO-3",
+    "ngc_bmu_id": "MOWEO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Moray East Wind Farm"
+  },
+  {
+    "osm_id": "manual/blackcraig-wind-farm",
+    "plant_name": "Blackcraig Wind Farm",
+    "bmu_id": "E_CRGTW-1",
+    "ngc_bmu_id": "CRGTW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Craig 2 Wind Farm; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
+  },
+  {
+    "osm_id": "manual/burn-of-whilk-wind-farm",
+    "plant_name": "Burn of Whilk Wind Farm",
+    "bmu_id": "E_BNWKW-1",
+    "ngc_bmu_id": "BNWKW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": "Candidate match: bmUnitName=Burn of Whilk Windfarm; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True"
   }
 ]

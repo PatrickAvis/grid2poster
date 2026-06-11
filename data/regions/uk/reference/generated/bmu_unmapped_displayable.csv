@@ -6,14 +6,9 @@ T_ANSUW-1,ANSUW-1,An Suidhe 1,WIND,T,P,19.360,Statkraft Markets Gmbh,,,displayab
 E_BETHW-1,BETHW-1,BETHW-1,WIND,E,P,29.750,SP Renewables (UK) Limited,North Scotland,,displayable,False
 T_BHLAW-1,BHLAW-1,Bhlaraidh Windfarm 1,WIND,T,P,108.000,SSE Generation Ltd,,,displayable,False
 T_BLLA-1,BLLA-1,T_BLLA-1,WIND,T,P,118.000,SP Renewables (UK) Limited,,,displayable,False
-E_BNWKW-1,BNWKW-1,Burn of Whilk Windfarm,WIND,E,P,22.500,Eneco Energy Trade,North Scotland,,displayable,False
 E_BTUIW-2,BTUIW-2,Beinn An Tuirc 2,WIND,E,P,43.700,SP Renewables (UK) Limited,North Scotland,,displayable,False
 E_BTUIW-3,BTUIW-3,Beinn an Tuirc III Windfarm,WIND,E,P,52.000,SP Renewables (UK) Limited,North Scotland,,displayable,False
-T_CGTHW-1,CGTHW-1,Corriegarth WF,WIND,T,P,69.000,Corriegarth Wind Energy LTD,,,displayable,False
 T_CLDCW-1,CLDCW-1,Clyde Central,WIND,T,P,200.000,Clyde Windfarm (Scotland) Ltd,,,displayable,False
-T_COUWW-1,COUWW-1,Cour Wind Farm,WIND,T,P,20.500,Cour Wind farm (Scotland) Ltd,,,displayable,False
-T_CRGHW-1,CRGHW-1,Carraig Gheal Wind Farm,WIND,T,P,46.000,Statkraft Markets Gmbh,,,displayable,False
-E_CRGTW-1,CRGTW-1,Craig 2 Wind Farm,WIND,E,P,4.700,British Gas Trading Ltd,South Scotland,,displayable,False
 T_CRYRW-2,CRYRW-2,Crystal Rig II Windfarm,WIND,T,P,150.620,Eneco Energy Trade,,,displayable,False
 T_CRYRW-3,CRYRW-3,Crystal Rig III,WIND,T,P,13.800,Eneco Energy Trade,,,displayable,False
 T_CRYRW-4,CRYRW-4,Crystal Rig IV Wind Farm,WIND,T,P,48.200,Erova Energy Limited,,,displayable,False
@@ -37,7 +32,5 @@ T_RREW-1,RREW-1,T_RREW-1,WIND,T,P,114.293,RWE Renewables UK Robin Rigg,,,display
 T_RRWW-1,RRWW-1,T_RRWW-1,WIND,T,P,90.838,RWE Renewables UK Robin Rigg,,,displayable,False
 T_SANQW-1,SANQW-1,SANQUHAR,WIND,T,P,32.080,SANQUHAR CWCL,,,displayable,False
 T_THUPG-1,THUPG-1,T_THUPG-1,OTHER,T,P,180.000,THURROCK POWER LIMITED,,,displayable,False
-E_TULWW-1,TULWW-1,Tullo Windfarm,WIND,E,P,17.000,Eneco Energy Trade,North Scotland,,displayable,False
-T_TWSHW-1,TWSHW-1,Twenty Shilling Wind Farm,WIND,T,P,37.800,Twentyshilling Limited,,,displayable,False
 T_USKMB-2,USKMB-2,UES Asset 1 limited BMU1 BESS1,OTHER,T,P,57.500,UES Asset 1 Limited,,,displayable,False
 T_USKMB-3,USKMB-3,UES Asset 1 limited BMU1 BESS2,OTHER,T,P,57.500,UES Asset 1 Limited,,,displayable,False

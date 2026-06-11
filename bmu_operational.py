@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import json
 from collections import defaultdict
-from datetime import UTC, datetime, timedelta
+from collections.abc import Callable
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -71,6 +72,34 @@ def fetch_system_prices(settlement_date: str, *, timeout: int = 60) -> list[dict
     return _data_rows(response.json())
 
 
+def settlement_slot(settlement_date: str, settlement_period: int) -> int:
+    """Absolute half-hour slot index (SP1 on 1970-01-01 = 0)."""
+    day = date.fromisoformat(settlement_date)
+    return day.toordinal() * 48 + (settlement_period - 1)
+
+
+def slot_to_settlement(slot: int) -> tuple[str, int]:
+    day_ord, period_index = divmod(slot, 48)
+    return date.fromordinal(day_ord).isoformat(), period_index + 1
+
+
+def periods_last_n_hours(
+    hours: float = 24,
+    *,
+    lookback_days: int = 7,
+    timeout: int = 60,
+) -> list[tuple[str, int]]:
+    """Settlement (date, period) pairs covering the last N hours up to latest published."""
+    end_date, end_period = latest_available_period(
+        lookback_days=lookback_days,
+        timeout=timeout,
+    )
+    end_slot = settlement_slot(end_date, end_period)
+    period_count = max(1, int(round(hours * 2)))
+    start_slot = end_slot - period_count + 1
+    return [slot_to_settlement(slot) for slot in range(start_slot, end_slot + 1)]
+
+
 def latest_available_period(*, lookback_days: int = 7, timeout: int = 60) -> tuple[str, int]:
     """Find the latest settlement date/period with published system prices."""
     today = datetime.now(UTC).date()
@@ -127,6 +156,45 @@ def fetch_ispstack_sides(
             timeout=timeout,
         ))
     return rows
+
+
+def fetch_ispstack_window(
+    hours: float = 24,
+    *,
+    bid_offer: str = "all",
+    lookback_days: int = 7,
+    timeout: int = 60,
+    on_period: Callable[[str, int, int, int], None] | None = None,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Fetch ISPSTACK rows across the last N hours of settlement periods."""
+    periods = periods_last_n_hours(
+        hours,
+        lookback_days=lookback_days,
+        timeout=timeout,
+    )
+    rows: list[dict[str, Any]] = []
+    for index, (settlement_date, settlement_period) in enumerate(periods, start=1):
+        if on_period is not None:
+            on_period(settlement_date, settlement_period, index, len(periods))
+        rows.extend(
+            fetch_ispstack_sides(
+                bid_offer=bid_offer,
+                settlement_date=settlement_date,
+                settlement_period=settlement_period,
+                timeout=timeout,
+            )
+        )
+    start_date, start_period = periods[0]
+    end_date, end_period = periods[-1]
+    window = {
+        "hours": hours,
+        "period_count": len(periods),
+        "settlement_date_start": start_date,
+        "settlement_period_start": start_period,
+        "settlement_date_end": end_date,
+        "settlement_period_end": end_period,
+    }
+    return rows, window
 
 
 def default_plants_path() -> Path:
@@ -226,7 +294,7 @@ def _aggregate_mapped_actions(
     links_by_bmu: dict[str, list[dict[str, Any]]],
     sites_by_osm: dict[str, dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    mapped: dict[tuple[str, str, str], dict[str, Any]] = {}
+    mapped: dict[tuple[str, str, str, Any, Any], dict[str, Any]] = {}
     unmapped: dict[tuple[str, str], dict[str, Any]] = {}
 
     for row in rows:
@@ -267,7 +335,13 @@ def _aggregate_mapped_actions(
             osm_id = _string_or_none(link.get("osm_id"))
             if not osm_id or osm_id not in sites_by_osm:
                 continue
-            key = (osm_id, _key(bmu_id), side)
+            key = (
+                osm_id,
+                _key(bmu_id),
+                side,
+                row.get("settlementDate"),
+                row.get("settlementPeriod"),
+            )
             site = sites_by_osm[osm_id]
             entry = mapped.setdefault(key, {
                 **site,
@@ -389,6 +463,7 @@ def build_activity_feature_collection(
     settlement_date: str,
     settlement_period: int,
     fetched_at: str,
+    settlement_window: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     features = []
     for action in actions:
@@ -400,14 +475,17 @@ def build_activity_feature_collection(
             "geometry": {"type": "Point", "coordinates": [lon, lat]},
             "properties": props,
         })
+    metadata: dict[str, Any] = {
+        "settlement_date": settlement_date,
+        "settlement_period": settlement_period,
+        "fetched_at": fetched_at,
+        "feature_count": len(features),
+    }
+    if settlement_window:
+        metadata.update(settlement_window)
     return {
         "type": "FeatureCollection",
-        "metadata": {
-            "settlement_date": settlement_date,
-            "settlement_period": settlement_period,
-            "fetched_at": fetched_at,
-            "feature_count": len(features),
-        },
+        "metadata": metadata,
         "features": features,
     }
 
@@ -417,6 +495,7 @@ def write_activity_outputs(
     *,
     settlement_date: str,
     settlement_period: int,
+    settlement_window: dict[str, Any] | None = None,
     plants_path: Path | None = None,
     map_path: Path = PLANT_BMU_MAP_PATH,
     activity_path: Path = BM_ACTIVITY_LATEST_PATH,
@@ -439,6 +518,7 @@ def write_activity_outputs(
         settlement_date=settlement_date,
         settlement_period=settlement_period,
         fetched_at=fetched_at,
+        settlement_window=settlement_window,
     )
 
     activity_path.parent.mkdir(parents=True, exist_ok=True)

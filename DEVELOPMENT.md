@@ -135,8 +135,8 @@ Elexon Insights ISPSTACK / detailed system price stack:
 
 ### Pipeline
 
-1. Fetch latest settlement date and period.
-2. Fetch ISPSTACK buy and sell stacks.
+1. Resolve settlement window (default: last 24 hours through latest published period).
+2. Fetch ISPSTACK buy and sell stacks for each half-hour period in that window.
 3. Normalize and aggregate actions by mapped site/BMU.
 4. Join to `plant_bmu_links`.
 5. Export `operational/bmu_activity_latest.json` for the map.
@@ -152,6 +152,8 @@ Refresh the static snapshot:
 
 ```powershell
 python scripts/fetch_bm_activity.py
+python scripts/fetch_bm_activity.py --hours 6
+python scripts/fetch_bm_activity.py --settlement-date 2026-06-10 --settlement-period 48
 ```
 
 ## Active But Unmapped BMUs
