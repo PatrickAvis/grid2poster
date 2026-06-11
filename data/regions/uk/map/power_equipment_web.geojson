@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "uk_power_equipment_web",
+"name": "power_equipment_web",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "power": "transformer", "name": null, "operator": null, "voltage": null, "location": null, "ref": null, "longitude": -1.5358787, "latitude": 51.0278008 }, "geometry": { "type": "Point", "coordinates": [ -1.5358787, 51.0278008 ] } },

@@ -440,7 +440,7 @@ E_CLDRW-1,CLDRW-1,CLDRW-1,WIND,E,C,39.000,Vattenfall Energy Trading,North Scotla
 E_CMSTW-2,CMSTW-2,Camster II,WIND,E,C,36.000,Edgware Energy Limited,North Scotland,,reference_only,False
 T_COVNB-1,COVNB-1,Pivot Power Coventry,OTHER,T,C,50.449,Pivoted Power LLP,,,reference_only,True
 T_COWB-1,COWB-1,Cowley,OTHER,T,C,50.431,Pivoted Power LLP,,,reference_only,True
-T_COYLB-1,COYLB-1,Coylton  Greener Grid  Park,,T,C,50.000,Statkraft Markets Gmbh,,,reference_only,True
+T_COYLB-1,COYLB-1,Coylton  Greener Grid  Park,,T,C,50.000,Statkraft Markets Gmbh,,,reference_only,False
 T_CRDEW-1,CRDEW-1,Crossdykes WF-1,WIND,T,C,24.000,EDF Energy Customers Limited,,,reference_only,False
 T_CRDEW-2,CRDEW-2,Crossdykes WF-2,WIND,T,C,24.000,EDF Energy Customers Limited,,,reference_only,False
 T_CRGHD-1,CRGHD-1,Carraig Gheal Wind Farm,,T,P,0.000,Statkraft Markets Gmbh,,,reference_only,False
@@ -615,7 +615,7 @@ T_HINB-8,HINB-8,Hinkley Point B Generator 8,NUCLEAR,T,C,0.000,EDF Energy Nuclear
 T_HINB-D,HINBD-1,Hinkley Point B Station Demand,,T,C,4.000,EDF Energy Customers Limited,,,reference_only,False
 V__KHABI007,HIRWB-1,Hirwaun,,V,C,0.000,Habitat Energy Limited,South Wales,,reference_only,False
 2__HJERE000,HJERE000,2__HJERE000,,G,C,0.000,Shell Energy UK Limited,Southern,,reference_only,False
-E_HLGLW-1,HLGLW-1,Hill of Glaschyle,WIND,E,C,28.000,ENGIE Power Limited,North Scotland,,reference_only,True
+E_HLGLW-1,HLGLW-1,Hill of Glaschyle,WIND,E,C,28.000,ENGIE Power Limited,North Scotland,,reference_only,False
 V__GFORS004,HLLHG-1,V__GFORS004,,V,P,20.000,Forsa Trading Limited,North Western,,reference_only,False
 T_HRSTB-1,HRSTB-1,T_HRSTB-1,,T,C,52.000,SP Renewables (UK) Limited,,,reference_only,False
 V__FFORS001,HRTMG-1,V__FFORS001,,V,P,50.000,Forsa Trading Limited,Northern,,reference_only,False
@@ -1881,7 +1881,7 @@ I_IVG-VTFS1,IVG-VTFS1,VET_VIKING_G,,I,P,1400.000,Vattenfall Energy Trading,,VIKI
 I_IVG-WOLF1,IVG-WOLF1,WT Vlink Export BMU,,I,P,800.000,Wolfram Trading ApS,,VIKINGLINK,reference_only,False
 2__JJERE000,JJERE000,2__JJERE000,,G,C,0.000,Shell Energy UK Limited,South Eastern,,reference_only,False
 T_KEMB-1,KEMB-1,Pivot Power Kemsley,,T,C,40.137,EDF Energy Customers Limited,,,reference_only,True
-E_KHLLW-1,KHLLW-1,Kirk Hill WF,WIND,E,C,18.800,Unify Energy Limited,South Scotland,,reference_only,True
+E_KHLLW-1,KHLLW-1,Kirk Hill WF,WIND,E,C,18.800,Unify Energy Limited,South Scotland,,reference_only,False
 T_KILLSC-1,KILLSC-1,Killingholme Synch Comp 1,,T,C,0.000,Uniper UK Limited,,,reference_only,True
 T_KILLSC-2,KILLSC-2,Killingholme Synch Comp 2,,T,C,0.000,Uniper UK Limited,,,reference_only,True
 T_KILNS-1,KILNS,Centrica Killingholme,,T,,,Centrica KPS Limited,,,reference_only,True

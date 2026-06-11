@@ -9,15 +9,6 @@
     "notes": null
   },
   {
-    "osm_id": "relation/9456298",
-    "plant_name": "Pen y Cae Solar Farm",
-    "bmu_id": "T_PNYCB-1",
-    "ngc_bmu_id": "PNYCB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "relation/12718371",
     "plant_name": "Exeter Gas Power Station",
     "bmu_id": "E_EXETR-2",
@@ -117,15 +108,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/550725979",
-    "plant_name": "Newton Ferrers Solar Park",
-    "bmu_id": "E_NEWTB-1",
-    "ngc_bmu_id": "NEWTB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/550726464",
     "plant_name": "Wilton Farm (pv)",
     "bmu_id": "T_LIONB-1",
@@ -171,74 +153,11 @@
     "notes": null
   },
   {
-    "osm_id": "way/641593818",
-    "plant_name": "Port of Barry",
-    "bmu_id": "E_POTES-1",
-    "ngc_bmu_id": "POTES-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/688724937",
-    "plant_name": "North Wayton Solar Power Station",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/718494061",
-    "plant_name": "Newton Downs Farm",
-    "bmu_id": "E_NEWTB-1",
-    "ngc_bmu_id": "NEWTB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/723603986",
-    "plant_name": "Sutton Mawr Farm",
-    "bmu_id": "T_SUTBS-1",
-    "ngc_bmu_id": "SUTBS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725688488",
-    "plant_name": "Barton Close Farm",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/738926636",
     "plant_name": "Pen y Cymoedd Energy Storage",
     "bmu_id": "T_PNYCB-1",
     "ngc_bmu_id": "PNYCB-1",
     "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/745132276",
-    "plant_name": "North Tenement",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746020116",
-    "plant_name": "Barton",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
     "source": "auto",
     "notes": null
   },
@@ -274,24 +193,6 @@
     "plant_name": "Dowlais STOR East",
     "bmu_id": "E_DOWL-1",
     "ngc_bmu_id": "DOWL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/956255098",
-    "plant_name": "North Tamar Environ Project - Holsworthy",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/1038227745",
-    "plant_name": "Port Talbot STOR",
-    "bmu_id": "E_POTES-1",
-    "ngc_bmu_id": "POTES-1",
     "bmu_type": "E",
     "source": "auto",
     "notes": null
@@ -365,15 +266,6 @@
     "bmu_id": "T_WLNYW-1",
     "ngc_bmu_id": "WLNYW-1",
     "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/136369186",
-    "plant_name": "North Hoyle Offshore Wind Farm",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
     "source": "auto",
     "notes": null
   },
@@ -846,51 +738,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/627198590",
-    "plant_name": "River Pattack Hydro Scheme",
-    "bmu_id": "T_NTRVB-1",
-    "ngc_bmu_id": "NTRVB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/843623847",
-    "plant_name": "River Grudie Hydroelectric Scheme",
-    "bmu_id": "T_NTRVB-1",
-    "ngc_bmu_id": "NTRVB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/852042890",
-    "plant_name": "River E Hydro Scheme",
-    "bmu_id": "T_NTRVB-1",
-    "ngc_bmu_id": "NTRVB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/956323027",
-    "plant_name": "River Taodail Hydro",
-    "bmu_id": "T_NTRVB-1",
-    "ngc_bmu_id": "NTRVB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/956325766",
-    "plant_name": "River Coiltie Hydro Scheme",
-    "bmu_id": "T_NTRVB-1",
-    "ngc_bmu_id": "NTRVB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/1017473264",
     "plant_name": "Glen Finglas",
     "bmu_id": "T_GLNKW-1",
@@ -936,155 +783,11 @@
     "notes": null
   },
   {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "E_BHOLB-1",
-    "ngc_bmu_id": "BHOLB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "T_BLWNB-1",
-    "ngc_bmu_id": "BLWNB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "E_BROAB-1",
-    "ngc_bmu_id": "BROAB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "E_CONTB-1",
-    "ngc_bmu_id": "CONTB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "E_HAWKB-1",
-    "ngc_bmu_id": "HAWKB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "T_NLSTB-1",
-    "ngc_bmu_id": "NLSTB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "T_PNYCB-1",
-    "ngc_bmu_id": "PNYCB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "E_SKELB-1",
-    "ngc_bmu_id": "SKELB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/461434781",
-    "plant_name": "Battery Point Power Station",
-    "bmu_id": "T_WHLWB-1",
-    "ngc_bmu_id": "WHLWB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "relation/7868829",
     "plant_name": "Chapel Lane Solar Farm",
     "bmu_id": "E_CHAPB-1",
     "ngc_bmu_id": "CHAPB-1",
     "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/7873194",
-    "plant_name": "Park Wood",
-    "bmu_id": "T_COYLB-1",
-    "ngc_bmu_id": "COYLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/7873194",
-    "plant_name": "Park Wood",
-    "bmu_id": "T_RICHB-1",
-    "ngc_bmu_id": "RICHB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/7873194",
-    "plant_name": "Park Wood",
-    "bmu_id": "T_RICHB-2",
-    "ngc_bmu_id": "RICHB-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/7873194",
-    "plant_name": "Park Wood",
-    "bmu_id": "T_TEBWB-1",
-    "ngc_bmu_id": "TEBWB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/7873194",
-    "plant_name": "Park Wood",
-    "bmu_id": "T_TEBWS-1",
-    "ngc_bmu_id": "TEBWS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/7873194",
-    "plant_name": "Park Wood",
-    "bmu_id": "E_TRFPK-1",
-    "ngc_bmu_id": "TRFPK-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/9106671",
-    "plant_name": "Cross Roads Plantation Solar Farm",
-    "bmu_id": "T_BROCW-1",
-    "ngc_bmu_id": "BROCW-1",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -1179,60 +882,6 @@
     "notes": null
   },
   {
-    "osm_id": "relation/9580854",
-    "plant_name": "Park House Corner Solar Farm",
-    "bmu_id": "T_COYLB-1",
-    "ngc_bmu_id": "COYLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/9580854",
-    "plant_name": "Park House Corner Solar Farm",
-    "bmu_id": "T_RICHB-1",
-    "ngc_bmu_id": "RICHB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/9580854",
-    "plant_name": "Park House Corner Solar Farm",
-    "bmu_id": "T_RICHB-2",
-    "ngc_bmu_id": "RICHB-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/9580854",
-    "plant_name": "Park House Corner Solar Farm",
-    "bmu_id": "T_TEBWB-1",
-    "ngc_bmu_id": "TEBWB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/9580854",
-    "plant_name": "Park House Corner Solar Farm",
-    "bmu_id": "T_TEBWS-1",
-    "ngc_bmu_id": "TEBWS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/9580854",
-    "plant_name": "Park House Corner Solar Farm",
-    "bmu_id": "E_TRFPK-1",
-    "ngc_bmu_id": "TRFPK-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "relation/19313332",
     "plant_name": "Bulphan Fen Solar Farm",
     "bmu_id": "T_BLPFB-1",
@@ -1296,15 +945,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/248251910",
-    "plant_name": "North Quay Newhaven Energy Recovery Facility",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/352871114",
     "plant_name": "Shoreham Power Station",
     "bmu_id": "E_SHOS-1",
@@ -1332,110 +972,11 @@
     "notes": null
   },
   {
-    "osm_id": "way/538582328",
-    "plant_name": "Park Farm Solar Park",
-    "bmu_id": "T_COYLB-1",
-    "ngc_bmu_id": "COYLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/538582328",
-    "plant_name": "Park Farm Solar Park",
-    "bmu_id": "T_RICHB-1",
-    "ngc_bmu_id": "RICHB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/538582328",
-    "plant_name": "Park Farm Solar Park",
-    "bmu_id": "T_RICHB-2",
-    "ngc_bmu_id": "RICHB-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/538582328",
-    "plant_name": "Park Farm Solar Park",
-    "bmu_id": "T_TEBWB-1",
-    "ngc_bmu_id": "TEBWB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/538582328",
-    "plant_name": "Park Farm Solar Park",
-    "bmu_id": "T_TEBWS-1",
-    "ngc_bmu_id": "TEBWS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/538582328",
-    "plant_name": "Park Farm Solar Park",
-    "bmu_id": "E_TRFPK-1",
-    "ngc_bmu_id": "TRFPK-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/538582341",
-    "plant_name": "North Farm Solar Farm",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/681589458",
     "plant_name": "Goose Willow Farm",
     "bmu_id": "E_GOSHS-1",
     "ngc_bmu_id": "GOSHS-1",
     "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681843749",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681843749",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "E_HLGLW-1",
-    "ngc_bmu_id": "HLGLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681843749",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "E_KHLLW-1",
-    "ngc_bmu_id": "KHLLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/681843749",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "T_OCHLB-1",
-    "ngc_bmu_id": "OCHLB-1",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -1458,60 +999,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/687462872",
-    "plant_name": "Park Farm",
-    "bmu_id": "T_COYLB-1",
-    "ngc_bmu_id": "COYLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/687462872",
-    "plant_name": "Park Farm",
-    "bmu_id": "T_RICHB-1",
-    "ngc_bmu_id": "RICHB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/687462872",
-    "plant_name": "Park Farm",
-    "bmu_id": "T_RICHB-2",
-    "ngc_bmu_id": "RICHB-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/687462872",
-    "plant_name": "Park Farm",
-    "bmu_id": "T_TEBWB-1",
-    "ngc_bmu_id": "TEBWB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/687462872",
-    "plant_name": "Park Farm",
-    "bmu_id": "T_TEBWS-1",
-    "ngc_bmu_id": "TEBWS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/687462872",
-    "plant_name": "Park Farm",
-    "bmu_id": "E_TRFPK-1",
-    "ngc_bmu_id": "TRFPK-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/688029957",
     "plant_name": "Cowes Power Station",
     "bmu_id": "E_COWE1",
@@ -1526,78 +1013,6 @@
     "bmu_id": "E_COWE2",
     "ngc_bmu_id": "COWE2",
     "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/689356314",
-    "plant_name": "Berry Court Solar Farm",
-    "bmu_id": "E_BRYBW-1",
-    "ngc_bmu_id": "BRYBW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/689361308",
-    "plant_name": "North of Newton Farm",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/689361314",
-    "plant_name": "Race Solar Farm",
-    "bmu_id": "T_RCBKO-1",
-    "ngc_bmu_id": "RCBKO-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/689361314",
-    "plant_name": "Race Solar Farm",
-    "bmu_id": "T_RCBKO-2",
-    "ngc_bmu_id": "RCBKO-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/714078448",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/714078448",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "E_HLGLW-1",
-    "ngc_bmu_id": "HLGLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/714078448",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "E_KHLLW-1",
-    "ngc_bmu_id": "KHLLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/714078448",
-    "plant_name": "Hill Farm Solar Park",
-    "bmu_id": "T_OCHLB-1",
-    "ngc_bmu_id": "OCHLB-1",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -1629,42 +1044,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/746180289",
-    "plant_name": "Hill End Farm",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746180289",
-    "plant_name": "Hill End Farm",
-    "bmu_id": "E_HLGLW-1",
-    "ngc_bmu_id": "HLGLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746180289",
-    "plant_name": "Hill End Farm",
-    "bmu_id": "E_KHLLW-1",
-    "ngc_bmu_id": "KHLLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746180289",
-    "plant_name": "Hill End Farm",
-    "bmu_id": "T_OCHLB-1",
-    "ngc_bmu_id": "OCHLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/840178098",
     "plant_name": "Sundon Landfill Site",
     "bmu_id": "T_SUNDB-1",
@@ -1687,42 +1066,6 @@
     "plant_name": "Burghfield Generation Plant",
     "bmu_id": "E_BURGH-1",
     "ngc_bmu_id": "BURGH-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/871709060",
-    "plant_name": "Green Waste Composting Facility",
-    "bmu_id": "T_BLPFB-1",
-    "ngc_bmu_id": "BLPFB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/871709060",
-    "plant_name": "Green Waste Composting Facility",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/871709060",
-    "plant_name": "Green Waste Composting Facility",
-    "bmu_id": "T_LARKB-1",
-    "ngc_bmu_id": "LARKB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/871709060",
-    "plant_name": "Green Waste Composting Facility",
-    "bmu_id": "E_TGP1",
-    "ngc_bmu_id": "TIBG-1",
     "bmu_type": "E",
     "source": "auto",
     "notes": null
@@ -1818,33 +1161,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/1030124059",
-    "plant_name": "Solar Array",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/1030124059",
-    "plant_name": "Solar Array",
-    "bmu_id": "T_TYLNS-1",
-    "ngc_bmu_id": "TYLNS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/1105215419",
-    "plant_name": "Port of Tilbury Battery Storage",
-    "bmu_id": "E_POTES-1",
-    "ngc_bmu_id": "POTES-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/1148934860",
     "plant_name": "Contego Battery",
     "bmu_id": "E_CONTB-1",
@@ -1899,24 +1215,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/1155331119",
-    "plant_name": "Solar Arrays",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/1155331119",
-    "plant_name": "Solar Arrays",
-    "bmu_id": "T_TYLNS-1",
-    "ngc_bmu_id": "TYLNS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/1159868562",
     "plant_name": "Broadditch Battery",
     "bmu_id": "E_BROAB-1",
@@ -1958,24 +1256,6 @@
     "bmu_id": "E_TOLLB-1",
     "ngc_bmu_id": "TOLLB-1",
     "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/1360362424",
-    "plant_name": "Solar Array",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/1360362424",
-    "plant_name": "Solar Array",
-    "bmu_id": "T_TYLNS-1",
-    "ngc_bmu_id": "TYLNS-1",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -2142,15 +1422,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/1514581693",
-    "plant_name": "North Fossil Solar Farm",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "relation/9938532",
     "plant_name": "Fields Farm (Agden)",
     "bmu_id": "E_GFLDW-1",
@@ -2191,15 +1462,6 @@
     "plant_name": "Little Barford Power Station",
     "bmu_id": "T_LBAR-1G",
     "ngc_bmu_id": "LBAR-1G",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/51698894",
-    "plant_name": "Sutton Bridge Power Station",
-    "bmu_id": "T_SUTBS-1",
-    "ngc_bmu_id": "SUTBS-1",
     "bmu_type": "T",
     "source": "auto",
     "notes": null
@@ -2538,33 +1800,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/532910167",
-    "plant_name": "Burton Farm",
-    "bmu_id": "E_WBUPS-STX",
-    "ngc_bmu_id": "WBUPS-STX",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/573229804",
-    "plant_name": "Solar Park Chorley Wastewater Treatment Works",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/573229804",
-    "plant_name": "Solar Park Chorley Wastewater Treatment Works",
-    "bmu_id": "T_TYLNS-1",
-    "ngc_bmu_id": "TYLNS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/625572056",
     "plant_name": "Black Bush Farm",
     "bmu_id": "T_BEASC-1",
@@ -2619,209 +1854,11 @@
     "notes": null
   },
   {
-    "osm_id": "way/724286636",
-    "plant_name": "North Of Field Barn",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725458003",
-    "plant_name": "Solar farm at land at The Willows, Uttoxeter",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725458003",
-    "plant_name": "Solar farm at land at The Willows, Uttoxeter",
-    "bmu_id": "T_TYLNS-1",
-    "ngc_bmu_id": "TYLNS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725463864",
-    "plant_name": "Green Lane Marchington Photovoltaic",
-    "bmu_id": "T_BLPFB-1",
-    "ngc_bmu_id": "BLPFB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725463864",
-    "plant_name": "Green Lane Marchington Photovoltaic",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725463864",
-    "plant_name": "Green Lane Marchington Photovoltaic",
-    "bmu_id": "T_LARKB-1",
-    "ngc_bmu_id": "LARKB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725463864",
-    "plant_name": "Green Lane Marchington Photovoltaic",
-    "bmu_id": "E_TGP1",
-    "ngc_bmu_id": "TIBG-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/743116558",
     "plant_name": "Fell View Farm Phase 1 & 2",
     "bmu_id": "E_FELL-1",
     "ngc_bmu_id": "FELL-1",
     "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/745490210",
-    "plant_name": "Bury Green Farm Solar Park",
-    "bmu_id": "E_TGP1",
-    "ngc_bmu_id": "TIBG-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246315",
-    "plant_name": "Park Lane",
-    "bmu_id": "T_COYLB-1",
-    "ngc_bmu_id": "COYLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246315",
-    "plant_name": "Park Lane",
-    "bmu_id": "T_RICHB-1",
-    "ngc_bmu_id": "RICHB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246315",
-    "plant_name": "Park Lane",
-    "bmu_id": "T_RICHB-2",
-    "ngc_bmu_id": "RICHB-2",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246315",
-    "plant_name": "Park Lane",
-    "bmu_id": "T_TEBWB-1",
-    "ngc_bmu_id": "TEBWB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246315",
-    "plant_name": "Park Lane",
-    "bmu_id": "T_TEBWS-1",
-    "ngc_bmu_id": "TEBWS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246315",
-    "plant_name": "Park Lane",
-    "bmu_id": "E_TRFPK-1",
-    "ngc_bmu_id": "TRFPK-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246321",
-    "plant_name": "Hill Farm",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246321",
-    "plant_name": "Hill Farm",
-    "bmu_id": "E_HLGLW-1",
-    "ngc_bmu_id": "HLGLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246321",
-    "plant_name": "Hill Farm",
-    "bmu_id": "E_KHLLW-1",
-    "ngc_bmu_id": "KHLLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746246321",
-    "plant_name": "Hill Farm",
-    "bmu_id": "T_OCHLB-1",
-    "ngc_bmu_id": "OCHLB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/796502818",
-    "plant_name": "Hill Farm",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/796502818",
-    "plant_name": "Hill Farm",
-    "bmu_id": "E_HLGLW-1",
-    "ngc_bmu_id": "HLGLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/796502818",
-    "plant_name": "Hill Farm",
-    "bmu_id": "E_KHLLW-1",
-    "ngc_bmu_id": "KHLLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/796502818",
-    "plant_name": "Hill Farm",
-    "bmu_id": "T_OCHLB-1",
-    "ngc_bmu_id": "OCHLB-1",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -2957,69 +1994,6 @@
     "bmu_id": "E_BRGG-1",
     "ngc_bmu_id": "BRGG-1",
     "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/956542761",
-    "plant_name": "Sutton Grange Anaerobic Digestion Plant",
-    "bmu_id": "T_SUTBS-1",
-    "ngc_bmu_id": "SUTBS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/956542763",
-    "plant_name": "Sutton Landfill Gas Plant",
-    "bmu_id": "T_SUTBS-1",
-    "ngc_bmu_id": "SUTBS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/956542766",
-    "plant_name": "North Moor Farm Anaerobic Digestion Plant",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/974839013",
-    "plant_name": "Hill Farm Battery Storage",
-    "bmu_id": "E_BTNHL-1",
-    "ngc_bmu_id": "BTNHL-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/974839013",
-    "plant_name": "Hill Farm Battery Storage",
-    "bmu_id": "E_HLGLW-1",
-    "ngc_bmu_id": "HLGLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/974839013",
-    "plant_name": "Hill Farm Battery Storage",
-    "bmu_id": "E_KHLLW-1",
-    "ngc_bmu_id": "KHLLW-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/974839013",
-    "plant_name": "Hill Farm Battery Storage",
-    "bmu_id": "T_OCHLB-1",
-    "ngc_bmu_id": "OCHLB-1",
-    "bmu_type": "T",
     "source": "auto",
     "notes": null
   },
@@ -3204,15 +2178,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/1290954389",
-    "plant_name": "River Bollin Hydroelectric Scheme",
-    "bmu_id": "T_NTRVB-1",
-    "ngc_bmu_id": "NTRVB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/1300558890",
     "plant_name": "Sutton Bridge Solar Farm",
     "bmu_id": "T_SUTBS-1",
@@ -3348,42 +2313,6 @@
     "notes": null
   },
   {
-    "osm_id": "relation/10099482",
-    "plant_name": "Green Croft Solar Farm",
-    "bmu_id": "T_BLPFB-1",
-    "ngc_bmu_id": "BLPFB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/10099482",
-    "plant_name": "Green Croft Solar Farm",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/10099482",
-    "plant_name": "Green Croft Solar Farm",
-    "bmu_id": "T_LARKB-1",
-    "ngc_bmu_id": "LARKB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "relation/10099482",
-    "plant_name": "Green Croft Solar Farm",
-    "bmu_id": "E_TGP1",
-    "ngc_bmu_id": "TIBG-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/4800321",
     "plant_name": "Hartlepool Nuclear Power Station",
     "bmu_id": "T_HRTL-1",
@@ -3492,42 +2421,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/152212829",
-    "plant_name": "North East Energy Recovery Centre",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/332733080",
-    "plant_name": "Solar Meadow",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/332733080",
-    "plant_name": "Solar Meadow",
-    "bmu_id": "T_TYLNS-1",
-    "ngc_bmu_id": "TYLNS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/725688495",
-    "plant_name": "North East of Ainderby Steeple",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/956010231",
     "plant_name": "Port of Tyne Battery Storage",
     "bmu_id": "E_POTES-1",
@@ -3632,15 +2525,6 @@
     "bmu_id": "T_PEHED-1",
     "ngc_bmu_id": "PEHED-1",
     "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/746212387",
-    "plant_name": "House OHill Solar Farm",
-    "bmu_id": "E_GOSHS-1",
-    "ngc_bmu_id": "GOSHS-1",
-    "bmu_type": "E",
     "source": "auto",
     "notes": null
   },
@@ -3861,42 +2745,6 @@
     "notes": null
   },
   {
-    "osm_id": "way/386370289",
-    "plant_name": "Green Farm",
-    "bmu_id": "T_BLPFB-1",
-    "ngc_bmu_id": "BLPFB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/386370289",
-    "plant_name": "Green Farm",
-    "bmu_id": "T_BLPFS-1",
-    "ngc_bmu_id": "BLPFS-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/386370289",
-    "plant_name": "Green Farm",
-    "bmu_id": "T_LARKB-1",
-    "ngc_bmu_id": "LARKB-1",
-    "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/386370289",
-    "plant_name": "Green Farm",
-    "bmu_id": "E_TGP1",
-    "ngc_bmu_id": "TIBG-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
     "osm_id": "way/386371700",
     "plant_name": "Barn Farm",
     "bmu_id": "E_DBFRM-1",
@@ -4064,24 +2912,6 @@
     "bmu_id": "T_LNCSW-2",
     "ngc_bmu_id": "LNCSO-2",
     "bmu_type": "T",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/682783429",
-    "plant_name": "North Creake Airfield Solar Farm",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
-    "source": "auto",
-    "notes": null
-  },
-  {
-    "osm_id": "way/708338018",
-    "plant_name": "North Norfolk Business Centre Solar Power Station",
-    "bmu_id": "E_NTAWB-1",
-    "ngc_bmu_id": "NTAWB-1",
-    "bmu_type": "E",
     "source": "auto",
     "notes": null
   },
@@ -5550,6 +4380,762 @@
     "ngc_bmu_id": "KLYN-A-1",
     "bmu_type": "E",
     "source": "auto",
+    "notes": null
+  },
+  {
+    "osm_id": "way/51698894",
+    "plant_name": "Sutton Bridge Power Station",
+    "bmu_id": "T_SUTB-1",
+    "ngc_bmu_id": "SUTB-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Sutton Bridge CCGT main unit"
+  },
+  {
+    "osm_id": "way/310488542",
+    "plant_name": "Heysham Nuclear Power Station",
+    "bmu_id": "T_HEYM11",
+    "ngc_bmu_id": "HEYM11",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Heysham 1 Generator 1"
+  },
+  {
+    "osm_id": "way/310488542",
+    "plant_name": "Heysham Nuclear Power Station",
+    "bmu_id": "T_HEYM12",
+    "ngc_bmu_id": "HEYM12",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Heysham 1 Generator 2"
+  },
+  {
+    "osm_id": "way/310488542",
+    "plant_name": "Heysham Nuclear Power Station",
+    "bmu_id": "T_HEYM27",
+    "ngc_bmu_id": "HEYM27",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Heysham 2 Generator 7"
+  },
+  {
+    "osm_id": "way/310488542",
+    "plant_name": "Heysham Nuclear Power Station",
+    "bmu_id": "T_HEYM28",
+    "ngc_bmu_id": "HEYM28",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Heysham 2 Generator 8"
+  },
+  {
+    "osm_id": "790946237",
+    "plant_name": "Triton Knoll Wind Farm",
+    "bmu_id": "T_TKNEW-1",
+    "ngc_bmu_id": "TKNEW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Triton Knoll OSP East 1"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-5",
+    "ngc_bmu_id": "DRAXX-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Drax unit 5 (coal)"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-6",
+    "ngc_bmu_id": "DRAXX-6",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Drax unit 6 (coal)"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-9G",
+    "ngc_bmu_id": "DRAXX-9G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Drax OCGT 9G"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-10G",
+    "ngc_bmu_id": "DRAXX-10G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Drax OCGT 10G"
+  },
+  {
+    "osm_id": "way/34383063",
+    "plant_name": "Drax Power Station",
+    "bmu_id": "T_DRAXX-12G",
+    "ngc_bmu_id": "DRAXX-12G",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Drax OCGT 12G"
+  },
+  {
+    "osm_id": "way/1473937486",
+    "plant_name": "Uskmouth BESS",
+    "bmu_id": "T_USKMB-2",
+    "ngc_bmu_id": "USKMB-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Uskmouth BESS unit 2"
+  },
+  {
+    "osm_id": "way/1473937486",
+    "plant_name": "Uskmouth BESS",
+    "bmu_id": "T_USKMB-3",
+    "ngc_bmu_id": "USKMB-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Uskmouth BESS unit 3"
+  },
+  {
+    "osm_id": "relation/5474028",
+    "plant_name": "Gwynt y M\u00f4r Offshore Wind Farm",
+    "bmu_id": "T_GYMR-15",
+    "ngc_bmu_id": "GYMR-15",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Gwynt y M\u00f4r 576MW offshore wind, OSP East 15"
+  },
+  {
+    "osm_id": "relation/5474028",
+    "plant_name": "Gwynt y M\u00f4r Offshore Wind Farm",
+    "bmu_id": "T_GYMR-17",
+    "ngc_bmu_id": "GYMR-17",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Gwynt y M\u00f4r 576MW offshore wind, OSP East 17"
+  },
+  {
+    "osm_id": "relation/5474028",
+    "plant_name": "Gwynt y M\u00f4r Offshore Wind Farm",
+    "bmu_id": "T_GYMR-26",
+    "ngc_bmu_id": "GYMR-26",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Gwynt y M\u00f4r 576MW offshore wind, OSP West 26"
+  },
+  {
+    "osm_id": "relation/5474028",
+    "plant_name": "Gwynt y M\u00f4r Offshore Wind Farm",
+    "bmu_id": "T_GYMR-28",
+    "ngc_bmu_id": "GYMR-28",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Gwynt y M\u00f4r 576MW offshore wind, OSP West 28"
+  },
+  {
+    "osm_id": "manual/dorenell-wind-farm",
+    "plant_name": "Dorenell Wind Farm",
+    "bmu_id": "T_DOREW-1",
+    "ngc_bmu_id": "DOREW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dorenell-wind-farm",
+    "plant_name": "Dorenell Wind Farm",
+    "bmu_id": "T_DOREW-2",
+    "ngc_bmu_id": "DOREW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/strathy-north-wind-farm",
+    "plant_name": "Strathy North Wind Farm",
+    "bmu_id": "T_STRNW-1",
+    "ngc_bmu_id": "STRNW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/crystal-rig-wind-farm",
+    "plant_name": "Crystal Rig Wind Farm",
+    "bmu_id": "T_CRYRW-2",
+    "ngc_bmu_id": "CRYRW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Crystal Rig II 151MW"
+  },
+  {
+    "osm_id": "manual/crystal-rig-iii-wind-farm",
+    "plant_name": "Crystal Rig III Wind Farm",
+    "bmu_id": "T_CRYRW-3",
+    "ngc_bmu_id": "CRYRW-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Crystal Rig III 14MW"
+  },
+  {
+    "osm_id": "manual/bhlaraidh-wind-farm",
+    "plant_name": "Bhlaraidh Wind Farm",
+    "bmu_id": "T_BHLAW-1",
+    "ngc_bmu_id": "BHLAW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/gordonbush-wind-farm",
+    "plant_name": "Gordonbush Wind Farm",
+    "bmu_id": "T_GORDW-1",
+    "ngc_bmu_id": "GORDW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/black-law-wind-farm",
+    "plant_name": "Black Law Wind Farm",
+    "bmu_id": "T_BLLA-1",
+    "ngc_bmu_id": "BLLA-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Black Law original 118MW"
+  },
+  {
+    "osm_id": "manual/black-law-wind-farm",
+    "plant_name": "Black Law Wind Farm",
+    "bmu_id": "T_BLLA-2",
+    "ngc_bmu_id": "BLLA-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Black Law Extension 69MW"
+  },
+  {
+    "osm_id": "manual/beinneun-wind-farm",
+    "plant_name": "Beinneun Wind Farm",
+    "bmu_id": "T_BEINW-1",
+    "ngc_bmu_id": "BEINW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/pen-y-cymoedd-wind-farm",
+    "plant_name": "Pen y Cymoedd Wind Farm",
+    "bmu_id": "T_PNYCW-1",
+    "ngc_bmu_id": "PNYCW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "228MW"
+  },
+  {
+    "osm_id": "manual/dogger-bank-a",
+    "plant_name": "Dogger Bank A Offshore Wind Farm",
+    "bmu_id": "T_DBAWO-1",
+    "ngc_bmu_id": "DBAWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-a",
+    "plant_name": "Dogger Bank A Offshore Wind Farm",
+    "bmu_id": "T_DBAWO-2",
+    "ngc_bmu_id": "DBAWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-a",
+    "plant_name": "Dogger Bank A Offshore Wind Farm",
+    "bmu_id": "T_DBAWO-3",
+    "ngc_bmu_id": "DBAWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-a",
+    "plant_name": "Dogger Bank A Offshore Wind Farm",
+    "bmu_id": "T_DBAWO-4",
+    "ngc_bmu_id": "DBAWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-a",
+    "plant_name": "Dogger Bank A Offshore Wind Farm",
+    "bmu_id": "T_DBAWO-5",
+    "ngc_bmu_id": "DBAWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/south-kyle-wind-farm",
+    "plant_name": "South Kyle Wind Farm",
+    "bmu_id": "T_SOKYW-1",
+    "ngc_bmu_id": "SOKYW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "427MW onshore wind, East Ayrshire"
+  },
+  {
+    "osm_id": "manual/east-anglia-one",
+    "plant_name": "East Anglia One Offshore Wind Farm",
+    "bmu_id": "T_EAAO-1",
+    "ngc_bmu_id": "EAAO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "EA1 offshore 358MW"
+  },
+  {
+    "osm_id": "manual/east-anglia-one",
+    "plant_name": "East Anglia One Offshore Wind Farm",
+    "bmu_id": "T_EAAO-2",
+    "ngc_bmu_id": "EAAO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "EA1 offshore 367MW"
+  },
+  {
+    "osm_id": "manual/clyde-wind-farm",
+    "plant_name": "Clyde Wind Farm",
+    "bmu_id": "T_CLDCW-1",
+    "ngc_bmu_id": "CLDCW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Clyde Central 200MW"
+  },
+  {
+    "osm_id": "manual/clyde-wind-farm",
+    "plant_name": "Clyde Wind Farm",
+    "bmu_id": "T_CLDNW-1",
+    "ngc_bmu_id": "CLDNW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Clyde North 200MW"
+  },
+  {
+    "osm_id": "manual/clyde-wind-farm",
+    "plant_name": "Clyde Wind Farm",
+    "bmu_id": "T_CLDSW-1",
+    "ngc_bmu_id": "CLDSW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Clyde South 150MW"
+  },
+  {
+    "osm_id": "way/291146217",
+    "plant_name": "Robin Rigg Offshore Wind Farm",
+    "bmu_id": "T_RREW-1",
+    "ngc_bmu_id": "RREW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Robin Rigg East 114MW, Solway Firth"
+  },
+  {
+    "osm_id": "way/291146217",
+    "plant_name": "Robin Rigg Offshore Wind Farm",
+    "bmu_id": "T_RRWW-1",
+    "ngc_bmu_id": "RRWW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Robin Rigg West 91MW, Solway Firth"
+  },
+  {
+    "osm_id": "manual/aikengall-2a-wind-farm",
+    "plant_name": "Aikengall 2A Wind Farm",
+    "bmu_id": "T_AKGLW-3",
+    "ngc_bmu_id": "AKGLW-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Aikengall 2A 163MW, East Lothian"
+  },
+  {
+    "osm_id": "manual/cumberhead-west-wind-farm",
+    "plant_name": "Cumberhead West Wind Farm",
+    "bmu_id": "T_CUMHW-2",
+    "ngc_bmu_id": "CUMHW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Cumberhead West 126MW, South Lanarkshire"
+  },
+  {
+    "osm_id": "manual/dunmaglass-wind-farm",
+    "plant_name": "Dunmaglass Wind Farm",
+    "bmu_id": "T_DUNGW-1",
+    "ngc_bmu_id": "DUNGW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Dunmaglass 100MW, Highland"
+  },
+  {
+    "osm_id": "manual/griffin-wind-farm",
+    "plant_name": "Griffin Wind Farm",
+    "bmu_id": "T_GRIFW-1",
+    "ngc_bmu_id": "GRIFW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Griffin WF unit 1, 102MW, Perthshire"
+  },
+  {
+    "osm_id": "manual/griffin-wind-farm",
+    "plant_name": "Griffin Wind Farm",
+    "bmu_id": "T_GRIFW-2",
+    "ngc_bmu_id": "GRIFW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Griffin WF unit 2, 104MW, Perthshire"
+  },
+  {
+    "osm_id": "manual/hadyard-hill-wind-farm",
+    "plant_name": "Hadyard Hill Wind Farm",
+    "bmu_id": "T_HADHW-1",
+    "ngc_bmu_id": "HADHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Hadyard Hill 130MW, South Ayrshire"
+  },
+  {
+    "osm_id": "manual/north-kyle-wind-farm",
+    "plant_name": "North Kyle Wind Farm",
+    "bmu_id": "T_NOKYW-1",
+    "ngc_bmu_id": "NOKYW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "North Kyle unit 1, 106MW"
+  },
+  {
+    "osm_id": "manual/north-kyle-wind-farm",
+    "plant_name": "North Kyle Wind Farm",
+    "bmu_id": "T_NOKYW-2",
+    "ngc_bmu_id": "NOKYW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "North Kyle unit 2, 106MW"
+  },
+  {
+    "osm_id": "manual/dogger-bank-b",
+    "plant_name": "Dogger Bank B Offshore Wind Farm",
+    "bmu_id": "T_DBBWO-1",
+    "ngc_bmu_id": "DBBWO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-b",
+    "plant_name": "Dogger Bank B Offshore Wind Farm",
+    "bmu_id": "T_DBBWO-2",
+    "ngc_bmu_id": "DBBWO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-b",
+    "plant_name": "Dogger Bank B Offshore Wind Farm",
+    "bmu_id": "T_DBBWO-3",
+    "ngc_bmu_id": "DBBWO-3",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-b",
+    "plant_name": "Dogger Bank B Offshore Wind Farm",
+    "bmu_id": "T_DBBWO-4",
+    "ngc_bmu_id": "DBBWO-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dogger-bank-b",
+    "plant_name": "Dogger Bank B Offshore Wind Farm",
+    "bmu_id": "T_DBBWO-5",
+    "ngc_bmu_id": "DBBWO-5",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/gordonbush-wind-farm",
+    "plant_name": "Gordonbush Wind Farm",
+    "bmu_id": "T_GORDW-2",
+    "ngc_bmu_id": "GORDW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Gordonbush WF Extension 59MW"
+  },
+  {
+    "osm_id": "manual/race-bank-wind-farm",
+    "plant_name": "Race Bank Offshore Wind Farm",
+    "bmu_id": "T_RCBKO-1",
+    "ngc_bmu_id": "RCBKO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Race Bank Zone 1 284MW"
+  },
+  {
+    "osm_id": "manual/race-bank-wind-farm",
+    "plant_name": "Race Bank Offshore Wind Farm",
+    "bmu_id": "T_RCBKO-2",
+    "ngc_bmu_id": "RCBKO-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Race Bank Zone 2 290MW"
+  },
+  {
+    "osm_id": "manual/aikengall-2a-wind-farm",
+    "plant_name": "Aikengall 2 Wind Farm",
+    "bmu_id": "T_AKGLW-2",
+    "ngc_bmu_id": "AKGLW-2",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Aikengall II 64MW, same site as Aikengall 2A"
+  },
+  {
+    "osm_id": "manual/crystal-rig-wind-farm",
+    "plant_name": "Crystal Rig Wind Farm",
+    "bmu_id": "T_CRYRW-4",
+    "ngc_bmu_id": "CRYRW-4",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Crystal Rig IV 48MW extension"
+  },
+  {
+    "osm_id": "manual/aberdeen-bay-wind-farm",
+    "plant_name": "Aberdeen Bay Offshore Wind Farm",
+    "bmu_id": "T_ABRBO-1",
+    "ngc_bmu_id": "ABRBO-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "EOWDC 93MW offshore"
+  },
+  {
+    "osm_id": "manual/mgt-teesside",
+    "plant_name": "MGT Teesside Biomass Power Station",
+    "bmu_id": "T_TSREP-1",
+    "ngc_bmu_id": "TSREP-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "MGT Teesside biomass 285MW"
+  },
+  {
+    "osm_id": "manual/thurrock-power",
+    "plant_name": "Thurrock Power Station",
+    "bmu_id": "T_THUPG-1",
+    "ngc_bmu_id": "THUPG-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": "Thurrock Power 180MW OCGT/peaker"
+  },
+  {
+    "osm_id": "manual/sandy-knowe-wind-farm",
+    "plant_name": "Sandy Knowe Wind Farm",
+    "bmu_id": "T_SAKNW-1",
+    "ngc_bmu_id": "SAKNW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dersalloch-wind-farm",
+    "plant_name": "Dersalloch Wind Farm",
+    "bmu_id": "T_DRSLW-1",
+    "ngc_bmu_id": "DRSLW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/enoch-hill-wind-farm",
+    "plant_name": "Enoch Hill Wind Farm",
+    "bmu_id": "T_ENHLW-1",
+    "ngc_bmu_id": "ENHLW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/mark-hill-wind-farm",
+    "plant_name": "Mark Hill Wind Farm",
+    "bmu_id": "T_MKHLW-1",
+    "ngc_bmu_id": "MKHLW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/windy-rig-wind-farm",
+    "plant_name": "Windy Rig Wind Farm",
+    "bmu_id": "T_WDRGW-1",
+    "ngc_bmu_id": "WDRGW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/hare-hill-extension",
+    "plant_name": "Hare Hill Extension Wind Farm",
+    "bmu_id": "E_HRHLW-1",
+    "ngc_bmu_id": "HRHLW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/whiteside-hill-wf",
+    "plant_name": "Whiteside Hill Wind Farm",
+    "bmu_id": "T_WHIHW-1",
+    "ngc_bmu_id": "WHIHW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/ewe-hill-ii-wf",
+    "plant_name": "Ewe Hill II Wind Farm",
+    "bmu_id": "T_EWHLW-1",
+    "ngc_bmu_id": "EWHLW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/sanquhar-community-wf",
+    "plant_name": "Sanquhar Community Wind Farm",
+    "bmu_id": "T_SANQW-1",
+    "ngc_bmu_id": "SANQW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/middle-muir-wind-farm",
+    "plant_name": "Middle Muir Wind Farm",
+    "bmu_id": "T_MIDMW-1",
+    "ngc_bmu_id": "MIDMW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/douglas-west-wind-farm",
+    "plant_name": "Douglas West Wind Farm",
+    "bmu_id": "T_DOUGW-1",
+    "ngc_bmu_id": "DOUGW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/hagshaw-repower-wf",
+    "plant_name": "Hagshaw Hill Repowering WF",
+    "bmu_id": "T_HAHAW-1",
+    "ngc_bmu_id": "HAHAW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/dunlaw-extension-wf",
+    "plant_name": "Dun Law Extension Wind Farm",
+    "bmu_id": "T_DNLWW-1",
+    "ngc_bmu_id": "DNLWW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/kilbraur-wind-farm",
+    "plant_name": "Kilbraur Wind Farm",
+    "bmu_id": "T_KILBW-1",
+    "ngc_bmu_id": "KILBW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/berry-burn-wind-farm",
+    "plant_name": "Berry Burn Wind Farm",
+    "bmu_id": "E_BRYBW-1",
+    "ngc_bmu_id": "BRYBW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/millennium-wind-farm",
+    "plant_name": "Millennium Wind Farm",
+    "bmu_id": "T_MILWW-1",
+    "ngc_bmu_id": "MILWW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "relation/8836282",
+    "plant_name": "Hill of Towie Wind Farm",
+    "bmu_id": "E_HLTWW-1",
+    "ngc_bmu_id": "HLTWW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/greengairs-east-wf",
+    "plant_name": "Greengairs East Wind Farm",
+    "bmu_id": "E_GRGRW-1",
+    "ngc_bmu_id": "GRGRW-1",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/beinn-an-tuirc-iii",
+    "plant_name": "Beinn an Tuirc III Wind Farm",
+    "bmu_id": "E_BTUIW-3",
+    "ngc_bmu_id": "BTUIW-3",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/beinn-an-tuirc-ii",
+    "plant_name": "Beinn an Tuirc 2 Wind Farm",
+    "bmu_id": "E_BTUIW-2",
+    "ngc_bmu_id": "BTUIW-2",
+    "bmu_type": "E",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/an-suidhe-wind-farm",
+    "plant_name": "An Suidhe Wind Farm",
+    "bmu_id": "T_ANSUW-1",
+    "ngc_bmu_id": "ANSUW-1",
+    "bmu_type": "T",
+    "source": "manual",
+    "notes": null
+  },
+  {
+    "osm_id": "manual/jg-pears-high-marnham",
+    "plant_name": "JG Pears High Marnham Power",
+    "bmu_id": "T_JGPR-1",
+    "ngc_bmu_id": "JGPR-1",
+    "bmu_type": "T",
+    "source": "manual",
     "notes": null
   }
 ]
