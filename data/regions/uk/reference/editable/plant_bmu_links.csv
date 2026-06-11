@@ -1584,5 +1584,3 @@ manual/corriegarth-wind-farm,Corriegarth Wind Farm,T_CGTHW-1,CGTHW-1,T,manual,Co
 895177754,Moray East Wind Farm,T_MOWEO-1,MOWEO-1,T,manual,Moray East Wind Farm
 895177754,Moray East Wind Farm,T_MOWEO-2,MOWEO-2,T,manual,Moray East Wind Farm
 895177754,Moray East Wind Farm,T_MOWEO-3,MOWEO-3,T,manual,Moray East Wind Farm
-manual/blackcraig-wind-farm,Blackcraig Wind Farm,E_CRGTW-1,CRGTW-1,E,manual,Candidate match: bmUnitName=Craig 2 Wind Farm; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
-manual/burn-of-whilk-wind-farm,Burn of Whilk Wind Farm,E_BNWKW-1,BNWKW-1,E,manual,Candidate match: bmUnitName=Burn of Whilk Windfarm; fuelType=WIND; confidence=medium; reason=site_name_contains_bmUnitName; fuel_compatible=True
